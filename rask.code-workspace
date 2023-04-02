@@ -1,0 +1,29 @@
+{
+  "folders": [
+    {
+      "path": ".",
+      "name": ".root"
+    },
+    {
+      "path": "docs"
+    },
+    {
+      "path": "packages"
+    }
+  ],
+  "settings": {
+    "files.exclude": {
+      "docs": true,
+      "packages": true,
+      "**/.git": true,
+      "**/.svn": true,
+      "**/.hg": true,
+      "**/CVS": true,
+      "**/.DS_Store": true,
+      "**/Thumbs.db": true,
+    },
+    "cSpell.words": [
+      "Griffi"
+    ]
+  }
+}

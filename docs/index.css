@@ -1,0 +1,27 @@
+@font-face {
+  font-family: toughart;
+  src: url("./fonts/tough-art/Tough Art/ToughArt.ttf"),
+    url("./fonts/tough-art/Tough Art/ToughArt.woff");
+}
+
+@font-face {
+  font-family: "Madison Street";
+  src: url("./fonts/madison-street/Madison\ Street.ttf");
+}
+
+body {
+  background-color: #181818;
+}
+
+div {
+  font: "Madison Street";
+  padding: 40px;
+}
+
+span {
+  font-size: 30px;
+  font-weight: 700;
+  background-image: linear-gradient(to right, #de41e0, #5a14ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
