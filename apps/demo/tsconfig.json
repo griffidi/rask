@@ -1,0 +1,19 @@
+{
+  "extends":  "../../tsconfig.lit.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "rootDir": ".",
+    "paths": {
+      "#/*": ["./src/*"],
+      "@rask/core/*":  ["../../packages/core/src/*"],
+      "@rask/web/*":  ["../../packages/web/src/*"]
+    },
+    "types": []
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["dist", "node_modules"],
+  "references": [
+    {"path": "../../packages/core"},
+    {"path": "../../packages/web"}
+  ]
+}

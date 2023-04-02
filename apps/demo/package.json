@@ -1,0 +1,36 @@
+{
+  "name": "@rask/demo",
+  "private": true,
+  "version": "0.0.1",
+  "packageManager": "pnpm@8.1.0",
+  "engines": {
+    "node": ">=16",
+    "pnpm": ">=8.0.0"
+  },
+  "type": "module",
+  "files": [
+    "dist/**/*.{map.js,js,css}",
+    "types/src/**/*.d.ts",
+    "README.md",
+    "!types/tsconfig.tsbuildinfo"
+  ],
+  "scripts": {
+    "dev": ""
+  },
+  "dependencies": {
+    "@rask/core": "workspace:^",
+    "@rask/web": "workspace:^",
+    "lit": "^2.7.0",
+    "tslib": "^2.5.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.3"
+  },
+  "browserslist": [
+    "last 2 Chrome version",
+    "last 2 FireFox version",
+    "last 2 Edge major version",
+    "last 1 Safari major version",
+    "last 1 iOS major version"
+  ]
+}

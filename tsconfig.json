@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "strict": true,
+  },
+  "files": [],
+  "include": [],
+  "references": [
+    { "path": "./apps/demo" },
+    { "path": "./packages/core" },
+    { "path": "./packages/web" }
+  ]
+}
