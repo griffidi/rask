@@ -1,0 +1,4 @@
+:root {
+  --md-sys-shape-corner-large-end: 0px var(--md-sys-shape-large) var(--md-sys-shape-large) 0px;
+  --md-sys-shape-extra-large: var(--md-sys-shape-corner-extra-large-default-size);
+}

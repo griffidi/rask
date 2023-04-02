@@ -1,0 +1,37 @@
+[color-theme='dark'] {
+  color-scheme: dark;
+  --md-sys-color-primary-container: var(--md-sys-color-primary-container-dark);
+  --md-sys-color-primary: var(--md-sys-color-primary-dark);
+  --md-sys-color-on-primary: var(--md-sys-color-on-primary-dark);
+  --md-sys-color-secondary-container: var(--md-sys-color-secondary-container-dark);
+  --md-sys-color-on-secondary-container: var(--md-sys-color-on-secondary-container-dark);
+  --md-sys-color-background-opacity: #1f1f1f03;
+  --md-sys-color-surface-0: var(--md-sys-color-background);
+  --md-sys-color-surface-05: rgba(40, 41, 42, 0.23);
+  --md-sys-color-surface-1: #28292a;
+  --md-sys-color-surface: var(--md-sys-color-surface-1);
+  --md-sys-color-surface-2: #2d2f31;
+  --md-sys-color-surface-3: #333438;
+  --md-sys-color-surface-4: #34363a;
+  --md-sys-color-surface-5: #383a3e;
+  --md-sys-color-on-surface-variant-2: linear-gradient(
+    0deg,
+    hsla(140, 3%, 77%, 0.08),
+    hsla(140, 3%, 77%, 0.08)
+  );
+  --md-sys-color-surface-variant-2: rgba(45, 47, 49, 0.08);
+  --md-sys-color-on-surface-variant-4: linear-gradient(
+    0deg,
+    hsla(140, 3%, 77%, 0.12),
+    hsla(140, 3%, 77%, 0.12)
+  );
+  --md-sys-color-on-surface-2: linear-gradient(0deg, hsla(0, 0%, 89%, 0.08), hsla(0, 0%, 89%, 0.08)),
+    var(--md-sys-color-secondary-container);
+  --md-sys-color-on-surface-4: linear-gradient(0deg, hsla(0, 0%, 89%, 0.12), hsla(0, 0%, 89%, 0.12)),
+    var(--md-sys-color-secondary-container);
+  --md-sys-color-scrim: var(--md-sys-color-scrim-dark);
+  --md-sys-color-text-1: var(--md-sys-color-text-dark-1);
+  --md-sys-color-text-2: var(--md-sys-color-text-dark-2);
+  --md-sys-color-text-3: var(--md-sys-color-text-dark-3);
+  --md-sys-color-text-4: var(--md-sys-color-text-dark-4);
+}

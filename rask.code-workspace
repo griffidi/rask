@@ -106,11 +106,12 @@
 
 
     "files.exclude": {
+      ".out": true,
       "apps": true,
       "docs": true,
       "packages": true,
       "**/.git": true,
-      "**/node_modules": true
+      "**/node_modules": false
     },
 
     "workbench.iconTheme": "vscode-icons",

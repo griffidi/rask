@@ -1,13 +1,14 @@
 {
   "extends":  "../../tsconfig.base.json",
   "compilerOptions": {
+    "lib": ["DOM", "DOM.Iterable"],
     "noPropertyAccessFromIndexSignature": false,
     "outDir": "./dist",
     "rootDir": ".",
     "paths": {
       "#/*": ["./src/*"]
     },
-    "types": []
+    "types": ["node"]
   },
   "include": ["src/**/*.ts"],
   "exclude": ["dist", "node_modules"],

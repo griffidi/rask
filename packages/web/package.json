@@ -10,7 +10,7 @@
   "type": "module",
   "exports": {
     ".": {
-      "types": "./types/src/index.d.ts",
+      "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
     }
   },
@@ -24,10 +24,17 @@
     "dev": "",
     "build": "tsc --pretty"
   },
+  "dependencies": {
+    "@rask/core": "workspace:^",
+    "lit": "^2.7.0",
+    "tslib": "^2.5.0"
+  },
   "devDependencies": {
+    "@types/node": "^18.15.11",
     "typescript": "^5.0.3"
   },
   "peerDependencies": {
+    "@types/node": "^18.15.11",
     "lit": "*",
     "typescript": "5.0.3"
   },
@@ -37,10 +44,5 @@
     "last 2 Edge major version",
     "last 1 Safari major version",
     "last 1 iOS major version"
-  ],
-  "dependencies": {
-    "@rask/core": "workspace:^",
-    "lit": "^2.7.0",
-    "tslib": "^2.5.0"
-  }
+  ]
 }

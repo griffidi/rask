@@ -13,39 +13,39 @@
   },
   "exports": {
     ".": {
-      "types": "./types/src/index.d.ts",
+      "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
     },
     "./cache/index.js": {
-      "types": "./types/src/cache/index.d.ts",
+      "types": "./dist/cache/index.d.ts",
       "import": "./dist/cache/index.js"
     },
     "./crypto/index.js": {
-      "types": "./types/src/crypto/index.d.ts",
+      "types": "./dist/crypto/index.d.ts",
       "import": "./dist/crypto/index.js"
     },
     "./di/index.js": {
-      "types": "./types/src/di/index.d.ts",
+      "types": "./dist/di/index.d.ts",
       "import": "./dist/di/index.js"
     },
     "./events/index.js": {
-      "types": "./types/src/events/index.d.ts",
+      "types": "./dist/events/index.d.ts",
       "import": "./dist/events/index.js"
     },
     "./reactive/signals/index.js": {
-      "types": "./types/src/reactive/signals/index.d.ts",
+      "types": "./dist/reactive/signals/index.d.ts",
       "import": "./dist/reactive/signals/index.js"
     },
     "./reactive/timer/index.js": {
-      "types": "./types/src/reactive/timer/index.d.ts",
+      "types": "./dist/reactive/timer/index.d.ts",
       "import": "./dist/reactive/timer/index.js"
     },
     "./types/*.js": {
-      "types": "./types/src/types/*.d.ts",
+      "types": "./dist/types/*.d.ts",
       "import": "./dist/types/*.js"
     },
     "./validation/index.js": {
-      "types": "./types/src/validation/index.d.ts",
+      "types": "./dist/validation/index.d.ts",
       "import": "./dist/validation/index.js"
     }
   },
@@ -59,13 +59,15 @@
     "dev": "",
     "build": "tsc --pretty"
   },
+  "dependencies": {
+    "tslib": "^2.5.0"
+  },
   "devDependencies": {
+    "@types/node": "^18.15.11",
     "typescript": "^5.0.3"
   },
   "peerDependencies": {
+    "@types/node": "^18.15.11",
     "typescript": "5.0.3"
-  },
-  "dependencies": {
-    "tslib": "^2.5.0"
   }
 }
