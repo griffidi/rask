@@ -5,7 +5,6 @@ import path from 'node:path';
 import { typescriptPaths } from 'rollup-plugin-typescript-paths';
 
 const tsPaths = fromRollup(typescriptPaths);
-
 const tsconfigPath = path.resolve('./tsconfig.json');
 
 export default /** @type {import("@web/dev-server").DevServerConfig} */ ({
@@ -17,6 +16,8 @@ export default /** @type {import("@web/dev-server").DevServerConfig} */ ({
   nodeResolve: true,
   port: 8001,
   http2: true,
+  // sslKey: fileURLToPath(new URL('./certs/rootCA.key', import.meta.url)),
+  // sslCert: fileURLToPath(new URL('./certs/rootCA.pem', import.meta.url)),
   plugins: [
     tsPaths({
       preserveExtensions: true,
