@@ -13,10 +13,10 @@ export default /** @type {import("@web/dev-server").DevServerConfig} */ ({
   clearTerminalOnReload: true,
   appIndex: 'index.html',
   watch: true,
-  debug: true,
-  nodeResolve: {
-    exportConditions: ['browser', 'development'],
-  },
+  debug: false,
+  nodeResolve: true,
+  port: 8001,
+  http2: true,
   plugins: [
     tsPaths({
       preserveExtensions: true,

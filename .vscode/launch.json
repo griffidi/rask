@@ -24,7 +24,7 @@
       "name": "Debug demo (edge)",
       "type": "pwa-msedge",
       "request": "launch",
-      "url": "http://localhost:8000",
+      "url": "https://localhost:8001",
       "webRoot": "${workspaceFolder}/apps/demo/src",
       "skipFiles": ["<node_internals>/**"],
       "userDataDir": "${workspaceFolder}/.out/edge/apps/demo",
