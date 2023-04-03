@@ -1,4 +1,5 @@
 import { esbuildPlugin } from '@web/dev-server-esbuild';
+import { hmrPlugin } from '@web/dev-server-hmr';
 import { fromRollup } from '@web/dev-server-rollup';
 import path from 'node:path';
 import { typescriptPaths } from 'rollup-plugin-typescript-paths';
@@ -26,5 +27,6 @@ export default /** @type {import("@web/dev-server").DevServerConfig} */ ({
       ts: true,
       tsconfig: tsconfigPath,
     }),
+    hmrPlugin(),
   ],
 });
