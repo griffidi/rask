@@ -6,7 +6,7 @@
     "lib": ["ESNext", "DOM", "DOM.Iterable"],
     "moduleResolution": "bundler",
     "useDefineForClassFields": false,
-    "types": ["lit"]
+    "types": []
   },
   "files": [],
   "include": [],

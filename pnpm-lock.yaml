@@ -43,6 +43,12 @@ importers:
       '@web/dev-server-hmr':
         specifier: ^0.1.11
         version: 0.1.11
+      '@web/dev-server-rollup':
+        specifier: ^0.4.0
+        version: 0.4.0
+      rollup-plugin-typescript-paths:
+        specifier: ^1.4.0
+        version: 1.4.0(typescript@5.0.3)
       typescript:
         specifier: 5.0.3
         version: 5.0.3
@@ -1348,6 +1354,17 @@ packages:
       is-core-module: 2.11.0
       path-parse: 1.0.7
       supports-preserve-symlinks-flag: 1.0.0
+    dev: true
+
+  /rollup-plugin-typescript-paths@1.4.0(typescript@5.0.3):
+    resolution: {integrity: sha512-6EgeLRjTVmymftEyCuYu91XzY5XMB5lR0YrJkeT0D7OG2RGSdbNL+C/hfPIdc/sjMa9Sl5NLsxIr6C/+/5EUpA==}
+    peerDependencies:
+      typescript: '>=3.4'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+    dependencies:
+      typescript: 5.0.3
     dev: true
 
   /rollup@2.79.1:

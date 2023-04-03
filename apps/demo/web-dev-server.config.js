@@ -1,6 +1,9 @@
 import { esbuildPlugin } from '@web/dev-server-esbuild';
 import { hmrPlugin } from '@web/dev-server-hmr';
-import { fileURLToPath } from 'node:url';
+import { fromRollup } from '@web/dev-server-rollup';
+import { typescriptPaths } from 'rollup-plugin-typescript-paths';
+
+const tsPaths = fromRollup(typescriptPaths);
 
 export default /** @type {import("@web/dev-server").DevServerConfig} */ ({
   rootDir: './',
@@ -8,16 +11,21 @@ export default /** @type {import("@web/dev-server").DevServerConfig} */ ({
   appIndex: 'index.html',
   watch: true,
   debug: false,
-  nodeResolve: true,
+  nodeResolve: {
+    exportConditions: ['development'],
+    dedupe: ['@material/web', 'lit'],
+  },
   port: 8001,
   http2: true,
   // sslKey: fileURLToPath(new URL('./certs/rootCA.key', import.meta.url)),
   // sslCert: fileURLToPath(new URL('./certs/rootCA.pem', import.meta.url)),
   plugins: [
+    tsPaths({
+      preserveExtensions: true,
+    }),
     esbuildPlugin({
       json: true,
       ts: true,
-      tsconfig: fileURLToPath(new URL('./tsconfig.json', import.meta.url)),
     }),
     hmrPlugin(),
   ],

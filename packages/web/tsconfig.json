@@ -7,7 +7,7 @@
       "#/*": ["./src/*"],
       "@rask/core/*":  ["../../packages/core/src/*"],
     },
-    "types": ["node"]
+    "types": ["node", "lit"]
   },
   "include": ["src/**/*.ts"],
   "exclude": ["dist", "node_modules"],
