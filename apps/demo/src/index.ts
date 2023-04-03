@@ -7,7 +7,11 @@ export class Index extends LitElement {
   static override styles = [css];
 
   override render(): TemplateResult {
-    return html`app-index`;
+    return html`
+      <div class=""
+      role="list">
+      </div>
+    `;
   }
 }
 

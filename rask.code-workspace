@@ -16,10 +16,10 @@
   ],
   "settings": {
 
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.defaultFormatter": "rome.rome",
     "javascript.format.enable": false,
     "[javascript]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.defaultFormatter": "rome.rome",
       "editor.formatOnSave": true,
       "editor.tabSize": 2
     },
@@ -39,18 +39,18 @@
     "typescript.tsdk": "node_modules\\typescript\\lib",
     "typescript.preferences.quoteStyle": "single",
     "[typescript]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.defaultFormatter": "rome.rome",
       "editor.formatOnSave": true,
       "editor.tabSize": 2
     },
     "json.format.enable": false,
     "[json]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.defaultFormatter": "rome.rome",
       "editor.formatOnSave": true,
       "editor.tabSize": 2
     },
     "[jsonc]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
+      "editor.defaultFormatter": "rome.rome"
     },
     "html.autoClosingTags": true,
     "html.format.wrapAttributes": "preserve-aligned",
@@ -58,24 +58,29 @@
     "html.autoCreateQuotes": true,
     "html.format.enable": false,
     "[html]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.defaultFormatter": "rome.rome",
       "editor.formatOnSave": true,
       "editor.tabSize": 2
     },
     "scss.format.enable": false,
     "scss.validate": false,
     "[scss]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.defaultFormatter": "rome.rome",
       "editor.formatOnSave": true,
       "editor.tabSize": 2
     },
     "css.format.enable": false,
     "css.validate": false,
     "[css]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.defaultFormatter": "rome.rome",
       "editor.formatOnSave": true,
       "editor.tabSize": 2
     },
+
+    "lit-html.tags": [
+      "html",
+      "template"
+    ],
 
     "cSpell.words": [
       "opsz",
@@ -91,21 +96,14 @@
     "debug.internalConsoleOptions": "neverOpen",
     "debug.javascript.unmapMissingSources": true,
     "debug.showBreakpointsInOverviewRuler": true,
-    "editor.codeActionsOnSave": {
-      "source.fixAll": true
-      // "source.fixAll.eslint": true
-    },
-
-    "eslint.codeActionsOnSave.mode": "problems",
-    "eslint.experimental.useFlatConfig": true,
-    "eslint.packageManager": "pnpm",
-    "eslint.validate": ["json", "javascript", "typescript", "html", "css"],
-    "eslint.debug": true,
+    "editor.codeActionsOnSave":{
+      "source.fixAll": true,
+      "source.organizeImports.rome": true
+  },
 
     "npm.packageManager": "pnpm",
 
     "vscode-edge-devtools.webhint": false,
-
 
     "files.exclude": {
       ".out": true,
@@ -119,6 +117,6 @@
     "workbench.iconTheme": "vscode-icons",
   },
   "extensions": {
-    "recommendations": ["esbenp.prettier-vscode", "dbaeumer.vscode-eslint"]
+    "recommendations": ["rome.rome", "rome.rome"]
   },
 }

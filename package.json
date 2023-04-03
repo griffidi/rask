@@ -1,39 +1,32 @@
 {
-  "name": "@rask/root",
-  "description": "Rask Web Components Monorepo",
-  "author": "Dustin Griffith",
-  "version": "0.0.1",
-  "private": true,
-  "packageManager": "pnpm@8.1.0",
-  "engines": {
-    "node": ">=16",
-    "pnpm": ">=8.0.0"
-  },
-  "type": "module",
-  "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.57.0",
-    "@typescript-eslint/parser": "^5.57.0",
-    "eslint": "^8.37.0",
-    "eslint-config-prettier": "^8.8.0",
-    "eslint-plugin-import": "^2.27.5",
-    "eslint-plugin-lit": "^1.8.2",
-    "eslint-plugin-prettier": "^4.2.1",
-    "pnpm": "^8.1.0",
-    "prettier": "^2.8.7"
-  },
-  "pnpm": {
-    "overrides": {
-      "@rask/core": "workspace:*",
-      "@rask/web": "workspace:*",
-      "typescript": "5.0.3"
-    },
-    "peerDependencyRules": {
-      "allowAny": [
-        "@types/node"
-      ],
-      "ignoreMissing": [
-        "typescript"
-      ]
-    }
-  }
+	"name": "@rask/root",
+	"description": "Rask Web Components Monorepo",
+	"author": "Dustin Griffith",
+	"version": "0.0.1",
+	"private": true,
+	"packageManager": "pnpm@8.1.0",
+	"engines": {
+		"node": ">=16",
+		"pnpm": ">=8.0.0"
+	},
+	"type": "module",
+	"devDependencies": {
+		"pnpm": "^8.1.0",
+		"rome": "12.0.0"
+	},
+	"pnpm": {
+		"overrides": {
+			"@rask/core": "workspace:*",
+			"@rask/web": "workspace:*",
+			"typescript": "5.0.3"
+		},
+		"peerDependencyRules": {
+			"allowAny": [
+				"@types/node"
+			],
+			"ignoreMissing": [
+				"typescript"
+			]
+		}
+	}
 }

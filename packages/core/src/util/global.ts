@@ -19,14 +19,13 @@ declare let global: unknown;
 // checks are considered side-effects in Terser. We explicitly mark this as side-effect free:
 // https://github.com/terser/terser/issues/250.
 const _global: unknown = /* @__PURE__ */ (() =>
-  (typeof globalThis !== 'undefined' && globalThis) ||
-  (typeof global !== 'undefined' && global) ||
-  (typeof window !== 'undefined' && window) ||
-  (typeof self !== 'undefined' &&
-    typeof WorkerGlobalScope !== 'undefined' &&
-    // eslint-disable-next-line ts/no-explicit-any
-    self instanceof (WorkerGlobalScope as any) &&
-    self))();
+	(typeof globalThis !== "undefined" && globalThis) ||
+	(typeof global !== "undefined" && global) ||
+	(typeof window !== "undefined" && window) ||
+	(typeof self !== "undefined" &&
+		typeof WorkerGlobalScope !== "undefined" &&
+		self instanceof (WorkerGlobalScope as any) &&
+		self))();
 
 /**
  * Attention: whenever providing a new value, be sure to add an
