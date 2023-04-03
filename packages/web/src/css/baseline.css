@@ -14,7 +14,7 @@
  limitations under the License.
 */
 
-@import 'modern-normalize/modern-normalize.css';
+/* @import 'modern-normalize/modern-normalize.css'; */
 @import url(palette.css);
 @import url(variables.css);
 @import url(variables.custom.css);

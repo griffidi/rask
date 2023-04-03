@@ -10,15 +10,18 @@
   "type": "module",
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
-    }
+      "types": "./src/index.d.ts",
+      "import": "./src/index.js"
+    },
+    "./client": {
+      "types": "./src/types/client.d.ts"
+    },
+    "./src/client/*": "./src/client/*",
+    "./package.json": "./package.json"
   },
   "files": [
-    "dist/**/*.{map.js,js,css}",
-    "types/src/**/*.d.ts",
-    "README.md",
-    "!types/tsconfig.tsbuildinfo"
+    "**/*.{map.js,js,css}",
+    "README.md"
   ],
   "scripts": {
     "dev": "",

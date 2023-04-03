@@ -64,7 +64,7 @@ const sharedRules = {
   'ts/no-explicit-any': 'warn',
   'ts/prefer-optional-chain': 'error',
   'ts/prefer-readonly': 'error',
-  'ts/restrict-template-expressions': 'error',
+  // 'ts/restrict-template-expressions': 'error',
   'ts/space-before-function-paren': [
     'error',
     {

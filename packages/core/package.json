@@ -11,49 +11,9 @@
   "imports": {
     "#/util/*.js": "./src/util/*.js"
   },
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
-    },
-    "./cache/index.js": {
-      "types": "./dist/cache/index.d.ts",
-      "import": "./dist/cache/index.js"
-    },
-    "./crypto/index.js": {
-      "types": "./dist/crypto/index.d.ts",
-      "import": "./dist/crypto/index.js"
-    },
-    "./di/index.js": {
-      "types": "./dist/di/index.d.ts",
-      "import": "./dist/di/index.js"
-    },
-    "./events/index.js": {
-      "types": "./dist/events/index.d.ts",
-      "import": "./dist/events/index.js"
-    },
-    "./reactive/signals/index.js": {
-      "types": "./dist/reactive/signals/index.d.ts",
-      "import": "./dist/reactive/signals/index.js"
-    },
-    "./reactive/timer/index.js": {
-      "types": "./dist/reactive/timer/index.d.ts",
-      "import": "./dist/reactive/timer/index.js"
-    },
-    "./types/*.js": {
-      "types": "./dist/types/*.d.ts",
-      "import": "./dist/types/*.js"
-    },
-    "./validation/index.js": {
-      "types": "./dist/validation/index.d.ts",
-      "import": "./dist/validation/index.js"
-    }
-  },
   "files": [
-    "dist/**/*.{map.js,js}",
-    "types/src/**/*.d.ts",
-    "README.md",
-    "!types/tsconfig.tsbuildinfo"
+    "**/*.{map.js,js}",
+    "README.md"
   ],
   "scripts": {
     "dev": "",

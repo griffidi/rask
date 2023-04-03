@@ -8,7 +8,7 @@
       "@rask/core/*":  ["../../packages/core/src/*"],
       "@rask/web/*":  ["../../packages/web/src/*"]
     },
-    "types": ["node"]
+    "types": ["node", "@rask/web/client"]
   },
   "include": ["src/**/*.ts"],
   "exclude": ["dist", "node_modules"],

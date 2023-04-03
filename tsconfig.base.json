@@ -12,7 +12,6 @@
     "importHelpers": true,
     "incremental": true,
     "inlineSources": true,
-    "lib": ["ESNext"],
     "module": "ESNext",
     "moduleResolution": "node",
     "noEmitOnError": true,

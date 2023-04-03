@@ -78,9 +78,11 @@
     },
 
     "cSpell.words": [
+      "opsz",
       "rask",
       "Rask",
-      "tsbuildinfo"
+      "tsbuildinfo",
+      "wght"
     ],
 
     "editor.linkedEditing": true,
@@ -111,7 +113,7 @@
       "docs": true,
       "packages": true,
       "**/.git": true,
-      "**/node_modules": false
+      "**/node_modules": true
     },
 
     "workbench.iconTheme": "vscode-icons",
