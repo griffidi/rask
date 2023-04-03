@@ -31,12 +31,5 @@
     "@web/dev-server-rollup": "^0.4.0",
     "rollup-plugin-typescript-paths": "^1.4.0",
     "typescript": "^5.0.3"
-  },
-  "browserslist": [
-    "last 2 Chrome version",
-    "last 2 FireFox version",
-    "last 2 Edge major version",
-    "last 1 Safari major version",
-    "last 1 iOS major version"
-  ]
+  }
 }

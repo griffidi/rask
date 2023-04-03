@@ -37,15 +37,7 @@
     "typescript": "^5.0.3"
   },
   "peerDependencies": {
-    "@types/node": "^18.15.11",
     "lit": "*",
     "typescript": "5.0.3"
-  },
-  "browserslist": [
-    "last 2 Chrome version",
-    "last 2 FireFox version",
-    "last 2 Edge major version",
-    "last 1 Safari major version",
-    "last 1 iOS major version"
-  ]
+  }
 }

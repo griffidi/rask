@@ -28,6 +28,9 @@
       "typescript": "5.0.3"
     },
     "peerDependencyRules": {
+      "allowAny": [
+        "@types/node"
+      ],
       "ignoreMissing": [
         "typescript"
       ]
