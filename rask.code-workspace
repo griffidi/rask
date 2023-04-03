@@ -1,0 +1,124 @@
+{
+  "folders": [
+    {
+      "path": ".",
+      "name": ".root"
+    },
+    {
+      "path": "apps"
+    },
+    {
+      "path": "docs"
+    },
+    {
+      "path": "packages"
+    }
+  ],
+  "settings": {
+
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "javascript.format.enable": false,
+    "[javascript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.formatOnSave": true,
+      "editor.tabSize": 2
+    },
+    "typescript.format.enable": false,
+    "typescript.preferences.importModuleSpecifier": "shortest",
+    "typescript.preferences.importModuleSpecifierEnding": "js",
+    "typescript.preferences.useAliasesForRenames": false,
+    "typescript.workspaceSymbols.scope": "currentProject",
+    // "typescript.unstable": {
+    //   "organizeImportsIgnoreCase": "false",
+    //   "organizeImportsCollation": "ordinal",
+    //   "organizeImportsCaseFirst": "lower"
+    // },
+    "npm.autoDetect": "off",
+    "typescript.tsc.autoDetect": "off",
+    // "typescript.tsserver.experimental.enableProjectDiagnostics": true,
+    "typescript.tsdk": "node_modules\\typescript\\lib",
+    "typescript.preferences.quoteStyle": "single",
+    "[typescript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.formatOnSave": true,
+      "editor.tabSize": 2
+    },
+    "json.format.enable": false,
+    "[json]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.formatOnSave": true,
+      "editor.tabSize": 2
+    },
+    "[jsonc]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "html.autoClosingTags": true,
+    "html.format.wrapAttributes": "preserve-aligned",
+    "html.completion.attributeDefaultValue": "empty",
+    "html.autoCreateQuotes": true,
+    "html.format.enable": false,
+    "[html]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.formatOnSave": true,
+      "editor.tabSize": 2
+    },
+    "scss.format.enable": false,
+    "scss.validate": false,
+    "[scss]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.formatOnSave": true,
+      "editor.tabSize": 2
+    },
+    "css.format.enable": false,
+    "css.validate": false,
+    "[css]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.formatOnSave": true,
+      "editor.tabSize": 2
+    },
+
+    "cSpell.words": [
+      "opsz",
+      "rask",
+      "Rask",
+      "tsbuildinfo",
+      "wght"
+    ],
+
+    "editor.linkedEditing": true,
+
+
+    "debug.internalConsoleOptions": "neverOpen",
+    "debug.javascript.unmapMissingSources": true,
+    "debug.showBreakpointsInOverviewRuler": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll": true
+      // "source.fixAll.eslint": true
+    },
+
+    "eslint.codeActionsOnSave.mode": "problems",
+    "eslint.experimental.useFlatConfig": true,
+    "eslint.packageManager": "pnpm",
+    "eslint.validate": ["json", "javascript", "typescript", "html", "css"],
+    "eslint.debug": true,
+
+    "npm.packageManager": "pnpm",
+
+    "vscode-edge-devtools.webhint": false,
+
+
+    "files.exclude": {
+      ".out": true,
+      "apps": true,
+      "docs": true,
+      "packages": true,
+      "**/.git": true,
+      "**/node_modules": true
+    },
+
+    "workbench.iconTheme": "vscode-icons",
+  },
+  "extensions": {
+    "recommendations": ["esbenp.prettier-vscode", "dbaeumer.vscode-eslint"]
+  },
+}

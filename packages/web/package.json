@@ -1,0 +1,43 @@
+{
+  "name": "@rask/web",
+  "private": true,
+  "version": "0.0.1",
+  "packageManager": "pnpm@8.1.0",
+  "engines": {
+    "node": ">=16",
+    "pnpm": ">=8.0.0"
+  },
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./src/index.d.ts",
+      "import": "./src/index.js"
+    },
+    "./client": {
+      "types": "./src/types/client.d.ts"
+    },
+    "./src/client/*": "./src/client/*",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "**/*.{map.js,js,css}",
+    "README.md"
+  ],
+  "scripts": {
+    "dev": "",
+    "build": "tsc --pretty"
+  },
+  "dependencies": {
+    "@rask/core": "workspace:^",
+    "lit": "^2.7.0",
+    "tslib": "^2.5.0"
+  },
+  "devDependencies": {
+    "@types/node": "^18.15.11",
+    "typescript": "^5.0.3"
+  },
+  "peerDependencies": {
+    "lit": "*",
+    "typescript": "5.0.3"
+  }
+}

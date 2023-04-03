@@ -1,0 +1,33 @@
+[color-theme='light'] {
+  color-scheme: light;
+  --md-sys-color-primary-container: var(--md-sys-color-primary-container-light);
+  --md-sys-color-primary: var(--md-sys-color-primary-light);
+  --md-sys-color-on-primary: var(--md-sys-color-on-primary-light);
+  --md-sys-color-secondary-container: var(--md-sys-color-secondary-container-light);
+  --md-sys-color-on-secondary-container: var(--md-sys-color-on-secondary-container-light);
+  --md-sys-color-surface-1: #f8fafd;
+  --md-sys-color-surface: var(--md-sys-color-surface-1);
+  --md-sys-color-surface-2: #f3f6fc;
+  --md-sys-color-surface-3: #eff3fa;
+  --md-sys-color-surface-4: #edf2fa;
+  --md-sys-color-surface-5: #eaf0f9;
+  --md-sys-color-on-surface-variant-2: linear-gradient(
+    0deg,
+    rgba(68, 71, 70, 0.08),
+    rgba(68, 71, 70, 0.08)
+  );
+  --md-sys-color-on-surface-variant-4: linear-gradient(
+    0deg,
+    rgba(68, 71, 70, 0.12),
+    rgba(68, 71, 70, 0.12)
+  );
+  --md-sys-color-on-surface-2: linear-gradient(0deg, rgba(31, 31, 31, 0.08), rgba(31, 31, 31, 0.08)),
+    var(--md-sys-color-secondary-container);
+  --md-sys-color-on-surface-4: linear-gradient(0deg, rgba(31, 31, 31, 0.12), rgba(31, 31, 31, 0.12)),
+    var(--md-sys-color-secondary-container);
+  --md-sys-color-scrim: var(--md-sys-color-scrim-light);
+  --md-sys-color-text-1: var(--md-sys-color-text-light-1);
+  --md-sys-color-text-2: var(--md-sys-color-text-light-2);
+  --md-sys-color-text-3: var(--md-sys-color-text-light-3);
+  --md-sys-color-text-4: var(--md-sys-color-text-light-4);
+}

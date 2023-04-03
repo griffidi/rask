@@ -1,0 +1,17 @@
+{
+  "extends":  "../../tsconfig.lit.json",
+  "compilerOptions": {
+    "outDir": "./types",
+    "rootDir": ".",
+    "paths": {
+      "#/*": ["./src/*"],
+      "@rask/core/*":  ["../../packages/core/src/*"],
+    },
+    "types": ["node"]
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["dist", "node_modules"],
+  "references": [
+    {"path": "../core"}
+  ]
+}

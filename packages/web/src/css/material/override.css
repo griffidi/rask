@@ -1,0 +1,33 @@
+:root {
+  --md-text-button-label-text-font: var(--md-sys-typescale-title-small-font);
+  --md-text-button-label-text-size: var(--md-sys-typescale-title-small-size);
+  --md-text-button-label-text-weight: var(--md-sys-typescale-title-small-weight);
+  --md-text-button-label-text-type: var(--md-sys-typescale-title-small-type);
+  --md-text-button-label-text-tracking: var(--md-sys-typescale-title-small-tracking);
+
+  --md-tonal-button-label-text-font: var(--md-sys-typescale-title-small-font);
+  --md-tonal-button-label-text-size: var(--md-sys-typescale-title-small-size);
+  --md-tonal-button-label-text-weight: var(--md-sys-typescale-title-small-weight);
+  --md-tonal-button-label-text-type: var(--md-sys-typescale-title-small-type);
+  --md-tonal-button-label-text-tracking: var(--md-sys-typescale-title-small-tracking);
+
+  --md-fab-container-color: var(--md-sys-color-secondary-container);
+  --md-fab-icon-color: var(--md-sys-color-on-secondary-container);
+
+  --md-list-list-item-label-text-type: var(--md-sys-typescale-label-large-weight)
+    var(--md-sys-typescale-label-large-size) var(--md-sys-typescale-label-large-font);
+  /* --md-switch-selected-icon-color: var(--md-sys-color-primary-container-dark); */
+
+  --md-dialog-container-color: var(--md-sys-color-background);
+
+  /* --md-switch-selected-track-color: var(--md-sys-color-background); */
+  --md-switch-selected-track-color: transparent;
+  --md-switch-selected-track-outline-width: 1px;
+  /* --md-switch-selected-track-outline-color: var(--bet-border-color); */
+  --md-switch-selected-track-outline-color: red;
+  --md-switch-unselected-track-outline-color: var(--bet-border-color);
+}
+
+/* md-swtich {
+  border: 1px solid var(--bet-border-color);
+} */

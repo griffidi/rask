@@ -1,0 +1,32 @@
+{
+  "name": "@rask/core",
+  "private": true,
+  "version": "0.0.1",
+  "packageManager": "pnpm@8.1.0",
+  "engines": {
+    "node": ">=16",
+    "pnpm": ">=8.0.0"
+  },
+  "type": "module",
+  "imports": {
+    "#/util/*.js": "./src/util/*.js"
+  },
+  "files": [
+    "**/*.{map.js,js}",
+    "README.md"
+  ],
+  "scripts": {
+    "dev": "",
+    "build": "tsc --pretty"
+  },
+  "dependencies": {
+    "tslib": "^2.5.0"
+  },
+  "devDependencies": {
+    "@types/node": "^18.15.11",
+    "typescript": "^5.0.3"
+  },
+  "peerDependencies": {
+    "typescript": "5.0.3"
+  }
+}

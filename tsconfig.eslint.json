@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    // ensure that nobody can accidentally use this config for a build
+    "noEmit": true
+  },
+  "include": [
+    "apps/demo/src/**/*.ts",
+    "packages/core/src/**/*.ts",
+    "packages/web/src/**/*.ts",
+  ]
+}
