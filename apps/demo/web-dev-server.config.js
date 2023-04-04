@@ -1,8 +1,8 @@
 import { esbuildPlugin } from '@web/dev-server-esbuild';
 import { hmrPlugin } from '@web/dev-server-hmr';
 import { fromRollup } from '@web/dev-server-rollup';
-import { fileURLToPath } from 'node:url';
 import { typescriptPaths } from 'rollup-plugin-typescript-paths';
+import { fileURLToPath } from 'url';
 
 const tsPaths = fromRollup(typescriptPaths);
 
@@ -35,18 +35,6 @@ export default /** @type {import("@web/dev-server").DevServerConfig} */ ({
       target: 'esnext',
       tsconfig: fileURLToPath(new URL('./tsconfig.json', import.meta.url)),
       ts: true,
-      // plugins: [
-      //   postCssPlugin({
-      //     plugins: [
-      //       presetenv({
-      //         features: {
-      //           'logical-properties-and-values': true,
-      //           'nesting-rules': true,
-      //         },
-      //       }),
-      //     ],
-      //   }),
-      // ],
     }),
     hmrPlugin(),
   ],
