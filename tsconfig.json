@@ -7,6 +7,7 @@
   "references": [
     { "path": "./apps/demo" },
     { "path": "./packages/core" },
+    { "path": "./packages/identity" },
     { "path": "./packages/web" }
   ]
 }

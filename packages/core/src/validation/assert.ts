@@ -21,14 +21,16 @@ export function notNull(value: unknown): boolean {
 
 export function throwIfEmpty(value: unknown, message: string): void {
   if (isEmpty(value)) {
-    console.error('throwIfEmpty', arguments);
+    // TODO: fix logging error
+    // console.error('throwIfEmpty', arguments);
     throw new Error(message, { cause: { code: 'IsEmpty' } });
   }
 }
 
 export function throwIfNull(value: unknown, message: string): void {
   if (isNull(value)) {
-    console.error('throwIfEmpty', arguments);
+    // TODO: fix logging error
+    // console.error('throwIfEmpty', arguments);
     throw new Error(message, { cause: { code: 'IsNull' } });
   }
 }

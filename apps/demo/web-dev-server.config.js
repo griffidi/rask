@@ -13,8 +13,15 @@ export default /** @type {import("@web/dev-server").DevServerConfig} */ ({
   debug: false,
   nodeResolve: {
     exportConditions: ['development'],
-    dedupe: ['@material/web', 'lit'],
+    dedupe: [
+      '@material/web',
+      '@lit-labs/context',
+      '@lit-labs/task',
+      '@lit/reactive-element',
+      'lit',
+    ],
   },
+  esbuildTarget: 'esnext',
   port: 8001,
   http2: true,
   // sslKey: fileURLToPath(new URL('./certs/rootCA.key', import.meta.url)),
@@ -24,7 +31,7 @@ export default /** @type {import("@web/dev-server").DevServerConfig} */ ({
       preserveExtensions: true,
     }),
     esbuildPlugin({
-      json: true,
+      target: 'esnext',
       ts: true,
     }),
     hmrPlugin(),

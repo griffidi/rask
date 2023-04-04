@@ -4,31 +4,14 @@
   "version": "0.0.1",
   "packageManager": "pnpm@8.1.0",
   "engines": {
-    "node": ">=16",
+    "node": ">=18",
     "pnpm": ">=8.0.0"
   },
   "type": "module",
-  "imports": {
-    "#/util/*.js": "./src/util/*.js"
-  },
-  "exports": {
-    ".": {
-      "types": "./src/index.d.ts",
-      "import": "./src/index.js"
-    },
-    "./crypto/index.js": {
-      "types": "./src/index.d.ts",
-      "import": "./src/index.js"
-    },
-    "./fonts/index.js": {
-      "types": "./src/fonts/index.d.ts",
-      "import": "./src/fonts/index.js"
-    }
-  },
-  "files": ["**/*.{map.js,js}", "README.md"],
+  "files": ["src/**/*.{map.js,js}", "README.md"],
   "scripts": {
     "dev": "",
-    "build": "tsc --pretty"
+    "build": ""
   },
   "dependencies": {
     "tslib": "^2.5.0"

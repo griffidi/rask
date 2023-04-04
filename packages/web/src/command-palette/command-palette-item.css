@@ -1,0 +1,25 @@
+:host:hover {
+  & label::before {
+    opacity: 1;
+  }
+}
+
+label {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  inline-size: 100%;
+  block-size: 52px;
+  box-sizing: border-box;
+  overflow: hidden;
+  font: var(--md-sys-typescale-list-font);
+
+  /* &::before {
+    opacity: 0;
+    position: absolute;
+    inset: 0;
+    background: rgba(var(--md-sys-color-green-rgb), 0.3);
+    border: 1px solid var(--md-sys-color-green);
+  } */
+}

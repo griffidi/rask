@@ -4,21 +4,25 @@
   "version": "0.0.1",
   "packageManager": "pnpm@8.1.0",
   "engines": {
-    "node": ">=16",
+    "node": ">=18",
     "pnpm": ">=8.0.0"
   },
   "type": "module",
-  "files": [
-    "**/*.{map.js,js,css}",
-    "types/src/**/*.d.ts",
-    "README.md",
-    "!types/tsconfig.tsbuildinfo"
-  ],
+  "imports": {
+    "#/*": "./src/**/*.js"
+  },
+  "files": ["src/**/*.{map.js,js,css}", "types/src/**/*.d.ts", "README.md"],
   "scripts": {
     "dev": "wds"
   },
   "dependencies": {
+    "@lit-labs/context": "^0.3.0",
+    "@lit-labs/router": "^0.1.1",
+    "@lit-labs/task": "^2.1.0",
+    "@lit/reactive-element": "^1.6.1",
+    "@material/web": "1.0.0-pre.5",
     "@rask/core": "workspace:^",
+    "@rask/identity": "workspace:^",
     "@rask/web": "workspace:^",
     "lit": "^2.7.0",
     "tslib": "^2.5.0"

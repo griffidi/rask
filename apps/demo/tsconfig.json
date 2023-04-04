@@ -1,19 +1,20 @@
 {
-  "extends":  "../../tsconfig.lit.json",
+  "extends":  ["../../tsconfig.base.json" ,"../../tsconfig.lit.json"],
   "compilerOptions": {
-    "outDir": "./dist",
     "rootDir": ".",
     "paths": {
       "#/*": ["./src/*"],
       "@rask/core/*":  ["../../packages/core/src/*"],
+      "@rask/identity/*":  ["../../packages/identity/src/*"],
       "@rask/web/*":  ["../../packages/web/src/*"]
     },
-    "types": ["node", "lit","@rask/web/client"]
+    "types": ["@rask/web/client"]
   },
   "include": ["src/**/*.ts"],
   "exclude": ["dist", "node_modules"],
   "references": [
     {"path": "../../packages/core"},
+    {"path": "../../packages/identity"},
     {"path": "../../packages/web"}
   ]
 }

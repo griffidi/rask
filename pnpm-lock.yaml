@@ -18,9 +18,27 @@ importers:
 
   apps/demo:
     dependencies:
+      '@lit-labs/context':
+        specifier: ^0.3.0
+        version: 0.3.0
+      '@lit-labs/router':
+        specifier: ^0.1.1
+        version: 0.1.1
+      '@lit-labs/task':
+        specifier: ^2.1.0
+        version: 2.1.0
+      '@lit/reactive-element':
+        specifier: ^1.6.1
+        version: 1.6.1
+      '@material/web':
+        specifier: 1.0.0-pre.5
+        version: 1.0.0-pre.5
       '@rask/core':
         specifier: workspace:*
         version: link:../../packages/core
+      '@rask/identity':
+        specifier: workspace:^
+        version: link:../../packages/identity
       '@rask/web':
         specifier: workspace:*
         version: link:../../packages/web
@@ -66,8 +84,36 @@ importers:
         specifier: 5.0.3
         version: 5.0.3
 
+  packages/identity:
+    dependencies:
+      '@lit-labs/context':
+        specifier: ^0.3.0
+        version: 0.3.0
+      '@lit/reactive-element':
+        specifier: ^1.6.1
+        version: 1.6.1
+      '@rask/core':
+        specifier: workspace:*
+        version: link:../core
+      lit:
+        specifier: ^2.7.0
+        version: 2.7.0
+      tslib:
+        specifier: ^2.5.0
+        version: 2.5.0
+    devDependencies:
+      '@types/node':
+        specifier: ^18.15.11
+        version: 18.15.11
+      typescript:
+        specifier: 5.0.3
+        version: 5.0.3
+
   packages/web:
     dependencies:
+      '@material/web':
+        specifier: 1.0.0-pre.5
+        version: 1.0.0-pre.5
       '@rask/core':
         specifier: workspace:*
         version: link:../core
@@ -306,14 +352,40 @@ packages:
     dev: true
     optional: true
 
+  /@lit-labs/context@0.3.0:
+    resolution: {integrity: sha512-6cHfQWgU935I/JVrcFY9mkCZBieX0FhnBJhd+/XzqgFLxqmStmReYDkAMr86lR1twdB6siftTHaH1KJ1o/bJXA==}
+    dependencies:
+      '@lit/reactive-element': 1.6.1
+      lit: 2.7.0
+    dev: false
+
+  /@lit-labs/router@0.1.1:
+    resolution: {integrity: sha512-B2WYOXmI1vXAZKKkfGWDhe/Ki8W7ZsopFx7uD9ZvdaEFbFjxzqcmBGoK5v2RX1jceG1lmDfdHvCGyXxiy1zqYg==}
+    dependencies:
+      lit: 2.7.0
+    dev: false
+
   /@lit-labs/ssr-dom-shim@1.1.0:
     resolution: {integrity: sha512-92uQ5ARf7UXYrzaFcAX3T2rTvaS9Z1//ukV+DqjACM4c8s0ZBQd7ayJU5Dh2AFLD/Ayuyz4uMmxQec8q3U4Ong==}
+    dev: false
+
+  /@lit-labs/task@2.1.0:
+    resolution: {integrity: sha512-T22/3sFQEpOTXlO4Bjpn4oOH/1duhRzbO6rV+eZ1zwr3eqpH8Qmy1H4I8LDfGOHc/GOeFnde2U1Xvji0pxIZeQ==}
+    dependencies:
+      '@lit/reactive-element': 1.6.1
     dev: false
 
   /@lit/reactive-element@1.6.1:
     resolution: {integrity: sha512-va15kYZr7KZNNPZdxONGQzpUr+4sxVu7V/VG7a8mRfPPXUyhEYj5RzXCQmGrlP3tAh0L3HHm5AjBMFYRqlM9SA==}
     dependencies:
       '@lit-labs/ssr-dom-shim': 1.1.0
+    dev: false
+
+  /@material/web@1.0.0-pre.5:
+    resolution: {integrity: sha512-vwFJmg/VpdPe+KbUen8/msNIc7/jdJs0MtITdxnjIvkglx8Gt8Pi6S4pdbHA/lfnqXFEy7Is9bmR0fh5Yk5DEA==}
+    dependencies:
+      lit: 2.7.0
+      tslib: 2.5.0
     dev: false
 
   /@mdn/browser-compat-data@4.2.1:

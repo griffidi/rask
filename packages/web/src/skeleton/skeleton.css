@@ -1,0 +1,147 @@
+:host {
+  --rask-skeleton-placeholder-color: var(--md-ref-palette-neutral-variant-90);
+  --rask-skeleton-background: var(--md-ref-palette-neutral-variant-30);
+  --rask-skeleton-line-height: normal;
+  --rask-skeleton-margin: 1px;
+  --rask-skeleton-shape: var(--md-sys-shape-small);
+  --md-sys-shape-circle-size: 40px;
+  --md-sys-shape-rectangle-size: 160px;
+
+  margin-block: var(--rask-skeleton-margin);
+  box-sizing: border-box;
+  line-height: var(--rask-skeleton-line-height);
+  display: block;
+  overflow: hidden;
+  inline-size: var(--rask-skeleton-width, 162px);
+  block-size: calc(var(--rask-skeleton-block-size, 162px) - calc(var(--rask-skeleton-margin) * 2));
+  background-color: var(--rask-skeleton-background);
+  border-radius: var(--rask-skeleton-shape);
+  animation: pulse 1.2s ease-in-out infinite;
+
+  &::before {
+    content: '';
+    display: inline-block;
+    opacity: 0.1;
+    inline-size: 300%;
+    block-size: 300%;
+    margin-block-end: 20px;
+    background-color: rgb(55 65 81/1);
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    animation-duration: 3s;
+    animation-timing-function: cubic-bezier(0.4, 0, 0.6, 1);
+    animation-delay-start: 0s;
+    animation-delay-end: 0s;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+    animation-fill-mode: none;
+    animation-play-state: running;
+    animation-name: pulse;
+    animation-timeline: auto;
+  }
+}
+
+@keyframes pulse {
+  50% {
+    opacity: 0.5;
+  }
+}
+
+:host([circle]) {
+  --rask-skeleton-inline-size: var(--md-sys-shape-circle-size);
+  --rask-skeleton-block-size: var(--md-sys-shape-circle-size);
+
+  border-radius: 50%;
+}
+
+:host([rectangle]) {
+  --rask-skeleton-inline-size: var(--md-sys-shape-rectangle-size);
+  --rask-skeleton-block-size: var(--md-sys-shape-rectangle-size);
+}
+
+:host([type='text'][size='h1']) {
+  --rask-skeleton-block-size: var(--md-sys-typescale-headline-large-size, 51px);
+  --rask-skeleton-line-height: var(--md-sys-typescale-headline-large-line-height, 51px);
+}
+
+:host([type='text'][size='h2']) {
+  --rask-skeleton-block-size: var(--md-sys-typescale-headline-medium-size, 41px);
+  --rask-skeleton-line-height: var(--md-sys-typescale-headline-medium-line-height, 51px);
+}
+
+:host([type='text'][size='h3']) {
+  --rask-skeleton-block-size: var(--md-sys-typescale-headline-medium-size, 28px);
+  --rask-skeleton-line-height: var(--md-sys-typescale-headline-medium-line-height, 51px);
+}
+
+:host([type='text'][size='h4']) {
+  --rask-skeleton-block-size: var(--md-sys-typescale-headline--4-font-size, 21px);
+}
+
+:host([type='text'][size='h5']) {
+  --rask-skeleton-block-size: var(--md-sys-typescale-headline--5-font-size, 16px);
+}
+
+:host([type='text'][size='h6']) {
+  --rask-skeleton-block-size: var(--md-sys-typescale-headline--6-font-size, 13px);
+}
+
+:host([type='text'][size='small']) {
+  --rask-skeleton-block-size: 16px;
+}
+
+:host([type='text']) {
+  --rask-skeleton-block-size: 20px;
+}
+
+:host([button]) {
+  --rask-skeleton-block-size: 34px;
+  --rask-skeleton-shape: 9999px;
+}
+
+:host([title]) {
+  &:host([small]) {
+    --rask-skeleton-block-size: var(--md-sys-typescale-title-small-line-height);
+  }
+  &:host([medium]) {
+    --rask-skeleton-block-size: var(--md-sys-typescale-title-medium-line-height);
+  }
+  &:host([large]) {
+    --rask-skeleton-block-size: var(--md-sys-typescale-title-large-line-height);
+  }
+}
+
+:host([label]) {
+  &:host([small]) {
+    --rask-skeleton-block-size: var(--md-sys-typescale-label-small-line-height);
+  }
+  &:host([medium]) {
+    --rask-skeleton-block-size: var(--md-sys-typescale-label-medium-line-height);
+  }
+  &:host([large]) {
+    --rask-skeleton-block-size: var(--md-sys-typescale-label-large-line-height);
+  }
+}
+
+:host([display]) {
+  &:host([small]) {
+    --rask-skeleton-block-size: var(--md-sys-typescale-display-small-line-height);
+  }
+  &:host([medium]) {
+    --rask-skeleton-block-size: var(--md-sys-typescale-display-medium-line-height);
+  }
+  &:host([large]) {
+    --rask-skeleton-block-size: var(--md-sys-typescale-display-large-line-height);
+  }
+}
+
+:host([body]) {
+  &:host([small]) {
+    --rask-skeleton-block-size: var(--md-sys-typescale-body-small-line-height);
+  }
+  &:host([medium]) {
+    --rask-skeleton-block-size: var(--md-sys-typescale-body-medium-line-height);
+  }
+  &:host([large]) {
+    --rask-skeleton-block-size: var(--md-sys-typescale-body-large-line-height);
+  }
+}

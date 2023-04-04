@@ -1,0 +1,11 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  inline-size: 100%;
+  block-size: calc(100vh - var(--md-site-header-height));
+}
+
+/* h1 {
+  color: lch(50% 100 0);
+} */

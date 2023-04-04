@@ -1,13 +1,9 @@
 {
-  "extends":  "../../tsconfig.base.json",
+  "extends":  ["../../tsconfig.base.json" ,"../../tsconfig.lit.json"],
   "compilerOptions": {
-    "lib": ["ESNext", "DOM", "DOM.Iterable"],
-    "noPropertyAccessFromIndexSignature": false,
+    "noPropertyAccessFromIndexSignature": true,
     "outDir": "./dist",
     "rootDir": ".",
-    "paths": {
-      "#/*": ["./src/*"]
-    },
     "types": ["node"]
   },
   "include": ["src/**/*.ts"],

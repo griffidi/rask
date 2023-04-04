@@ -1,0 +1,38 @@
+:host {
+  display: block;
+  box-sizing: border-box;
+  inline-size: 100%;
+  block-size: 100%;
+  padding-inline: 40px;
+  padding-block: 40px;
+  overflow: hidden auto;
+  scroll-snap-type: x mandatory;
+
+  &::-webkit-scrollbar {
+    width: var(--rask-sys-scroll-size);
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: var(--rask-sys-scroll-shape);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--rask-sys-scroll-color);
+    border-radius: var(--rask-sys-scroll-shape);
+    border: var(--rask-sys-scroll-border-width) solid transparent;
+    background-clip: content-box;
+    box-shadow: var(--rask-sys-scroll-shadow);
+    box-sizing: border-box;
+  }
+
+  @supports (scroll-behavior: smooth) {
+    scroll-behavior: smooth;
+  }
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2em;
+}

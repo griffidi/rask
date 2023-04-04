@@ -1,0 +1,101 @@
+* {
+  box-sizing: border-box;
+}
+
+:host {
+  /* Set global defaults. This allows for using in calculations. */
+  --rask-list-item-container-height: 42px;
+  --rask-list-item-padding-inline: 8px;
+  --rask-list-padding-inline: 8px;
+  --rask-list-item-headline-font-size: var(--md-sys-typescale-label-large-size);
+  --rask-list-item-headline-font-weight: var(--md-sys-typescale-label-large-weight);
+  --rask-list-item-headline-line-height: var(--md-sys-typescale-label-large-line-height);
+  /* --rask-list-item-headline-font: var(--md-sys-typescale-list-font); */
+
+  --_container-height: var(--rask-list-item-container-height);
+  --_container-color: var(--rask-list-item-container-color, transparent);
+  --_container-on-color: var(--md-sys-color-text-dark-2, #ffffff);
+  --_headline-font-size: var(--rask-list-item-headline-font-size);
+  --_headline-font-weight: var(--rask-list-item-headline-font-weight);
+  --_headline-line-height: var(--rask-list-item-headline-line-height);
+  /* --_headline-font: var(--rask-list-item-headline-font); */
+  --_container-padding-inline: var(--rask-list-padding-inline);
+  --_start-end-padding-inline: var(var(--rask-list-item-padding-inline));
+  --_container-hover-color: var(--md-sys-color-surface-2);
+}
+
+.list-item {
+  position: relative;
+  display: block;
+  inline-size: 100%;
+  block-size: var(--_container-height);
+  padding-inline: var(--_container-padding-inline);
+  z-index: 1;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--_container-hover-color);
+    inline-size: 100%;
+    block-size: 100%;
+    opacity: 0;
+    z-index: -1;
+    border-radius: 0.625rem;
+    will-change: opacity;
+    transition: opacity 100ms ease-in;
+  }
+
+  &:focus,
+  &:hover {
+    &::before {
+      opacity: 1;
+    }
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.content,
+.body,
+::slotted([slot='start']),
+::slotted([slot='end']) {
+  display: flex;
+  align-items: center;
+  block-size: 100%;
+}
+
+.content {
+  gap: 12px;
+  inline-size: 100%;
+  background: var(--_container-color);
+}
+
+.body {
+  flex: 1 1 auto;
+}
+
+::slotted([slot='start']) {
+  --md-icon-size: 20px;
+
+  padding-inline-start: var(--_start-end-padding-inline);
+}
+
+::slotted([slot='end']) {
+  justify-content: flex-end;
+  padding-inline-end: var(--_start-end-padding-inline);
+}
+
+.headline {
+  /* font: var(--_headline-font); */
+  font-size: var(--_headline-font-size);
+  font-weight: var(--_headline-font-weight);
+  line-height: var(--_headline-line-height);
+  color: var(--_container-on-color);
+}
+
+a {
+  text-decoration: none;
+}

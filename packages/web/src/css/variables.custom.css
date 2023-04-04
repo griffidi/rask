@@ -100,11 +100,11 @@
 }
 
 :root {
-  --bet-input-container-color: #ffffff;
-  --bet-input-text-color: rgba(42, 42, 42, 0.77);
-  --bet-input-placeholder-color: rgba(42, 42, 42, 0.57);
+  --rask-input-container-color: #ffffff;
+  --rask-input-text-color: rgba(42, 42, 42, 0.77);
+  --rask-input-placeholder-color: rgba(42, 42, 42, 0.57);
 }
 
 :root {
-  --bet-border-color: var(--md-ref-palette-neutral-variant-20, #828282);
+  --rask-border-color: var(--md-ref-palette-neutral-variant-20, #828282);
 }
