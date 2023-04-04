@@ -1,6 +1,7 @@
 import { esbuildPlugin } from '@web/dev-server-esbuild';
 import { hmrPlugin } from '@web/dev-server-hmr';
 import { fromRollup } from '@web/dev-server-rollup';
+import { fileURLToPath } from 'node:url';
 import { typescriptPaths } from 'rollup-plugin-typescript-paths';
 
 const tsPaths = fromRollup(typescriptPaths);
@@ -8,11 +9,12 @@ const tsPaths = fromRollup(typescriptPaths);
 export default /** @type {import("@web/dev-server").DevServerConfig} */ ({
   rootDir: './',
   clearTerminalOnReload: true,
+  esbuildTarget: 'esnext',
   appIndex: 'index.html',
   watch: true,
   debug: false,
   nodeResolve: {
-    exportConditions: ['development'],
+    exportConditions: ['browser', 'development'],
     dedupe: [
       '@material/web',
       '@lit-labs/context',
@@ -21,7 +23,6 @@ export default /** @type {import("@web/dev-server").DevServerConfig} */ ({
       'lit',
     ],
   },
-  esbuildTarget: 'esnext',
   port: 8001,
   http2: true,
   // sslKey: fileURLToPath(new URL('./certs/rootCA.key', import.meta.url)),
@@ -32,7 +33,20 @@ export default /** @type {import("@web/dev-server").DevServerConfig} */ ({
     }),
     esbuildPlugin({
       target: 'esnext',
+      tsconfig: fileURLToPath(new URL('./tsconfig.json', import.meta.url)),
       ts: true,
+      // plugins: [
+      //   postCssPlugin({
+      //     plugins: [
+      //       presetenv({
+      //         features: {
+      //           'logical-properties-and-values': true,
+      //           'nesting-rules': true,
+      //         },
+      //       }),
+      //     ],
+      //   }),
+      // ],
     }),
     hmrPlugin(),
   ],

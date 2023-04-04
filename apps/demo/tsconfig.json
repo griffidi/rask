@@ -2,6 +2,8 @@
   "extends":  ["../../tsconfig.base.json" ,"../../tsconfig.lit.json"],
   "compilerOptions": {
     "rootDir": ".",
+    "useDefineForClassFields": false,
+    "experimentalDecorators": true,
     "paths": {
       "#/*": ["./src/*"],
       "@rask/core/*":  ["../../packages/core/src/*"],
