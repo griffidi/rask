@@ -6,6 +6,19 @@
   block-size: calc(100vh - var(--md-site-header-height));
 }
 
-/* h1 {
-  color: lch(50% 100 0);
-} */
+span {
+  position: relative;
+  font-size: 58px;
+  padding-block: 30px;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    left: 0;
+    height: 8px;
+    border-radius: .625rem;
+    background: linear-gradient(111.3deg, #9c27b0 9.6%, #00bcd4 93.6%);
+  }
+}

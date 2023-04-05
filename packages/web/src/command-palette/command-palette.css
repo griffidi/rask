@@ -25,24 +25,19 @@
   --_container-padding-inline: var(--_rask-list-padding-offset);
 }
 
-:host([opened]) {
-  & .container {
+:host([opened]) .container {
     content-visibility: visible;
     visibility: visible;
   }
-}
 
-:host([opened]:not([animating])) {
+:host([opened]:not([animating])) aside {
   --_section-visibility: visible;
   --_section-display: flex;
-
-  & aside {
-    --_jump-to-block-size: calc(
-      var(--rask-list-item-container-height) * var(--_jump-to-item-count, 1) +
-        var(--_rask-list-padding-offset)
-    );
-    --_aside-block-size: calc(var(--_container-default-size) + var(--_jump-to-block-size));
-  }
+  --_jump-to-block-size: calc(
+    var(--rask-list-item-container-height) * var(--_jump-to-item-count, 1) +
+      var(--_rask-list-padding-offset)
+  );
+  --_aside-block-size: calc(var(--_container-default-size) + var(--_jump-to-block-size));
 }
 
 .container {

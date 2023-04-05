@@ -14,7 +14,11 @@
     },
     "./src/client/*": "./src/client/*"
   },
-  "files": ["src/**/*.{map.js,js,css}", "src/types/**/*.d.ts", "README.md"],
+  "files": [
+    "src/**/*.{map.js,js,css}",
+    "src/types/**/*.d.ts",
+    "README.md"
+  ],
   "scripts": {
     "dev": "",
     "build": ""
@@ -23,6 +27,7 @@
     "@material/web": "1.0.0-pre.5",
     "@rask/core": "workspace:^",
     "lit": "^2.7.0",
+    "modern-normalize": "^1.1.0",
     "tslib": "^2.5.0"
   },
   "devDependencies": {

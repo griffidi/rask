@@ -7,7 +7,7 @@ export class HomePage extends LitElement {
   static override styles = [css];
 
   override render(): TemplateResult {
-    return html`<h1>Home Page</h1>`;
+    return html`<span>Home Page</span>`;
   }
 }
 
