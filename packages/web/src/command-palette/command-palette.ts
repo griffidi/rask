@@ -153,8 +153,7 @@ export class CommandPalette extends LitElement {
                 <div slot="start">
                   <md-icon>${jumpTo.icon}</md-icon>
                 </div>
-                <div slot="end">
-                  <span>Jump to</span>
+                <div slot="end" class="jump-to-text">
                 </div>
               </rask-list-item-link>
             `;

@@ -36,14 +36,16 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: var(--_container-hover-color);
+    /* background: var(--_container-hover-color); */
+    /* border: 1px solid var(--_neutral-color); */
+    border: 1px solid var(--md-sys-color-green-dark);
     inline-size: 100%;
     block-size: 100%;
     opacity: 0;
     z-index: -1;
     border-radius: 0.625rem;
     will-change: opacity;
-    transition: opacity 100ms ease-in;
+    transition: opacity 50ms ease-out;
   }
 
   &:focus,
