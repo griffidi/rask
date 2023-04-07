@@ -29,7 +29,7 @@ import css from './button.css' assert { type: 'css' };
  */
 @customElement('rask-button')
 export class Button extends LitElement {
-  static override styles = [unsafeCSS(css)];
+  static override styles = [css];
 
   @property({ type: Boolean, reflect: true }) disabled = false;
   @property({ type: Boolean, reflect: true }) elevated = false;
