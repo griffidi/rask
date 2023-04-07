@@ -78,6 +78,9 @@
       "editor.formatOnSave": true,
       "editor.tabSize": 2
     },
+    "[prisma]": {
+      "editor.defaultFormatter": "Prisma.prisma-insider"
+    },
 
     "cSpell.words": ["falso", "ngneat", "opsz", "rask", "Rask", "tsbuildinfo", "wght"],
 
@@ -115,7 +118,19 @@
     "workbench.iconTheme": "vscode-icons",
     "[xml]": {
       "editor.defaultFormatter": "DotJoshJohnson.xml"
-    }
+    },
+    "sqltools.connections": [
+      {
+        "previewLimit": 50,
+        "server": "localhost",
+        "port": 5432,
+        "driver": "PostgreSQL",
+        "name": "postgres",
+        "database": "raskdb",
+        "username": "postgres",
+        "password": "admin123"
+      }
+    ]
   },
   "extensions": {
     "recommendations": ["esbenp.prettier-vscode", "dbaeumer.vscode-eslint"]

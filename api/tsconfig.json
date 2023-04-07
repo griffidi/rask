@@ -1,11 +1,11 @@
 {
-  "extends":  ["../../tsconfig.base.json" ,"../../tsconfig.lit.json"],
+  "extends": ["../tsconfig.base.json"],
   "compilerOptions": {
     "noPropertyAccessFromIndexSignature": true,
     "outDir": "./dist",
     "rootDir": ".",
     "types": ["node"]
   },
-  "include": ["src/**/*.ts"],
-  "exclude": ["dist", "node_modules"],
+  "include": ["src/**/*.ts", "prisma/**/*.ts"],
+  "exclude": ["dist", "node_modules"]
 }
