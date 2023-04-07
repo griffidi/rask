@@ -66,14 +66,12 @@
   will-change: opacity, transform;
 }
 
-:host([exiting]) {
-  & .card:not([selected]) {
-    animation: fade-out 2s var(--md-sys-motion-standard-easing) forwards;
-  }
+:host([exiting]) .card:not([selected]) {
+  animation: fade-out 2s var(--md-sys-motion-standard-easing) forwards;
+}
 
-  & .card:is([selected]) {
-    animation: 1s fade-out 500ms var(--md-sys-motion-standard-easing) forwards;
-  }
+:host([exiting]) .card:is([selected]) {
+  animation: 1s fade-out 500ms var(--md-sys-motion-standard-easing) forwards;
 }
 
 @keyframes fade-out {
@@ -118,6 +116,11 @@ header {
     line-height: var(--md-sys-typescale-label-large-line-height);
     letter-spacing: var(--md-sys-typescale-label-large-tracking);
   }
+}
+
+.avatar {
+  --md-icon-size: 50px;
+  --md-icon-color: var(--md-sys-color-purple);
 }
 
 section {

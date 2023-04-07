@@ -23,18 +23,18 @@
       "editor.tabSize": 2
     },
     "typescript.format.enable": false,
-    "typescript.preferences.importModuleSpecifier": "shortest",
+    "typescript.preferences.importModuleSpecifier": "project-relative",
     "typescript.preferences.importModuleSpecifierEnding": "js",
     "typescript.preferences.useAliasesForRenames": false,
     "typescript.workspaceSymbols.scope": "currentProject",
-    // "typescript.unstable": {
-    //   "organizeImportsIgnoreCase": "false",
-    //   "organizeImportsCollation": "ordinal",
-    //   "organizeImportsCaseFirst": "lower"
-    // },
+    "typescript.unstable": {
+      "organizeImportsIgnoreCase": "false",
+      "organizeImportsCollation": "ordinal",
+      "organizeImportsCaseFirst": "lower"
+    },
     "npm.autoDetect": "off",
     "typescript.tsc.autoDetect": "off",
-    // "typescript.tsserver.experimental.enableProjectDiagnostics": true,
+    "typescript.tsserver.experimental.enableProjectDiagnostics": true,
     "typescript.tsdk": "node_modules\\typescript\\lib",
     "typescript.preferences.quoteStyle": "single",
     "[typescript]": {
@@ -84,8 +84,9 @@
     "debug.javascript.unmapMissingSources": true,
     "debug.showBreakpointsInOverviewRuler": true,
     "editor.codeActionsOnSave": {
-      "source.fixAll": true
-      // "source.fixAll.eslint": true
+      "source.fixAll": true,
+      "source.fixAll.eslint": true,
+      "source.organizeImports": true
     },
 
     "eslint.codeActionsOnSave.mode": "problems",
@@ -107,9 +108,94 @@
       "**/node_modules": true
     },
 
-    "workbench.iconTheme": "vscode-icons"
+    "workbench.iconTheme": "vscode-icons",
+    "[xml]": {
+      "editor.defaultFormatter": "DotJoshJohnson.xml"
+    }
   },
   "extensions": {
     "recommendations": ["esbenp.prettier-vscode", "dbaeumer.vscode-eslint"]
+  },
+  "launch": {
+    "configurations": [
+      {
+        "name": "Debug demo (dev-server)",
+        "cwd": "${workspaceFolder}/apps/demo",
+        "request": "launch",
+        "type": "node",
+        "runtimeExecutable": "pnpm",
+        "runtimeArgs": ["dev"],
+        "skipFiles": ["<node_internals>/**"],
+        "console": "integratedTerminal",
+        "internalConsoleOptions": "neverOpen",
+        "presentation": {
+          "hidden": false,
+          "group": "demo",
+          "order": 1
+        }
+      },
+      {
+        "name": "Debug demo (edge)",
+        "type": "pwa-msedge",
+        "request": "launch",
+        "runtimeExecutable": "dev",
+        "url": "https://localhost:8009",
+        "webRoot": "${workspaceFolder}/apps/demo/src",
+        "skipFiles": ["<node_internals>/**"],
+        "userDataDir": "${workspaceFolder}/.out/edge/apps/demo",
+        "internalConsoleOptions": "neverOpen",
+        "smartStep": true,
+        "sourceMaps": true,
+        "presentation": {
+          "hidden": false,
+          "group": "demo",
+          "order": 2
+        }
+      },
+      {
+        "type": "pwa-msedge",
+        "name": "Launch Microsoft Edge",
+        "request": "launch",
+        "runtimeArgs": ["--remote-debugging-port=9222"],
+        "url": "c:\\Users\\dusti\\.vscode-insiders\\extensions\\ms-edgedevtools.vscode-edge-devtools-2.1.1\\out\\startpage\\index.html",
+        "presentation": {
+          "hidden": true
+        }
+      },
+      {
+        "type": "pwa-msedge",
+        "name": "Launch Microsoft Edge in headless mode",
+        "request": "launch",
+        "runtimeArgs": ["--headless", "--remote-debugging-port=9222"],
+        "url": "c:\\Users\\dusti\\.vscode-insiders\\extensions\\ms-edgedevtools.vscode-edge-devtools-2.1.1\\out\\startpage\\index.html",
+        "presentation": {
+          "hidden": true
+        }
+      },
+      {
+        "type": "vscode-edge-devtools.debug",
+        "name": "Open Edge DevTools",
+        "request": "attach",
+        "url": "c:\\Users\\dusti\\.vscode-insiders\\extensions\\ms-edgedevtools.vscode-edge-devtools-2.1.1\\out\\startpage\\index.html",
+        "presentation": {
+          "hidden": true
+        }
+      }
+    ],
+    "compounds": [
+      {
+        "name": "Launch demo",
+        "configurations": ["Debug demo (dev-server)", "Debug demo (edge)"],
+        "stopAll": true
+      },
+      {
+        "name": "Launch Edge Headless and attach DevTools",
+        "configurations": ["Launch Microsoft Edge in headless mode", "Open Edge DevTools"]
+      },
+      {
+        "name": "Launch Edge and attach DevTools",
+        "configurations": ["Launch Microsoft Edge", "Open Edge DevTools"]
+      }
+    ]
   }
 }

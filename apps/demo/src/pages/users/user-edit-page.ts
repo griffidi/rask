@@ -5,6 +5,7 @@ import '@material/web/textfield/outlined-text-field.js';
 import { useInject } from '@rask/core/di/inject.js';
 import '@rask/web/button/button.js';
 import '@rask/web/skeleton/skeleton.js';
+import '@rask/web/text-field/text-field.js';
 import { LitElement, html, type TemplateResult } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import css from './user-edit-page.css' assert { type: 'css' };
@@ -19,7 +20,7 @@ export class UserEditPage extends LitElement {
   #getUsers = new Task(
     this,
     async ([id]) => await this.#userService.getUserById(id),
-    () => [this.userId],
+    () => [this.userId]
   );
 
   override render(): TemplateResult {
@@ -38,37 +39,16 @@ export class UserEditPage extends LitElement {
       </header>
       <form>
         <div>
-          <label>
-            Full Name
-            <md-outlined-text-field .value=${user.fullName}></md-outlined-text-field>
-          </label>
-          <label>
-            Email
-            <md-outlined-text-field .value=${user.email}></md-outlined-text-field>
-          </label>
-          <label>
-            Phone
-            <md-outlined-text-field .value=${user.phone}></md-outlined-text-field>
-          </label>
+          <rask-text-field label="Full Name" .value=${user.fullName}></rask-text-field>
+          <rask-text-field label="Email" .value=${user.email}></rask-text-field>
+          <rask-text-field label="Phone" .value=${user.phone}></rask-text-field>
         </div>
         <div>
-          <label>
-            Street Address
-            <md-outlined-text-field .value=${user.streetAddress}></md-outlined-text-field>
-          </label>
+          <rask-text-field label="Street Address" .value=${user.streetAddress}></rask-text-field>
           <div class="address">
-            <label class="city">
-              City
-              <md-outlined-text-field .value=${user.city}></md-outlined-text-field>
-            </label>
-            <label class="state">
-              State
-              <md-outlined-text-field .value=${user.state}></md-outlined-text-field>
-            </label>
-            <label class="postal">
-              Postal
-              <md-outlined-text-field .value=${user.postal}></md-outlined-text-field>
-            </label>
+            <rask-text-field label="City" .value=${user.city}></rask-text-field>
+            <rask-text-field label="State" .value=${user.state}></rask-text-field>
+            <rask-text-field label="Postal" .value=${user.postal}></rask-text-field>
           </div>
         </div>
       </form>
