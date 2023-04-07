@@ -13,7 +13,6 @@
   ],
   "settings": {
     "editor.defaultFormatter": "rome.rome",
-    "editor.linkedEditing": true,
 
     "javascript.format.enable": false,
     "[javascript]": {
@@ -48,7 +47,7 @@
       "editor.tabSize": 2
     },
     "[jsonc]": {
-      "editor.defaultFormatter": "rome.rome"
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
 
     "html.autoClosingTags": true,
@@ -57,7 +56,7 @@
     "html.autoCreateQuotes": true,
     "html.format.enable": false,
     "[html]": {
-      "editor.defaultFormatter": "rome.rome",
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
       "editor.formatOnSave": true,
       "editor.tabSize": 2
     },
@@ -73,29 +72,19 @@
     "css.format.enable": false,
     "css.validate": false,
     "[css]": {
-      "editor.defaultFormatter": "rome.rome",
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
       "editor.formatOnSave": true,
       "editor.tabSize": 2
     },
 
-    "lit-html.tags": [
-      "html",
-      "template"
-    ],
+    "lit-html.tags": ["html", "template"],
 
-    "cSpell.words": [
-      "opsz",
-      "rask",
-      "Rask",
-      "tsbuildinfo",
-      "wght"
-    ],
-
+    "cSpell.words": ["opsz", "rask", "Rask", "tsbuildinfo", "wght"],
 
     "debug.internalConsoleOptions": "neverOpen",
     "debug.javascript.unmapMissingSources": true,
     "debug.showBreakpointsInOverviewRuler": true,
-    "editor.codeActionsOnSave":{
+    "editor.codeActionsOnSave": {
       "source.fixAll": true,
       "source.organizeImports.rome": true
     },
@@ -114,8 +103,9 @@
     },
 
     "workbench.iconTheme": "vscode-icons",
+    "powershell.cwd": "c:\\respos\\griffidi\\rask"
   },
   "extensions": {
     "recommendations": ["rome.rome"]
-  },
+  }
 }

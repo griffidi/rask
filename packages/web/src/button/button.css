@@ -48,18 +48,15 @@ button {
   } */
 }
 
-:host([filled]) button {
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    /* border: 1px solid var(--_button-color, #ffffff); */
-    background: var(--_button-color, #ffffff);
-    border-radius: 9999px;
-    box-sizing: border-box;
-    z-index: 1;
-  }
+:host([filled]) button::before::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  /* border: 1px solid var(--_button-color, #ffffff); */
+  background: var(--_button-color, #ffffff);
+  border-radius: 9999px;
+  box-sizing: border-box;
+  z-index: 1;
 
   /* &:hover::before {
     box-shadow: rgb(var(--_button-shadow), 0.5) 0px 0px 10px 0px;
