@@ -1,0 +1,33 @@
+{
+  "name": "@rask/api",
+  "private": true,
+  "version": "0.0.1",
+  "packageManager": "pnpm@8.1.0",
+  "engines": {
+    "node": ">=18",
+    "pnpm": ">=8.0.0"
+  },
+  "type": "module",
+  "files": [
+    "src/**/*.{map.js,js}",
+    "README.md"
+  ],
+  "scripts": {
+    "dev": "",
+    "build": ""
+  },
+  "dependencies": {
+    "@prisma/client": "^4.12.0",
+    "tslib": "^2.5.0"
+  },
+  "devDependencies": {
+    "@ngneat/falso": "^6.4.0",
+    "@types/node": "^18.15.11",
+    "dotenv-cli": "^7.2.1",
+    "prisma": "^4.12.0",
+    "typescript": "^5.0.3"
+  },
+  "peerDependencies": {
+    "typescript": "5.0.3"
+  }
+}

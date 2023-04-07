@@ -1,10 +1,11 @@
 {
   "compilerOptions": {
-    "strict": true,
+    "strict": true
   },
   "files": [],
   "include": [],
   "references": [
+    { "path": "./api" },
     { "path": "./apps/demo" },
     { "path": "./packages/core" },
     { "path": "./packages/identity" },

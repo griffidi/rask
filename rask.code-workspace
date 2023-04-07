@@ -5,6 +5,9 @@
       "name": ".root"
     },
     {
+      "path": "api"
+    },
+    {
       "path": "apps"
     },
     {
@@ -76,7 +79,7 @@
       "editor.tabSize": 2
     },
 
-    "cSpell.words": ["opsz", "rask", "Rask", "tsbuildinfo", "wght"],
+    "cSpell.words": ["falso", "ngneat", "opsz", "rask", "Rask", "tsbuildinfo", "wght"],
 
     "editor.linkedEditing": true,
 
@@ -101,6 +104,7 @@
 
     "files.exclude": {
       ".out": true,
+      "api": true,
       "apps": true,
       "docs": true,
       "packages": true,
