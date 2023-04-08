@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 :host {
   --_color: var(--md-ref-palette-neutral-variant-90);
   --_logo-filter: drop-shadow(0 0 10px var(--md-sys-color-blue-alpha));
@@ -103,5 +107,35 @@ a:hover {
 
   & h2::before {
     width: 100%;
+  }
+}
+
+.search-instructions {
+  --md-icon-size: 18px;
+
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  inline-size: 120px;
+  block-size: 36px;
+  padding-inline: 12px;
+  border: 1px solid var(--rask-border-color);
+  border-radius: var(--md-sys-shape-small);
+
+  &::before {
+    content: 'CTRL K';
+    position: absolute;
+    inset-inline-start: 12px;
+    display: grid;
+    place-content: center;
+    inline-size: 50px;
+    block-size: 19px;
+    font-size: 0.8em;
+    letter-spacing: 0.5px;
+    color: var(--md-sys-color-text-3);
+    /* border: 1px solid var(--md-sys-color-text-3); */
+    border-radius: 4px;
+    pointer-events: none;
   }
 }
