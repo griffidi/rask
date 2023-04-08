@@ -1,5 +1,5 @@
 import '@material/web/icon/icon.js';
-import { LitElement, html, unsafeCSS, type TemplateResult } from 'lit';
+import { LitElement, html, type TemplateResult } from 'lit';
 import { customElement, property, query, state } from 'lit/decorators.js';
 import { classMap, type ClassInfo } from 'lit/directives/class-map.js';
 import { when } from 'lit/directives/when.js';
@@ -51,8 +51,8 @@ export class Button extends LitElement {
         ?disabled=${this.disabled}
         @click=${this.handleClick}
       >
-        ${when(this.elevated, () => this.renderElevation())}
-        ${when(this.outlined, () => this.renderOutline())} ${this.renderLabel()}
+        ${when(this.elevated, () => this.renderElevation())} ${when(this.outlined, () => this.renderOutline())}
+        ${this.renderLabel()}
       </button>
     `;
   }
