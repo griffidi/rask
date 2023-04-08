@@ -25,4 +25,4 @@ dist-ssr
 *.sw?
 
 # generated files
-**/dev.db
+dev.db
