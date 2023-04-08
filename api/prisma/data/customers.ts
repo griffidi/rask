@@ -22,7 +22,7 @@ export const customers = toCollection(
       city: randCity(),
       state: randStateAbbr(),
       zipCode: randZipCode(),
-      startDate: randPastDate(),
+      dateStarted: randPastDate({ years: 10 }),
     };
   },
   { length: 100 }

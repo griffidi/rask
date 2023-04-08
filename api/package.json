@@ -14,13 +14,19 @@
   ],
   "scripts": {
     "prisma:generate": "prisma generate",
-    "prisma:migrate": "dotenv .env.development prisma migrate db",
+    "prisma:push": "dotenv .env.development prisma db push",
+    "prisma:seed": "prisma db seed",
     "dev": "",
     "build": ""
   },
   "dependencies": {
     "@prisma/client": "^4.12.0",
-    "tslib": "^2.5.0"
+    "@types/graphql-fields": "^1.3.5",
+    "graphql": "^16.6.0",
+    "graphql-fields": "^2.0.3",
+    "graphql-scalars": "^1.21.3",
+    "tslib": "^2.5.0",
+    "type-graphql": "^1.1.1"
   },
   "devDependencies": {
     "@ngneat/falso": "^6.4.0",

@@ -1,9 +1,51 @@
 generator client {
-  provider        = "prisma-client-js"
-  previewFeatures = ["clientExtensions"]
+  provider = "prisma-client-js"
 }
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url      = "file:./dev.db"
+}
+
+model Customer {
+  id            String   @id @default(cuid())
+  firstName     String
+  lastName      String
+  email         String   @unique
+  streetAddress String
+  city          String
+  state         String
+  zipCode       Int
+  dateCreated   DateTime @default(now())
+}
+
+model Employee {
+  id            String   @id @default(cuid())
+  firstName     String
+  lastName      String
+  email         String   @unique
+  gender        String
+  streetAddress String
+  city          String
+  state         String
+  zipCode       Int
+  jobTitle      String
+  department    String
+  dateStarted   DateTime @default(now())
+}
+
+model User {
+  id          String   @id @default(cuid())
+  userName    String   @unique
+  password    String
+  email       String   @unique
+  firstName   String
+  lastName    String
+  dateCreated DateTime @default(now())
+  role        ROLE     @default(USER)
+}
+
+enum ROLE {
+  ADMIN
+  USER
 }

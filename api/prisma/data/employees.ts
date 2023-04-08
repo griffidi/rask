@@ -3,6 +3,7 @@ import {
   randDepartment,
   randEmail,
   randFirstName,
+  randGender,
   randJobTitle,
   randLastName,
   randPastDate,
@@ -20,13 +21,14 @@ export const employees = toCollection(
       firstName: randFirstName(),
       lastName: randLastName(),
       email: randEmail(),
+      gender: randGender(),
       streetAddress: randStreetAddress(),
       city: randCity(),
       state: randStateAbbr(),
       zipCode: randZipCode(),
       jobTitle: randJobTitle(),
       department: randDepartment({ length: 4 }),
-      startDate: randPastDate(),
+      dateStarted: randPastDate({ years: 10 }),
     };
   },
   { length: 100 }

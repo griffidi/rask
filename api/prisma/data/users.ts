@@ -19,7 +19,7 @@ export const adminUser = {
   firstName: randFirstName(),
   lastName: randLastName(),
   role: Roles.ADMIN,
-  createDate: randPastDate(),
+  dateCreated: randPastDate({ years: 10 }),
 };
 
 export const basicUsers = toCollection(
@@ -32,7 +32,7 @@ export const basicUsers = toCollection(
       firstName: randFirstName(),
       lastName: randLastName(),
       role: Roles.USER,
-      createDate: randPastDate(),
+      dateCreated: randPastDate({ years: 10 }),
     };
   },
   { length: 50 }
