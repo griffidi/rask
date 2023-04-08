@@ -13,6 +13,7 @@
     "README.md"
   ],
   "scripts": {
+    "preprisma:generate": "rimraf prisma/dev.db",
     "prisma:generate": "prisma generate",
     "prisma:push": "prisma db push",
     "prisma:seed": "prisma db seed",
@@ -32,7 +33,9 @@
   "devDependencies": {
     "@ngneat/falso": "^6.4.0",
     "@types/node": "^18.15.11",
+    "nanoid": "^4.0.2",
     "prisma": "^4.12.0",
+    "rimraf": "^4.4.1",
     "ts-node": "^10.9.1",
     "typescript": "5.0.4"
   },

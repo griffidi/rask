@@ -11,5 +11,5 @@ export interface WeakRefCtor {
   new <T extends object>(value: T): WeakRef<T>;
 }
 
-// rome-ignore lint/suspicious/noShadowRestrictedNames: <explanation>
+// @ts-ignore
 export const WeakRef: WeakRefCtor = global['WeakRef'];

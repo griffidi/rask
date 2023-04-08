@@ -6,13 +6,13 @@ import {
   randPastDate,
   randStateAbbr,
   randStreetAddress,
-  randUuid,
   randZipCode,
 } from '@ngneat/falso';
+import { nanoid } from 'nanoid';
 
 export const customers = Array.from({ length: 100 }, () => {
   return {
-    id: randUuid(),
+    id: nanoid(10),
     firstName: randFirstName(),
     lastName: randLastName(),
     email: randEmail(),

@@ -1,36 +1,36 @@
-import { randUuid } from '@ngneat/falso';
+import { nanoid } from 'nanoid';
 
 export const departments = [
   {
-    id: randUuid(),
+    id: nanoid(10),
     name: 'Accounting',
   },
   {
-    id: randUuid(),
+    id: nanoid(10),
     name: 'Engineering',
   },
   {
-    id: randUuid(),
+    id: nanoid(10),
     name: 'Back Office',
   },
   {
-    id: randUuid(),
+    id: nanoid(10),
     name: 'Sales',
   },
   {
-    id: randUuid(),
+    id: nanoid(10),
     name: 'Marketing',
   },
   {
-    id: randUuid(),
+    id: nanoid(10),
     name: 'Human Resources',
   },
   {
-    id: randUuid(),
+    id: nanoid(10),
     name: 'Legal',
   },
   {
-    id: randUuid(),
+    id: nanoid(10),
     name: 'Information Technology',
   },
 ];

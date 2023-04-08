@@ -8,9 +8,9 @@ import {
   randPastDate,
   randStateAbbr,
   randStreetAddress,
-  randUuid,
   randZipCode,
 } from '@ngneat/falso';
+import { nanoid } from 'nanoid';
 import { departments } from './departments.js';
 
 const departmentLength = departments.length;
@@ -22,7 +22,7 @@ function randDepartmentIdCustom(): string {
 
 export const employees = Array.from({ length: 100 }, () => {
   return {
-    id: randUuid(),
+    id: nanoid(10),
     firstName: randFirstName(),
     lastName: randLastName(),
     email: randEmail(),

@@ -82,7 +82,7 @@
       "editor.defaultFormatter": "Prisma.prisma-insider"
     },
 
-    "cSpell.words": ["falso", "ngneat", "opsz", "rask", "Rask", "tsbuildinfo", "wght"],
+    "cSpell.words": ["falso", "ngneat", "opsz", "preprisma", "rask", "Rask", "tsbuildinfo", "wght"],
 
     "editor.linkedEditing": true,
 
@@ -120,16 +120,6 @@
       "editor.defaultFormatter": "DotJoshJohnson.xml"
     },
     "sqltools.connections": [
-      {
-        "previewLimit": 50,
-        "server": "localhost",
-        "port": 5432,
-        "driver": "PostgreSQL",
-        "name": "postgres",
-        "database": "raskdb",
-        "username": "postgres",
-        "password": "admin123"
-      },
       {
         "previewLimit": 50,
         "driver": "SQLite",

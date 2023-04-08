@@ -17,6 +17,7 @@
     "build": ""
   },
   "dependencies": {
+    "nanoid": "^4.0.2",
     "tslib": "^2.5.0"
   },
   "devDependencies": {
