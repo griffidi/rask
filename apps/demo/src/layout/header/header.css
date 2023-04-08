@@ -14,7 +14,7 @@
 
 header {
   display: flex;
-  justify-content: space-raskween;
+  justify-content: space-between;
   align-items: center;
   padding-inline: 20px;
   box-sizing: border-box;

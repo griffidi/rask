@@ -63,7 +63,7 @@ nav {
 
   & h4 {
     display: flex;
-    justify-content: space-raskween;
+    justify-content: space-between;
     align-items: center;
     padding-inline-start: 22px;
   }

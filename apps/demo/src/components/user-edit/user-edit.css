@@ -11,7 +11,7 @@ form {
 
 header {
   display: flex;
-  justify-content: space-raskween;
+  justify-content: space-between;
   align-items: flex-end;
 
   & h2 {
@@ -31,7 +31,7 @@ section {
 
   & > div {
     display: flex;
-    justify-content: space-raskween;
+    justify-content: space-between;
     gap: 30px;
   }
 

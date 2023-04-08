@@ -27,7 +27,6 @@ a {
   &:hover {
     --_active-indicator-opacity: 1;
     --_active-indicator-visibility: visible;
-    /* --_on-color: var(--md-sys-color-green); */
   }
 }
 
@@ -40,7 +39,6 @@ a {
   opacity: var(--_active-indicator-opacity);
   border-radius: var(--md-sys-shape-extra-large);
   background: var(--_active-indicator-color);
-  /* border: 1px solid var(--md-sys-color-green); */
 }
 
 .logo {

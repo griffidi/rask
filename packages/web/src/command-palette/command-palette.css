@@ -136,7 +136,7 @@ section {
 footer {
   display: flex;
   align-items: center;
-  justify-content: space-raskween;
+  justify-content: space-between;
   gap: 20px;
   block-size: var(--_item-height);
   inline-size: 100%;
@@ -147,7 +147,7 @@ footer {
     --md-icon-weight: 700;
 
     display: flex;
-    justify-content: space-raskween;
+    justify-content: space-between;
     gap: 20px;
     block-size: 100%;
     inline-size: 100%;

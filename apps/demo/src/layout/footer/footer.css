@@ -1,6 +1,6 @@
 :host {
   display: flex;
-  justify-content: space-raskween;
+  justify-content: space-between;
   block-size: 100%;
   inline-size: 100%;
 }

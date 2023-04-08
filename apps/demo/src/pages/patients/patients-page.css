@@ -103,7 +103,7 @@ section {
   --_with-icon-spacing-leading: 8px;
 
   flex-direction: row;
-  justify-content: space-raskween;
+  justify-content: space-between;
   align-items: center;
   gap: 10px;
   font-size: var(--md-sys-typescale-body-medium-size);

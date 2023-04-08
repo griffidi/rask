@@ -8,7 +8,7 @@ md-switch {
 rask-menu {
   & label {
     display: flex;
-    justify-content: space-raskween;
+    justify-content: space-between;
     align-items: center;
     padding-block: 10px;
   }
