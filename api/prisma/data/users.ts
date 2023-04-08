@@ -7,33 +7,34 @@ import {
   randPastDate,
   randUserName,
   randUuid,
-  toCollection,
 } from '@ngneat/falso';
-import { Roles } from './roles.js';
+import { roles } from './roles.js';
 
-export const adminUser = {
+const adminRoleId = roles.find((role) => role.name === 'Administrator').id;
+const userRoleId = roles.find((role) => role.name === 'User').id;
+
+const adminUser = {
   id: randUuid(),
   userName: `${randUserName()}-${randNumber()}`,
   password: randPassword(),
   email: randEmail(),
   firstName: randFirstName(),
   lastName: randLastName(),
-  role: Roles.ADMIN,
+  roleId: adminRoleId,
   dateCreated: randPastDate({ years: 10 }),
 };
 
-export const basicUsers = toCollection(
-  () => {
-    return {
-      id: randUuid(),
-      userName: `${randUserName()}-${randNumber()}`,
-      password: randPassword(),
-      email: randEmail(),
-      firstName: randFirstName(),
-      lastName: randLastName(),
-      role: Roles.USER,
-      dateCreated: randPastDate({ years: 10 }),
-    };
-  },
-  { length: 50 }
-);
+const basicUsers = Array.from({ length: 50 }, () => {
+  return {
+    id: randUuid(),
+    userName: `${randUserName()}-${randNumber()}`,
+    password: randPassword(),
+    email: randEmail(),
+    firstName: randFirstName(),
+    lastName: randLastName(),
+    roleId: userRoleId,
+    dateCreated: randPastDate({ years: 10 }),
+  };
+});
+
+export const users = [adminUser, ...basicUsers];

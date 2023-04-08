@@ -26,17 +26,17 @@
   "dependencies": {
     "@material/web": "1.0.0-pre.5",
     "@rask/core": "workspace:^",
-    "lit": "^2.7.0",
+    "lit": "^2.7.2",
     "modern-normalize": "^1.1.0",
     "tslib": "^2.5.0"
   },
   "devDependencies": {
     "@types/node": "^18.15.11",
-    "typescript": "^5.0.3"
+    "typescript": "5.0.4"
   },
   "peerDependencies": {
     "@material/web": "*",
     "lit": "*",
-    "typescript": "5.0.3"
+    "typescript": "5.0.4"
   }
 }

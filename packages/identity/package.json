@@ -8,7 +8,10 @@
     "pnpm": ">=8.0.0"
   },
   "type": "module",
-  "files": ["src/**/*.{map.js,js,css}", "README.md"],
+  "files": [
+    "src/**/*.{map.js,js,css}",
+    "README.md"
+  ],
   "scripts": {
     "dev": "",
     "build": ""
@@ -17,18 +20,18 @@
     "@lit-labs/context": "^0.3.0",
     "@lit/reactive-element": "^1.6.1",
     "@rask/core": "workspace:^",
-    "lit": "^2.7.0",
+    "lit": "^2.7.2",
     "tslib": "^2.5.0"
   },
   "devDependencies": {
     "@types/node": "^18.15.11",
-    "typescript": "^5.0.3"
+    "typescript": "5.0.4"
   },
   "peerDependencies": {
     "@lit-labs/context": "*",
     "@lit/reactive-element": "*",
     "@rask/core": "workspace:*",
     "lit": "*",
-    "typescript": "5.0.3"
+    "typescript": "5.0.4"
   }
 }

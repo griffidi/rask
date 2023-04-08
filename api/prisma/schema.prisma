@@ -3,49 +3,60 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "sqlite"
   url      = "file:./dev.db"
 }
 
 model Customer {
-  id            String   @id @default(cuid())
+  id            String   @id @default(uuid())
   firstName     String
   lastName      String
   email         String   @unique
   streetAddress String
   city          String
   state         String
-  zipCode       Int
+  zipCode       String
   dateCreated   DateTime @default(now())
 }
 
+model Department {
+  id        String     @id @default(uuid())
+  name      String     @unique
+  employees Employee[]
+}
+
 model Employee {
-  id            String   @id @default(cuid())
+  id            String     @id @default(uuid())
   firstName     String
   lastName      String
-  email         String   @unique
+  email         String     @unique
   gender        String
   streetAddress String
   city          String
   state         String
-  zipCode       Int
+  zipCode       String
   jobTitle      String
-  department    String
-  dateStarted   DateTime @default(now())
+  departmentId  String
+  dateStarted   DateTime   @default(now())
+  department    Department @relation(fields: [departmentId], references: [id])
 }
 
 model User {
-  id          String   @id @default(cuid())
+  id          String   @id @default(uuid())
   userName    String   @unique
   password    String
   email       String   @unique
   firstName   String
   lastName    String
+  roleId      String
   dateCreated DateTime @default(now())
-  role        ROLE     @default(USER)
+  role        Role     @relation(fields: [roleId], references: [id])
 }
 
-enum ROLE {
-  ADMIN
-  USER
+model Role {
+  id          String   @id @unique @default(uuid())
+  name        String   @unique
+  description String
+  dateCreated DateTime @default(now())
+  users       User[]
 }

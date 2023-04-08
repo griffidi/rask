@@ -129,8 +129,15 @@
         "database": "raskdb",
         "username": "postgres",
         "password": "admin123"
+      },
+      {
+        "previewLimit": 50,
+        "driver": "SQLite",
+        "name": "sqlite",
+        "database": "${workspaceFolder:api}/prisma/dev.db"
       }
-    ]
+    ],
+    "sqltools.useNodeRuntime": true
   },
   "extensions": {
     "recommendations": ["esbenp.prettier-vscode", "dbaeumer.vscode-eslint"]

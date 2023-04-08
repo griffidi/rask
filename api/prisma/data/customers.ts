@@ -8,22 +8,18 @@ import {
   randStreetAddress,
   randUuid,
   randZipCode,
-  toCollection,
 } from '@ngneat/falso';
 
-export const customers = toCollection(
-  () => {
-    return {
-      id: randUuid(),
-      firstName: randFirstName(),
-      lastName: randLastName(),
-      email: randEmail(),
-      streetAddress: randStreetAddress(),
-      city: randCity(),
-      state: randStateAbbr(),
-      zipCode: randZipCode(),
-      dateStarted: randPastDate({ years: 10 }),
-    };
-  },
-  { length: 100 }
-);
+export const customers = Array.from({ length: 100 }, () => {
+  return {
+    id: randUuid(),
+    firstName: randFirstName(),
+    lastName: randLastName(),
+    email: randEmail(),
+    streetAddress: randStreetAddress(),
+    city: randCity(),
+    state: randStateAbbr(),
+    zipCode: randZipCode(),
+    dateCreated: randPastDate({ years: 10 }),
+  };
+});

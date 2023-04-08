@@ -1,7 +1,7 @@
 import { PrismaClient } from '@prisma/client';
 
 /**
- * This is a hot reloading workaround since the module
+ * This is a HMR workaround since the module
  * responsible for exporting PrismaClient gets refreshed, which can result
  * in new instances of PrismaClient being created.
  *
