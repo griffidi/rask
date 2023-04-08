@@ -27,8 +27,8 @@
     box-shadow: var(--rask-sys-scroll-shadow);
     box-sizing: border-box;
     will-change: border-width, box-shadow;
-    transition: border-width var(--_transition-duration) ease-in, background 0.3s ease,
-      box-shadow var(--_transition-duration) ease-in;
+    transition: border-width var(--_transition-duration) var(--md-sys-motion-standard-easing), background 0.3s ease,
+      box-shadow var(--_transition-duration) var(--md-sys-motion-standard-easing);
   }
 
   &::-webkit-scrollbar-thumb:hover {

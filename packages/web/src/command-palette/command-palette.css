@@ -5,17 +5,14 @@
 :host {
   --rask-list-item-container-height: 42px;
   --rask-list-padding-block: 8px;
-
   --_rask-list-padding-offset: calc(var(--rask-list-padding-block) * 2);
-  --_rask-list-min-block-size: calc(
-    var(--rask-list-item-container-height) + var(--_rask-list-padding-offset)
-  );
+  --_rask-list-min-block-size: calc(var(--rask-list-item-container-height) + var(--_rask-list-padding-offset));
 
+  --_neutral-color: var(--md-ref-palette-neutral-variant-50);
+  --_neutral-variant-color: var(--md-ref-palette-neutral-variant-60);
   --_item-height: 42px;
   --_visible-duration: 300ms;
   --_container-item-count: 2;
-  --_neutral-color: var(--md-ref-palette-neutral-variant-50);
-  --_neutral-variant-color: var(--md-ref-palette-neutral-variant-60);
   --_search-results-empty-block-size: 100px;
   --_section-visibility: hidden;
   --_section-display: none;
@@ -26,17 +23,16 @@
 }
 
 :host([opened]) .container {
-    content-visibility: visible;
-    visibility: visible;
-  }
+  content-visibility: visible;
+  visibility: visible;
+}
 
 :host([opened]:not([animating])) aside {
   --_section-visibility: visible;
   --_section-display: flex;
-  --_jump-to-block-size: calc(
-    var(--rask-list-item-container-height) * var(--_jump-to-item-count, 1) +
-      var(--_rask-list-padding-offset)
-  );
+  /* --_jump-to-block-size-without-offset is only used to simply reading the calc */
+  --_jump-to-block-size-without-offset: calc(var(--rask-list-item-container-height) * var(--_jump-to-item-count, 1));
+  --_jump-to-block-size: calc(var(--_jump-to-block-size-without-offset) + var(--_rask-list-padding-offset));
   --_aside-block-size: calc(var(--_container-default-size) + var(--_jump-to-block-size));
 }
 
@@ -60,16 +56,11 @@ aside {
   flex: 0 1 auto;
   inline-size: var(--_container-inline-size);
   block-size: var(--_aside-block-size);
-  /* gap: 15px; */
   background: var(--md-sys-color-background);
   border: 1px solid var(--md-ref-palette-neutral20);
   border-radius: var(--md-sys-shape-large);
   will-change: block-size;
-  transition: block-size 300ms ease-in-out;
-
-  /* &:has(section:empty) {
-    block-size: calc(var(--_item-height) * 4);
-  } */
+  transition: block-size 300ms var(--md-sys-motion-standard-easing)-out;
 }
 
 header,
@@ -139,9 +130,7 @@ section {
   block-size: auto;
   min-block-size: var(--_rask-list-min-block-size);
   /* max-block-size: 400px; */
-  padding-inline: calc(
-    var(--_container-padding-inline) - var(--rask-list-item-start-padding-inline-start)
-  );
+  padding-inline: calc(var(--_container-padding-inline) - var(--rask-list-item-start-padding-inline-start));
 }
 
 footer {
@@ -159,6 +148,7 @@ footer {
 
     display: flex;
     justify-content: space-raskween;
+    gap: 20px;
     block-size: 100%;
     inline-size: 100%;
     color: var(--_neutral-color);
@@ -194,45 +184,20 @@ footer {
 
 rask-list-item-link {
   --md-icon-color: var(--_neutral-color);
-  /* --rask-list-item-headline-font: var(--md-sys-typescale-label-medium-weight)
-    var(--md-sys-typescale-label-medium-size) / var(--md-sys-typescale-label-medium-line-height); */
   --rask-list-item-headline-font-size: var(--md-sys-typescale-label-large-size);
   --rask-list-item-headline-font-weight: var(--md-sys-typescale-body-small-weight);
   --rask-list-item-headline-line-height: var(--md-sys-typescale-label-medium-line-height);
 
-  /* & [slot='start'] {
-    display: flex;
-    align-items: center;
-    padding-inline-start: 8px;
-  } */
-
   & [slot='end'] {
-    --_jump-to-text-right: -10ch;
     --_jump-to-text-opacity: 0;
 
-    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
     color: var(--_neutral-color);
     font-size: 0.8em;
-
-    &::after {
-      content: 'Jump To';
-      position: absolute;
-      inset-block: 0;
-      inline-size: 100px;
-      inset-inline-end: -200px;
-      /* inset-inline-end: 0; */
-
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      opacity: var(--_jump-to-text-opacity);
-      /* animation: 600ms ease-in slideIn; */
-      /* transform: translateX(-100%); */
-      /* will-change: inset-inline-end, opacity; */
-      /* transition: inset-inline-end 200ms ease-in, opacity 300ms linear; */
-    }
+    opacity: var(--_jump-to-text-opacity);
   }
-
 
   &[active],
   &:hover {
@@ -240,35 +205,8 @@ rask-list-item-link {
     /* --md-icon-color: var(--md-sys-color-blue); */
 
     & [slot='end'] {
-      --_jump-to-text-right: 0;
       --_jump-to-text-opacity: 1;
-
-      &::after {
-        animation-name: slideIn;
-        animation-duration: 800ms;
-        animation-timing-function: ease-in;
-        animation-direction: reverse;
-        /* animation: 800ms ease-in reverse; */
-      }
     }
-  }
-}
-
-/* &[active] [slot='end'] [slot='end'],
-&:hover [slot='end'] [slot='end'] {
-  animation: slideIn 800ms ease-in reverse;
-} */
-
-
-
-@keyframes slideIn {
-  0% {
-    /* opacity: 0; */
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(0);
-    /* opacity: 1; */
   }
 }
 
@@ -281,11 +219,10 @@ rask-list-item-link {
   content-visibility: hidden;
   visibility: hidden;
   overscroll-behavior: contain;
-  /* background-color: transparent; */
   z-index: 100;
   backdrop-filter: var(--_scrim-backdrop-filter);
   will-change: backdrop-filter;
-  transition: backdrop-filter var(--_visible-duration) ease-in;
+  transition: backdrop-filter var(--_visible-duration) var(--md-sys-motion-standard-easing);
 }
 
 :host([opened]) .scrim {

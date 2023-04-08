@@ -6,7 +6,7 @@ module.exports = [
     embeddedLanguageFormatting: 'auto',
     endOfLine: 'lf',
     htmlWhitespaceSensitivity: 'ignore',
-    printWidth: 100,
+    printWidth: 120,
     proseWrap: 'preserve',
     quoteProps: 'as-needed',
     semi: true,

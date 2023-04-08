@@ -131,8 +131,7 @@ export class CommandPalette extends LitElement {
 
   protected renderActivePath(): TemplateResult {
     const { text } = this.activeListItem;
-    return html` <span class="active-path">${text}</span
-      ><span class="active-path-seperator">/</span>`;
+    return html` <span class="active-path">${text}</span><span class="active-path-seperator">/</span>`;
   }
 
   protected renderSearchResults(): TemplateResult {
@@ -153,8 +152,7 @@ export class CommandPalette extends LitElement {
                 <div slot="start">
                   <md-icon>${jumpTo.icon}</md-icon>
                 </div>
-                <div slot="end" class="jump-to-text">
-                </div>
+                <div slot="end">Jump To</div>
               </rask-list-item-link>
             `;
           })}

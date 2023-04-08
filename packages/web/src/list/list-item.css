@@ -7,21 +7,18 @@
   --rask-list-item-container-height: 42px;
   --rask-list-item-padding-inline: 8px;
   --rask-list-padding-inline: 8px;
-  --rask-list-item-headline-font-size: var(--md-sys-typescale-label-large-size);
-  --rask-list-item-headline-font-weight: var(--md-sys-typescale-label-large-weight);
-  --rask-list-item-headline-line-height: var(--md-sys-typescale-label-large-line-height);
-  /* --rask-list-item-headline-font: var(--md-sys-typescale-list-font); */
 
+  --_neutral-color: var(--md-ref-palette-neutral-variant-50);
   --_container-height: var(--rask-list-item-container-height);
   --_container-color: var(--rask-list-item-container-color, transparent);
   --_container-on-color: var(--md-sys-color-text-dark-2, #ffffff);
-  --_headline-font-size: var(--rask-list-item-headline-font-size);
-  --_headline-font-weight: var(--rask-list-item-headline-font-weight);
-  --_headline-line-height: var(--rask-list-item-headline-line-height);
-  /* --_headline-font: var(--rask-list-item-headline-font); */
+  --_headline-font-size: var(--rask-list-item-headline-font-size, var(--md-sys-typescale-label-large-size));
+  --_headline-font-weight: var(--rask-list-item-headline-font-weight, var(--md-sys-typescale-label-large-weight));
+  --_headline-line-height: var(--rask-list-item-headline-line-height, var(--md-sys-typescale-label-large-line-height));
   --_container-padding-inline: var(--rask-list-padding-inline);
   --_start-end-padding-inline: var(var(--rask-list-item-padding-inline));
-  --_container-hover-color: var(--md-sys-color-surface-2);
+  --_container-hover-color: var(--rask-list-item-hover-container-color, transparent);
+  --_container-hover-border-color: var(--rask-list-item-hover-container-border-color, var(--_neutral-color));
 }
 
 .list-item {
@@ -36,9 +33,8 @@
     content: '';
     position: absolute;
     inset: 0;
-    /* background: var(--_container-hover-color); */
-    /* border: 1px solid var(--_neutral-color); */
-    border: 1px solid var(--md-sys-color-green-dark);
+    background: var(--_container-hover-color);
+    border: 1px solid var(--_neutral-color);
     inline-size: 100%;
     block-size: 100%;
     opacity: 0;
@@ -91,7 +87,6 @@
 }
 
 .headline {
-  /* font: var(--_headline-font); */
   font-size: var(--_headline-font-size);
   font-weight: var(--_headline-font-weight);
   line-height: var(--_headline-line-height);
