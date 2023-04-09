@@ -10,7 +10,7 @@ generator client {
 
 generator typegraphql {
   provider               = "typegraphql-prisma"
-  output                 = "../prisma/generated/type-graphql"
+  output                 = "../node_modules/@prisma/generated/type-graphql"
   emitRedundantTypesInfo = "true"
 }
 

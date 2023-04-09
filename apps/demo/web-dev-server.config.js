@@ -17,18 +17,12 @@ export default /** @type {import("@web/dev-server").DevServerConfig} */ ({
   debug: false,
   nodeResolve: {
     exportConditions: ['browser', 'development'],
-    dedupe: [
-      '@material/web',
-      '@lit-labs/context',
-      '@lit-labs/task',
-      '@lit/reactive-element',
-      'lit',
-    ],
+    dedupe: ['@material/web', '@lit-labs/context', '@lit-labs/task', '@lit/reactive-element', 'lit'],
   },
   port: 8009,
   http2: true,
-  // sslKey: fileURLToPath(new URL('./certs/rootCA.key', import.meta.url)),
-  // sslCert: fileURLToPath(new URL('./certs/rootCA.pem', import.meta.url)),
+  // sslKey: './certs/.self-signed-dev-server-ssl.key',
+  // sslCert: './certs/.self-signed-dev-server-ssl.cert',
   plugins: [
     // postcss({
     //   onImport: (id) => {

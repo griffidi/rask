@@ -1,8 +1,7 @@
 /**
- * This is required at the top level because it is used by `type-graphql`
- * and the generated resolvers.
+ * This is required at the top level because it is used by `type-graphql` and the generated resolvers.
  *
- * ref https://typegraphql.com/docs/installation.html
+ * @link https://typegraphql.com/docs/installation.html
  */
 import 'reflect-metadata';
 
@@ -13,21 +12,20 @@ import { InMemoryLRUCache } from '@apollo/utils.keyvaluecache';
 import { koaMiddleware } from '@as-integrations/koa';
 import cors from '@koa/cors';
 import { type PrismaClient } from '@prisma/client';
+import { resolvers } from '@prisma/generated/type-graphql/index.js';
 import dotenv from 'dotenv';
 import Koa from 'koa';
 import bodyParser from 'koa-bodyparser';
 import http from 'node:http';
 import { buildSchema } from 'type-graphql';
-import { resolvers } from '../prisma/generated/type-graphql/index.js';
 import { client } from './client.js';
+import { IS_DEV_MODE } from './constants/env-mode.js';
 
 dotenv.config();
 
 interface Context {
   client: PrismaClient;
 }
-
-const IF_DEV_MODE = process.env['NODE_ENV'] !== 'production';
 
 const schema = await buildSchema({
   resolvers,
@@ -40,7 +38,7 @@ const httpServer = http.createServer(app.callback());
 const server = new ApolloServer<Context>({
   cache: new InMemoryLRUCache(),
   schema,
-  introspection: IF_DEV_MODE,
+  introspection: IS_DEV_MODE,
   plugins: [ApolloServerPluginDrainHttpServer({ httpServer }), ApolloServerPluginUsageReportingDisabled()],
 });
 
