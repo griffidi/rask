@@ -4,12 +4,14 @@ datasource db {
 }
 
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
+  previewFeatures = ["clientExtensions"]
 }
 
 generator typegraphql {
-  provider = "typegraphql-prisma"
-  output   = "../prisma/generated/type-graphql"
+  provider               = "typegraphql-prisma"
+  output                 = "../prisma/generated/type-graphql"
+  emitRedundantTypesInfo = "true"
 }
 
 model Customer {

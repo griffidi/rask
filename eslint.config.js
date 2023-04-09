@@ -127,6 +127,7 @@ const litConfig = {
 export default [
   {
     files: ['api/src/**/*.ts'],
+    ignoreFiles: ['api/src/prisma/generated'],
     languageOptions: {
       sourceType: 'module',
       ecmaVersion: 2022,

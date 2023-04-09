@@ -18,15 +18,21 @@
     "prisma:push": "prisma db push",
     "prisma:seed": "prisma db seed",
     "generate:db": "pnpm prisma:generate && pnpm prisma:push && pnpm prisma:seed",
-    "dev": "",
+    "dev": "ts-node-esm --transpile-only src/index.ts",
     "build": ""
   },
   "dependencies": {
     "@apollo/server": "^4.6.0",
+    "@apollo/utils.keyvaluecache": "^2.1.1",
+    "@as-integrations/koa": "^0.3.0",
+    "@koa/cors": "^4.0.0",
     "@prisma/client": "^4.12.0",
+    "dotenv": "^16.0.3",
     "graphql": "^16.6.0",
     "graphql-fields": "^2.0.3",
     "graphql-scalars": "^1.21.3",
+    "koa": "^2.14.1",
+    "koa-bodyparser": "^4.4.0",
     "reflect-metadata": "^0.1.13",
     "tslib": "^2.5.0",
     "type-graphql": "^1.1.1"
@@ -34,6 +40,9 @@
   "devDependencies": {
     "@ngneat/falso": "^6.4.0",
     "@types/graphql-fields": "^1.3.5",
+    "@types/koa": "^2.13.6",
+    "@types/koa-bodyparser": "^4.3.10",
+    "@types/koa__cors": "^4.0.0",
     "@types/node": "^18.15.11",
     "nanoid": "^4.0.2",
     "prisma": "^4.12.0",
