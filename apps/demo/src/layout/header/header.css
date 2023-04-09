@@ -48,8 +48,8 @@ header {
   --_border-background: var(--md-sys-color-background);
 
   margin-inline-start: 10px;
-  inline-size: 17px;
-  block-size: 17px;
+  inline-size: 26px;
+  block-size: 26px;
   border: double 6px transparent;
   border-radius: 50%;
   background-image: linear-gradient(var(--_border-background), var(--_border-background)),
