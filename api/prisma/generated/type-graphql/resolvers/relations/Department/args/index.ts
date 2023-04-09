@@ -1,0 +1,1 @@
+export { DepartmentEmployeesArgs } from "./DepartmentEmployeesArgs";
