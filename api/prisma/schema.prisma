@@ -11,7 +11,9 @@ generator client {
 generator typegraphql {
   provider               = "typegraphql-prisma"
   output                 = "../node_modules/@prisma/generated/type-graphql"
-  emitRedundantTypesInfo = "true"
+  emitRedundantTypesInfo = true
+  // simpleResolvers        = true
+  // useSimpleInputs        = true
 }
 
 model Customer {
