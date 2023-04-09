@@ -37,6 +37,6 @@
   "peerDependencies": {
     "@material/web": "*",
     "lit": "*",
-    "typescript": "5.0.4"
+    "typescript": "5.*"
   }
 }

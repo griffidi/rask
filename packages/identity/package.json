@@ -32,6 +32,6 @@
     "@lit/reactive-element": "*",
     "@rask/core": "workspace:*",
     "lit": "*",
-    "typescript": "5.0.4"
+    "typescript": "5.*"
   }
 }
