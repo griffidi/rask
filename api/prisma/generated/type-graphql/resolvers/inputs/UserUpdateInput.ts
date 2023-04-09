@@ -2,48 +2,46 @@ import * as TypeGraphQL from "type-graphql";
 import * as GraphQLScalars from "graphql-scalars";
 import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../../scalars";
-import { DateTimeFieldUpdateOperationsInput } from "../inputs/DateTimeFieldUpdateOperationsInput";
 import { RoleUpdateOneRequiredWithoutUsersNestedInput } from "../inputs/RoleUpdateOneRequiredWithoutUsersNestedInput";
-import { StringFieldUpdateOperationsInput } from "../inputs/StringFieldUpdateOperationsInput";
 
 @TypeGraphQL.InputType("UserUpdateInput", {
   isAbstract: true
 })
 export class UserUpdateInput {
-  @TypeGraphQL.Field(_type => StringFieldUpdateOperationsInput, {
+  @TypeGraphQL.Field(_type => String, {
     nullable: true
   })
-  id?: StringFieldUpdateOperationsInput | undefined;
+  id?: string | undefined;
 
-  @TypeGraphQL.Field(_type => StringFieldUpdateOperationsInput, {
+  @TypeGraphQL.Field(_type => String, {
     nullable: true
   })
-  userName?: StringFieldUpdateOperationsInput | undefined;
+  userName?: string | undefined;
 
-  @TypeGraphQL.Field(_type => StringFieldUpdateOperationsInput, {
+  @TypeGraphQL.Field(_type => String, {
     nullable: true
   })
-  password?: StringFieldUpdateOperationsInput | undefined;
+  password?: string | undefined;
 
-  @TypeGraphQL.Field(_type => StringFieldUpdateOperationsInput, {
+  @TypeGraphQL.Field(_type => String, {
     nullable: true
   })
-  email?: StringFieldUpdateOperationsInput | undefined;
+  email?: string | undefined;
 
-  @TypeGraphQL.Field(_type => StringFieldUpdateOperationsInput, {
+  @TypeGraphQL.Field(_type => String, {
     nullable: true
   })
-  firstName?: StringFieldUpdateOperationsInput | undefined;
+  firstName?: string | undefined;
 
-  @TypeGraphQL.Field(_type => StringFieldUpdateOperationsInput, {
+  @TypeGraphQL.Field(_type => String, {
     nullable: true
   })
-  lastName?: StringFieldUpdateOperationsInput | undefined;
+  lastName?: string | undefined;
 
-  @TypeGraphQL.Field(_type => DateTimeFieldUpdateOperationsInput, {
+  @TypeGraphQL.Field(_type => Date, {
     nullable: true
   })
-  dateCreated?: DateTimeFieldUpdateOperationsInput | undefined;
+  dateCreated?: Date | undefined;
 
   @TypeGraphQL.Field(_type => RoleUpdateOneRequiredWithoutUsersNestedInput, {
     nullable: true

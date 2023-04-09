@@ -7,7 +7,8 @@ import { RoleMaxAggregate } from "../outputs/RoleMaxAggregate";
 import { RoleMinAggregate } from "../outputs/RoleMinAggregate";
 
 @TypeGraphQL.ObjectType("AggregateRole", {
-  isAbstract: true
+  isAbstract: true,
+  simpleResolvers: true
 })
 export class AggregateRole {
   @TypeGraphQL.Field(_type => RoleCountAggregate, {

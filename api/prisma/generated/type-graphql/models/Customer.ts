@@ -4,7 +4,8 @@ import { Prisma } from "@prisma/client";
 import { DecimalJSScalar } from "../scalars";
 
 @TypeGraphQL.ObjectType("Customer", {
-  isAbstract: true
+  isAbstract: true,
+  simpleResolvers: true
 })
 export class Customer {
   @TypeGraphQL.Field(_type => String, {

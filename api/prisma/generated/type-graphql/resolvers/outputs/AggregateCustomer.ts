@@ -7,7 +7,8 @@ import { CustomerMaxAggregate } from "../outputs/CustomerMaxAggregate";
 import { CustomerMinAggregate } from "../outputs/CustomerMinAggregate";
 
 @TypeGraphQL.ObjectType("AggregateCustomer", {
-  isAbstract: true
+  isAbstract: true,
+  simpleResolvers: true
 })
 export class AggregateCustomer {
   @TypeGraphQL.Field(_type => CustomerCountAggregate, {

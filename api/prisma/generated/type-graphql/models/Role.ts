@@ -6,7 +6,8 @@ import { User } from "../models/User";
 import { RoleCount } from "../resolvers/outputs/RoleCount";
 
 @TypeGraphQL.ObjectType("Role", {
-  isAbstract: true
+  isAbstract: true,
+  simpleResolvers: true
 })
 export class Role {
   @TypeGraphQL.Field(_type => String, {

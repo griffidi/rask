@@ -5,7 +5,8 @@ import { DecimalJSScalar } from "../scalars";
 import { Role } from "../models/Role";
 
 @TypeGraphQL.ObjectType("User", {
-  isAbstract: true
+  isAbstract: true,
+  simpleResolvers: true
 })
 export class User {
   @TypeGraphQL.Field(_type => String, {

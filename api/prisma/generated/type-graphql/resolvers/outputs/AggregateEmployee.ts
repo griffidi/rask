@@ -7,7 +7,8 @@ import { EmployeeMaxAggregate } from "../outputs/EmployeeMaxAggregate";
 import { EmployeeMinAggregate } from "../outputs/EmployeeMinAggregate";
 
 @TypeGraphQL.ObjectType("AggregateEmployee", {
-  isAbstract: true
+  isAbstract: true,
+  simpleResolvers: true
 })
 export class AggregateEmployee {
   @TypeGraphQL.Field(_type => EmployeeCountAggregate, {

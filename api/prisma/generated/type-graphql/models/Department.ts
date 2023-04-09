@@ -6,7 +6,8 @@ import { Employee } from "../models/Employee";
 import { DepartmentCount } from "../resolvers/outputs/DepartmentCount";
 
 @TypeGraphQL.ObjectType("Department", {
-  isAbstract: true
+  isAbstract: true,
+  simpleResolvers: true
 })
 export class Department {
   @TypeGraphQL.Field(_type => String, {

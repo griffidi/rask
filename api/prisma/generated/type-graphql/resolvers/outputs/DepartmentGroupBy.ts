@@ -7,7 +7,8 @@ import { DepartmentMaxAggregate } from "../outputs/DepartmentMaxAggregate";
 import { DepartmentMinAggregate } from "../outputs/DepartmentMinAggregate";
 
 @TypeGraphQL.ObjectType("DepartmentGroupBy", {
-  isAbstract: true
+  isAbstract: true,
+  simpleResolvers: true
 })
 export class DepartmentGroupBy {
   @TypeGraphQL.Field(_type => String, {
