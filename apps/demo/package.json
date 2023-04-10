@@ -39,6 +39,7 @@
     "@graphql-codegen/typed-document-node": "^4.0.0",
     "@graphql-codegen/typescript": "^3.0.3",
     "@graphql-typed-document-node/core": "^3.2.0",
+    "@rollup/plugin-graphql": "^2.0.3",
     "@types/node": "^18.15.11",
     "@web/dev-server": "^0.1.38",
     "@web/dev-server-esbuild": "^0.3.6",

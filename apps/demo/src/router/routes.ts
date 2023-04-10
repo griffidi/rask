@@ -3,22 +3,22 @@ import { html } from 'lit';
 import { RouteTypes } from './route-types.js';
 
 export default [
-  {
-    name: 'default',
-    path: '/',
-    render: () => {
-      import('../pages/home/home-page.js');
-      return html`<app-home-page></app-home-page>`;
-    },
-  },
   // {
   //   name: 'default',
   //   path: '/',
   //   render: () => {
-  //     import('../pages/login/login-page.js');
-  //     return html`<app-login-page></app-login-page>`;
+  //     import('../pages/home/home-page.js');
+  //     return html`<app-home-page></app-home-page>`;
   //   },
   // },
+  {
+    name: 'default',
+    path: '/',
+    render: () => {
+      import('../pages/login/login-page.js');
+      return html`<app-login-page></app-login-page>`;
+    },
+  },
   {
     name: 'documents',
     path: RouteTypes.documents,

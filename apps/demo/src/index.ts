@@ -3,7 +3,7 @@ import type { Nav } from '#/components/nav/nav.js';
 import '#/components/search/search.js';
 import '#/layout/footer/footer.js';
 import '#/layout/header/header.js';
-import { routerContext } from '#/router/index.js';
+import { routerContext } from '#/router/router-context.js';
 import routes from '#/router/routes.js';
 import { ContextProvider } from '@lit-labs/context';
 import { Router } from '@lit-labs/router';

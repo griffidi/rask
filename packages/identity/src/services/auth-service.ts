@@ -1,8 +1,8 @@
-import { TOKEN_KEY } from '#/constants/token-key.js';
 import { useStorage } from '@rask/core/cache/index.js';
 import { useCrypto } from '@rask/core/crypto/index.js';
 import { injectable } from '@rask/core/di/injectable.js';
 import { throwIfEmpty } from '@rask/core/validation/assert.js';
+import { TOKEN_KEY } from '../constants/token-key.js';
 
 @injectable()
 export class AuthService {
@@ -35,7 +35,7 @@ export class AuthService {
       const storage = useStorage();
       const crypto = useCrypto();
 
-      storage.set(TOKEN_KEY, crypto.uuid);
+      storage.set(TOKEN_KEY, crypto.nanoid);
       return true;
     }
 
