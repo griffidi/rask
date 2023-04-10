@@ -59,8 +59,7 @@ aside {
   background: var(--md-sys-color-background);
   border: 1px solid var(--md-ref-palette-neutral20);
   border-radius: var(--md-sys-shape-large);
-  will-change: block-size;
-  transition: block-size 300ms var(--md-sys-motion-standard-easing)-out;
+  transition: block-size 200ms var(--md-sys-motion-standard-easing);
 }
 
 header,
@@ -129,7 +128,6 @@ section {
   inline-size: 100%;
   block-size: auto;
   min-block-size: var(--_rask-list-min-block-size);
-  /* max-block-size: 400px; */
   padding-inline: calc(var(--_container-padding-inline) - var(--rask-list-item-start-padding-inline-start));
 }
 
@@ -201,9 +199,6 @@ rask-list-item-link {
 
   &[active],
   &:hover {
-    /* --_jump-to-text-right: 0; */
-    /* --md-icon-color: var(--md-sys-color-blue); */
-
     & [slot='end'] {
       --_jump-to-text-opacity: 1;
     }
