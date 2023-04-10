@@ -1,5 +1,5 @@
 :root {
-  --md-sys-color-green: #42b883;
+  --md-sys-color-green: rgb(66, 184, 131);
   --md-sys-color-green-rgb: 66, 184, 131;
   --md-sys-color-on-green: #194431;
   --md-sys-color-green-light: #42d392;
@@ -74,11 +74,7 @@
     var(--md-sys-color-magenta) 14.05%,
     var(--md-sys-color-flamingo) 89.3%
   );
-  --md-sys-color-gradient-purple-blue: linear-gradient(
-    to right,
-    var(--md-sys-color-purple),
-    var(--md-sys-color-blue)
-  );
+  --md-sys-color-gradient-purple-blue: linear-gradient(to right, var(--md-sys-color-purple), var(--md-sys-color-blue));
   --md-sys-color-gradient-flamingo-purple: linear-gradient(
     128.87deg,
     var(--md-sys-color-flamingo) 14.05%,

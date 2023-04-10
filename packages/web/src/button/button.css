@@ -1,6 +1,7 @@
 :host {
   --_button-color: var(--rask-button-color, var(--md-sys-color-surface-5));
   --_button-on-color: var(--rask-button-on-color, var(--md-sys-color-surface-5));
+  /* --_button-shadow: var(--rask-button-shadow, #000000); */
   --_button-shadow: var(--rask-button-shadow, 0 0 0);
 }
 
@@ -40,6 +41,7 @@ button {
   }
 
   &:hover::before {
+    /* box-shadow: rgb(from var(--_button-shadow) r g b / 0.5) 0px 0px 10px 0px; */
     box-shadow: rgb(var(--_button-shadow), 0.5) 0px 0px 10px 0px;
   }
 
