@@ -1,3 +1,5 @@
+const { resolve } = require('node:path');
+
 module.exports = {
   // client: {
   //   name: '@rask/demo',
@@ -6,12 +8,15 @@ module.exports = {
   //   // excludes: ['**/__tests__/**'],
   // },
   client: {
+    // includes: ['./src/graphql/**/*.graphql'],
+    includes: [resolve(__dirname, './src/graphql/**/*.graphql')],
     service: {
       name: '@rask/api',
-      includes: ['./src/graphql/**/*.graphql', '../../api/src/graphql/**/*.graphql'],
-      url: 'http://localhost:8008/graphql',
+      localSchemaFile: resolve(__dirname, '../../api/prisma/schema.graphql'),
+      // localSchemaFile: '../../api/prisma/schema.graphql',
+      // url: 'http://localhost:8008/graphql',
       // url: 'c:/repos/rask/api/src/graphql/schema.graphql',
-      skipSSLValidation: true,
+      // skipSSLValidation: true,
     },
   },
 };
