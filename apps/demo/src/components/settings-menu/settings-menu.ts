@@ -1,5 +1,5 @@
 import { RouteTypes } from '#/router/route-types.js';
-import '@material/web/button/text-link-button.js';
+import '@material/web/button/text-button.js';
 import '@material/web/switch/switch.js';
 import type { MdSwitch } from '@material/web/switch/switch.js';
 import type { TypeEvent } from '@rask/core/events/type-event.js';
@@ -34,7 +34,7 @@ export class SettingsMenu extends LitElement {
           <md-switch><md-icon>notification</md-icon></md-switch>
         </label>
         <label>
-          <md-text-link-button href=${RouteTypes.settings}>Settings</md-text-link-button>
+          <md-text-button href=${RouteTypes.settings}>Settings</md-text-button>
         </label>
       </rask-menu>
     `;
