@@ -24,7 +24,7 @@
     "build": ""
   },
   "dependencies": {
-    "@material/web": "1.0.0-pre.5",
+    "@material/web": "1.0.0-pre.6",
     "@rask/core": "workspace:^",
     "lit": "^2.7.2",
     "modern-normalize": "^1.1.0",

@@ -26,7 +26,7 @@
     "@lit-labs/router": "^0.1.1",
     "@lit-labs/task": "^2.1.0",
     "@lit/reactive-element": "^1.6.1",
-    "@material/web": "1.0.0-pre.5",
+    "@material/web": "1.0.0-pre.6",
     "@rask/core": "workspace:^",
     "@rask/identity": "workspace:^",
     "@rask/web": "workspace:^",
@@ -46,8 +46,6 @@
     "@web/dev-server-hmr": "^0.1.12",
     "@web/dev-server-rollup": "^0.4.1",
     "graphql-tag": "^2.12.6",
-    "postcss-preset-env": "^8.3.0",
-    "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-typescript-paths": "^1.4.0",
     "typescript": "5.0.4"
   }
