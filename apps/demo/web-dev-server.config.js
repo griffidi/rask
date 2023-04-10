@@ -3,10 +3,12 @@ import { hmrPlugin } from '@web/dev-server-hmr';
 import { fromRollup } from '@web/dev-server-rollup';
 // import presetenv from 'postcss-preset-env';
 // import postcss from 'rollup-plugin-postcss';
+import rollupGraphQl from '@rollup/plugin-graphql';
 import { typescriptPaths } from 'rollup-plugin-typescript-paths';
 import { fileURLToPath } from 'url';
 
 const tsPaths = fromRollup(typescriptPaths);
+const graphql = fromRollup(rollupGraphQl);
 
 export default /** @type {import("@web/dev-server").DevServerConfig} */ ({
   rootDir: './',
@@ -23,6 +25,10 @@ export default /** @type {import("@web/dev-server").DevServerConfig} */ ({
   http2: true,
   // sslKey: './certs/.self-signed-dev-server-ssl.key',
   // sslCert: './certs/.self-signed-dev-server-ssl.cert',
+  mimeTypes: {
+    // 'src/**/*.json': 'js',
+    'src/**/*.graphql': 'js',
+  },
   plugins: [
     // postcss({
     //   onImport: (id) => {
@@ -40,6 +46,9 @@ export default /** @type {import("@web/dev-server").DevServerConfig} */ ({
     // }),
     tsPaths({
       preserveExtensions: true,
+    }),
+    graphql({
+      include: 'src/graphql/**/*.graphql',
     }),
     esbuildPlugin({
       target: 'esnext',

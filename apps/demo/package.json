@@ -17,9 +17,11 @@
     "README.md"
   ],
   "scripts": {
+    "codegen": "graphql-codegen --config codegen.yml -w",
     "dev": "wds"
   },
   "dependencies": {
+    "@apollo/client": "^3.7.11",
     "@lit-labs/context": "^0.3.0",
     "@lit-labs/router": "^0.1.1",
     "@lit-labs/task": "^2.1.0",
@@ -28,15 +30,21 @@
     "@rask/core": "workspace:^",
     "@rask/identity": "workspace:^",
     "@rask/web": "workspace:^",
+    "graphql": "^16.6.0",
     "lit": "^2.7.2",
     "tslib": "^2.5.0"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "^3.3.0",
+    "@graphql-codegen/typed-document-node": "^4.0.0",
+    "@graphql-codegen/typescript": "^3.0.3",
+    "@graphql-typed-document-node/core": "^3.2.0",
     "@types/node": "^18.15.11",
     "@web/dev-server": "^0.1.38",
     "@web/dev-server-esbuild": "^0.3.6",
     "@web/dev-server-hmr": "^0.1.12",
     "@web/dev-server-rollup": "^0.4.1",
+    "graphql-tag": "^2.12.6",
     "postcss-preset-env": "^8.3.0",
     "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-typescript-paths": "^1.4.0",

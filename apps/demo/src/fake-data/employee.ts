@@ -4372,7 +4372,7 @@ export const employees: Employee[] = [
     id: '134226C4-146D-D086-91EA-C5421884F5C3',
     fullName: 'Ebony Carney',
     organization: 'Arcu Vivamus Sit LLP',
-    phone: '(635) 291-8008',
+    phone: '(635) 291-8000',
     email: 'sagittis.felis@protonmail.ca',
     salary: '$17,880.62',
     startDate: 'Apr 25, 2023',

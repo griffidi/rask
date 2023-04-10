@@ -29,7 +29,7 @@ interface Context {
 
 const schema = await buildSchema({
   resolvers,
-  emitSchemaFile: './src/prisma/generated/schema.graphql',
+  emitSchemaFile: './prisma/schema.graphql',
   validate: false,
 });
 

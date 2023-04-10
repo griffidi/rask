@@ -161,7 +161,7 @@
         "runtimeExecutable": "dev",
         "runtimeArgs": ["dev"],
         "sourceMaps": false,
-        "url": "http://localhost:8008/graphql",
+        "url": "http://localhost:8000/graphql",
         "userDataDir": "${workspaceFolder}/.out/edge/graphql",
         "internalConsoleOptions": "neverOpen",
         "smartStep": true,
