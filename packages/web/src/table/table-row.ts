@@ -1,12 +1,12 @@
 import { LitElement, html, type TemplateResult } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
-import css from './table-row.css' assert { type: 'css ' };
+import { customElement } from 'lit/decorators.js';
+import css from './table-row.css' assert { type: 'css' };
 
-@customElement('rask-table-row')
+export const TABLE_ROW_SELECTOR = 'rask-table-row';
+
+@customElement(TABLE_ROW_SELECTOR)
 export class TableRow extends LitElement {
   static override styles = [css];
-
-  @property() header = '';
 
   override render(): TemplateResult {
     return html``;
@@ -15,6 +15,6 @@ export class TableRow extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'rask-table-row': TableRow;
+    TABLE_ROW_SELECTOR: TableRow;
   }
 }

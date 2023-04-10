@@ -1,11 +1,11 @@
 import { LitElement, html, type TemplateResult } from 'lit';
 import { customElement } from 'lit/decorators.js';
-import css from './table-cell.css' assert { type: 'css' };
+import css from './table-body.css' assert { type: 'css' };
 
-export const TABLE_CELL_SELECTOR = 'rask-table-cell';
+export const TABLE_BODY_SELECTOR = 'rask-table-body';
 
-@customElement(TABLE_CELL_SELECTOR)
-export class TableCell extends LitElement {
+@customElement(TABLE_BODY_SELECTOR)
+export class TableBody extends LitElement {
   static override styles = [css];
 
   override render(): TemplateResult {
@@ -15,6 +15,6 @@ export class TableCell extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    TABLE_CELL_SELECTOR: TableCell;
+    TABLE_BODY_SELECTOR: TableBody;
   }
 }
