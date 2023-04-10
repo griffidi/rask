@@ -13,6 +13,7 @@ dist
 dist-ssr
 *.local
 *ts.timestamp*
+*.env
 
 # Editor directories and files
 !.vscode/extensions.json

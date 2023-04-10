@@ -21,7 +21,7 @@ export default /** @type {import("@web/dev-server").DevServerConfig} */ ({
     exportConditions: ['browser', 'development'],
     dedupe: ['@material/web', '@lit-labs/context', '@lit-labs/task', '@lit/reactive-element', 'lit'],
   },
-  port: 8009,
+  port: 8000,
   http2: true,
   // sslKey: './certs/.self-signed-dev-server-ssl.key',
   // sslCert: './certs/.self-signed-dev-server-ssl.cert',
