@@ -4,9 +4,6 @@
     "noPropertyAccessFromIndexSignature": true,
     "outDir": "./dist",
     "rootDir": ".",
-    // "paths": {
-    //   "@generated/*": ["./node_modules/@generated/*"]
-    // },
     "types": ["node"]
   },
   "include": ["src/**/*.ts", "prisma/**/*.ts"],
