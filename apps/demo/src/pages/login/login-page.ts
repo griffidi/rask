@@ -4,10 +4,11 @@ import { consume } from '@lit-labs/context';
 import type { Router } from '@lit-labs/router';
 import '@material/web/button/text-button.js';
 import '@material/web/icon/icon.js';
+import { useInject } from '@rask/core/di/inject.js';
 import { AuthService } from '@rask/identity/services/auth-service.js';
 import '@rask/web/button/button.js';
 import { LitElement, html, type TemplateResult } from 'lit';
-import { customElement, state } from 'lit/decorators.js';
+import { customElement } from 'lit/decorators.js';
 import { live } from 'lit/directives/live.js';
 import css from './login-page.css' assert { type: 'css' };
 
@@ -19,10 +20,9 @@ export class LoginPage extends LitElement {
   #password: string = '';
 
   @consume({ context: routerContext })
-  @state()
   router: Router | undefined;
 
-  private authService = new AuthService();
+  private authService = useInject(AuthService);
 
   override render(): TemplateResult {
     return html`
