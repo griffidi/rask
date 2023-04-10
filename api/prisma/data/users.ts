@@ -8,6 +8,7 @@ import {
   randUserName,
 } from '@ngneat/falso';
 import { nanoid } from 'nanoid';
+import { randChanceFn } from './random-generators/chance-fn.js';
 import { roles } from './roles.js';
 
 const adminRoleId = roles.find((role) => role.name === 'Administrator').id;
@@ -22,6 +23,7 @@ const adminUser = {
   lastName: 'One',
   roleId: adminRoleId,
   dateCreated: randPastDate({ years: 10 }),
+  dateUpdated: new Date('2023-01-01'),
 };
 
 const basicUsers = Array.from({ length: 50 }, () => {
@@ -34,6 +36,7 @@ const basicUsers = Array.from({ length: 50 }, () => {
     lastName: randLastName(),
     roleId: userRoleId,
     dateCreated: randPastDate({ years: 10 }),
+    dateUpdated: randChanceFn({ chanceTrue: 0.6 }, () => randPastDate({ years: 10 })),
   };
 });
 

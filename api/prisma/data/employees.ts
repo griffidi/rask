@@ -12,6 +12,7 @@ import {
 } from '@ngneat/falso';
 import { nanoid } from 'nanoid';
 import { departments } from './departments.js';
+import { randChanceFn } from './random-generators/chance-fn.js';
 
 const departmentLength = departments.length;
 
@@ -34,5 +35,6 @@ export const employees = Array.from({ length: 100 }, () => {
     jobTitle: randJobTitle(),
     departmentId: randDepartmentIdCustom(),
     dateStarted: randPastDate({ years: 10 }),
+    dateUpdated: randChanceFn({ chanceTrue: 0.6 }, () => randPastDate({ years: 10 })),
   };
 });

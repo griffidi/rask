@@ -40,6 +40,7 @@ type AggregateUser {
 type Customer {
   city: String!
   dateCreated: DateTime!
+  dateUpdated: DateTime
   email: String!
   firstName: String!
   id: String!
@@ -53,6 +54,7 @@ type CustomerCountAggregate {
   _all: Int!
   city: Int!
   dateCreated: Int!
+  dateUpdated: Int!
   email: Int!
   firstName: Int!
   id: Int!
@@ -65,6 +67,7 @@ type CustomerCountAggregate {
 input CustomerCountOrderByAggregateInput {
   city: SortOrder
   dateCreated: SortOrder
+  dateUpdated: SortOrder
   email: SortOrder
   firstName: SortOrder
   id: SortOrder
@@ -77,6 +80,7 @@ input CustomerCountOrderByAggregateInput {
 input CustomerCreateInput {
   city: String!
   dateCreated: DateTime
+  dateUpdated: DateTime
   email: String!
   firstName: String!
   id: String
@@ -92,6 +96,7 @@ type CustomerGroupBy {
   _min: CustomerMinAggregate
   city: String!
   dateCreated: DateTime!
+  dateUpdated: DateTime
   email: String!
   firstName: String!
   id: String!
@@ -104,6 +109,7 @@ type CustomerGroupBy {
 type CustomerMaxAggregate {
   city: String
   dateCreated: DateTime
+  dateUpdated: DateTime
   email: String
   firstName: String
   id: String
@@ -116,6 +122,7 @@ type CustomerMaxAggregate {
 input CustomerMaxOrderByAggregateInput {
   city: SortOrder
   dateCreated: SortOrder
+  dateUpdated: SortOrder
   email: SortOrder
   firstName: SortOrder
   id: SortOrder
@@ -128,6 +135,7 @@ input CustomerMaxOrderByAggregateInput {
 type CustomerMinAggregate {
   city: String
   dateCreated: DateTime
+  dateUpdated: DateTime
   email: String
   firstName: String
   id: String
@@ -140,6 +148,7 @@ type CustomerMinAggregate {
 input CustomerMinOrderByAggregateInput {
   city: SortOrder
   dateCreated: SortOrder
+  dateUpdated: SortOrder
   email: SortOrder
   firstName: SortOrder
   id: SortOrder
@@ -155,6 +164,7 @@ input CustomerOrderByWithAggregationInput {
   _min: CustomerMinOrderByAggregateInput
   city: SortOrder
   dateCreated: SortOrder
+  dateUpdated: SortOrder
   email: SortOrder
   firstName: SortOrder
   id: SortOrder
@@ -167,6 +177,7 @@ input CustomerOrderByWithAggregationInput {
 input CustomerOrderByWithRelationInput {
   city: SortOrder
   dateCreated: SortOrder
+  dateUpdated: SortOrder
   email: SortOrder
   firstName: SortOrder
   id: SortOrder
@@ -179,6 +190,7 @@ input CustomerOrderByWithRelationInput {
 enum CustomerScalarFieldEnum {
   city
   dateCreated
+  dateUpdated
   email
   firstName
   id
@@ -194,6 +206,7 @@ input CustomerScalarWhereWithAggregatesInput {
   OR: [CustomerScalarWhereWithAggregatesInput!]
   city: StringWithAggregatesFilter
   dateCreated: DateTimeWithAggregatesFilter
+  dateUpdated: DateTimeNullableWithAggregatesFilter
   email: StringWithAggregatesFilter
   firstName: StringWithAggregatesFilter
   id: StringWithAggregatesFilter
@@ -204,27 +217,29 @@ input CustomerScalarWhereWithAggregatesInput {
 }
 
 input CustomerUpdateInput {
-  city: StringFieldUpdateOperationsInput
-  dateCreated: DateTimeFieldUpdateOperationsInput
-  email: StringFieldUpdateOperationsInput
-  firstName: StringFieldUpdateOperationsInput
-  id: StringFieldUpdateOperationsInput
-  lastName: StringFieldUpdateOperationsInput
-  state: StringFieldUpdateOperationsInput
-  streetAddress: StringFieldUpdateOperationsInput
-  zipCode: StringFieldUpdateOperationsInput
+  city: String
+  dateCreated: DateTime
+  dateUpdated: DateTime
+  email: String
+  firstName: String
+  id: String
+  lastName: String
+  state: String
+  streetAddress: String
+  zipCode: String
 }
 
 input CustomerUpdateManyMutationInput {
-  city: StringFieldUpdateOperationsInput
-  dateCreated: DateTimeFieldUpdateOperationsInput
-  email: StringFieldUpdateOperationsInput
-  firstName: StringFieldUpdateOperationsInput
-  id: StringFieldUpdateOperationsInput
-  lastName: StringFieldUpdateOperationsInput
-  state: StringFieldUpdateOperationsInput
-  streetAddress: StringFieldUpdateOperationsInput
-  zipCode: StringFieldUpdateOperationsInput
+  city: String
+  dateCreated: DateTime
+  dateUpdated: DateTime
+  email: String
+  firstName: String
+  id: String
+  lastName: String
+  state: String
+  streetAddress: String
+  zipCode: String
 }
 
 input CustomerWhereInput {
@@ -233,6 +248,7 @@ input CustomerWhereInput {
   OR: [CustomerWhereInput!]
   city: StringFilter
   dateCreated: DateTimeFilter
+  dateUpdated: DateTimeNullableFilter
   email: StringFilter
   firstName: StringFilter
   id: StringFilter
@@ -252,10 +268,6 @@ The javascript `Date` as string. Type represents date and time as the ISO Date s
 """
 scalar DateTime
 
-input DateTimeFieldUpdateOperationsInput {
-  set: DateTime
-}
-
 input DateTimeFilter {
   equals: DateTime
   gt: DateTime
@@ -264,6 +276,31 @@ input DateTimeFilter {
   lt: DateTime
   lte: DateTime
   not: NestedDateTimeFilter
+  notIn: [DateTime!]
+}
+
+input DateTimeNullableFilter {
+  equals: DateTime
+  gt: DateTime
+  gte: DateTime
+  in: [DateTime!]
+  lt: DateTime
+  lte: DateTime
+  not: NestedDateTimeNullableFilter
+  notIn: [DateTime!]
+}
+
+input DateTimeNullableWithAggregatesFilter {
+  _count: NestedIntNullableFilter
+  _max: NestedDateTimeNullableFilter
+  _min: NestedDateTimeNullableFilter
+  equals: DateTime
+  gt: DateTime
+  gte: DateTime
+  in: [DateTime!]
+  lt: DateTime
+  lte: DateTime
+  not: NestedDateTimeNullableWithAggregatesFilter
   notIn: [DateTime!]
 }
 
@@ -283,6 +320,8 @@ input DateTimeWithAggregatesFilter {
 
 type Department {
   _count: DepartmentCount
+  dateCreated: DateTime!
+  dateUpdated: DateTime
   employees(cursor: EmployeeWhereUniqueInput, distinct: [EmployeeScalarFieldEnum!], orderBy: [EmployeeOrderByWithRelationInput!], skip: Int, take: Int, where: EmployeeWhereInput): [Employee!]!
   id: String!
   name: String!
@@ -294,16 +333,22 @@ type DepartmentCount {
 
 type DepartmentCountAggregate {
   _all: Int!
+  dateCreated: Int!
+  dateUpdated: Int!
   id: Int!
   name: Int!
 }
 
 input DepartmentCountOrderByAggregateInput {
+  dateCreated: SortOrder
+  dateUpdated: SortOrder
   id: SortOrder
   name: SortOrder
 }
 
 input DepartmentCreateInput {
+  dateCreated: DateTime
+  dateUpdated: DateTime
   employees: EmployeeCreateNestedManyWithoutDepartmentInput
   id: String
   name: String!
@@ -321,6 +366,8 @@ input DepartmentCreateOrConnectWithoutEmployeesInput {
 }
 
 input DepartmentCreateWithoutEmployeesInput {
+  dateCreated: DateTime
+  dateUpdated: DateTime
   id: String
   name: String!
 }
@@ -329,26 +376,36 @@ type DepartmentGroupBy {
   _count: DepartmentCountAggregate
   _max: DepartmentMaxAggregate
   _min: DepartmentMinAggregate
+  dateCreated: DateTime!
+  dateUpdated: DateTime
   id: String!
   name: String!
 }
 
 type DepartmentMaxAggregate {
+  dateCreated: DateTime
+  dateUpdated: DateTime
   id: String
   name: String
 }
 
 input DepartmentMaxOrderByAggregateInput {
+  dateCreated: SortOrder
+  dateUpdated: SortOrder
   id: SortOrder
   name: SortOrder
 }
 
 type DepartmentMinAggregate {
+  dateCreated: DateTime
+  dateUpdated: DateTime
   id: String
   name: String
 }
 
 input DepartmentMinOrderByAggregateInput {
+  dateCreated: SortOrder
+  dateUpdated: SortOrder
   id: SortOrder
   name: SortOrder
 }
@@ -357,11 +414,15 @@ input DepartmentOrderByWithAggregationInput {
   _count: DepartmentCountOrderByAggregateInput
   _max: DepartmentMaxOrderByAggregateInput
   _min: DepartmentMinOrderByAggregateInput
+  dateCreated: SortOrder
+  dateUpdated: SortOrder
   id: SortOrder
   name: SortOrder
 }
 
 input DepartmentOrderByWithRelationInput {
+  dateCreated: SortOrder
+  dateUpdated: SortOrder
   employees: EmployeeOrderByRelationAggregateInput
   id: SortOrder
   name: SortOrder
@@ -373,6 +434,8 @@ input DepartmentRelationFilter {
 }
 
 enum DepartmentScalarFieldEnum {
+  dateCreated
+  dateUpdated
   id
   name
 }
@@ -381,19 +444,25 @@ input DepartmentScalarWhereWithAggregatesInput {
   AND: [DepartmentScalarWhereWithAggregatesInput!]
   NOT: [DepartmentScalarWhereWithAggregatesInput!]
   OR: [DepartmentScalarWhereWithAggregatesInput!]
+  dateCreated: DateTimeWithAggregatesFilter
+  dateUpdated: DateTimeNullableWithAggregatesFilter
   id: StringWithAggregatesFilter
   name: StringWithAggregatesFilter
 }
 
 input DepartmentUpdateInput {
+  dateCreated: DateTime
+  dateUpdated: DateTime
   employees: EmployeeUpdateManyWithoutDepartmentNestedInput
-  id: StringFieldUpdateOperationsInput
-  name: StringFieldUpdateOperationsInput
+  id: String
+  name: String
 }
 
 input DepartmentUpdateManyMutationInput {
-  id: StringFieldUpdateOperationsInput
-  name: StringFieldUpdateOperationsInput
+  dateCreated: DateTime
+  dateUpdated: DateTime
+  id: String
+  name: String
 }
 
 input DepartmentUpdateOneRequiredWithoutEmployeesNestedInput {
@@ -405,8 +474,10 @@ input DepartmentUpdateOneRequiredWithoutEmployeesNestedInput {
 }
 
 input DepartmentUpdateWithoutEmployeesInput {
-  id: StringFieldUpdateOperationsInput
-  name: StringFieldUpdateOperationsInput
+  dateCreated: DateTime
+  dateUpdated: DateTime
+  id: String
+  name: String
 }
 
 input DepartmentUpsertWithoutEmployeesInput {
@@ -418,6 +489,8 @@ input DepartmentWhereInput {
   AND: [DepartmentWhereInput!]
   NOT: [DepartmentWhereInput!]
   OR: [DepartmentWhereInput!]
+  dateCreated: DateTimeFilter
+  dateUpdated: DateTimeNullableFilter
   employees: EmployeeListRelationFilter
   id: StringFilter
   name: StringFilter
@@ -431,6 +504,7 @@ input DepartmentWhereUniqueInput {
 type Employee {
   city: String!
   dateStarted: DateTime!
+  dateUpdated: DateTime
   department: Department!
   departmentId: String!
   email: String!
@@ -448,6 +522,7 @@ type EmployeeCountAggregate {
   _all: Int!
   city: Int!
   dateStarted: Int!
+  dateUpdated: Int!
   departmentId: Int!
   email: Int!
   firstName: Int!
@@ -463,6 +538,7 @@ type EmployeeCountAggregate {
 input EmployeeCountOrderByAggregateInput {
   city: SortOrder
   dateStarted: SortOrder
+  dateUpdated: SortOrder
   departmentId: SortOrder
   email: SortOrder
   firstName: SortOrder
@@ -478,6 +554,7 @@ input EmployeeCountOrderByAggregateInput {
 input EmployeeCreateInput {
   city: String!
   dateStarted: DateTime
+  dateUpdated: DateTime
   department: DepartmentCreateNestedOneWithoutEmployeesInput!
   email: String!
   firstName: String!
@@ -504,6 +581,7 @@ input EmployeeCreateOrConnectWithoutDepartmentInput {
 input EmployeeCreateWithoutDepartmentInput {
   city: String!
   dateStarted: DateTime
+  dateUpdated: DateTime
   email: String!
   firstName: String!
   gender: String!
@@ -521,6 +599,7 @@ type EmployeeGroupBy {
   _min: EmployeeMinAggregate
   city: String!
   dateStarted: DateTime!
+  dateUpdated: DateTime
   departmentId: String!
   email: String!
   firstName: String!
@@ -542,6 +621,7 @@ input EmployeeListRelationFilter {
 type EmployeeMaxAggregate {
   city: String
   dateStarted: DateTime
+  dateUpdated: DateTime
   departmentId: String
   email: String
   firstName: String
@@ -557,6 +637,7 @@ type EmployeeMaxAggregate {
 input EmployeeMaxOrderByAggregateInput {
   city: SortOrder
   dateStarted: SortOrder
+  dateUpdated: SortOrder
   departmentId: SortOrder
   email: SortOrder
   firstName: SortOrder
@@ -572,6 +653,7 @@ input EmployeeMaxOrderByAggregateInput {
 type EmployeeMinAggregate {
   city: String
   dateStarted: DateTime
+  dateUpdated: DateTime
   departmentId: String
   email: String
   firstName: String
@@ -587,6 +669,7 @@ type EmployeeMinAggregate {
 input EmployeeMinOrderByAggregateInput {
   city: SortOrder
   dateStarted: SortOrder
+  dateUpdated: SortOrder
   departmentId: SortOrder
   email: SortOrder
   firstName: SortOrder
@@ -609,6 +692,7 @@ input EmployeeOrderByWithAggregationInput {
   _min: EmployeeMinOrderByAggregateInput
   city: SortOrder
   dateStarted: SortOrder
+  dateUpdated: SortOrder
   departmentId: SortOrder
   email: SortOrder
   firstName: SortOrder
@@ -624,6 +708,7 @@ input EmployeeOrderByWithAggregationInput {
 input EmployeeOrderByWithRelationInput {
   city: SortOrder
   dateStarted: SortOrder
+  dateUpdated: SortOrder
   department: DepartmentOrderByWithRelationInput
   departmentId: SortOrder
   email: SortOrder
@@ -640,6 +725,7 @@ input EmployeeOrderByWithRelationInput {
 enum EmployeeScalarFieldEnum {
   city
   dateStarted
+  dateUpdated
   departmentId
   email
   firstName
@@ -658,6 +744,7 @@ input EmployeeScalarWhereInput {
   OR: [EmployeeScalarWhereInput!]
   city: StringFilter
   dateStarted: DateTimeFilter
+  dateUpdated: DateTimeNullableFilter
   departmentId: StringFilter
   email: StringFilter
   firstName: StringFilter
@@ -676,6 +763,7 @@ input EmployeeScalarWhereWithAggregatesInput {
   OR: [EmployeeScalarWhereWithAggregatesInput!]
   city: StringWithAggregatesFilter
   dateStarted: DateTimeWithAggregatesFilter
+  dateUpdated: DateTimeNullableWithAggregatesFilter
   departmentId: StringWithAggregatesFilter
   email: StringWithAggregatesFilter
   firstName: StringWithAggregatesFilter
@@ -689,32 +777,34 @@ input EmployeeScalarWhereWithAggregatesInput {
 }
 
 input EmployeeUpdateInput {
-  city: StringFieldUpdateOperationsInput
-  dateStarted: DateTimeFieldUpdateOperationsInput
+  city: String
+  dateStarted: DateTime
+  dateUpdated: DateTime
   department: DepartmentUpdateOneRequiredWithoutEmployeesNestedInput
-  email: StringFieldUpdateOperationsInput
-  firstName: StringFieldUpdateOperationsInput
-  gender: StringFieldUpdateOperationsInput
-  id: StringFieldUpdateOperationsInput
-  jobTitle: StringFieldUpdateOperationsInput
-  lastName: StringFieldUpdateOperationsInput
-  state: StringFieldUpdateOperationsInput
-  streetAddress: StringFieldUpdateOperationsInput
-  zipCode: StringFieldUpdateOperationsInput
+  email: String
+  firstName: String
+  gender: String
+  id: String
+  jobTitle: String
+  lastName: String
+  state: String
+  streetAddress: String
+  zipCode: String
 }
 
 input EmployeeUpdateManyMutationInput {
-  city: StringFieldUpdateOperationsInput
-  dateStarted: DateTimeFieldUpdateOperationsInput
-  email: StringFieldUpdateOperationsInput
-  firstName: StringFieldUpdateOperationsInput
-  gender: StringFieldUpdateOperationsInput
-  id: StringFieldUpdateOperationsInput
-  jobTitle: StringFieldUpdateOperationsInput
-  lastName: StringFieldUpdateOperationsInput
-  state: StringFieldUpdateOperationsInput
-  streetAddress: StringFieldUpdateOperationsInput
-  zipCode: StringFieldUpdateOperationsInput
+  city: String
+  dateStarted: DateTime
+  dateUpdated: DateTime
+  email: String
+  firstName: String
+  gender: String
+  id: String
+  jobTitle: String
+  lastName: String
+  state: String
+  streetAddress: String
+  zipCode: String
 }
 
 input EmployeeUpdateManyWithWhereWithoutDepartmentInput {
@@ -741,17 +831,18 @@ input EmployeeUpdateWithWhereUniqueWithoutDepartmentInput {
 }
 
 input EmployeeUpdateWithoutDepartmentInput {
-  city: StringFieldUpdateOperationsInput
-  dateStarted: DateTimeFieldUpdateOperationsInput
-  email: StringFieldUpdateOperationsInput
-  firstName: StringFieldUpdateOperationsInput
-  gender: StringFieldUpdateOperationsInput
-  id: StringFieldUpdateOperationsInput
-  jobTitle: StringFieldUpdateOperationsInput
-  lastName: StringFieldUpdateOperationsInput
-  state: StringFieldUpdateOperationsInput
-  streetAddress: StringFieldUpdateOperationsInput
-  zipCode: StringFieldUpdateOperationsInput
+  city: String
+  dateStarted: DateTime
+  dateUpdated: DateTime
+  email: String
+  firstName: String
+  gender: String
+  id: String
+  jobTitle: String
+  lastName: String
+  state: String
+  streetAddress: String
+  zipCode: String
 }
 
 input EmployeeUpsertWithWhereUniqueWithoutDepartmentInput {
@@ -766,6 +857,7 @@ input EmployeeWhereInput {
   OR: [EmployeeWhereInput!]
   city: StringFilter
   dateStarted: DateTimeFilter
+  dateUpdated: DateTimeNullableFilter
   department: DepartmentRelationFilter
   departmentId: StringFilter
   email: StringFilter
@@ -828,6 +920,31 @@ input NestedDateTimeFilter {
   notIn: [DateTime!]
 }
 
+input NestedDateTimeNullableFilter {
+  equals: DateTime
+  gt: DateTime
+  gte: DateTime
+  in: [DateTime!]
+  lt: DateTime
+  lte: DateTime
+  not: NestedDateTimeNullableFilter
+  notIn: [DateTime!]
+}
+
+input NestedDateTimeNullableWithAggregatesFilter {
+  _count: NestedIntNullableFilter
+  _max: NestedDateTimeNullableFilter
+  _min: NestedDateTimeNullableFilter
+  equals: DateTime
+  gt: DateTime
+  gte: DateTime
+  in: [DateTime!]
+  lt: DateTime
+  lte: DateTime
+  not: NestedDateTimeNullableWithAggregatesFilter
+  notIn: [DateTime!]
+}
+
 input NestedDateTimeWithAggregatesFilter {
   _count: NestedIntFilter
   _max: NestedDateTimeFilter
@@ -850,6 +967,17 @@ input NestedIntFilter {
   lt: Int
   lte: Int
   not: NestedIntFilter
+  notIn: [Int!]
+}
+
+input NestedIntNullableFilter {
+  equals: Int
+  gt: Int
+  gte: Int
+  in: [Int!]
+  lt: Int
+  lte: Int
+  not: NestedIntNullableFilter
   notIn: [Int!]
 }
 
@@ -925,6 +1053,7 @@ type Query {
 type Role {
   _count: RoleCount
   dateCreated: DateTime!
+  dateUpdated: DateTime
   description: String!
   id: String!
   name: String!
@@ -938,6 +1067,7 @@ type RoleCount {
 type RoleCountAggregate {
   _all: Int!
   dateCreated: Int!
+  dateUpdated: Int!
   description: Int!
   id: Int!
   name: Int!
@@ -945,6 +1075,7 @@ type RoleCountAggregate {
 
 input RoleCountOrderByAggregateInput {
   dateCreated: SortOrder
+  dateUpdated: SortOrder
   description: SortOrder
   id: SortOrder
   name: SortOrder
@@ -952,6 +1083,7 @@ input RoleCountOrderByAggregateInput {
 
 input RoleCreateInput {
   dateCreated: DateTime
+  dateUpdated: DateTime
   description: String!
   id: String
   name: String!
@@ -971,6 +1103,7 @@ input RoleCreateOrConnectWithoutUsersInput {
 
 input RoleCreateWithoutUsersInput {
   dateCreated: DateTime
+  dateUpdated: DateTime
   description: String!
   id: String
   name: String!
@@ -981,6 +1114,7 @@ type RoleGroupBy {
   _max: RoleMaxAggregate
   _min: RoleMinAggregate
   dateCreated: DateTime!
+  dateUpdated: DateTime
   description: String!
   id: String!
   name: String!
@@ -988,6 +1122,7 @@ type RoleGroupBy {
 
 type RoleMaxAggregate {
   dateCreated: DateTime
+  dateUpdated: DateTime
   description: String
   id: String
   name: String
@@ -995,6 +1130,7 @@ type RoleMaxAggregate {
 
 input RoleMaxOrderByAggregateInput {
   dateCreated: SortOrder
+  dateUpdated: SortOrder
   description: SortOrder
   id: SortOrder
   name: SortOrder
@@ -1002,6 +1138,7 @@ input RoleMaxOrderByAggregateInput {
 
 type RoleMinAggregate {
   dateCreated: DateTime
+  dateUpdated: DateTime
   description: String
   id: String
   name: String
@@ -1009,6 +1146,7 @@ type RoleMinAggregate {
 
 input RoleMinOrderByAggregateInput {
   dateCreated: SortOrder
+  dateUpdated: SortOrder
   description: SortOrder
   id: SortOrder
   name: SortOrder
@@ -1019,6 +1157,7 @@ input RoleOrderByWithAggregationInput {
   _max: RoleMaxOrderByAggregateInput
   _min: RoleMinOrderByAggregateInput
   dateCreated: SortOrder
+  dateUpdated: SortOrder
   description: SortOrder
   id: SortOrder
   name: SortOrder
@@ -1026,6 +1165,7 @@ input RoleOrderByWithAggregationInput {
 
 input RoleOrderByWithRelationInput {
   dateCreated: SortOrder
+  dateUpdated: SortOrder
   description: SortOrder
   id: SortOrder
   name: SortOrder
@@ -1039,6 +1179,7 @@ input RoleRelationFilter {
 
 enum RoleScalarFieldEnum {
   dateCreated
+  dateUpdated
   description
   id
   name
@@ -1049,24 +1190,27 @@ input RoleScalarWhereWithAggregatesInput {
   NOT: [RoleScalarWhereWithAggregatesInput!]
   OR: [RoleScalarWhereWithAggregatesInput!]
   dateCreated: DateTimeWithAggregatesFilter
+  dateUpdated: DateTimeNullableWithAggregatesFilter
   description: StringWithAggregatesFilter
   id: StringWithAggregatesFilter
   name: StringWithAggregatesFilter
 }
 
 input RoleUpdateInput {
-  dateCreated: DateTimeFieldUpdateOperationsInput
-  description: StringFieldUpdateOperationsInput
-  id: StringFieldUpdateOperationsInput
-  name: StringFieldUpdateOperationsInput
+  dateCreated: DateTime
+  dateUpdated: DateTime
+  description: String
+  id: String
+  name: String
   users: UserUpdateManyWithoutRoleNestedInput
 }
 
 input RoleUpdateManyMutationInput {
-  dateCreated: DateTimeFieldUpdateOperationsInput
-  description: StringFieldUpdateOperationsInput
-  id: StringFieldUpdateOperationsInput
-  name: StringFieldUpdateOperationsInput
+  dateCreated: DateTime
+  dateUpdated: DateTime
+  description: String
+  id: String
+  name: String
 }
 
 input RoleUpdateOneRequiredWithoutUsersNestedInput {
@@ -1078,10 +1222,11 @@ input RoleUpdateOneRequiredWithoutUsersNestedInput {
 }
 
 input RoleUpdateWithoutUsersInput {
-  dateCreated: DateTimeFieldUpdateOperationsInput
-  description: StringFieldUpdateOperationsInput
-  id: StringFieldUpdateOperationsInput
-  name: StringFieldUpdateOperationsInput
+  dateCreated: DateTime
+  dateUpdated: DateTime
+  description: String
+  id: String
+  name: String
 }
 
 input RoleUpsertWithoutUsersInput {
@@ -1094,6 +1239,7 @@ input RoleWhereInput {
   NOT: [RoleWhereInput!]
   OR: [RoleWhereInput!]
   dateCreated: DateTimeFilter
+  dateUpdated: DateTimeNullableFilter
   description: StringFilter
   id: StringFilter
   name: StringFilter
@@ -1108,10 +1254,6 @@ input RoleWhereUniqueInput {
 enum SortOrder {
   asc
   desc
-}
-
-input StringFieldUpdateOperationsInput {
-  set: String
 }
 
 input StringFilter {
@@ -1147,6 +1289,7 @@ input StringWithAggregatesFilter {
 
 type User {
   dateCreated: DateTime!
+  dateUpdated: DateTime
   email: String!
   firstName: String!
   id: String!
@@ -1160,6 +1303,7 @@ type User {
 type UserCountAggregate {
   _all: Int!
   dateCreated: Int!
+  dateUpdated: Int!
   email: Int!
   firstName: Int!
   id: Int!
@@ -1171,6 +1315,7 @@ type UserCountAggregate {
 
 input UserCountOrderByAggregateInput {
   dateCreated: SortOrder
+  dateUpdated: SortOrder
   email: SortOrder
   firstName: SortOrder
   id: SortOrder
@@ -1182,6 +1327,7 @@ input UserCountOrderByAggregateInput {
 
 input UserCreateInput {
   dateCreated: DateTime
+  dateUpdated: DateTime
   email: String!
   firstName: String!
   id: String
@@ -1204,6 +1350,7 @@ input UserCreateOrConnectWithoutRoleInput {
 
 input UserCreateWithoutRoleInput {
   dateCreated: DateTime
+  dateUpdated: DateTime
   email: String!
   firstName: String!
   id: String
@@ -1217,6 +1364,7 @@ type UserGroupBy {
   _max: UserMaxAggregate
   _min: UserMinAggregate
   dateCreated: DateTime!
+  dateUpdated: DateTime
   email: String!
   firstName: String!
   id: String!
@@ -1234,6 +1382,7 @@ input UserListRelationFilter {
 
 type UserMaxAggregate {
   dateCreated: DateTime
+  dateUpdated: DateTime
   email: String
   firstName: String
   id: String
@@ -1245,6 +1394,7 @@ type UserMaxAggregate {
 
 input UserMaxOrderByAggregateInput {
   dateCreated: SortOrder
+  dateUpdated: SortOrder
   email: SortOrder
   firstName: SortOrder
   id: SortOrder
@@ -1256,6 +1406,7 @@ input UserMaxOrderByAggregateInput {
 
 type UserMinAggregate {
   dateCreated: DateTime
+  dateUpdated: DateTime
   email: String
   firstName: String
   id: String
@@ -1267,6 +1418,7 @@ type UserMinAggregate {
 
 input UserMinOrderByAggregateInput {
   dateCreated: SortOrder
+  dateUpdated: SortOrder
   email: SortOrder
   firstName: SortOrder
   id: SortOrder
@@ -1285,6 +1437,7 @@ input UserOrderByWithAggregationInput {
   _max: UserMaxOrderByAggregateInput
   _min: UserMinOrderByAggregateInput
   dateCreated: SortOrder
+  dateUpdated: SortOrder
   email: SortOrder
   firstName: SortOrder
   id: SortOrder
@@ -1296,6 +1449,7 @@ input UserOrderByWithAggregationInput {
 
 input UserOrderByWithRelationInput {
   dateCreated: SortOrder
+  dateUpdated: SortOrder
   email: SortOrder
   firstName: SortOrder
   id: SortOrder
@@ -1308,6 +1462,7 @@ input UserOrderByWithRelationInput {
 
 enum UserScalarFieldEnum {
   dateCreated
+  dateUpdated
   email
   firstName
   id
@@ -1322,6 +1477,7 @@ input UserScalarWhereInput {
   NOT: [UserScalarWhereInput!]
   OR: [UserScalarWhereInput!]
   dateCreated: DateTimeFilter
+  dateUpdated: DateTimeNullableFilter
   email: StringFilter
   firstName: StringFilter
   id: StringFilter
@@ -1336,6 +1492,7 @@ input UserScalarWhereWithAggregatesInput {
   NOT: [UserScalarWhereWithAggregatesInput!]
   OR: [UserScalarWhereWithAggregatesInput!]
   dateCreated: DateTimeWithAggregatesFilter
+  dateUpdated: DateTimeNullableWithAggregatesFilter
   email: StringWithAggregatesFilter
   firstName: StringWithAggregatesFilter
   id: StringWithAggregatesFilter
@@ -1346,24 +1503,26 @@ input UserScalarWhereWithAggregatesInput {
 }
 
 input UserUpdateInput {
-  dateCreated: DateTimeFieldUpdateOperationsInput
-  email: StringFieldUpdateOperationsInput
-  firstName: StringFieldUpdateOperationsInput
-  id: StringFieldUpdateOperationsInput
-  lastName: StringFieldUpdateOperationsInput
-  password: StringFieldUpdateOperationsInput
+  dateCreated: DateTime
+  dateUpdated: DateTime
+  email: String
+  firstName: String
+  id: String
+  lastName: String
+  password: String
   role: RoleUpdateOneRequiredWithoutUsersNestedInput
-  userName: StringFieldUpdateOperationsInput
+  userName: String
 }
 
 input UserUpdateManyMutationInput {
-  dateCreated: DateTimeFieldUpdateOperationsInput
-  email: StringFieldUpdateOperationsInput
-  firstName: StringFieldUpdateOperationsInput
-  id: StringFieldUpdateOperationsInput
-  lastName: StringFieldUpdateOperationsInput
-  password: StringFieldUpdateOperationsInput
-  userName: StringFieldUpdateOperationsInput
+  dateCreated: DateTime
+  dateUpdated: DateTime
+  email: String
+  firstName: String
+  id: String
+  lastName: String
+  password: String
+  userName: String
 }
 
 input UserUpdateManyWithWhereWithoutRoleInput {
@@ -1390,13 +1549,14 @@ input UserUpdateWithWhereUniqueWithoutRoleInput {
 }
 
 input UserUpdateWithoutRoleInput {
-  dateCreated: DateTimeFieldUpdateOperationsInput
-  email: StringFieldUpdateOperationsInput
-  firstName: StringFieldUpdateOperationsInput
-  id: StringFieldUpdateOperationsInput
-  lastName: StringFieldUpdateOperationsInput
-  password: StringFieldUpdateOperationsInput
-  userName: StringFieldUpdateOperationsInput
+  dateCreated: DateTime
+  dateUpdated: DateTime
+  email: String
+  firstName: String
+  id: String
+  lastName: String
+  password: String
+  userName: String
 }
 
 input UserUpsertWithWhereUniqueWithoutRoleInput {
@@ -1410,6 +1570,7 @@ input UserWhereInput {
   NOT: [UserWhereInput!]
   OR: [UserWhereInput!]
   dateCreated: DateTimeFilter
+  dateUpdated: DateTimeNullableFilter
   email: StringFilter
   firstName: StringFilter
   id: StringFilter

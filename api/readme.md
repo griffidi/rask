@@ -1,18 +1,33 @@
 # 🐇 @rask/api
 
-This is a [GraphQL](1) 🦄 project that uses [Prisma](2) 😍 to model, generate and seed a [SQLite](3) 🗂️ database. The data used by [Prisma](2) to seed the database is randomly generated using [@ngneat/falso](4) 🎲.
+A [Node.js](1) based [GraphQL](2) 🦄 project that uses [Prisma](3) 😍 to model, generate and seed a [SQLite](4) 🗂️ database. The data is randomly generated using [@ngneat/falso](4) 🎲, [Koa]() for the web framework and a GraphQL API [Apollo Server](5).
 
-[1]: https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwjRyvvG45r-AhXWm2oFHf-wABMQFnoECBMQAQ&url=https%3A%2F%2Fgraphql.org%2F&usg=AOvVaw0mfmkFd-vcSKFxzGwioZ4J 'GraphQL website'
-[2]: https://www.prisma.io 'Prisma website'
-[3]: https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwio8rnj3pr-AhXyk2oFHaSPAr4QFnoECBMQAQ&url=https%3A%2F%2Fsqlite.org%2F&usg=AOvVaw3BkEryJd7TFB-a95HgK2_X 'SQLite homepage'
-[4]: https://ngneat.github.io/falso/ '@ngneat/falso documentation'
+[1]: https://nodejs.org/en
+[2]: https://graphql.org/
+[3]: https://www.prisma.io
+[4]: https://sqlite.org/index.html
+[5]: https://ngneat.github.io/falso/
+[6]: https://koajs.com/
+[7]: https://www.apollographql.com/docs/apollo-server
 
 ## Table of Contents
 
+- [Technologies](#technologies)
 - [Install](#install)
 - [Database](#database)
   - [Prisma SQLite]()
   - [Prisma Schema](#📐-prisma-schema)
+
+### Technologies
+
+- [Node.js](https://nodejs.org/en)
+- [GraphQL](https://graphql.org/)
+- [Prisma](https://www.prisma.io)
+- [SQLite](https://sqlite.org/index.html)
+- [@ngneat/falso](https://ngneat.github.io/falso/)
+- [Koa](https://koajs.com/)
+- [Apollo Server](https://www.apollographql.com/docs/apollo-server)
+- [TypeScript](https://typescriptlang.org)
 
 ### Install
 
@@ -30,8 +45,8 @@ datasource db {
 }
 ```
 
-[1]: https://www.prisma.io 'Prisma website'
-[2]: https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwio8rnj3pr-AhXyk2oFHaSPAr4QFnoECBMQAQ&url=https%3A%2F%2Fsqlite.org%2F&usg=AOvVaw3BkEryJd7TFB-a95HgK2_X 'SQLite homepage'
+[1]: https://www.prisma.io
+[2]: https://sqlite.org/index.html
 [3]: /prisma/dev.db
 
 #### Generate models, database and seed.
@@ -50,7 +65,7 @@ The [SQLite](1) database schema is managed by [Prisma](2). The [`prisma/schema.p
 
 For more information on how to create and edit the [`prisma/schema.prisma`](3) file, refer to Prisma's documentation on [schemas](4).
 
-[1]: https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwio8rnj3pr-AhXyk2oFHaSPAr4QFnoECBMQAQ&url=https%3A%2F%2Fsqlite.org%2F&usg=AOvVaw3BkEryJd7TFB-a95HgK2_X 'SQLite homepage'
-[2]: https://www.prisma.io 'Prisma website'
+[1]: https://sqlite.org/index.html
+[2]: https://www.prisma.io
 [3]: /prisma/schema.prisma
 [4]: https://www.prisma.io/docs/reference/api-reference/prisma-schema-reference
