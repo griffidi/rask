@@ -284,9 +284,6 @@ importers:
 
   packages/web:
     dependencies:
-      '@lit-labs/context':
-        specifier: ^0.3.0
-        version: 0.3.0
       '@material/web':
         specifier: 1.0.0-pre.6
         version: 1.0.0-pre.6

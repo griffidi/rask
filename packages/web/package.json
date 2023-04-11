@@ -24,7 +24,6 @@
     "build": ""
   },
   "dependencies": {
-    "@lit-labs/context": "^0.3.0",
     "@material/web": "1.0.0-pre.6",
     "@rask/core": "workspace:^",
     "lit": "^2.7.2",
