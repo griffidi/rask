@@ -1,0 +1,34 @@
+{
+  "name": "@rask/graphql",
+  "private": true,
+  "version": "0.0.1",
+  "packageManager": "pnpm@8.1.0",
+  "engines": {
+    "node": ">=18",
+    "pnpm": ">=8.0.0"
+  },
+  "type": "module",
+  "files": [
+    "src/**/*.{map.js,js}",
+    "README.md"
+  ],
+  "scripts": {
+    "dev": "",
+    "build": ""
+  },
+  "dependencies": {
+    "@apollo/client": "^3.7.11",
+    "@lit-labs/context": "^0.3.0",
+    "@lit/reactive-element": "^1.6.1",
+    "graphql": "^16.6.0",
+    "lit": "^2.7.2",
+    "tslib": "^2.5.0"
+  },
+  "devDependencies": {
+    "@types/node": "^18.15.11",
+    "typescript": "5.0.4"
+  },
+  "peerDependencies": {
+    "typescript": "5.*"
+  }
+}

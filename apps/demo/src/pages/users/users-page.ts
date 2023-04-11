@@ -1,13 +1,12 @@
-import type { User } from '#/common/models/user.js';
-import { UserService } from '#/common/services/user-service.js';
 import { RouteTypes } from '#/router/route-types.js';
 import { routerContext } from '#/router/router-context.js';
+import { GetUsersDocument, type User } from '#/types/graphql.js';
 import { consume } from '@lit-labs/context';
 import type { Router } from '@lit-labs/router';
 import { Task } from '@lit-labs/task';
 import '@material/web/icon/icon.js';
-import { useInject } from '@rask/core/di/inject.js';
 import type { TypeEvent } from '@rask/core/events/type-event.js';
+import { apolloQuery } from '@rask/graphql/decorators/apollo-query.js';
 import '@rask/web/button/button.js';
 import '@rask/web/skeleton/skeleton.js';
 import { LitElement, html, type TemplateResult } from 'lit';
@@ -22,17 +21,15 @@ const CARD_SELECTED_CLASS = 'selected';
 export class UsersPage extends LitElement {
   static override styles = [css];
 
-  #userService = useInject(UserService);
   #getUsers = new Task(
     this,
-    async ([skip, take]) => await this.#userService.getUsersPaginated(skip, take),
-    () => [0, 20]
+    async () => await this.query,
+    () => [null]
   );
 
+  @apolloQuery({ query: GetUsersDocument }) private readonly query: User[];
   @property({ type: Boolean, reflect: true }) exiting: boolean = false;
-
   @state() protected currentUser: User | undefined;
-
   @consume({ context: routerContext }) router: Router;
 
   override render(): TemplateResult {
@@ -55,7 +52,7 @@ export class UsersPage extends LitElement {
           <!-- <img src="avatar.svg" alt="Avatar" width="50px" height="50px" /> -->
           <md-icon class="avatar">person</md-icon>
           <div class="user-name">
-            <div class="title">${user.fullName}</div>
+            <div class="title">${user.firstName} ${user.lastName}</div>
             <div class="subtitle">${user.role}</div>
           </div>
         </header>
@@ -65,18 +62,10 @@ export class UsersPage extends LitElement {
               <md-icon>mail</md-icon>
               ${user.email}
             </label>
-            <label>
-              <md-icon>phone_iphone</md-icon>
-              ${user.phone}
-            </label>
           </div>
         </section>
         <footer>
-          <rask-button
-            label="Edit"
-            outlined
-            @click=${(e: TypeEvent) => this.#handleEditClick(e, user)}
-          ></rask-button>
+          <rask-button label="Edit" outlined @click=${(e: TypeEvent) => this.#handleEditClick(e, user)}></rask-button>
         </footer>
       </div>
     `;

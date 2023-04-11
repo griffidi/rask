@@ -28,8 +28,10 @@
     "@lit/reactive-element": "^1.6.1",
     "@material/web": "1.0.0-pre.6",
     "@rask/core": "workspace:^",
+    "@rask/graphql": "workspace:^",
     "@rask/identity": "workspace:^",
     "@rask/web": "workspace:^",
+    "dotenv": "^16.0.3",
     "graphql": "^16.6.0",
     "lit": "^2.7.2",
     "tslib": "^2.5.0"

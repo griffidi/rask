@@ -148,12 +148,18 @@ importers:
       '@rask/core':
         specifier: workspace:*
         version: link:../../packages/core
+      '@rask/graphql':
+        specifier: workspace:^
+        version: link:../../packages/graphql
       '@rask/identity':
         specifier: workspace:^
         version: link:../../packages/identity
       '@rask/web':
         specifier: workspace:*
         version: link:../../packages/web
+      dotenv:
+        specifier: ^16.0.3
+        version: 16.0.3
       graphql:
         specifier: ^16.6.0
         version: 16.6.0
@@ -212,6 +218,34 @@ importers:
       nanoid:
         specifier: ^4.0.2
         version: 4.0.2
+      tslib:
+        specifier: ^2.5.0
+        version: 2.5.0
+    devDependencies:
+      '@types/node':
+        specifier: ^18.15.11
+        version: 18.15.11
+      typescript:
+        specifier: 5.0.4
+        version: 5.0.4
+
+  packages/graphql:
+    dependencies:
+      '@apollo/client':
+        specifier: ^3.7.11
+        version: 3.7.11(graphql@16.6.0)
+      '@lit-labs/context':
+        specifier: ^0.3.0
+        version: 0.3.0
+      '@lit/reactive-element':
+        specifier: ^1.6.1
+        version: 1.6.1
+      graphql:
+        specifier: ^16.6.0
+        version: 16.6.0
+      lit:
+        specifier: ^2.7.2
+        version: 2.7.2
       tslib:
         specifier: ^2.5.0
         version: 2.5.0

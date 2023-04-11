@@ -82,7 +82,7 @@
       "editor.defaultFormatter": "Prisma.prisma-insider"
     },
 
-    "cSpell.words": ["falso", "ngneat", "opsz", "preprisma", "rask", "Rask", "tsbuildinfo", "wght"],
+    "cSpell.words": ["clazz", "falso", "msedge", "ngneat", "opsz", "preprisma", "rask", "Rask", "tsbuildinfo", "wght"],
 
     "editor.linkedEditing": true,
 

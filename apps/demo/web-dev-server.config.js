@@ -26,24 +26,9 @@ export default /** @type {import("@web/dev-server").DevServerConfig} */ ({
   // sslKey: './certs/.self-signed-dev-server-ssl.key',
   // sslCert: './certs/.self-signed-dev-server-ssl.cert',
   mimeTypes: {
-    // 'src/**/*.json': 'js',
     'src/**/*.graphql': 'js',
   },
   plugins: [
-    // postcss({
-    //   onImport: (id) => {
-    //     console.log(id);
-    //   },
-    //   plugins: [
-    //     presetenv({
-    //       stage: 2,
-    //       features: {
-    //         'logical-properties-and-values': true,
-    //         'nesting-rules': true,
-    //       },
-    //     }),
-    //   ],
-    // }),
     tsPaths({
       preserveExtensions: true,
     }),

@@ -5,13 +5,18 @@ import '#/layout/footer/footer.js';
 import '#/layout/header/header.js';
 import { routerContext } from '#/router/router-context.js';
 import routes from '#/router/routes.js';
+import type { ApolloClient, NormalizedCacheObject } from '@apollo/client';
 import { ContextProvider } from '@lit-labs/context';
 import { Router } from '@lit-labs/router';
+import { apolloClient } from '@rask/graphql/decorators/apollo-client.js';
 import '@rask/web/navigation-drawer/navigation-drawer.js';
 import { LitElement, html, type TemplateResult } from 'lit';
 import { customElement } from 'lit/decorators.js';
 import { createRef, ref, type Ref } from 'lit/directives/ref.js';
+import config from './app.config.js';
 import css from './index.css' assert { type: 'css' };
+
+const GRAPHQL_URI = config.parsed['GRAPHQL_URI'];
 
 @customElement('app-index')
 export class Index extends LitElement {
@@ -24,6 +29,10 @@ export class Index extends LitElement {
     context: routerContext,
     initialValue: this.#router,
   });
+
+  @apolloClient({ uri: GRAPHQL_URI })
+  // @state()
+  readonly client!: ApolloClient<NormalizedCacheObject>;
 
   override render(): TemplateResult {
     return html`
