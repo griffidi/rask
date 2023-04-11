@@ -5,7 +5,7 @@ import type { NavItem } from '../navigation-item/types.js';
 import { createNavigationItemClickedEvent } from './events.js';
 import css from './navigation-item.css' assert { type: 'css' };
 
-@customElement('rask-navigation-item')
+@customElement('rk-navigation-item')
 export class NavigationItem extends LitElement {
   static override styles = [css];
 
@@ -60,6 +60,6 @@ export class NavigationItem extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'rask-navigation-item': NavigationItem;
+    'rk-navigation-item': NavigationItem;
   }
 }

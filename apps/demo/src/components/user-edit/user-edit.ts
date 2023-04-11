@@ -51,8 +51,8 @@ export class UserEdit extends LitElement {
           </label>
         </section>
         <footer>
-          <rask-button outlined label="Save" @click=${this.#handleSaveClick}></rask-button>
-          <rask-button label="Cancel" @click=${this.#handleCancelClick}></rask-button>
+          <rk-button outlined label="Save" @click=${this.#handleSaveClick}></rk-button>
+          <rk-button label="Cancel" @click=${this.#handleCancelClick}></rk-button>
         </footer>
       </form>
     `;

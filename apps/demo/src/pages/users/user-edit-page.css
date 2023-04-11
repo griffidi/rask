@@ -49,10 +49,10 @@ footer {
   align-items: center;
   gap: 15px;
 
-  & rask-button[label='Save'] {
-    --rask-button-color: var(--md-sys-color-green);
-    --rask-button-on-color: var(--md-sys-color-on-green);
-    /* --rask-button-shadow: var(--md-sys-color-blue-rgb); */
+  & rk-button[label='Save'] {
+    --rk-button-color: var(--md-sys-color-green);
+    --rk-button-on-color: var(--md-sys-color-on-green);
+    /* --rk-button-shadow: var(--md-sys-color-blue-rgb); */
   }
 }
 

@@ -1,0 +1,41 @@
+{
+  "Create App LitElement Controller": {
+    "scope": "typescript",
+    "prefix": "litcontroller",
+    "body": [
+      "import { type ReactiveController, type ReactiveControllerHost } from 'lit';",
+      "",
+      "export class ${TM_FILENAME_BASE/([a-z]*)(-)?/${1:/capitalize}/g}Controller implements ReactiveController {",
+      "\t#host: ReactiveControllerHost;",
+      "\t#timerId: number;",
+      "",
+      "\tvalue = new Date();",
+      "\ttimeout: number;",
+      "",
+      "\tconstructor(host: ReactiveControllerHost, timeout = 1000) {",
+      "\t\t(this.#host = host).addController(this);",
+      "\t\tthis.timeout = timeout;",
+      "\t}",
+      "",
+      "\thostConnected() {",
+      "\t\t// Start a timer when the host is connected",
+      "\t\tthis.#timerId = setInterval(() => {",
+      "\t\t\tthis.value = new Date();",
+      "",
+      "\t\t\t// Update the host with new value",
+      "\t\t\tthis.#host.requestUpdate();",
+      "\t\t}, this.timeout);",
+      "\t}",
+      "",
+      "\thostDisconnected() {",
+      "\t\t// Clear the timer when the host is disconnected",
+      "\t\tclearInterval(this.#timerId);",
+      "",
+      "\t\tthis.#timerId = undefined;",
+      "\t}",
+      "}",
+      ""
+    ],
+    "description": "New LitElement subclass"
+  }
+}

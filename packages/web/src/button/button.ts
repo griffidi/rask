@@ -15,19 +15,19 @@ import css from './button.css' assert { type: 'css' };
  * import '@rask/web/button/button.js';
  *
  * html`
- *  <rask-button label="Save"></rask-button>
- *  <rask-button label="Save" filled></rask-button>
- *  <rask-button label="Save" outlined></rask-button>
+ *  <rk-button label="Save"></rk-button>
+ *  <rk-button label="Save" filled></rk-button>
+ *  <rk-button label="Save" outlined></rk-button>
  * `;
  *
  * css`
- *  --rask-button-color: #42b883;
- *  --rask-button-on-color: #42b883;
- *  --rask-button-shadow: 66, 184, 131;
+ *  --rk-button-color: #42b883;
+ *  --rk-button-on-color: #42b883;
+ *  --rk-button-shadow: 66, 184, 131;
  * `;
  * ```
  */
-@customElement('rask-button')
+@customElement('rk-button')
 export class Button extends LitElement {
   static override styles = [css];
 
@@ -36,7 +36,7 @@ export class Button extends LitElement {
   @property({ type: Boolean, reflect: true }) outlined = false;
   @property() label = '';
   @property({ type: Boolean }) preventClickDefault = false;
-  @query('.rask-button') protected buttonElement!: HTMLElement;
+  @query('.rk-button') protected buttonElement!: HTMLElement;
   @state() protected showFocusRing = false;
 
   constructor() {
@@ -47,7 +47,7 @@ export class Button extends LitElement {
   override render(): TemplateResult {
     return html`
       <button
-        class="rask-button ${classMap(this.getRenderClasses())}"
+        class="rk-button ${classMap(this.getRenderClasses())}"
         ?disabled=${this.disabled}
         @click=${this.handleClick}
       >
@@ -104,6 +104,6 @@ export class Button extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'rask-button': Button;
+    'rk-button': Button;
   }
 }

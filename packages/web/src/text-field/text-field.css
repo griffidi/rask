@@ -3,15 +3,12 @@
 }
 
 :host {
-  --_input-on-color: var(--rask-text-field-on-color, #ffffff);
-  --_input-border-color: var(--rask-text-field-border-color, #ffffff);
+  --_input-on-color: var(--rk-text-field-on-color, #ffffff);
+  --_input-border-color: var(--rk-text-field-border-color, #ffffff);
   --_input-font-size: var(--md-sys-typescale-label-large-size);
   --_input-font-weight: var(--md-sys-typescale-label-large-weight);
   --_label-on-color: var(--md-ref-palette-neutral-variant-50);
-  --_label-populated-color: var(
-    --rask-text-field-label-populated-color,
-    var(--md-sys-color-purple)
-  );
+  --_label-populated-color: var(--rk-text-field-label-populated-color, var(--md-sys-color-purple));
   --_label-inset-block-start: -2px;
   --_input-font-size: var(--md-sys-typescale-label-large-size);
   --_label-font-weight: var(--md-sys-typescale-label-large-weight);

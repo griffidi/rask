@@ -2,7 +2,7 @@ import { LitElement, html, type TemplateResult } from 'lit';
 import { customElement } from 'lit/decorators.js';
 import css from './table-row.css' assert { type: 'css' };
 
-export const TABLE_ROW_SELECTOR = 'rask-table-row';
+export const TABLE_ROW_SELECTOR = 'rk-table-row';
 
 @customElement(TABLE_ROW_SELECTOR)
 export class TableRow extends LitElement {

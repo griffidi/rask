@@ -3,10 +3,10 @@
 }
 
 :host {
-  --rask-list-item-container-height: 42px;
-  --rask-list-padding-block: 8px;
-  --_rask-list-padding-offset: calc(var(--rask-list-padding-block) * 2);
-  --_rask-list-min-block-size: calc(var(--rask-list-item-container-height) + var(--_rask-list-padding-offset));
+  --rk-list-item-container-height: 42px;
+  --rk-list-padding-block: 8px;
+  --_rask-list-padding-offset: calc(var(--rk-list-padding-block) * 2);
+  --_rask-list-min-block-size: calc(var(--rk-list-item-container-height) + var(--_rask-list-padding-offset));
 
   --_neutral-color: var(--md-ref-palette-neutral-variant-50);
   --_neutral-variant-color: var(--md-ref-palette-neutral-variant-60);
@@ -31,7 +31,7 @@
   --_section-visibility: visible;
   --_section-display: flex;
   /* --_jump-to-block-size-without-offset is only used to simply reading the calc */
-  --_jump-to-block-size-without-offset: calc(var(--rask-list-item-container-height) * var(--_jump-to-item-count, 1));
+  --_jump-to-block-size-without-offset: calc(var(--rk-list-item-container-height) * var(--_jump-to-item-count, 1));
   --_jump-to-block-size: calc(var(--_jump-to-block-size-without-offset) + var(--_rask-list-padding-offset));
   --_aside-block-size: calc(var(--_container-default-size) + var(--_jump-to-block-size));
 }
@@ -71,7 +71,7 @@ header {
   --md-icon-size: 20px;
   --md-icon-color: var(--_neutral-color);
 
-  border-bottom: 1px solid var(--rask-border-color);
+  border-bottom: 1px solid var(--rk-border-color);
 }
 
 label {
@@ -128,7 +128,7 @@ section {
   inline-size: 100%;
   block-size: auto;
   min-block-size: var(--_rask-list-min-block-size);
-  padding-inline: calc(var(--_container-padding-inline) - var(--rask-list-item-start-padding-inline-start));
+  padding-inline: calc(var(--_container-padding-inline) - var(--rk-list-item-start-padding-inline-start));
 }
 
 footer {
@@ -180,11 +180,11 @@ footer {
   }
 }
 
-rask-list-item-link {
+rk-list-item-link {
   --md-icon-color: var(--_neutral-color);
-  --rask-list-item-headline-font-size: var(--md-sys-typescale-label-large-size);
-  --rask-list-item-headline-font-weight: var(--md-sys-typescale-body-small-weight);
-  --rask-list-item-headline-line-height: var(--md-sys-typescale-label-medium-line-height);
+  --rk-list-item-headline-font-size: var(--md-sys-typescale-label-large-size);
+  --rk-list-item-headline-font-weight: var(--md-sys-typescale-body-small-weight);
+  --rk-list-item-headline-line-height: var(--md-sys-typescale-label-medium-line-height);
 
   & [slot='end'] {
     --_jump-to-text-opacity: 0;

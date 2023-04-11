@@ -1,7 +1,7 @@
 {
   "Create App LitElement Component": {
     "scope": "typescript",
-    "prefix": "litel",
+    "prefix": "litcomponent",
     "body": [
       "import { LitElement, html, type TemplateResult } from 'lit';",
       "import { customElement } from 'lit/decorators.js';",
@@ -28,13 +28,13 @@
   },
   "Create rask LitElement Component": {
     "scope": "typescript",
-    "prefix": "litel",
+    "prefix": "litcomponent",
     "body": [
       "import { LitElement, html, type TemplateResult } from 'lit';",
       "import { customElement } from 'lit/decorators.js';",
       "import css from './${TM_FILENAME_BASE}.css' assert { type: 'css' };",
       "",
-      "@customElement('rask-${TM_FILENAME_BASE}')",
+      "@customElement('rk-${TM_FILENAME_BASE}')",
       "export class ${TM_FILENAME_BASE/([a-z]*)(-)?/${1:/capitalize}/g} extends LitElement {",
       "\tstatic override styles = [css];",
       "",
@@ -46,11 +46,11 @@
       "",
       "declare global {",
       "\tinterface HTMLElementTagNameMap {",
-      "\t\t'rask-${TM_FILENAME_BASE}': ${TM_FILENAME_BASE/([a-z]*)(-)?/${1:/capitalize}/g};",
+      "\t\t'rk-${TM_FILENAME_BASE}': ${TM_FILENAME_BASE/([a-z]*)(-)?/${1:/capitalize}/g};",
       "\t}",
       "}",
       ""
     ],
     "description": "New LitElement subclass"
-  },
+  }
 }

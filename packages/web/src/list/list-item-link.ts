@@ -5,7 +5,7 @@ import { ListItemEl } from './list-item.js';
 
 type LinkTarget = '_blank' | '_parent' | '_self' | '_top';
 
-@customElement('rask-list-item-link')
+@customElement('rk-list-item-link')
 export class ListItemLink extends ListItemEl {
   @property() href: string | undefined;
 
@@ -37,6 +37,6 @@ export class ListItemLink extends ListItemEl {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'rask-list-item-link': ListItemLink;
+    'rk-list-item-link': ListItemLink;
   }
 }

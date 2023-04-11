@@ -8,7 +8,7 @@ import type { NavItem } from '../navigation-item/types.js';
 import css from './navigation-drawer.css' assert { type: 'css' };
 import './navigation-item.js';
 
-@customElement('rask-navigation-drawer')
+@customElement('rk-navigation-drawer')
 export class NavigationDrawer extends LitElement {
   static override styles = [css];
 
@@ -75,12 +75,7 @@ export class NavigationDrawer extends LitElement {
           <md-standard-icon-button @click=${this.#closeDrawer}>menu_open</md-standard-icon-button>
         </h4>
         ${map(this.items, (item) => {
-          return html`
-            <rask-navigation-item
-              .item=${item}
-              @click=${this.#handleItemClicked}
-            ></rask-navigation-item>
-          `;
+          return html` <rk-navigation-item .item=${item} @click=${this.#handleItemClicked}></rk-navigation-item> `;
         })}
       </nav>
     `;
@@ -95,7 +90,7 @@ export class NavigationDrawer extends LitElement {
     //   return html`
     //     <footer>
     //       ${map(this.footerItems, (item) => {
-    //         return html` <rask-navigation-item .item=${item}></rask-navigation-item> `;
+    //         return html` <rk-navigation-item .item=${item}></rk-navigation-item> `;
     //       })};
     //     </footer>
     //   `;
@@ -148,6 +143,6 @@ export class NavigationDrawer extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'rask-navigation-drawer': NavigationDrawer;
+    'rk-navigation-drawer': NavigationDrawer;
   }
 }

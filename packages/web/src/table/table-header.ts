@@ -2,7 +2,7 @@ import { LitElement, html, type TemplateResult } from 'lit';
 import { customElement } from 'lit/decorators.js';
 import css from './table-header.css' assert { type: 'css' };
 
-export const TABLE_HEADER_SELECTOR = 'rask-table-header';
+export const TABLE_HEADER_SELECTOR = 'rk-table-header';
 
 @customElement(TABLE_HEADER_SELECTOR)
 export class TableHeader extends LitElement {

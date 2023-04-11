@@ -54,7 +54,7 @@ label {
   display: flex;
   align-items: center;
   gap: 12px;
-  background-color: var(--rask-input-container-color);
+  background-color: var(--rk-input-container-color);
   padding-inline: var(--_label-padding-inline);
   padding-block: 6px;
   border-radius: var(--md-sys-shape-large);
@@ -76,10 +76,10 @@ label {
     outline: none;
     font: var(--md-sys-typescale-input-font);
     inline-size: 100%;
-    color: var(--rask-input-text-color);
+    color: var(--rk-input-text-color);
 
     &::placeholder {
-      color: var(--rask-input-placeholder-color);
+      color: var(--rk-input-placeholder-color);
     }
   }
 }

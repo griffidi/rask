@@ -5,7 +5,7 @@ md-switch {
   block-size: 15px; */
 }
 
-rask-menu {
+rk-menu {
   & label {
     display: flex;
     justify-content: space-between;

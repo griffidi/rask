@@ -9,20 +9,20 @@
   scroll-snap-type: x mandatory;
 
   &::-webkit-scrollbar {
-    width: var(--rask-sys-scroll-size);
+    width: var(--rk-sys-scroll-size);
   }
 
   &::-webkit-scrollbar-track {
     background: transparent;
-    border-radius: var(--rask-sys-scroll-shape);
+    border-radius: var(--rk-sys-scroll-shape);
   }
 
   &::-webkit-scrollbar-thumb {
-    background: var(--rask-sys-scroll-color);
-    border-radius: var(--rask-sys-scroll-shape);
-    border: var(--rask-sys-scroll-border-width) solid transparent;
+    background: var(--rk-sys-scroll-color);
+    border-radius: var(--rk-sys-scroll-shape);
+    border: var(--rk-sys-scroll-border-width) solid transparent;
     background-clip: content-box;
-    box-shadow: var(--rask-sys-scroll-shadow);
+    box-shadow: var(--rk-sys-scroll-shadow);
     box-sizing: border-box;
   }
 

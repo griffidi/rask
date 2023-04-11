@@ -8,7 +8,7 @@ import { createListChangeClickedEvent } from './events.js';
 import { type ListItem } from './list-item.js';
 import css from './list.css' assert { type: 'css' };
 
-@customElement('rask-list')
+@customElement('rk-list')
 export class List extends LitElement {
   static override shadowRootOptions: ShadowRootInit = { mode: 'open', delegatesFocus: true };
   static override styles = [css];
@@ -23,10 +23,10 @@ export class List extends LitElement {
 
   @property({ type: Number }) listTabIndex = 0;
 
-  @queryAssignedElements({ flatten: true, selector: '[rask-list-item]' })
+  @queryAssignedElements({ flatten: true, selector: '[rk-list-item]' })
   items!: ListItem[];
 
-  @query('rask-list') listRoot!: HTMLElement;
+  @query('rk-list') listRoot!: HTMLElement;
 
   override render(): TemplateResult {
     return this.renderList();
@@ -36,7 +36,7 @@ export class List extends LitElement {
     return html`
       <ul
         ariaLabel=${this.ariaLabel}
-        class="rask-list ${classMap(this.getRenderListClasses())}"
+        class="rk-list ${classMap(this.getRenderListClasses())}"
         role=${this.ariaRole}
         tabindex=${this.listTabIndex}
         @keydown=${this.#handleKeydown}
@@ -218,6 +218,6 @@ export class List extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'rask-list': List;
+    'rk-list': List;
   }
 }

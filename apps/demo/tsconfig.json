@@ -1,6 +1,7 @@
 {
   "extends": ["../../tsconfig.base.json", "../../tsconfig.lit.json"],
   "compilerOptions": {
+    "allowJs": true,
     "rootDir": ".",
     "useDefineForClassFields": false,
     "experimentalDecorators": true,
@@ -13,7 +14,7 @@
     },
     "types": ["@rask/web/client"]
   },
-  "include": ["src/**/*.ts"],
+  "include": ["src/**/*.ts", "app.config.js"],
   "exclude": ["dist", "node_modules"],
   "references": [
     { "path": "../../packages/core" },

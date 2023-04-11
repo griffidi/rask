@@ -19,7 +19,7 @@ export enum SKELETON_TYPE {
  * @attr {circle|text|rectangle} [type=text] - Define the type of skeleton
  * @attr {h1|h2|h3|h4|h5|h6|small|p} [size=p] - Define the size of skeleton
  */
-@customElement('rask-skeleton')
+@customElement('rk-skeleton')
 export class Skeleton extends LitElement {
   static override styles = [css];
 
@@ -61,6 +61,6 @@ export class Skeleton extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'rask-skeleton': Skeleton;
+    'rk-skeleton': Skeleton;
   }
 }

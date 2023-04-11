@@ -10,9 +10,7 @@ export class Search extends LitElement {
   static override styles = [css];
 
   override render(): TemplateResult {
-    return html`
-      <rask-command-palette .jumpTos=${navItems} @search=${this.#handleInput}></rask-command-palette>
-    `;
+    return html` <rk-command-palette .jumpTos=${navItems} @search=${this.#handleInput}></rk-command-palette> `;
   }
 
   #handleInput(e: CommandPaletteSearchEventDetail) {

@@ -4,7 +4,7 @@ import { customElement, property, state } from 'lit/decorators.js';
 import { createRef, ref, type Ref } from 'lit/directives/ref.js';
 import css from './menu.css' assert { type: 'css' };
 
-@customElement('rask-menu')
+@customElement('rk-menu')
 export class Menu extends LitElement {
   static override styles = [css];
 
@@ -15,9 +15,7 @@ export class Menu extends LitElement {
   override connectedCallback(): void {
     super.connectedCallback();
 
-    this.shadowRoot
-      .querySelector('a')
-      ?.addEventListener('click', this.#hideMenu, { capture: true });
+    this.shadowRoot.querySelector('a')?.addEventListener('click', this.#hideMenu, { capture: true });
 
     if (window?.addEventListener) {
       window.addEventListener('click', this.onWindowClick, { capture: true });
@@ -34,9 +32,7 @@ export class Menu extends LitElement {
 
   override render(): TemplateResult {
     return html`
-      <md-standard-icon-button ${ref(this.anchor)} @click=${this.#showMenu}
-        >${this.icon}</md-standard-icon-button
-      >
+      <md-standard-icon-button ${ref(this.anchor)} @click=${this.#showMenu}>${this.icon}</md-standard-icon-button>
       <aside>
         <slot></slot>
       </aside>
@@ -60,6 +56,6 @@ export class Menu extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'rask-menu': Menu;
+    'rk-menu': Menu;
   }
 }

@@ -23,11 +23,11 @@
   /* --md-switch-selected-track-color: var(--md-sys-color-background); */
   --md-switch-selected-track-color: transparent;
   --md-switch-selected-track-outline-width: 1px;
-  /* --md-switch-selected-track-outline-color: var(--rask-border-color); */
+  /* --md-switch-selected-track-outline-color: var(--rk-border-color); */
   --md-switch-selected-track-outline-color: red;
-  --md-switch-unselected-track-outline-color: var(--rask-border-color);
+  --md-switch-unselected-track-outline-color: var(--rk-border-color);
 }
 
 /* md-swtich {
-  border: 1px solid var(--rask-border-color);
+  border: 1px solid var(--rk-border-color);
 } */

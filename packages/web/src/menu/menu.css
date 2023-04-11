@@ -1,5 +1,5 @@
 :host {
-  --rask-menu-container-color: #212122;
+  --rk-menu-container-color: #212122;
 
   position: relative;
 }
@@ -24,9 +24,9 @@ aside {
   position: absolute;
   display: flex;
   flex-direction: column;
-  background: var(--rask-menu-container-color);
+  background: var(--rk-menu-container-color);
   /* background-color: var(--md-sys-color-surface-2); */
-  border: 1px solid var(--rask-border-color);
+  border: 1px solid var(--rk-border-color);
   border-radius: var(--md-sys-shape-medium);
   box-shadow: var(--md-sys-color-shadow-2);
   /* padding: 0.5em 0; */

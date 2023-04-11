@@ -13,10 +13,10 @@ import '@rask/web/navigation-drawer/navigation-drawer.js';
 import { LitElement, html, type TemplateResult } from 'lit';
 import { customElement } from 'lit/decorators.js';
 import { createRef, ref, type Ref } from 'lit/directives/ref.js';
-import config from './app.config.js';
+import config from '../app.config.js';
 import css from './index.css' assert { type: 'css' };
 
-const GRAPHQL_URI = config.parsed['GRAPHQL_URI'];
+const { uri: GRAPHQL_URI } = config.graphql;
 
 @customElement('app-index')
 export class Index extends LitElement {

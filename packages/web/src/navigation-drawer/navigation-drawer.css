@@ -19,7 +19,7 @@ aside {
   inset-inline-start: 0;
   background: var(--md-sys-color-background);
   box-shadow: var(--md-sys-elevation-level2);
-  border-inline-end: 1px solid var(--rask-border-color);
+  border-inline-end: 1px solid var(--rk-border-color);
   border-start-end-radius: var(--md-sys-shape-large);
   border-end-end-radius: var(--md-sys-shape-large);
   transform: translateX(calc(var(--_drawer-inline-size) * -1));

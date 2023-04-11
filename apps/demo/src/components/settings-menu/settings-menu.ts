@@ -22,7 +22,7 @@ export class SettingsMenu extends LitElement {
 
   override render(): TemplateResult {
     return html`
-      <rask-menu>
+      <rk-menu>
         <label>
           Dark Mode
           <md-switch .selected="${this.themeDarkModeSelected}" @change="${this.#toggleTheme}"
@@ -36,7 +36,7 @@ export class SettingsMenu extends LitElement {
         <label>
           <md-text-button href=${RouteTypes.settings}>Settings</md-text-button>
         </label>
-      </rask-menu>
+      </rk-menu>
     `;
   }
 

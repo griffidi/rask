@@ -4,7 +4,7 @@ import { customElement, property, state } from 'lit/decorators.js';
 import type { ClassInfo } from 'lit/directives/class-map.js';
 import css from './search.css' assert { type: 'css' };
 
-@customElement('rask-search')
+@customElement('rk-search')
 export class Search extends LitElement {
   static override styles = [css];
 
@@ -127,6 +127,6 @@ export class Search extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'rask-search': Search;
+    'rk-search': Search;
   }
 }

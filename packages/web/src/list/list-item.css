@@ -4,21 +4,21 @@
 
 :host {
   /* Set global defaults. This allows for using in calculations. */
-  --rask-list-item-container-height: 42px;
-  --rask-list-item-padding-inline: 8px;
-  --rask-list-padding-inline: 8px;
+  --rk-list-item-container-height: 42px;
+  --rk-list-item-padding-inline: 8px;
+  --rk-list-padding-inline: 8px;
 
   --_neutral-color: var(--md-ref-palette-neutral-variant-50);
-  --_container-height: var(--rask-list-item-container-height);
-  --_container-color: var(--rask-list-item-container-color, transparent);
+  --_container-height: var(--rk-list-item-container-height);
+  --_container-color: var(--rk-list-item-container-color, transparent);
   --_container-on-color: var(--md-sys-color-text-dark-2, #ffffff);
-  --_headline-font-size: var(--rask-list-item-headline-font-size, var(--md-sys-typescale-label-large-size));
-  --_headline-font-weight: var(--rask-list-item-headline-font-weight, var(--md-sys-typescale-label-large-weight));
-  --_headline-line-height: var(--rask-list-item-headline-line-height, var(--md-sys-typescale-label-large-line-height));
-  --_container-padding-inline: var(--rask-list-padding-inline);
-  --_start-end-padding-inline: var(var(--rask-list-item-padding-inline));
-  --_container-hover-color: var(--rask-list-item-hover-container-color, transparent);
-  --_container-hover-border-color: var(--rask-list-item-hover-container-border-color, var(--_neutral-color));
+  --_headline-font-size: var(--rk-list-item-headline-font-size, var(--md-sys-typescale-label-large-size));
+  --_headline-font-weight: var(--rk-list-item-headline-font-weight, var(--md-sys-typescale-label-large-weight));
+  --_headline-line-height: var(--rk-list-item-headline-line-height, var(--md-sys-typescale-label-large-line-height));
+  --_container-padding-inline: var(--rk-list-padding-inline);
+  --_start-end-padding-inline: var(var(--rk-list-item-padding-inline));
+  --_container-hover-color: var(--rk-list-item-hover-container-color, transparent);
+  --_container-hover-border-color: var(--rk-list-item-hover-container-border-color, var(--_neutral-color));
 }
 
 .list-item {

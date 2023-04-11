@@ -14,7 +14,7 @@ interface ListItemSelf {
 
 export type ListItem = HTMLElement & ListItemSelf;
 
-@customElement('rask-list-item')
+@customElement('rk-list-item')
 export class ListItemEl extends LitElement implements ListItem {
   static override styles = [css];
 
@@ -36,7 +36,7 @@ export class ListItemEl extends LitElement implements ListItem {
   @property({ type: Boolean, reflect: true }) disabled = false;
   @property() headline = '';
   @property({ type: Number }) itemTabIndex = -1;
-  @property({ type: Boolean, attribute: 'rask-list-item', reflect: true }) isListItem = true;
+  @property({ type: Boolean, attribute: 'rk-list-item', reflect: true }) isListItem = true;
   @property() supportingText = '';
 
   /**
@@ -171,6 +171,6 @@ export class ListItemEl extends LitElement implements ListItem {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'rask-list-item': ListItem;
+    'rk-list-item': ListItem;
   }
 }

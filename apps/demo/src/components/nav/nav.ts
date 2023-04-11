@@ -17,8 +17,8 @@ export class Nav extends LitElement {
 
   override render(): TemplateResult {
     return html`
-      <rask-navigation-drawer ${ref(this.#drawer)} headline="Site Navigation" .items=${this.items}>
-      </rask-navigation-drawer>
+      <rk-navigation-drawer ${ref(this.#drawer)} headline="Site Navigation" .items=${this.items}>
+      </rk-navigation-drawer>
     `;
   }
 

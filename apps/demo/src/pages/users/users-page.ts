@@ -8,6 +8,7 @@ import '@material/web/icon/icon.js';
 import type { TypeEvent } from '@rask/core/events/type-event.js';
 import { apolloQuery } from '@rask/graphql/decorators/apollo-query.js';
 import '@rask/web/button/button.js';
+import Toast from '@rask/web/notifications/toast.js';
 import '@rask/web/skeleton/skeleton.js';
 import { LitElement, html, type TemplateResult } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
@@ -23,7 +24,7 @@ export class UsersPage extends LitElement {
 
   #getUsers = new Task(
     this,
-    async () => await this.query,
+    async () => await this.#loadUsers(),
     () => [null]
   );
 
@@ -37,6 +38,7 @@ export class UsersPage extends LitElement {
       ${this.#getUsers.render({
         pending: () => this.renderSkeleton(),
         complete: (users) => this.renderUsers(users),
+        error: () => html`<h1>No Data</h1>`,
       })}
     `;
   }
@@ -65,7 +67,7 @@ export class UsersPage extends LitElement {
           </div>
         </section>
         <footer>
-          <rask-button label="Edit" outlined @click=${(e: TypeEvent) => this.#handleEditClick(e, user)}></rask-button>
+          <rk-button label="Edit" outlined @click=${(e: TypeEvent) => this.#handleEditClick(e, user)}></rk-button>
         </footer>
       </div>
     `;
@@ -78,32 +80,41 @@ export class UsersPage extends LitElement {
           return html`
             <div class="card">
               <header>
-                <rask-skeleton width="50px" height="50px" circle></rask-skeleton>
+                <rk-skeleton width="50px" height="50px" circle></rk-skeleton>
                 <div class="user-name">
-                  <rask-skeleton width="146px" title large></rask-skeleton>
-                  <rask-skeleton width="75px" label large></rask-skeleton>
+                  <rk-skeleton width="146px" title large></rk-skeleton>
+                  <rk-skeleton width="75px" label large></rk-skeleton>
                 </div>
               </header>
               <section>
                 <div class="contact-info">
                   <label>
-                    <rask-skeleton width="22px" body medium></rask-skeleton>
-                    <rask-skeleton width="188px" body medium></rask-skeleton>
+                    <rk-skeleton width="22px" body medium></rk-skeleton>
+                    <rk-skeleton width="188px" body medium></rk-skeleton>
                   </label>
                   <label>
-                    <rask-skeleton width="22px" body medium></rask-skeleton>
-                    <rask-skeleton width="150px" body medium></rask-skeleton>
+                    <rk-skeleton width="22px" body medium></rk-skeleton>
+                    <rk-skeleton width="150px" body medium></rk-skeleton>
                   </label>
                 </div>
               </section>
               <footer>
-                <rask-skeleton width="62px" button></rask-skeleton>
+                <rk-skeleton width="62px" button></rk-skeleton>
               </footer>
             </div>
           `;
         })}
       </div>
     `;
+  }
+
+  async #loadUsers(): Promise<User[]> {
+    try {
+      return await this.query;
+    } catch (e) {
+      await Toast('Error loading users');
+      throw new Error();
+    }
   }
 
   #handleEditClick({ target }: TypeEvent, user: User): void {

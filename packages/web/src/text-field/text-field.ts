@@ -35,7 +35,7 @@ export type InvalidTextFieldType = 'button' | 'checkbox' | 'hidden' | 'image' | 
 /**
  * A text field component.
  */
-@customElement('rask-text-field')
+@customElement('rk-text-field')
 export abstract class TextField extends LitElement {
   static override styles = [css];
 
@@ -646,6 +646,6 @@ export abstract class TextField extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'rask-text-field': TextField;
+    'rk-text-field': TextField;
   }
 }

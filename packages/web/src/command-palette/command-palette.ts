@@ -18,7 +18,7 @@ import { NAVIGABLE_KEYS, isNavigableKey } from '../navigation/navigable.js';
 import css from './command-palette.css' assert { type: 'css' };
 import { createCommandPaletteSearchEvent } from './events.js';
 
-@customElement('rask-command-palette')
+@customElement('rk-command-palette')
 export class CommandPalette extends LitElement {
   static override styles = [css];
 
@@ -145,18 +145,18 @@ export class CommandPalette extends LitElement {
      */
     return html`
       <section>
-        <rask-list ${ref(this.#jumpToListRef)} class="jump-to" @change=${this.#handleListChange}>
+        <rk-list ${ref(this.#jumpToListRef)} class="jump-to" @change=${this.#handleListChange}>
           ${map(this.jumpTos, (jumpTo) => {
             return html`
-              <rask-list-item-link .href=${jumpTo.path} .headline=${jumpTo.label}>
+              <rk-list-item-link .href=${jumpTo.path} .headline=${jumpTo.label}>
                 <div slot="start">
                   <md-icon>${jumpTo.icon}</md-icon>
                 </div>
                 <div slot="end">Jump To</div>
-              </rask-list-item-link>
+              </rk-list-item-link>
             `;
           })}
-        </rask-list>
+        </rk-list>
       </section>
     `;
   }
@@ -268,6 +268,6 @@ export class CommandPalette extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'rask-command-palette': CommandPalette;
+    'rk-command-palette': CommandPalette;
   }
 }

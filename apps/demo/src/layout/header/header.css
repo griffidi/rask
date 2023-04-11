@@ -18,7 +18,7 @@ header {
   align-items: center;
   padding-inline: 20px;
   box-sizing: border-box;
-  border-block-end: 1px solid var(--rask-border-color);
+  border-block-end: 1px solid var(--rk-border-color);
   inline-size: auto;
   block-size: 100%;
 }
@@ -120,7 +120,7 @@ a:hover {
   inline-size: 120px;
   block-size: 36px;
   padding-inline: 12px;
-  border: 1px solid var(--rask-border-color);
+  border: 1px solid var(--rk-border-color);
   border-radius: var(--md-sys-shape-small);
 
   &::before {

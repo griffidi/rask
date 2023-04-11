@@ -9,7 +9,7 @@ import css from './table.css' assert { type: 'css' };
 const TABLE_HEADER_CELLS_SELECTOR = `${TABLE_HEADER_SELECTOR} ${TABLE_CELL_SELECTOR}`;
 const TABLE_ROWS_SELECTOR = `${TABLE_BODY_SELECTOR} ${TABLE_ROW_SELECTOR}`;
 
-@customElement('rask-table')
+@customElement('rk-table')
 export class Table extends LitElement {
   static override styles = [css];
 
@@ -46,6 +46,6 @@ export class Table extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'rask-table': Table;
+    'rk-table': Table;
   }
 }

@@ -4,10 +4,10 @@
 
 :host {
   /* Set global defaults. This allows for using in calculations. */
-  --rask-list-padding-block: 8px;
+  --rk-list-padding-block: 8px;
 
-  --_container-color: var(--rask-list-container-color, transparent);
-  --_container-padding-block: var(--rask-list-padding-block);
+  --_container-color: var(--rk-list-container-color, transparent);
+  --_container-padding-block: var(--rk-list-padding-block);
 }
 
 ul {

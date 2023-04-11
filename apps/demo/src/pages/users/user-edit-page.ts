@@ -39,28 +39,28 @@ export class UserEditPage extends LitElement {
       </header>
       <form>
         <div>
-          <rask-text-field label="Full Name" .value=${user.fullName}></rask-text-field>
-          <rask-text-field label="Email" .value=${user.email}></rask-text-field>
-          <rask-text-field label="Phone" .value=${user.phone}></rask-text-field>
+          <rk-text-field label="Full Name" .value=${user.fullName}></rk-text-field>
+          <rk-text-field label="Email" .value=${user.email}></rk-text-field>
+          <rk-text-field label="Phone" .value=${user.phone}></rk-text-field>
         </div>
         <div>
-          <rask-text-field label="Street Address" .value=${user.streetAddress}></rask-text-field>
+          <rk-text-field label="Street Address" .value=${user.streetAddress}></rk-text-field>
           <div class="address">
-            <rask-text-field label="City" .value=${user.city}></rask-text-field>
-            <rask-text-field label="State" .value=${user.state}></rask-text-field>
-            <rask-text-field label="Postal" .value=${user.postal}></rask-text-field>
+            <rk-text-field label="City" .value=${user.city}></rk-text-field>
+            <rk-text-field label="State" .value=${user.state}></rk-text-field>
+            <rk-text-field label="Postal" .value=${user.postal}></rk-text-field>
           </div>
         </div>
       </form>
       <footer>
-        <rask-button label="Save" filled></rask-button>
-        <rask-button label="Cancel" outlined></rask-button>
+        <rk-button label="Save" filled></rk-button>
+        <rk-button label="Cancel" outlined></rk-button>
       </footer>
     `;
   }
 
   protected renderSkeleton(): TemplateResult {
-    return html`<rask-skeleton label large width="100px"></rask-skeleton>`;
+    return html`<rk-skeleton label large width="100px"></rk-skeleton>`;
   }
 }
 

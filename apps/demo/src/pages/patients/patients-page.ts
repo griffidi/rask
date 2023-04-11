@@ -19,7 +19,7 @@ export class PatientsPage extends LitElement {
   #getPatients = new Task(
     this,
     async ([skip, take]) => await this.#patientervice.getPatientsPaginated(skip, take),
-    () => [0, 20],
+    () => [0, 20]
   );
 
   override connectedCallback(): void {
@@ -65,11 +65,7 @@ export class PatientsPage extends LitElement {
           </div>
         </section>
         <footer>
-          <rask-button
-            label="Edit"
-            outlined
-            @click=${() => this.#handleEditClick(patient)}
-          ></rask-button>
+          <rk-button label="Edit" outlined @click=${() => this.#handleEditClick(patient)}></rk-button>
         </footer>
       </div>
     `;
@@ -82,25 +78,25 @@ export class PatientsPage extends LitElement {
           return html`
             <div class="card">
               <header>
-                <rask-skeleton width="50px" height="50px" circle></rask-skeleton>
+                <rk-skeleton width="50px" height="50px" circle></rk-skeleton>
                 <div class="user-name">
-                  <rask-skeleton width="146px" title large></rask-skeleton>
+                  <rk-skeleton width="146px" title large></rk-skeleton>
                 </div>
               </header>
               <section>
                 <div class="contact-info">
                   <label>
-                    <rask-skeleton width="22px" body medium></rask-skeleton>
-                    <rask-skeleton width="188px" body medium></rask-skeleton>
+                    <rk-skeleton width="22px" body medium></rk-skeleton>
+                    <rk-skeleton width="188px" body medium></rk-skeleton>
                   </label>
                   <label>
-                    <rask-skeleton width="22px" body medium></rask-skeleton>
-                    <rask-skeleton width="150px" body medium></rask-skeleton>
+                    <rk-skeleton width="22px" body medium></rk-skeleton>
+                    <rk-skeleton width="150px" body medium></rk-skeleton>
                   </label>
                 </div>
               </section>
               <footer>
-                <rask-skeleton width="62px" button></rask-skeleton>
+                <rk-skeleton width="62px" button></rk-skeleton>
               </footer>
             </div>
           `;

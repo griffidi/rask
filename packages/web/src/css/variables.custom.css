@@ -96,11 +96,11 @@
 }
 
 :root {
-  --rask-input-container-color: #ffffff;
-  --rask-input-text-color: rgba(42, 42, 42, 0.77);
-  --rask-input-placeholder-color: rgba(42, 42, 42, 0.57);
+  --rk-input-container-color: #ffffff;
+  --rk-input-text-color: rgba(42, 42, 42, 0.77);
+  --rk-input-placeholder-color: rgba(42, 42, 42, 0.57);
 }
 
 :root {
-  --rask-border-color: var(--md-ref-palette-neutral-variant-20, #828282);
+  --rk-border-color: var(--md-ref-palette-neutral-variant-20, #828282);
 }
