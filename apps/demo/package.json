@@ -21,7 +21,7 @@
     "dev": "wds"
   },
   "dependencies": {
-    "@apollo/client": "^3.7.11",
+    "@apollo/client": "^3.7.12",
     "@lit-labs/context": "^0.3.0",
     "@lit-labs/router": "^0.1.1",
     "@lit-labs/task": "^2.1.0",
