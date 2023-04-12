@@ -31,7 +31,6 @@ export class Index extends LitElement {
   });
 
   @apolloClient({ uri: GRAPHQL_URI })
-  // @state()
   readonly client!: ApolloClient<NormalizedCacheObject>;
 
   override render(): TemplateResult {

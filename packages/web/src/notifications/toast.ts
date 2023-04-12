@@ -1,9 +1,23 @@
 import { Motion } from '../css/motion.js';
+import { ToastType, type ToastOptions } from './types.js';
 
-export const TOAST_CONTAINER_CLASS = 'rk-toast-group';
-export const TOAST_CLASS = 'rk-toast';
+const TOAST_CONTAINER_CLASS = 'rk-toast__container';
+const TOAST_CLASS = 'rk-toast';
+const TOAST_ICON_CLASS = 'rk-toast__icon';
+const TOAST_TEXT_CONTAINER_CLASS = 'rk-toast__text-container';
+const TOAST_TITLE_TEXT_CLASS = 'rk-toast__title-text';
+const TOAST_TEXT_CLASS = 'rk-toast__text';
+const TOAST_CLOSE_BUTTON_CLASS = 'rk-toast__close-button';
 
-export class Toast {
+const TOAST_ICON: Record<ToastType, string> = {
+  [ToastType.error]: 'error',
+  [ToastType.info]: 'info',
+  [ToastType.success]: 'check_circle',
+  [ToastType.warning]: 'warning',
+};
+
+const MATERIAL_ICON_CLASS = 'material-symbols-sharp';
+export abstract class Toast {
   static #container: HTMLElement | undefined;
 
   static {
@@ -15,49 +29,124 @@ export class Toast {
       document.firstElementChild.insertBefore(container, document.body);
     }
 
-    Toast.#container = container;
+    this.#container = container;
   }
 
   /**
-   * Show toast message.
+   * Show error toast message.
    *
-   * @param message {string} - Message to be displayed in toast.
-   *
-   * @returns {Promise<Toast>} - Promise that resolves when toast is closed.
+   * @param options {ToastOptions} - Toast options.
    */
-  static async show(message: string): Promise<Toast> {
-    const toast = new Toast();
-    await toast.#show(message);
-    return toast;
+  static async error(options: ToastOptions): Promise<void> {
+    return this.#show(options, ToastType.error);
   }
 
-  async #show(message: string): Promise<void> {
-    const toast = this.#createToast(message);
+  /**
+   * Show information toast message.
+   *
+   * @param options {ToastOptions} - Toast options.
+   */
+  static async info(options: ToastOptions): Promise<void> {
+    await this.#show(options, ToastType.info);
+  }
+
+  /**
+   * Show success toast message.
+   *
+   * @param options {ToastOptions} - Toast options.
+   */
+  static async success(options: ToastOptions): Promise<void> {
+    await this.#show(options, ToastType.success);
+  }
+
+  /**
+   * Show warning toast message.
+   *
+   * @param options {ToastOptions} - Toast options.
+   */
+  static async warning(options: ToastOptions): Promise<void> {
+    await this.#show(options, ToastType.warning);
+  }
+
+  static async #show(options: ToastOptions, type: ToastType): Promise<void> {
+    const toast = this.#createToast(options, type);
     this.#addToast(toast);
 
     return new Promise<void>(async (resolve) => {
       await Promise.allSettled(toast.getAnimations().map((animation) => animation.finished));
-      Toast.#container.removeChild(toast);
+      this.#closeToast(toast);
       resolve();
     });
   }
 
-  #addToast(toast: HTMLOutputElement): void {
+  static #addToast(toast: HTMLOutputElement): void {
     const { matches: motionOK } = window.matchMedia('(prefers-reduced-motion: no-preference)');
-    const container = Toast.#container;
+    const container = this.#container;
 
     container.children.length && motionOK ? this.#flipToast(toast) : container.appendChild(toast);
   }
 
-  #createToast(message: string): HTMLOutputElement {
-    const node = document.createElement('output');
+  static #createToast(options: ToastOptions, type: ToastType): HTMLOutputElement {
+    const toast = document.createElement('output');
+    const iconEl = this.#createIconElement(type);
+    const messageEl = this.#createMessageElement(options);
 
-    node.innerText = message;
-    node.classList.add('rk-toast');
-    node.setAttribute('role', 'status');
-    node.setAttribute('aria-live', 'polite');
+    toast.classList.add(TOAST_CLASS);
+    toast.classList.add(type);
+    toast.setAttribute('role', 'status');
+    toast.setAttribute('aria-live', 'polite');
+    toast.appendChild(iconEl);
+    toast.appendChild(messageEl);
 
-    return node;
+    if (!options.hideCloseButton) {
+      const closeButton = this.#createCloseButton();
+      closeButton.addEventListener('click', () => this.#closeToast(toast));
+      toast.appendChild(closeButton);
+    }
+
+    return toast;
+  }
+
+  static #createMessageElement(options: ToastOptions): HTMLSpanElement {
+    const messageEl = document.createElement('span');
+    const { message, title } = options;
+
+    messageEl.classList.add(TOAST_TEXT_CONTAINER_CLASS);
+
+    if (title) {
+      const titleEl = document.createElement('span', {});
+      titleEl.classList.add(TOAST_TITLE_TEXT_CLASS);
+      titleEl.innerText = title;
+      messageEl.appendChild(titleEl);
+    }
+
+    const textEl = document.createElement('span');
+    textEl.classList.add(TOAST_TEXT_CLASS);
+    textEl.innerText = message;
+    messageEl.appendChild(textEl);
+
+    return messageEl;
+  }
+
+  static #createIconElement(type: ToastType): HTMLSpanElement {
+    const iconEl = document.createElement('span');
+
+    iconEl.classList.add(TOAST_ICON_CLASS);
+    iconEl.classList.add(MATERIAL_ICON_CLASS);
+    iconEl.innerText = TOAST_ICON[type];
+
+    return iconEl;
+  }
+
+  static #createCloseButton(): HTMLSpanElement {
+    const button = document.createElement('span');
+
+    button.textContent = 'close';
+    button.classList.add(TOAST_CLOSE_BUTTON_CLASS);
+    button.classList.add(MATERIAL_ICON_CLASS);
+    button.setAttribute('aria-label', 'Close');
+
+    return button;
   }
 
   /**
@@ -67,8 +156,8 @@ export class Toast {
    *
    * @param toasts {HTMLOutputElement} - Toast element to be added to container.
    */
-  #flipToast(toast: HTMLOutputElement): void {
-    const container = Toast.#container;
+  static #flipToast(toast: HTMLOutputElement): void {
+    const container = this.#container;
 
     // first (initial state of element)
     const first = container.offsetHeight;
@@ -89,5 +178,9 @@ export class Toast {
     });
 
     animation.startTime = document.timeline.currentTime;
+  }
+
+  static #closeToast(toast: HTMLOutputElement): void {
+    this.#container.removeChild(toast);
   }
 }

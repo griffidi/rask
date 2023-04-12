@@ -27,6 +27,7 @@ export default /** @type {import("@web/dev-server").DevServerConfig} */ ({
   // sslCert: './certs/.self-signed-dev-server-ssl.cert',
   mimeTypes: {
     'src/**/*.graphql': 'js',
+    '*.html': 'html',
   },
   plugins: [
     tsPaths({

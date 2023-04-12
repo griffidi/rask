@@ -28,14 +28,14 @@ export class UsersPage extends LitElement {
     () => [null]
   );
 
-  @apolloQuery({ query: GetUsersDocument }) private readonly query: User[];
   @property({ type: Boolean, reflect: true }) exiting: boolean = false;
   @state() protected currentUser: User | undefined;
+
+  @apolloQuery({ query: GetUsersDocument }) private readonly query: User[];
   @consume({ context: routerContext }) router: Router;
 
   override render(): TemplateResult {
     return html`
-      <button @click=${this.#showToast}>Toast</button>
       ${this.#getUsers.render({
         pending: () => this.renderSkeleton(),
         complete: (users) => this.renderUsers(users),
@@ -113,13 +113,9 @@ export class UsersPage extends LitElement {
     try {
       return await this.query;
     } catch (e) {
-      await Toast.show('Failed to load users');
+      setTimeout(async () => await Toast.error({ title: 'Error', message: 'Failed to loaded users.' }));
       throw new Error();
     }
-  }
-
-  async #showToast() {
-    await Toast.show('Test');
   }
 
   #handleEditClick({ target }: TypeEvent, user: User): void {
