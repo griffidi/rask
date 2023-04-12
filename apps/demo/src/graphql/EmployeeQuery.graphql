@@ -1,0 +1,31 @@
+query GetEmployees {
+  employees {
+    id
+    firstName
+    lastName
+    email
+    gender
+    phone
+    streetAddress
+    city
+    state
+    zipCode
+    jobTitle
+  }
+}
+
+query GetEmployeeById($id: String!) {
+  employees(where: { id: { equals: $id } }) {
+    id
+    firstName
+    lastName
+    email
+    gender
+    phone
+    streetAddress
+    city
+    state
+    zipCode
+    jobTitle
+  }
+}

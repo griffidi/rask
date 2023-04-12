@@ -1,9 +1,9 @@
-import type { User } from '#/common/models/user.js';
-import { UserService } from '#/common/services/user-service.js';
+import { GetUserByIdDocument, type User } from '#/types/graphql.js';
 import { Task } from '@lit-labs/task';
 import '@material/web/textfield/outlined-text-field.js';
-import { useInject } from '@rask/core/di/inject.js';
+import { apolloQuery } from '@rask/graphql/decorators/apollo-query.js';
 import '@rask/web/button/button.js';
+import { Toast } from '@rask/web/notifications/toast.js';
 import '@rask/web/skeleton/skeleton.js';
 import '@rask/web/text-field/text-field.js';
 import { LitElement, html, type TemplateResult } from 'lit';
@@ -14,14 +14,16 @@ import css from './user-edit-page.css' assert { type: 'css' };
 export class UserEditPage extends LitElement {
   static override styles = [css];
 
-  @property() userId: string | undefined;
-
-  #userService = useInject(UserService);
   #getUsers = new Task(
     this,
-    async ([id]) => await this.#userService.getUserById(id),
+    async () => await this.#loadUser(),
     () => [this.userId]
   );
+
+  @property() userId: string | undefined;
+
+  // TODO: need to change how variable is passed
+  @apolloQuery({ query: GetUserByIdDocument, variables: { id: '' } }) private readonly query: User;
 
   override render(): TemplateResult {
     return html`
@@ -39,17 +41,9 @@ export class UserEditPage extends LitElement {
       </header>
       <form>
         <div>
-          <rk-text-field label="Full Name" .value=${user.fullName}></rk-text-field>
+          <rk-text-field label="Full Name" .value=${user.firstName}></rk-text-field>
+          <rk-text-field label="Full Name" .value=${user.lastName}></rk-text-field>
           <rk-text-field label="Email" .value=${user.email}></rk-text-field>
-          <rk-text-field label="Phone" .value=${user.phone}></rk-text-field>
-        </div>
-        <div>
-          <rk-text-field label="Street Address" .value=${user.streetAddress}></rk-text-field>
-          <div class="address">
-            <rk-text-field label="City" .value=${user.city}></rk-text-field>
-            <rk-text-field label="State" .value=${user.state}></rk-text-field>
-            <rk-text-field label="Postal" .value=${user.postal}></rk-text-field>
-          </div>
         </div>
       </form>
       <footer>
@@ -61,6 +55,15 @@ export class UserEditPage extends LitElement {
 
   protected renderSkeleton(): TemplateResult {
     return html`<rk-skeleton label large width="100px"></rk-skeleton>`;
+  }
+
+  async #loadUser(): Promise<User> {
+    try {
+      return await this.query;
+    } catch (e) {
+      setTimeout(async () => await Toast.error({ title: 'Error', message: 'Failed to loaded user.' }));
+      throw new Error();
+    }
   }
 }
 

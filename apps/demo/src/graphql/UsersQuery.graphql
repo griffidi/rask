@@ -7,3 +7,13 @@ query GetUsers {
     email
   }
 }
+
+query GetUserById($id: String!) {
+  user(where: { id: $id }) {
+    id
+    userName
+    firstName
+    lastName
+    email
+  }
+}

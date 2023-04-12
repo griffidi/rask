@@ -45,6 +45,7 @@ type Customer {
   firstName: String!
   id: String!
   lastName: String!
+  phone: String!
   state: String!
   streetAddress: String!
   zipCode: String!
@@ -59,6 +60,7 @@ type CustomerCountAggregate {
   firstName: Int!
   id: Int!
   lastName: Int!
+  phone: Int!
   state: Int!
   streetAddress: Int!
   zipCode: Int!
@@ -72,6 +74,7 @@ input CustomerCountOrderByAggregateInput {
   firstName: SortOrder
   id: SortOrder
   lastName: SortOrder
+  phone: SortOrder
   state: SortOrder
   streetAddress: SortOrder
   zipCode: SortOrder
@@ -85,6 +88,7 @@ input CustomerCreateInput {
   firstName: String!
   id: String
   lastName: String!
+  phone: String!
   state: String!
   streetAddress: String!
   zipCode: String!
@@ -101,6 +105,7 @@ type CustomerGroupBy {
   firstName: String!
   id: String!
   lastName: String!
+  phone: String!
   state: String!
   streetAddress: String!
   zipCode: String!
@@ -114,6 +119,7 @@ type CustomerMaxAggregate {
   firstName: String
   id: String
   lastName: String
+  phone: String
   state: String
   streetAddress: String
   zipCode: String
@@ -127,6 +133,7 @@ input CustomerMaxOrderByAggregateInput {
   firstName: SortOrder
   id: SortOrder
   lastName: SortOrder
+  phone: SortOrder
   state: SortOrder
   streetAddress: SortOrder
   zipCode: SortOrder
@@ -140,6 +147,7 @@ type CustomerMinAggregate {
   firstName: String
   id: String
   lastName: String
+  phone: String
   state: String
   streetAddress: String
   zipCode: String
@@ -153,6 +161,7 @@ input CustomerMinOrderByAggregateInput {
   firstName: SortOrder
   id: SortOrder
   lastName: SortOrder
+  phone: SortOrder
   state: SortOrder
   streetAddress: SortOrder
   zipCode: SortOrder
@@ -169,6 +178,7 @@ input CustomerOrderByWithAggregationInput {
   firstName: SortOrder
   id: SortOrder
   lastName: SortOrder
+  phone: SortOrder
   state: SortOrder
   streetAddress: SortOrder
   zipCode: SortOrder
@@ -182,6 +192,7 @@ input CustomerOrderByWithRelationInput {
   firstName: SortOrder
   id: SortOrder
   lastName: SortOrder
+  phone: SortOrder
   state: SortOrder
   streetAddress: SortOrder
   zipCode: SortOrder
@@ -195,6 +206,7 @@ enum CustomerScalarFieldEnum {
   firstName
   id
   lastName
+  phone
   state
   streetAddress
   zipCode
@@ -211,6 +223,7 @@ input CustomerScalarWhereWithAggregatesInput {
   firstName: StringWithAggregatesFilter
   id: StringWithAggregatesFilter
   lastName: StringWithAggregatesFilter
+  phone: StringWithAggregatesFilter
   state: StringWithAggregatesFilter
   streetAddress: StringWithAggregatesFilter
   zipCode: StringWithAggregatesFilter
@@ -224,6 +237,7 @@ input CustomerUpdateInput {
   firstName: String
   id: String
   lastName: String
+  phone: String
   state: String
   streetAddress: String
   zipCode: String
@@ -237,6 +251,7 @@ input CustomerUpdateManyMutationInput {
   firstName: String
   id: String
   lastName: String
+  phone: String
   state: String
   streetAddress: String
   zipCode: String
@@ -253,6 +268,7 @@ input CustomerWhereInput {
   firstName: StringFilter
   id: StringFilter
   lastName: StringFilter
+  phone: StringFilter
   state: StringFilter
   streetAddress: StringFilter
   zipCode: StringFilter
@@ -513,6 +529,7 @@ type Employee {
   id: String!
   jobTitle: String!
   lastName: String!
+  phone: String!
   state: String!
   streetAddress: String!
   zipCode: String!
@@ -530,6 +547,7 @@ type EmployeeCountAggregate {
   id: Int!
   jobTitle: Int!
   lastName: Int!
+  phone: Int!
   state: Int!
   streetAddress: Int!
   zipCode: Int!
@@ -546,6 +564,7 @@ input EmployeeCountOrderByAggregateInput {
   id: SortOrder
   jobTitle: SortOrder
   lastName: SortOrder
+  phone: SortOrder
   state: SortOrder
   streetAddress: SortOrder
   zipCode: SortOrder
@@ -562,6 +581,7 @@ input EmployeeCreateInput {
   id: String
   jobTitle: String!
   lastName: String!
+  phone: String!
   state: String!
   streetAddress: String!
   zipCode: String!
@@ -588,6 +608,7 @@ input EmployeeCreateWithoutDepartmentInput {
   id: String
   jobTitle: String!
   lastName: String!
+  phone: String!
   state: String!
   streetAddress: String!
   zipCode: String!
@@ -607,6 +628,7 @@ type EmployeeGroupBy {
   id: String!
   jobTitle: String!
   lastName: String!
+  phone: String!
   state: String!
   streetAddress: String!
   zipCode: String!
@@ -629,6 +651,7 @@ type EmployeeMaxAggregate {
   id: String
   jobTitle: String
   lastName: String
+  phone: String
   state: String
   streetAddress: String
   zipCode: String
@@ -645,6 +668,7 @@ input EmployeeMaxOrderByAggregateInput {
   id: SortOrder
   jobTitle: SortOrder
   lastName: SortOrder
+  phone: SortOrder
   state: SortOrder
   streetAddress: SortOrder
   zipCode: SortOrder
@@ -661,6 +685,7 @@ type EmployeeMinAggregate {
   id: String
   jobTitle: String
   lastName: String
+  phone: String
   state: String
   streetAddress: String
   zipCode: String
@@ -677,6 +702,7 @@ input EmployeeMinOrderByAggregateInput {
   id: SortOrder
   jobTitle: SortOrder
   lastName: SortOrder
+  phone: SortOrder
   state: SortOrder
   streetAddress: SortOrder
   zipCode: SortOrder
@@ -700,6 +726,7 @@ input EmployeeOrderByWithAggregationInput {
   id: SortOrder
   jobTitle: SortOrder
   lastName: SortOrder
+  phone: SortOrder
   state: SortOrder
   streetAddress: SortOrder
   zipCode: SortOrder
@@ -717,6 +744,7 @@ input EmployeeOrderByWithRelationInput {
   id: SortOrder
   jobTitle: SortOrder
   lastName: SortOrder
+  phone: SortOrder
   state: SortOrder
   streetAddress: SortOrder
   zipCode: SortOrder
@@ -733,6 +761,7 @@ enum EmployeeScalarFieldEnum {
   id
   jobTitle
   lastName
+  phone
   state
   streetAddress
   zipCode
@@ -752,6 +781,7 @@ input EmployeeScalarWhereInput {
   id: StringFilter
   jobTitle: StringFilter
   lastName: StringFilter
+  phone: StringFilter
   state: StringFilter
   streetAddress: StringFilter
   zipCode: StringFilter
@@ -771,6 +801,7 @@ input EmployeeScalarWhereWithAggregatesInput {
   id: StringWithAggregatesFilter
   jobTitle: StringWithAggregatesFilter
   lastName: StringWithAggregatesFilter
+  phone: StringWithAggregatesFilter
   state: StringWithAggregatesFilter
   streetAddress: StringWithAggregatesFilter
   zipCode: StringWithAggregatesFilter
@@ -787,6 +818,7 @@ input EmployeeUpdateInput {
   id: String
   jobTitle: String
   lastName: String
+  phone: String
   state: String
   streetAddress: String
   zipCode: String
@@ -802,6 +834,7 @@ input EmployeeUpdateManyMutationInput {
   id: String
   jobTitle: String
   lastName: String
+  phone: String
   state: String
   streetAddress: String
   zipCode: String
@@ -840,6 +873,7 @@ input EmployeeUpdateWithoutDepartmentInput {
   id: String
   jobTitle: String
   lastName: String
+  phone: String
   state: String
   streetAddress: String
   zipCode: String
@@ -866,6 +900,7 @@ input EmployeeWhereInput {
   id: StringFilter
   jobTitle: StringFilter
   lastName: StringFilter
+  phone: StringFilter
   state: StringFilter
   streetAddress: StringFilter
   zipCode: StringFilter

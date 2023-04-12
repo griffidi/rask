@@ -64,6 +64,7 @@ export interface Customer {
   firstName: Scalars['String'];
   id: Scalars['String'];
   lastName: Scalars['String'];
+  phone: Scalars['String'];
   state: Scalars['String'];
   streetAddress: Scalars['String'];
   zipCode: Scalars['String'];
@@ -79,6 +80,7 @@ export interface CustomerCountAggregate {
   firstName: Scalars['Int'];
   id: Scalars['Int'];
   lastName: Scalars['Int'];
+  phone: Scalars['Int'];
   state: Scalars['Int'];
   streetAddress: Scalars['Int'];
   zipCode: Scalars['Int'];
@@ -92,6 +94,7 @@ export interface CustomerCountOrderByAggregateInput {
   firstName?: InputMaybe<SortOrder>;
   id?: InputMaybe<SortOrder>;
   lastName?: InputMaybe<SortOrder>;
+  phone?: InputMaybe<SortOrder>;
   state?: InputMaybe<SortOrder>;
   streetAddress?: InputMaybe<SortOrder>;
   zipCode?: InputMaybe<SortOrder>;
@@ -105,6 +108,7 @@ export interface CustomerCreateInput {
   firstName: Scalars['String'];
   id?: InputMaybe<Scalars['String']>;
   lastName: Scalars['String'];
+  phone: Scalars['String'];
   state: Scalars['String'];
   streetAddress: Scalars['String'];
   zipCode: Scalars['String'];
@@ -122,6 +126,7 @@ export interface CustomerGroupBy {
   firstName: Scalars['String'];
   id: Scalars['String'];
   lastName: Scalars['String'];
+  phone: Scalars['String'];
   state: Scalars['String'];
   streetAddress: Scalars['String'];
   zipCode: Scalars['String'];
@@ -136,6 +141,7 @@ export interface CustomerMaxAggregate {
   firstName?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['String']>;
   lastName?: Maybe<Scalars['String']>;
+  phone?: Maybe<Scalars['String']>;
   state?: Maybe<Scalars['String']>;
   streetAddress?: Maybe<Scalars['String']>;
   zipCode?: Maybe<Scalars['String']>;
@@ -149,6 +155,7 @@ export interface CustomerMaxOrderByAggregateInput {
   firstName?: InputMaybe<SortOrder>;
   id?: InputMaybe<SortOrder>;
   lastName?: InputMaybe<SortOrder>;
+  phone?: InputMaybe<SortOrder>;
   state?: InputMaybe<SortOrder>;
   streetAddress?: InputMaybe<SortOrder>;
   zipCode?: InputMaybe<SortOrder>;
@@ -163,6 +170,7 @@ export interface CustomerMinAggregate {
   firstName?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['String']>;
   lastName?: Maybe<Scalars['String']>;
+  phone?: Maybe<Scalars['String']>;
   state?: Maybe<Scalars['String']>;
   streetAddress?: Maybe<Scalars['String']>;
   zipCode?: Maybe<Scalars['String']>;
@@ -176,6 +184,7 @@ export interface CustomerMinOrderByAggregateInput {
   firstName?: InputMaybe<SortOrder>;
   id?: InputMaybe<SortOrder>;
   lastName?: InputMaybe<SortOrder>;
+  phone?: InputMaybe<SortOrder>;
   state?: InputMaybe<SortOrder>;
   streetAddress?: InputMaybe<SortOrder>;
   zipCode?: InputMaybe<SortOrder>;
@@ -192,6 +201,7 @@ export interface CustomerOrderByWithAggregationInput {
   firstName?: InputMaybe<SortOrder>;
   id?: InputMaybe<SortOrder>;
   lastName?: InputMaybe<SortOrder>;
+  phone?: InputMaybe<SortOrder>;
   state?: InputMaybe<SortOrder>;
   streetAddress?: InputMaybe<SortOrder>;
   zipCode?: InputMaybe<SortOrder>;
@@ -205,6 +215,7 @@ export interface CustomerOrderByWithRelationInput {
   firstName?: InputMaybe<SortOrder>;
   id?: InputMaybe<SortOrder>;
   lastName?: InputMaybe<SortOrder>;
+  phone?: InputMaybe<SortOrder>;
   state?: InputMaybe<SortOrder>;
   streetAddress?: InputMaybe<SortOrder>;
   zipCode?: InputMaybe<SortOrder>;
@@ -218,9 +229,10 @@ export enum CustomerScalarFieldEnum {
   FirstName = 4,
   Id = 5,
   LastName = 6,
-  State = 7,
-  StreetAddress = 8,
-  ZipCode = 9,
+  Phone = 7,
+  State = 8,
+  StreetAddress = 9,
+  ZipCode = 10,
 }
 
 export interface CustomerScalarWhereWithAggregatesInput {
@@ -234,6 +246,7 @@ export interface CustomerScalarWhereWithAggregatesInput {
   firstName?: InputMaybe<StringWithAggregatesFilter>;
   id?: InputMaybe<StringWithAggregatesFilter>;
   lastName?: InputMaybe<StringWithAggregatesFilter>;
+  phone?: InputMaybe<StringWithAggregatesFilter>;
   state?: InputMaybe<StringWithAggregatesFilter>;
   streetAddress?: InputMaybe<StringWithAggregatesFilter>;
   zipCode?: InputMaybe<StringWithAggregatesFilter>;
@@ -247,6 +260,7 @@ export interface CustomerUpdateInput {
   firstName?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['String']>;
   lastName?: InputMaybe<Scalars['String']>;
+  phone?: InputMaybe<Scalars['String']>;
   state?: InputMaybe<Scalars['String']>;
   streetAddress?: InputMaybe<Scalars['String']>;
   zipCode?: InputMaybe<Scalars['String']>;
@@ -260,6 +274,7 @@ export interface CustomerUpdateManyMutationInput {
   firstName?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['String']>;
   lastName?: InputMaybe<Scalars['String']>;
+  phone?: InputMaybe<Scalars['String']>;
   state?: InputMaybe<Scalars['String']>;
   streetAddress?: InputMaybe<Scalars['String']>;
   zipCode?: InputMaybe<Scalars['String']>;
@@ -276,6 +291,7 @@ export interface CustomerWhereInput {
   firstName?: InputMaybe<StringFilter>;
   id?: InputMaybe<StringFilter>;
   lastName?: InputMaybe<StringFilter>;
+  phone?: InputMaybe<StringFilter>;
   state?: InputMaybe<StringFilter>;
   streetAddress?: InputMaybe<StringFilter>;
   zipCode?: InputMaybe<StringFilter>;
@@ -547,6 +563,7 @@ export interface Employee {
   id: Scalars['String'];
   jobTitle: Scalars['String'];
   lastName: Scalars['String'];
+  phone: Scalars['String'];
   state: Scalars['String'];
   streetAddress: Scalars['String'];
   zipCode: Scalars['String'];
@@ -565,6 +582,7 @@ export interface EmployeeCountAggregate {
   id: Scalars['Int'];
   jobTitle: Scalars['Int'];
   lastName: Scalars['Int'];
+  phone: Scalars['Int'];
   state: Scalars['Int'];
   streetAddress: Scalars['Int'];
   zipCode: Scalars['Int'];
@@ -581,6 +599,7 @@ export interface EmployeeCountOrderByAggregateInput {
   id?: InputMaybe<SortOrder>;
   jobTitle?: InputMaybe<SortOrder>;
   lastName?: InputMaybe<SortOrder>;
+  phone?: InputMaybe<SortOrder>;
   state?: InputMaybe<SortOrder>;
   streetAddress?: InputMaybe<SortOrder>;
   zipCode?: InputMaybe<SortOrder>;
@@ -597,6 +616,7 @@ export interface EmployeeCreateInput {
   id?: InputMaybe<Scalars['String']>;
   jobTitle: Scalars['String'];
   lastName: Scalars['String'];
+  phone: Scalars['String'];
   state: Scalars['String'];
   streetAddress: Scalars['String'];
   zipCode: Scalars['String'];
@@ -623,6 +643,7 @@ export interface EmployeeCreateWithoutDepartmentInput {
   id?: InputMaybe<Scalars['String']>;
   jobTitle: Scalars['String'];
   lastName: Scalars['String'];
+  phone: Scalars['String'];
   state: Scalars['String'];
   streetAddress: Scalars['String'];
   zipCode: Scalars['String'];
@@ -643,6 +664,7 @@ export interface EmployeeGroupBy {
   id: Scalars['String'];
   jobTitle: Scalars['String'];
   lastName: Scalars['String'];
+  phone: Scalars['String'];
   state: Scalars['String'];
   streetAddress: Scalars['String'];
   zipCode: Scalars['String'];
@@ -666,6 +688,7 @@ export interface EmployeeMaxAggregate {
   id?: Maybe<Scalars['String']>;
   jobTitle?: Maybe<Scalars['String']>;
   lastName?: Maybe<Scalars['String']>;
+  phone?: Maybe<Scalars['String']>;
   state?: Maybe<Scalars['String']>;
   streetAddress?: Maybe<Scalars['String']>;
   zipCode?: Maybe<Scalars['String']>;
@@ -682,6 +705,7 @@ export interface EmployeeMaxOrderByAggregateInput {
   id?: InputMaybe<SortOrder>;
   jobTitle?: InputMaybe<SortOrder>;
   lastName?: InputMaybe<SortOrder>;
+  phone?: InputMaybe<SortOrder>;
   state?: InputMaybe<SortOrder>;
   streetAddress?: InputMaybe<SortOrder>;
   zipCode?: InputMaybe<SortOrder>;
@@ -699,6 +723,7 @@ export interface EmployeeMinAggregate {
   id?: Maybe<Scalars['String']>;
   jobTitle?: Maybe<Scalars['String']>;
   lastName?: Maybe<Scalars['String']>;
+  phone?: Maybe<Scalars['String']>;
   state?: Maybe<Scalars['String']>;
   streetAddress?: Maybe<Scalars['String']>;
   zipCode?: Maybe<Scalars['String']>;
@@ -715,6 +740,7 @@ export interface EmployeeMinOrderByAggregateInput {
   id?: InputMaybe<SortOrder>;
   jobTitle?: InputMaybe<SortOrder>;
   lastName?: InputMaybe<SortOrder>;
+  phone?: InputMaybe<SortOrder>;
   state?: InputMaybe<SortOrder>;
   streetAddress?: InputMaybe<SortOrder>;
   zipCode?: InputMaybe<SortOrder>;
@@ -738,6 +764,7 @@ export interface EmployeeOrderByWithAggregationInput {
   id?: InputMaybe<SortOrder>;
   jobTitle?: InputMaybe<SortOrder>;
   lastName?: InputMaybe<SortOrder>;
+  phone?: InputMaybe<SortOrder>;
   state?: InputMaybe<SortOrder>;
   streetAddress?: InputMaybe<SortOrder>;
   zipCode?: InputMaybe<SortOrder>;
@@ -755,6 +782,7 @@ export interface EmployeeOrderByWithRelationInput {
   id?: InputMaybe<SortOrder>;
   jobTitle?: InputMaybe<SortOrder>;
   lastName?: InputMaybe<SortOrder>;
+  phone?: InputMaybe<SortOrder>;
   state?: InputMaybe<SortOrder>;
   streetAddress?: InputMaybe<SortOrder>;
   zipCode?: InputMaybe<SortOrder>;
@@ -771,9 +799,10 @@ export enum EmployeeScalarFieldEnum {
   Id = 7,
   JobTitle = 8,
   LastName = 9,
-  State = 10,
-  StreetAddress = 11,
-  ZipCode = 12,
+  Phone = 10,
+  State = 11,
+  StreetAddress = 12,
+  ZipCode = 13,
 }
 
 export interface EmployeeScalarWhereInput {
@@ -790,6 +819,7 @@ export interface EmployeeScalarWhereInput {
   id?: InputMaybe<StringFilter>;
   jobTitle?: InputMaybe<StringFilter>;
   lastName?: InputMaybe<StringFilter>;
+  phone?: InputMaybe<StringFilter>;
   state?: InputMaybe<StringFilter>;
   streetAddress?: InputMaybe<StringFilter>;
   zipCode?: InputMaybe<StringFilter>;
@@ -809,6 +839,7 @@ export interface EmployeeScalarWhereWithAggregatesInput {
   id?: InputMaybe<StringWithAggregatesFilter>;
   jobTitle?: InputMaybe<StringWithAggregatesFilter>;
   lastName?: InputMaybe<StringWithAggregatesFilter>;
+  phone?: InputMaybe<StringWithAggregatesFilter>;
   state?: InputMaybe<StringWithAggregatesFilter>;
   streetAddress?: InputMaybe<StringWithAggregatesFilter>;
   zipCode?: InputMaybe<StringWithAggregatesFilter>;
@@ -825,6 +856,7 @@ export interface EmployeeUpdateInput {
   id?: InputMaybe<Scalars['String']>;
   jobTitle?: InputMaybe<Scalars['String']>;
   lastName?: InputMaybe<Scalars['String']>;
+  phone?: InputMaybe<Scalars['String']>;
   state?: InputMaybe<Scalars['String']>;
   streetAddress?: InputMaybe<Scalars['String']>;
   zipCode?: InputMaybe<Scalars['String']>;
@@ -840,6 +872,7 @@ export interface EmployeeUpdateManyMutationInput {
   id?: InputMaybe<Scalars['String']>;
   jobTitle?: InputMaybe<Scalars['String']>;
   lastName?: InputMaybe<Scalars['String']>;
+  phone?: InputMaybe<Scalars['String']>;
   state?: InputMaybe<Scalars['String']>;
   streetAddress?: InputMaybe<Scalars['String']>;
   zipCode?: InputMaybe<Scalars['String']>;
@@ -878,6 +911,7 @@ export interface EmployeeUpdateWithoutDepartmentInput {
   id?: InputMaybe<Scalars['String']>;
   jobTitle?: InputMaybe<Scalars['String']>;
   lastName?: InputMaybe<Scalars['String']>;
+  phone?: InputMaybe<Scalars['String']>;
   state?: InputMaybe<Scalars['String']>;
   streetAddress?: InputMaybe<Scalars['String']>;
   zipCode?: InputMaybe<Scalars['String']>;
@@ -904,6 +938,7 @@ export interface EmployeeWhereInput {
   id?: InputMaybe<StringFilter>;
   jobTitle?: InputMaybe<StringFilter>;
   lastName?: InputMaybe<StringFilter>;
+  phone?: InputMaybe<StringFilter>;
   state?: InputMaybe<StringFilter>;
   streetAddress?: InputMaybe<StringFilter>;
   zipCode?: InputMaybe<StringFilter>;
@@ -2047,6 +2082,48 @@ export interface UserWhereUniqueInput {
   userName?: InputMaybe<Scalars['String']>;
 }
 
+export type GetEmployeesQueryVariables = Exact<{ [key: string]: never }>;
+
+export type GetEmployeesQuery = {
+  __typename?: 'Query';
+  employees: Array<{
+    __typename?: 'Employee';
+    id: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+    gender: string;
+    phone: string;
+    streetAddress: string;
+    city: string;
+    state: string;
+    zipCode: string;
+    jobTitle: string;
+  }>;
+};
+
+export type GetEmployeeByIdQueryVariables = Exact<{
+  id: Scalars['String'];
+}>;
+
+export type GetEmployeeByIdQuery = {
+  __typename?: 'Query';
+  employees: Array<{
+    __typename?: 'Employee';
+    id: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+    gender: string;
+    phone: string;
+    streetAddress: string;
+    city: string;
+    state: string;
+    zipCode: string;
+    jobTitle: string;
+  }>;
+};
+
 export type GetUsersQueryVariables = Exact<{ [key: string]: never }>;
 
 export type GetUsersQuery = {
@@ -2061,6 +2138,119 @@ export type GetUsersQuery = {
   }>;
 };
 
+export type GetUserByIdQueryVariables = Exact<{
+  id: Scalars['String'];
+}>;
+
+export type GetUserByIdQuery = {
+  __typename?: 'Query';
+  user?:
+    | { __typename?: 'User'; id: string; userName: string; firstName: string; lastName: string; email: string }
+    | undefined;
+};
+
+export const GetEmployeesDocument = {
+  kind: 'Document',
+  definitions: [
+    {
+      kind: 'OperationDefinition',
+      operation: 'query',
+      name: { kind: 'Name', value: 'GetEmployees' },
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          {
+            kind: 'Field',
+            name: { kind: 'Name', value: 'employees' },
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [
+                { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'firstName' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'lastName' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'email' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'gender' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'phone' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'streetAddress' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'city' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'state' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'zipCode' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'jobTitle' } },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<GetEmployeesQuery, GetEmployeesQueryVariables>;
+export const GetEmployeeByIdDocument = {
+  kind: 'Document',
+  definitions: [
+    {
+      kind: 'OperationDefinition',
+      operation: 'query',
+      name: { kind: 'Name', value: 'GetEmployeeById' },
+      variableDefinitions: [
+        {
+          kind: 'VariableDefinition',
+          variable: { kind: 'Variable', name: { kind: 'Name', value: 'id' } },
+          type: { kind: 'NonNullType', type: { kind: 'NamedType', name: { kind: 'Name', value: 'String' } } },
+        },
+      ],
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          {
+            kind: 'Field',
+            name: { kind: 'Name', value: 'employees' },
+            arguments: [
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'where' },
+                value: {
+                  kind: 'ObjectValue',
+                  fields: [
+                    {
+                      kind: 'ObjectField',
+                      name: { kind: 'Name', value: 'id' },
+                      value: {
+                        kind: 'ObjectValue',
+                        fields: [
+                          {
+                            kind: 'ObjectField',
+                            name: { kind: 'Name', value: 'equals' },
+                            value: { kind: 'Variable', name: { kind: 'Name', value: 'id' } },
+                          },
+                        ],
+                      },
+                    },
+                  ],
+                },
+              },
+            ],
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [
+                { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'firstName' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'lastName' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'email' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'gender' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'phone' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'streetAddress' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'city' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'state' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'zipCode' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'jobTitle' } },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<GetEmployeeByIdQuery, GetEmployeeByIdQueryVariables>;
 export const GetUsersDocument = {
   kind: 'Document',
   definitions: [
@@ -2090,3 +2280,55 @@ export const GetUsersDocument = {
     },
   ],
 } as unknown as DocumentNode<GetUsersQuery, GetUsersQueryVariables>;
+export const GetUserByIdDocument = {
+  kind: 'Document',
+  definitions: [
+    {
+      kind: 'OperationDefinition',
+      operation: 'query',
+      name: { kind: 'Name', value: 'GetUserById' },
+      variableDefinitions: [
+        {
+          kind: 'VariableDefinition',
+          variable: { kind: 'Variable', name: { kind: 'Name', value: 'id' } },
+          type: { kind: 'NonNullType', type: { kind: 'NamedType', name: { kind: 'Name', value: 'String' } } },
+        },
+      ],
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          {
+            kind: 'Field',
+            name: { kind: 'Name', value: 'user' },
+            arguments: [
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'where' },
+                value: {
+                  kind: 'ObjectValue',
+                  fields: [
+                    {
+                      kind: 'ObjectField',
+                      name: { kind: 'Name', value: 'id' },
+                      value: { kind: 'Variable', name: { kind: 'Name', value: 'id' } },
+                    },
+                  ],
+                },
+              },
+            ],
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [
+                { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'userName' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'firstName' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'lastName' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'email' } },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<GetUserByIdQuery, GetUserByIdQueryVariables>;

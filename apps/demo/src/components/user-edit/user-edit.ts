@@ -1,4 +1,4 @@
-import type { User } from '#/common/models/user.js';
+import type { User } from '#/types/graphql.js';
 import '@material/web/icon/icon.js';
 import '@rask/web/button/button.js';
 import { LitElement, html, type TemplateResult } from 'lit';
@@ -35,7 +35,10 @@ export class UserEdit extends LitElement {
         <section>
           <div>
             <label>
-              <input placeholder="Full Name" required .value=${this.user.fullName} />
+              <input placeholder="First Name" required .value=${this.user.firstName} />
+            </label>
+            <label>
+              <input placeholder="Last Name" required .value=${this.user.lastName} />
             </label>
             <label>
               <input placeholder="Role" required .value=${this.user.role} />
@@ -44,10 +47,6 @@ export class UserEdit extends LitElement {
           <label>
             <md-icon>email</md-icon>
             <input type="email" placeholder="Email" required .value=${this.user.email} />
-          </label>
-          <label>
-            <md-icon>phone</md-icon>
-            <input type="tel" placeholder="Phone" required .value=${this.user.phone} />
           </label>
         </section>
         <footer>
