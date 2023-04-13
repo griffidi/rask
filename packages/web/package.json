@@ -9,10 +9,12 @@
   },
   "type": "module",
   "exports": {
+    "./css/**/*.css": "./src/css/**/*.css",
     "./client": {
       "types": "./src/types/client.d.ts"
     },
-    "./src/client/*": "./src/client/*"
+    "./src/client/*": "./src/client/*",
+    "./package.json": "./package.json"
   },
   "files": [
     "src/**/*.{map.js,js,css}",

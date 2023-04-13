@@ -1,5 +1,6 @@
 import {
   ApolloClient,
+  ApolloLink,
   HttpLink,
   InMemoryCache,
   type NormalizedCacheObject,
@@ -22,7 +23,17 @@ export default function createApolloClient(options: ApolloClientOptions): Apollo
     throw new Error('Apollo client requires a uri');
   }
 
-  const httpLink = new HttpLink({ uri });
+  const httpLink = new HttpLink({
+    credentials: 'include',
+    fetchOptions: {
+      mode: 'no-cors',
+    },
+    uri,
+    // headers: {
+    //   // authorization: localStorage.getItem(AUTH_TOKEN_KEY) || null,
+    //   // 'Access-Control-Allow-Origin': '*',
+    // },
+  });
 
   // const authMiddleware = new ApolloLink((operation, forward) => {
   //   // add the authorization to the headers
@@ -37,19 +48,30 @@ export default function createApolloClient(options: ApolloClientOptions): Apollo
   // });
 
   const errorLink = onError(({ graphQLErrors, networkError }) => {
-    if (graphQLErrors)
+    if (graphQLErrors) {
       graphQLErrors.forEach(({ message, locations, path }) =>
         console.log(`[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`)
       );
-    if (networkError) console.log(`[Network error]: ${networkError}`);
+    }
+
+    if (networkError) {
+      console.log(`[Network error]: ${networkError}`);
+    }
+  });
+
+  const link = ApolloLink.from([errorLink, httpLink]);
+  const cache = new InMemoryCache({
+    typePolicies: typePolicies ?? {},
   });
 
   const client = new ApolloClient({
-    cache: new InMemoryCache({
-      typePolicies: typePolicies ?? {},
-    }),
-    link: errorLink.concat(httpLink),
+    // cache: new InMemoryCache({
+    //   typePolicies: typePolicies ?? {},
+    // }),
+    // link: errorLink.concat(httpLink),
     // link: httpLink,
+    link,
+    cache,
     connectToDevTools: true,
   });
 

@@ -17,6 +17,8 @@ A [Node.js](1) based [GraphQL](2) 🦄 project that uses [Prisma](3) 😍 to mod
 - [Database](#database)
   - [Prisma SQLite]()
   - [Prisma Schema](#📐-prisma-schema)
+- [Development](#development)
+  - [Task Items](#task-items)
 
 ### Technologies
 
@@ -69,3 +71,16 @@ For more information on how to create and edit the [`prisma/schema.prisma`](3) f
 [2]: https://www.prisma.io
 [3]: /prisma/schema.prisma
 [4]: https://www.prisma.io/docs/reference/api-reference/prisma-schema-reference
+
+### Development
+
+#### Task Items
+
+- ❌ Not Started
+- 🟡 In Progress
+- ✅ Complete
+
+| Task         | Status |
+| ------------ | :----: |
+| Drop ts-node |   ❌   |
+| Add esbuild  |   ❌   |

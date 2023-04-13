@@ -1,17 +1,29 @@
 root = true
 
 [*]
+charset = utf-8
+end_of_line = lf
 indent_style = space
+insert_final_newline = true
+max_line_length = 120
+trim_trailing_whitespace = true
+
+[*.{js,ts}]
+quote_type = single
+
+[*.{css,html,js,md,ts,yml}]
 indent_size = 2
 tab_width = 2
-end_of_line = lf
-charset = utf-8
-trim_trailing_whitespace = true
-insert_final_newline = true
-quote_type = single
-max_line_length = 120
 
-[*.{html,js,md}]
+[*.{html,js,md,ts}]
 block_comment_start = /**
+block_comment = *
+block_comment_end = */
+
+[*.{css,html}]
+quote_type = double
+
+[*.css]
+block_comment_start = /*
 block_comment = *
 block_comment_end = */

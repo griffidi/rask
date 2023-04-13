@@ -1,4 +1,4 @@
-const { resolve } = require('node:path');
+const { resolve } = require("node:path");
 
 module.exports = {
   // client: {
@@ -9,10 +9,10 @@ module.exports = {
   // },
   client: {
     // includes: ['./src/graphql/**/*.graphql'],
-    includes: [resolve(__dirname, './src/graphql/**/*.graphql')],
+    includes: [resolve(__dirname, "./src/graphql/**/*.graphql")],
     service: {
-      name: '@rask/api',
-      localSchemaFile: resolve(__dirname, '../../api/prisma/schema.graphql'),
+      name: "@rask/api",
+      localSchemaFile: resolve(__dirname, "../../api/prisma/schema.graphql"),
       // localSchemaFile: '../../api/prisma/schema.graphql',
       // url: 'http://localhost:8008/graphql',
       // url: 'c:/repos/rask/api/src/graphql/schema.graphql',

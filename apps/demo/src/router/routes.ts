@@ -44,11 +44,11 @@ export default [
     },
   },
   {
-    name: 'patients',
-    path: RouteTypes.patients,
+    name: 'customers',
+    path: RouteTypes.customers,
     render: () => {
-      import('../pages/patients/patients-page.js');
-      return html`<app-patients-page></app-patients-page>`;
+      import('../pages/customers/customers-page.js');
+      return html`<app-customers-page></app-customers-page>`;
     },
   },
   {

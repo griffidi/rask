@@ -9,16 +9,16 @@ export const navItems: ReadonlyArray<Readonly<NavItem>> = [
     cssColorVar: '--md-sys-color-green',
   },
   {
+    path: RouteTypes.customers,
+    icon: 'groups',
+    label: 'Customers',
+    cssColorVar: '--md-sys-color-pink',
+  },
+  {
     path: RouteTypes.documents,
     icon: 'description',
     label: 'Documents',
     cssColorVar: '--md-sys-color-blue',
-  },
-  {
-    path: RouteTypes.patients,
-    icon: 'patient_list',
-    label: 'Patients',
-    cssColorVar: '--md-sys-color-pink',
   },
   {
     path: RouteTypes.settings,

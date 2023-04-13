@@ -6,7 +6,6 @@
 import 'reflect-metadata';
 
 import { ApolloServer } from '@apollo/server';
-import { ApolloServerPluginUsageReportingDisabled } from '@apollo/server/plugin/disabled';
 import { ApolloServerPluginDrainHttpServer } from '@apollo/server/plugin/drainHttpServer';
 import { InMemoryLRUCache } from '@apollo/utils.keyvaluecache';
 import { koaMiddleware } from '@as-integrations/koa';
@@ -22,6 +21,8 @@ import { client } from './client.js';
 import { IS_DEV_MODE } from './constants/env-mode.js';
 
 dotenv.config();
+
+const CORS_ORIGINS = process.env['CORS_ORIGIN'];
 
 interface Context {
   client: PrismaClient;
@@ -39,14 +40,20 @@ const server = new ApolloServer<Context>({
   cache: new InMemoryLRUCache(),
   schema,
   introspection: IS_DEV_MODE,
-  plugins: [ApolloServerPluginDrainHttpServer({ httpServer }), ApolloServerPluginUsageReportingDisabled()],
+  plugins: [ApolloServerPluginDrainHttpServer({ httpServer }) /*, ApolloServerPluginUsageReportingDisabled()*/],
+  formatError(formattedError, error) {
+    console.log((error as any).extensions.http.headers); // { status: 400, headers: HeaderMap(0) [Map] {} }
+    console.log(error);
+
+    return formattedError;
+  },
 });
 
 await server.start();
 
 app.use(
   cors({
-    origin: process.env['CORS_ORIGIN'],
+    origin: 'http://localhost:8000',
   })
 );
 app.use(bodyParser());

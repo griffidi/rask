@@ -1,7 +1,6 @@
 import type { QueryOptions } from '@apollo/client/core';
 import { decorateProperty } from '@lit/reactive-element/decorators.js';
 import { type ReactiveElement } from 'lit';
-import errorHandler from '../client/error-handler.js';
 import { ApolloClientConsumer } from '../controllers/apollo-client-consumer.js';
 
 // eslint-disable-next-line ts/no-explicit-any
@@ -19,11 +18,6 @@ export function apolloQuery(options: QueryOptions): any {
         await this.updateComplete;
 
         const result = await client.query(options);
-
-        if (result.errors) {
-          errorHandler(result.errors);
-          return;
-        }
 
         // unwrap result data
         const { data } = result;

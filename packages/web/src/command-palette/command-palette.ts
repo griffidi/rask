@@ -201,7 +201,7 @@ export class CommandPalette extends LitElement {
     }
 
     if (!this.opened) {
-      if (e.ctrlKey && e.key === 'k') {
+      if (e.ctrlKey && (e.key === 'k' || e.key === '/')) {
         e.preventDefault();
 
         this.#showModal();
