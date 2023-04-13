@@ -11,6 +11,7 @@ generator typegraphql {
   provider               = "typegraphql-prisma"
   output                 = "../node_modules/@prisma/generated/type-graphql"
   // output                 = "../prisma/generated/type-graphql"
+  contextPrismaKey       = "prisma"
   emitRedundantTypesInfo = true
   simpleResolvers        = true
   useSimpleInputs        = true

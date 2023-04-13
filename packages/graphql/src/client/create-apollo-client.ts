@@ -24,15 +24,15 @@ export default function createApolloClient(options: ApolloClientOptions): Apollo
   }
 
   const httpLink = new HttpLink({
-    credentials: 'include',
+    // credentials: 'include',
     fetchOptions: {
-      mode: 'no-cors',
+      mode: 'cors',
     },
     uri,
-    // headers: {
-    //   // authorization: localStorage.getItem(AUTH_TOKEN_KEY) || null,
-    //   // 'Access-Control-Allow-Origin': '*',
-    // },
+    headers: {
+      // authorization: localStorage.getItem(AUTH_TOKEN_KEY) || null,
+      'Access-Control-Allow-Origin': 'true',
+    },
   });
 
   // const authMiddleware = new ApolloLink((operation, forward) => {
@@ -65,11 +65,6 @@ export default function createApolloClient(options: ApolloClientOptions): Apollo
   });
 
   const client = new ApolloClient({
-    // cache: new InMemoryCache({
-    //   typePolicies: typePolicies ?? {},
-    // }),
-    // link: errorLink.concat(httpLink),
-    // link: httpLink,
     link,
     cache,
     connectToDevTools: true,

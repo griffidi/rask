@@ -10,14 +10,13 @@ import { ApolloServerPluginDrainHttpServer } from '@apollo/server/plugin/drainHt
 import { InMemoryLRUCache } from '@apollo/utils.keyvaluecache';
 import { koaMiddleware } from '@as-integrations/koa';
 import cors from '@koa/cors';
-import { type PrismaClient } from '@prisma/client';
+import { PrismaClient } from '@prisma/client';
 import { resolvers } from '@prisma/generated/type-graphql/index.js';
 import dotenv from 'dotenv';
 import Koa from 'koa';
 import bodyParser from 'koa-bodyparser';
 import http from 'node:http';
 import { buildSchema } from 'type-graphql';
-import { client } from './client.js';
 import { IS_DEV_MODE } from './constants/env-mode.js';
 
 dotenv.config();
@@ -25,8 +24,11 @@ dotenv.config();
 const CORS_ORIGINS = process.env['CORS_ORIGIN'];
 
 interface Context {
-  client: PrismaClient;
+  prisma: PrismaClient;
 }
+
+const prisma = new PrismaClient();
+await prisma.$connect();
 
 const schema = await buildSchema({
   resolvers,
@@ -53,14 +55,15 @@ await server.start();
 
 app.use(
   cors({
+    allowMethods: ['POST', 'OPTIONS'],
     origin: 'http://localhost:8000',
   })
 );
 app.use(bodyParser());
 app.use(
   koaMiddleware<Context>(server, {
-    context: async () => ({ client }),
+    context: async () => ({ prisma }),
   })
 );
 
-await new Promise<void>((resolve) => httpServer.listen({ port: process.env['DEV_PORT'] }, resolve));
+await new Promise<void>((resolve) => httpServer.listen({ port: 8008 }, resolve));
