@@ -205,7 +205,7 @@
         "type": "pwa-msedge",
         "request": "launch",
         "runtimeExecutable": "dev",
-        "url": "http://localhost:8000",
+        "url": "https://localhost:8000",
         "webRoot": "${workspaceFolder}/apps/demo/src",
         "skipFiles": ["<node_internals>/**"],
         "userDataDir": "${workspaceFolder}/.out/edge/apps/demo",

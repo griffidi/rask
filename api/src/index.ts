@@ -56,7 +56,7 @@ await server.start();
 app.use(
   cors({
     allowMethods: ['POST', 'OPTIONS'],
-    origin: 'http://localhost:8000',
+    origin: 'https://localhost:8000',
   })
 );
 app.use(bodyParser());
