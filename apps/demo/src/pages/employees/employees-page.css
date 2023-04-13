@@ -1,0 +1,166 @@
+:host {
+  --_container-padding: 40px;
+  --rk-button-color: var(--md-sys-color-green);
+  --rk-button-on-color: var(--md-sys-color-green);
+  --rk-button-shadow: var(--md-sys-color-green-rgb);
+  --md-dialog-container-color: var(--md-sys-color-background);
+  --md-dialog-container-surface-tint-layer-color: transparent;
+
+  display: block;
+  box-sizing: border-box;
+  inline-size: 100%;
+  block-size: 100%;
+  padding-inline: var(--_container-padding);
+  padding-block: var(--_container-padding);
+  overflow: hidden auto;
+  scroll-snap-type: x mandatory;
+
+  &::-webkit-scrollbar {
+    width: var(--rk-sys-scroll-size);
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: var(--rk-sys-scroll-shape);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--rk-sys-scroll-color);
+    border-radius: var(--rk-sys-scroll-shape);
+    border: var(--rk-sys-scroll-border-width) solid transparent;
+    background-clip: content-box;
+    box-shadow: var(--rk-sys-scroll-shadow);
+    box-sizing: border-box;
+  }
+
+  @supports (scroll-behavior: smooth) {
+    scroll-behavior: smooth;
+  }
+}
+
+.cards {
+  --_container-grid-columns: 4;
+  --_container-grid-gap: 0.9rem;
+
+  position: relative;
+  display: grid;
+  gap: var(--_container-grid-gap);
+  grid-template-columns: repeat(var(--_container-grid-columns), 1fr);
+}
+
+.card {
+  --_card-border-color: var(--rk-border-color);
+  --_logo-filter: drop-shadow(0 0 10px var(--md-sys-color-blue-alpha));
+
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  box-sizing: border-box;
+  inline-size: 100%;
+  padding-inline: 15px;
+  padding-block: 30px;
+  border: 1px solid var(--_card-border-color);
+  background: var(--md-sys-color-surface-05);
+  border-radius: var(--md-sys-shape-medium);
+  opacity: 1;
+  will-change: opacity, transform;
+}
+
+:host([exiting]) .card:not([selected]) {
+  animation: fade-out 2s var(--md-sys-motion-standard-easing) forwards;
+}
+
+:host([exiting]) .card:is([selected]) {
+  animation: 1s fade-out 500ms var(--md-sys-motion-standard-easing) forwards;
+}
+
+@keyframes fade-out {
+  0%,
+  10% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  30%,
+  100% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+}
+
+header,
+section {
+  display: flex;
+  align-items: flex-start;
+}
+
+header {
+  gap: 30px;
+
+  & .user-name {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  & .title {
+    font-size: var(--md-sys-typescale-title-large-size);
+    font-weight: var(--md-sys-typescale-title-large-weight);
+    line-height: var(--md-sys-typescale-title-large-line-height);
+    letter-spacing: var(--md-sys-typescale-title-large-tracking);
+  }
+
+  .subtitle {
+    font-size: var(--md-sys-typescale-label-large-size);
+    font-weight: var(--md-sys-typescale-label-large-weight);
+    line-height: var(--md-sys-typescale-label-large-line-height);
+    letter-spacing: var(--md-sys-typescale-label-large-tracking);
+  }
+}
+
+.avatar {
+  --md-icon-size: 50px;
+  --md-icon-color: var(--md-sys-color-purple);
+}
+
+section {
+  --_with-icon-spacing-leading: 8px;
+
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  font-size: var(--md-sys-typescale-body-medium-size);
+  font-weight: var(--md-sys-typescale-body-medium-weight);
+  line-height: var(--md-sys-typescale-body-medium-line-height);
+  letter-spacing: var(--md-sys-typescale-body-medium-tracking);
+
+  & .contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  & label {
+    --md-icon-size: 20px;
+    /* --md-icon-color: var(--md-sys-color-purple); */
+    --md-icon-color: var(--md-ref-palette-neutral-variant-60);
+
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+}
+
+footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  /*
+  & rk-button:first-child {
+    --rk-button-color: var(--md-sys-color-blue);
+    --rk-button-on-color: var(--md-sys-color-blue);
+    --rk-button-shadow: var(--md-sys-color-blue-rgb);
+  } */
+}

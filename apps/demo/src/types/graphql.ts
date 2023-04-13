@@ -2082,6 +2082,44 @@ export interface UserWhereUniqueInput {
   userName?: InputMaybe<Scalars['String']>;
 }
 
+export type GetCustomersQueryVariables = Exact<{ [key: string]: never }>;
+
+export type GetCustomersQuery = {
+  __typename?: 'Query';
+  customers: Array<{
+    __typename?: 'Customer';
+    id: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+    phone: string;
+    streetAddress: string;
+    city: string;
+    state: string;
+    zipCode: string;
+  }>;
+};
+
+export type GetCustomerByIdQueryVariables = Exact<{
+  id: Scalars['String'];
+}>;
+
+export type GetCustomerByIdQuery = {
+  __typename?: 'Query';
+  customers: Array<{
+    __typename?: 'Customer';
+    id: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+    phone: string;
+    streetAddress: string;
+    city: string;
+    state: string;
+    zipCode: string;
+  }>;
+};
+
 export type GetEmployeesQueryVariables = Exact<{ [key: string]: never }>;
 
 export type GetEmployeesQuery = {
@@ -2099,6 +2137,7 @@ export type GetEmployeesQuery = {
     state: string;
     zipCode: string;
     jobTitle: string;
+    departmentId: string;
   }>;
 };
 
@@ -2121,6 +2160,7 @@ export type GetEmployeeByIdQuery = {
     state: string;
     zipCode: string;
     jobTitle: string;
+    departmentId: string;
   }>;
 };
 
@@ -2149,6 +2189,231 @@ export type GetUserByIdQuery = {
     | undefined;
 };
 
+export type CustomerPartsFragment = {
+  __typename?: 'Customer';
+  id: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  streetAddress: string;
+  city: string;
+  state: string;
+  zipCode: string;
+};
+
+export type EmployeePartsFragment = {
+  __typename?: 'Employee';
+  id: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  gender: string;
+  phone: string;
+  streetAddress: string;
+  city: string;
+  state: string;
+  zipCode: string;
+  jobTitle: string;
+  departmentId: string;
+};
+
+export type UserPartsFragment = {
+  __typename?: 'User';
+  id: string;
+  userName: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+};
+
+export const CustomerPartsFragmentDoc = {
+  kind: 'Document',
+  definitions: [
+    {
+      kind: 'FragmentDefinition',
+      name: { kind: 'Name', value: 'CustomerParts' },
+      typeCondition: { kind: 'NamedType', name: { kind: 'Name', value: 'Customer' } },
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'firstName' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'lastName' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'email' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'phone' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'streetAddress' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'city' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'state' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'zipCode' } },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<CustomerPartsFragment, unknown>;
+export const EmployeePartsFragmentDoc = {
+  kind: 'Document',
+  definitions: [
+    {
+      kind: 'FragmentDefinition',
+      name: { kind: 'Name', value: 'EmployeeParts' },
+      typeCondition: { kind: 'NamedType', name: { kind: 'Name', value: 'Employee' } },
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'firstName' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'lastName' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'email' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'gender' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'phone' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'streetAddress' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'city' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'state' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'zipCode' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'jobTitle' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'departmentId' } },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<EmployeePartsFragment, unknown>;
+export const UserPartsFragmentDoc = {
+  kind: 'Document',
+  definitions: [
+    {
+      kind: 'FragmentDefinition',
+      name: { kind: 'Name', value: 'UserParts' },
+      typeCondition: { kind: 'NamedType', name: { kind: 'Name', value: 'User' } },
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'userName' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'firstName' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'lastName' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'email' } },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<UserPartsFragment, unknown>;
+export const GetCustomersDocument = {
+  kind: 'Document',
+  definitions: [
+    {
+      kind: 'OperationDefinition',
+      operation: 'query',
+      name: { kind: 'Name', value: 'GetCustomers' },
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          {
+            kind: 'Field',
+            name: { kind: 'Name', value: 'customers' },
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [{ kind: 'FragmentSpread', name: { kind: 'Name', value: 'CustomerParts' } }],
+            },
+          },
+        ],
+      },
+    },
+    {
+      kind: 'FragmentDefinition',
+      name: { kind: 'Name', value: 'CustomerParts' },
+      typeCondition: { kind: 'NamedType', name: { kind: 'Name', value: 'Customer' } },
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'firstName' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'lastName' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'email' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'phone' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'streetAddress' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'city' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'state' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'zipCode' } },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<GetCustomersQuery, GetCustomersQueryVariables>;
+export const GetCustomerByIdDocument = {
+  kind: 'Document',
+  definitions: [
+    {
+      kind: 'OperationDefinition',
+      operation: 'query',
+      name: { kind: 'Name', value: 'GetCustomerById' },
+      variableDefinitions: [
+        {
+          kind: 'VariableDefinition',
+          variable: { kind: 'Variable', name: { kind: 'Name', value: 'id' } },
+          type: { kind: 'NonNullType', type: { kind: 'NamedType', name: { kind: 'Name', value: 'String' } } },
+        },
+      ],
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          {
+            kind: 'Field',
+            name: { kind: 'Name', value: 'customers' },
+            arguments: [
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'where' },
+                value: {
+                  kind: 'ObjectValue',
+                  fields: [
+                    {
+                      kind: 'ObjectField',
+                      name: { kind: 'Name', value: 'id' },
+                      value: {
+                        kind: 'ObjectValue',
+                        fields: [
+                          {
+                            kind: 'ObjectField',
+                            name: { kind: 'Name', value: 'equals' },
+                            value: { kind: 'Variable', name: { kind: 'Name', value: 'id' } },
+                          },
+                        ],
+                      },
+                    },
+                  ],
+                },
+              },
+            ],
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [{ kind: 'FragmentSpread', name: { kind: 'Name', value: 'CustomerParts' } }],
+            },
+          },
+        ],
+      },
+    },
+    {
+      kind: 'FragmentDefinition',
+      name: { kind: 'Name', value: 'CustomerParts' },
+      typeCondition: { kind: 'NamedType', name: { kind: 'Name', value: 'Customer' } },
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'firstName' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'lastName' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'email' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'phone' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'streetAddress' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'city' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'state' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'zipCode' } },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<GetCustomerByIdQuery, GetCustomerByIdQueryVariables>;
 export const GetEmployeesDocument = {
   kind: 'Document',
   definitions: [
@@ -2164,21 +2429,31 @@ export const GetEmployeesDocument = {
             name: { kind: 'Name', value: 'employees' },
             selectionSet: {
               kind: 'SelectionSet',
-              selections: [
-                { kind: 'Field', name: { kind: 'Name', value: 'id' } },
-                { kind: 'Field', name: { kind: 'Name', value: 'firstName' } },
-                { kind: 'Field', name: { kind: 'Name', value: 'lastName' } },
-                { kind: 'Field', name: { kind: 'Name', value: 'email' } },
-                { kind: 'Field', name: { kind: 'Name', value: 'gender' } },
-                { kind: 'Field', name: { kind: 'Name', value: 'phone' } },
-                { kind: 'Field', name: { kind: 'Name', value: 'streetAddress' } },
-                { kind: 'Field', name: { kind: 'Name', value: 'city' } },
-                { kind: 'Field', name: { kind: 'Name', value: 'state' } },
-                { kind: 'Field', name: { kind: 'Name', value: 'zipCode' } },
-                { kind: 'Field', name: { kind: 'Name', value: 'jobTitle' } },
-              ],
+              selections: [{ kind: 'FragmentSpread', name: { kind: 'Name', value: 'EmployeeParts' } }],
             },
           },
+        ],
+      },
+    },
+    {
+      kind: 'FragmentDefinition',
+      name: { kind: 'Name', value: 'EmployeeParts' },
+      typeCondition: { kind: 'NamedType', name: { kind: 'Name', value: 'Employee' } },
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'firstName' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'lastName' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'email' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'gender' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'phone' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'streetAddress' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'city' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'state' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'zipCode' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'jobTitle' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'departmentId' } },
         ],
       },
     },
@@ -2231,21 +2506,31 @@ export const GetEmployeeByIdDocument = {
             ],
             selectionSet: {
               kind: 'SelectionSet',
-              selections: [
-                { kind: 'Field', name: { kind: 'Name', value: 'id' } },
-                { kind: 'Field', name: { kind: 'Name', value: 'firstName' } },
-                { kind: 'Field', name: { kind: 'Name', value: 'lastName' } },
-                { kind: 'Field', name: { kind: 'Name', value: 'email' } },
-                { kind: 'Field', name: { kind: 'Name', value: 'gender' } },
-                { kind: 'Field', name: { kind: 'Name', value: 'phone' } },
-                { kind: 'Field', name: { kind: 'Name', value: 'streetAddress' } },
-                { kind: 'Field', name: { kind: 'Name', value: 'city' } },
-                { kind: 'Field', name: { kind: 'Name', value: 'state' } },
-                { kind: 'Field', name: { kind: 'Name', value: 'zipCode' } },
-                { kind: 'Field', name: { kind: 'Name', value: 'jobTitle' } },
-              ],
+              selections: [{ kind: 'FragmentSpread', name: { kind: 'Name', value: 'EmployeeParts' } }],
             },
           },
+        ],
+      },
+    },
+    {
+      kind: 'FragmentDefinition',
+      name: { kind: 'Name', value: 'EmployeeParts' },
+      typeCondition: { kind: 'NamedType', name: { kind: 'Name', value: 'Employee' } },
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'firstName' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'lastName' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'email' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'gender' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'phone' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'streetAddress' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'city' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'state' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'zipCode' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'jobTitle' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'departmentId' } },
         ],
       },
     },
@@ -2266,15 +2551,24 @@ export const GetUsersDocument = {
             name: { kind: 'Name', value: 'users' },
             selectionSet: {
               kind: 'SelectionSet',
-              selections: [
-                { kind: 'Field', name: { kind: 'Name', value: 'id' } },
-                { kind: 'Field', name: { kind: 'Name', value: 'userName' } },
-                { kind: 'Field', name: { kind: 'Name', value: 'firstName' } },
-                { kind: 'Field', name: { kind: 'Name', value: 'lastName' } },
-                { kind: 'Field', name: { kind: 'Name', value: 'email' } },
-              ],
+              selections: [{ kind: 'FragmentSpread', name: { kind: 'Name', value: 'UserParts' } }],
             },
           },
+        ],
+      },
+    },
+    {
+      kind: 'FragmentDefinition',
+      name: { kind: 'Name', value: 'UserParts' },
+      typeCondition: { kind: 'NamedType', name: { kind: 'Name', value: 'User' } },
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'userName' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'firstName' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'lastName' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'email' } },
         ],
       },
     },
@@ -2318,15 +2612,24 @@ export const GetUserByIdDocument = {
             ],
             selectionSet: {
               kind: 'SelectionSet',
-              selections: [
-                { kind: 'Field', name: { kind: 'Name', value: 'id' } },
-                { kind: 'Field', name: { kind: 'Name', value: 'userName' } },
-                { kind: 'Field', name: { kind: 'Name', value: 'firstName' } },
-                { kind: 'Field', name: { kind: 'Name', value: 'lastName' } },
-                { kind: 'Field', name: { kind: 'Name', value: 'email' } },
-              ],
+              selections: [{ kind: 'FragmentSpread', name: { kind: 'Name', value: 'UserParts' } }],
             },
           },
+        ],
+      },
+    },
+    {
+      kind: 'FragmentDefinition',
+      name: { kind: 'Name', value: 'UserParts' },
+      typeCondition: { kind: 'NamedType', name: { kind: 'Name', value: 'User' } },
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'userName' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'firstName' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'lastName' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'email' } },
         ],
       },
     },

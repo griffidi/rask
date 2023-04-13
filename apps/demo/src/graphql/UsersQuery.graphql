@@ -1,19 +1,11 @@
 query GetUsers {
   users {
-    id
-    userName
-    firstName
-    lastName
-    email
+    ...UserParts
   }
 }
 
 query GetUserById($id: String!) {
   user(where: { id: $id }) {
-    id
-    userName
-    firstName
-    lastName
-    email
+    ...UserParts
   }
 }

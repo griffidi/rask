@@ -1,5 +1,8 @@
 export const enum RouteTypes {
   customers = '/customers',
+  customerEdit = '/customers/:id/edit',
+  employees = '/employees',
+  employeeEdit = '/employees/:id/edit',
   documents = '/documents',
   home = '/home',
   login = '/login',

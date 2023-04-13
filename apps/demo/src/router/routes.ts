@@ -52,6 +52,30 @@ export default [
     },
   },
   {
+    name: 'customerEdit',
+    path: RouteTypes.customerEdit,
+    render: ({ id }: { [key: string]: string }) => {
+      import('../pages/customers/customer-edit-page.js');
+      return html`<app-customer-edit-page .customerId=${id}></app-customer-edit-page>`;
+    },
+  },
+  {
+    name: 'employees',
+    path: RouteTypes.employees,
+    render: () => {
+      import('../pages/employees/employees-page.js');
+      return html`<app-employees-page></app-employees-page>`;
+    },
+  },
+  {
+    name: 'employeeEdit',
+    path: RouteTypes.employeeEdit,
+    render: ({ id }: { [key: string]: string }) => {
+      import('../pages/employees/employee-edit-page.js');
+      return html`<app-employee-edit-page .employeeId=${id}></app-employee-edit-page>`;
+    },
+  },
+  {
     name: 'settings',
     path: RouteTypes.settings,
     render: () => {
