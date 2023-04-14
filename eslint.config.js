@@ -126,7 +126,7 @@ const litConfig = {
 
 export default [
   {
-    files: ['api/src/**/*.ts'],
+    files: ['api/src/**/*.ts', 'api/prisma/**/*.ts'],
     ignoreFiles: ['api/src/prisma/generated'],
     languageOptions: {
       sourceType: 'module',

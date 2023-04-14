@@ -8,7 +8,7 @@ import {
   randUserName,
 } from '@ngneat/falso';
 import { nanoid } from 'nanoid';
-import { randChanceFn } from './random-generators/chance-fn.js';
+import { randChanceFn } from './generators/chance-fn.js';
 import { roles } from './roles.js';
 
 const adminRoleId = roles.find((role) => role.name === 'Administrator').id;

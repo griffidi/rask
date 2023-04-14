@@ -19,8 +19,13 @@
     "prisma:push": "prisma db push",
     "prisma:seed": "prisma db seed",
     "generate:db": "pnpm prisma:generate && pnpm prisma:push && pnpm prisma:seed",
-    "dev": "ts-node-esm --transpile-only src/index.ts",
-    "build": ""
+    "prebuild:seed": "rimraf prisma/seed.js",
+    "build:seed": "esbuild prisma/seed.ts --outdir=prisma --tsconfig=tsconfig.json --format=esm --packages=external --platform=node",
+    "prebuild:dev": "rimraf src/**/*.{map.js,js}",
+    "build:dev": "esbuild src/index.ts --outdir=src --tsconfig=tsconfig.json --format=esm --packages=external --platform=node --sourcemap",
+    "predev": "pnpm build:dev --watch",
+    "dev": "node --watch src/index.ts",
+    "dev:old": "ts-node-esm --transpile-only src/index.ts"
   },
   "dependencies": {
     "@apollo/server": "^4.6.0",
@@ -46,6 +51,7 @@
     "@types/koa__cors": "^4.0.0",
     "@types/node": "^18.15.11",
     "class-validator": "^0.14.0",
+    "esbuild": "^0.17.16",
     "graphql-tag": "^2.12.6",
     "nanoid": "^4.0.2",
     "prisma": "^4.12.0",
@@ -58,6 +64,6 @@
     "typescript": "5.*"
   },
   "prisma": {
-    "seed": "ts-node-esm --transpile-only prisma/seed.ts"
+    "seed": "node prisma/seed.js"
   }
 }

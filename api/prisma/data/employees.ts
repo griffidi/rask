@@ -13,7 +13,7 @@ import {
 } from '@ngneat/falso';
 import { nanoid } from 'nanoid';
 import { departments } from './departments.js';
-import { randChanceFn } from './random-generators/chance-fn.js';
+import { randChanceFn } from './generators/chance-fn.js';
 
 const departmentLength = departments.length;
 

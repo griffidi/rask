@@ -16,6 +16,12 @@
     "types/src/**/*.d.ts",
     "README.md"
   ],
+  "exports": {
+    "./client": {
+      "types": "./src/types/client.d.ts"
+    },
+    "./src/client/*": "./src/client/*"
+  },
   "scripts": {
     "codegen": "graphql-codegen --config codegen.yml -w",
     "dev": "wds"

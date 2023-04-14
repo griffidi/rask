@@ -10,7 +10,7 @@ import {
   randZipCode,
 } from '@ngneat/falso';
 import { nanoid } from 'nanoid';
-import { randChanceFn } from './random-generators/chance-fn.js';
+import { randChanceFn } from './generators/chance-fn.js';
 
 export const customers = Array.from({ length: 100 }, () => {
   return {
