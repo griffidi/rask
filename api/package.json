@@ -17,15 +17,16 @@
     "prisma:generate": "prisma generate",
     "postprisma:generate": "cd $PWD && cd ./node_modules/@prisma/generated/type-graphql && pnpm init",
     "prisma:push": "prisma db push",
+    "preprisma:seed": "pnpm build:seed",
     "prisma:seed": "prisma db seed",
     "generate:db": "pnpm prisma:generate && pnpm prisma:push && pnpm prisma:seed",
-    "prebuild:seed": "rimraf prisma/seed.js",
-    "build:seed": "esbuild prisma/seed.ts --outdir=prisma --tsconfig=tsconfig.json --format=esm --packages=external --platform=node",
-    "prebuild:dev": "rimraf src/**/*.{map.js,js}",
-    "build:dev": "esbuild src/index.ts --outdir=src --tsconfig=tsconfig.json --format=esm --packages=external --platform=node --sourcemap",
+    "prebuild:seed": "rimraf dist/seed.js",
+    "build:seed": "esbuild prisma/seed.ts --tsconfig=tsconfig.json --outfile=dist/seed.js --bundle --format=esm --packages=external --platform=node",
+    "prebuild:dev": "rimraf dist/index.js dist/index.js.map",
+    "build:dev": "esbuild src/index.ts --tsconfig=tsconfig.json --outfile=dist/index.js --bundle --format=esm --packages=external --platform=node --sourcemap",
     "predev": "pnpm build:dev --watch",
-    "dev": "node --watch src/index.ts",
-    "dev:old": "ts-node-esm --transpile-only src/index.ts"
+    "dev": "node --watch --inspect dist/index.js",
+    "dev:tsnode": "ts-node-esm --transpile-only src/index.ts"
   },
   "dependencies": {
     "@apollo/server": "^4.6.0",
@@ -64,6 +65,6 @@
     "typescript": "5.*"
   },
   "prisma": {
-    "seed": "node prisma/seed.js"
+    "seed": "node dist/seed.js"
   }
 }

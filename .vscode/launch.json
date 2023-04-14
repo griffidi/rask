@@ -10,7 +10,7 @@
       "request": "launch",
       "type": "node",
       "runtimeExecutable": "pnpm",
-      "runtimeArgs": ["dev"],
+      "runtimeArgs": ["dev:tsnode"],
       "skipFiles": ["<node_internals>/**"],
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen",

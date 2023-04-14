@@ -19,9 +19,10 @@ import http from 'node:http';
 import { buildSchema } from 'type-graphql';
 import { IS_DEV_MODE } from './constants/env-mode.js';
 
-dotenv.config();
+dotenv.config({ path: `.env.${process.env?.['NODE_ENV'] ?? 'development'}` });
 
-const CORS_ORIGINS = process.env['CORS_ORIGIN'];
+const CORS_ORIGINS = process.env?.['CORS_ORIGIN'];
+const GRAPHQL_PORT = process.env?.['GRAPHQL_PORT'];
 
 interface Context {
   prisma: PrismaClient;
@@ -56,7 +57,7 @@ await server.start();
 app.use(
   cors({
     allowMethods: ['POST', 'OPTIONS'],
-    origin: 'https://localhost:8000',
+    origin: CORS_ORIGINS,
   })
 );
 app.use(bodyParser());
@@ -66,4 +67,4 @@ app.use(
   })
 );
 
-await new Promise<void>((resolve) => httpServer.listen({ port: 8008 }, resolve));
+await new Promise<void>((resolve) => httpServer.listen({ port: GRAPHQL_PORT }, resolve));
