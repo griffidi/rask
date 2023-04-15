@@ -1,0 +1,38 @@
+:host {
+  display: block;
+  box-sizing: border-box;
+  inline-size: 100%;
+  block-size: 100%;
+  padding-inline: 40px;
+  padding-block: 40px;
+  overflow: hidden auto;
+  scroll-snap-type: x mandatory;
+
+  &::-webkit-scrollbar {
+    width: var(--rk-sys-scroll-size);
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: var(--rk-sys-scroll-shape);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--rk-sys-scroll-color);
+    border-radius: var(--rk-sys-scroll-shape);
+    border: var(--rk-sys-scroll-border-width) solid transparent;
+    background-clip: content-box;
+    box-shadow: var(--rk-sys-scroll-shadow);
+    box-sizing: border-box;
+  }
+
+  @supports (scroll-behavior: smooth) {
+    scroll-behavior: smooth;
+  }
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2em;
+}

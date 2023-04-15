@@ -1,9 +1,9 @@
-import { generateUuid } from './uuid.js';
+import { generateNanoId } from './nanoid.js';
 
 export function useCrypto() {
   return new (class {
-    get uuid(): string {
-      return generateUuid();
+    get nanoid(): string {
+      return generateNanoId();
     }
   })();
 }

@@ -93,9 +93,9 @@
   --md-sys-typescale-body-small-line-height-unit: 2px;
   --md-sys-typescale-body-small-line-height: 16px;
   /* Body Small font tracking */
-  --md-sys-typescale-body-small-tracking-value: 0.4000000059604645px;
+  --md-sys-typescale-body-small-tracking-value: 0.8008000059604645px;
   --md-sys-typescale-body-small-tracking-unit: 2px;
-  --md-sys-typescale-body-small-tracking: 0.4000000059604645px;
+  --md-sys-typescale-body-small-tracking: 0.8008000059604645px;
   /* Body Small font size */
   --md-sys-typescale-body-small-size-value: 12px;
   --md-sys-typescale-body-small-size-unit: 2px;
@@ -167,8 +167,8 @@
   --md-sys-typescale-title-small-weight: var(--md-ref-typeface-weight-medium);
   /* Title Small font name */
   --md-sys-typescale-title-small-font: var(--md-ref-typeface-font);
-  --md-sys-typescale-title-small-type: var(--md-sys-typescale-title-small-weight)
-    var(--md-ref-typeface-font) var(--md-sys-typescale-title-small-size);
+  --md-sys-typescale-title-small-type: var(--md-sys-typescale-title-small-weight) var(--md-ref-typeface-font)
+    var(--md-sys-typescale-title-small-size);
   /* Title Medium */
   --md-sys-typescale-title-medium-text-transform: unset;
   --md-sys-typescale-title-medium-axis-value: unset;
@@ -338,13 +338,16 @@
   /* Display Large font name */
   --md-sys-typescale-display-large-font: var(--md-ref-typeface-font);
   /* Font typeface */
-  --md-ref-typeface-font: 'Inter var experimental', 'Inter var', Inter;
+  --md-ref-typeface-font: "Inter var experimental", "Inter var", Inter;
   /* Bold weight */
   --md-ref-typeface-weight-bold: 700;
   /* Medium weight */
   --md-ref-typeface-weight-medium: 500;
   /* Regular weight */
   --md-ref-typeface-weight-regular: 400;
+  /* page title */
+  --md-sys-typescale-page-title-font: var(--md-sys-typescale-title-medium-size) /
+    var(--md-sys-typescale-title-medium-line-height) var(--md-sys-typescale-title-medium-weight);
   /* input */
   --md-sys-typescale-input-font: var(--md-sys-typescale-label-large-size) /
     var(--md-sys-typescale-label-large-line-height) var(--md-sys-typescale-label-large-weight);

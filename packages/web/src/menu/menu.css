@@ -1,0 +1,54 @@
+:host {
+  --rk-menu-container-color: #212122;
+
+  position: relative;
+}
+
+:host(::slotted) {
+  & > * {
+    inline-size: 100%;
+  }
+}
+
+:host([opened]) {
+  & aside {
+    opacity: 1;
+    /* transform: rotateX(0); */
+    visibility: visible;
+  }
+}
+
+aside {
+  /* content-visibility: hidden; */
+  visibility: hidden;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  background: var(--rk-menu-container-color);
+  /* background-color: var(--md-sys-color-surface-2); */
+  border: 1px solid var(--rk-border-color);
+  border-radius: var(--md-sys-shape-medium);
+  box-shadow: var(--md-sys-color-shadow-2);
+  /* padding: 0.5em 0; */
+  min-inline-size: 300px;
+  /* inset-block-start: calc(100% - 0.2rem); */
+  inset-block-start: 28px;
+  /* inset-inline-start: 50%; */
+  inset-inline-end: 0;
+  opacity: 0.3;
+  /* transform: translateX(-50%); */
+  /* transform: rotateX(-90deg); */
+  /* transform-origin: top center; */
+  /* transition: 280ms all ease-out;
+  transition: 280ms all 120ms ease-out; */
+  transition: 280ms opacity ease-out;
+  padding-inline: 30px;
+  padding-block: 20px;
+  box-sizing: border-box;
+
+  & a {
+    color: #444;
+    display: block;
+    padding: 0.5em;
+  }
+}

@@ -41,7 +41,7 @@
   --md-ref-palette-secondary-100: #ffffff;
   /* tertiary */
   --md-ref-palette-tertiary-0: #000000;
-  --md-ref-palette-tertiary-10: #40000f;
+  --md-ref-palette-tertiary-10: #80080f;
   --md-ref-palette-tertiary-20: #5f1222;
   --md-ref-palette-tertiary-25: #6e1e2c;
   --md-ref-palette-tertiary-30: #7d2937;
@@ -119,7 +119,7 @@
   --md-sys-color-tertiary-light: #9c404d;
   --md-sys-color-on-tertiary-light: #ffffff;
   --md-sys-color-tertiary-container-light: #ffdadc;
-  --md-sys-color-on-tertiary-container-light: #40000f;
+  --md-sys-color-on-tertiary-container-light: #80080f;
   --md-sys-color-error-light: #ba1a1a;
   --md-sys-color-error-container-light: #ffdad6;
   --md-sys-color-on-error-light: #ffffff;
@@ -174,38 +174,38 @@
   --md-custom-color-magenta: #e666cc;
   --md-custom-color-blue: #53ceda;
 
-  --md-sys-typescale-label-small-family: 'Inter var experimental', 'Inter var', Inter;
+  --md-sys-typescale-label-small-family: "Inter var experimental", "Inter var", Inter;
   --md-sys-typescale-label-small-weight: 500;
-  --md-sys-typescale-label-medium-family: 'Inter var experimental', 'Inter var', Inter;
+  --md-sys-typescale-label-medium-family: "Inter var experimental", "Inter var", Inter;
   --md-sys-typescale-label-medium-weight: 500;
-  --md-sys-typescale-label-large-family: 'Inter var experimental', 'Inter var', Inter;
+  --md-sys-typescale-label-large-family: "Inter var experimental", "Inter var", Inter;
   --md-sys-typescale-label-large-weight: 500;
-  --md-sys-typescale-body-small-family: 'Inter var experimental', 'Inter var', Inter;
+  --md-sys-typescale-body-small-family: "Inter var experimental", "Inter var", Inter;
   --md-sys-typescale-body-small-weight: 400;
-  --md-sys-typescale-body-medium-family: 'Inter var experimental', 'Inter var', Inter;
+  --md-sys-typescale-body-medium-family: "Inter var experimental", "Inter var", Inter;
   --md-sys-typescale-body-medium-weight: 400;
-  --md-sys-typescale-body-large-family: 'Inter var experimental', 'Inter var', Inter;
+  --md-sys-typescale-body-large-family: "Inter var experimental", "Inter var", Inter;
   --md-sys-typescale-body-large-weight: 400;
-  --md-sys-typescale-title-small-family: 'Inter var experimental', 'Inter var', Inter;
+  --md-sys-typescale-title-small-family: "Inter var experimental", "Inter var", Inter;
   --md-sys-typescale-title-small-weight: 500;
-  --md-sys-typescale-title-medium-family: 'Inter var experimental', 'Inter var', Inter;
+  --md-sys-typescale-title-medium-family: "Inter var experimental", "Inter var", Inter;
   --md-sys-typescale-title-medium-weight: 500;
-  --md-sys-typescale-title-large-family: 'Inter var experimental', 'Inter var', Inter;
+  --md-sys-typescale-title-large-family: "Inter var experimental", "Inter var", Inter;
   --md-sys-typescale-title-large-weight: 400;
-  --md-sys-typescale-headline-small-family: 'Inter var experimental', 'Inter var', Inter;
+  --md-sys-typescale-headline-small-family: "Inter var experimental", "Inter var", Inter;
   --md-sys-typescale-headline-small-weight: 400;
-  --md-sys-typescale-headline-medium-family: 'Inter var experimental', 'Inter var', Inter;
+  --md-sys-typescale-headline-medium-family: "Inter var experimental", "Inter var", Inter;
   --md-sys-typescale-headline-medium-weight: 400;
-  --md-sys-typescale-headline-large-family: 'Inter var experimental', 'Inter var', Inter;
+  --md-sys-typescale-headline-large-family: "Inter var experimental", "Inter var", Inter;
   --md-sys-typescale-headline-large-weight: 400;
-  --md-sys-typescale-display-small-family: 'Inter var experimental', 'Inter var', Inter;
+  --md-sys-typescale-display-small-family: "Inter var experimental", "Inter var", Inter;
   --md-sys-typescale-display-small-weight: 400;
-  --md-sys-typescale-display-medium-family: 'Inter var experimental', 'Inter var', Inter;
+  --md-sys-typescale-display-medium-family: "Inter var experimental", "Inter var", Inter;
   --md-sys-typescale-display-medium-weight: 400;
-  --md-sys-typescale-display-large-family: 'Inter var experimental', 'Inter var', Inter;
+  --md-sys-typescale-display-large-family: "Inter var experimental", "Inter var", Inter;
   --md-sys-typescale-display-large-weight: 400;
-  --md-ref-typeface-font: 'Inter var experimental', 'Inter var', Inter; /* Plain typeface */
-  --md-ref-typeface-font: 'Inter var experimental', 'Inter var', Inter; /* Brand typeface */
+  --md-ref-typeface-font: "Inter var experimental", "Inter var", Inter; /* Plain typeface */
+  --md-ref-typeface-font: "Inter var experimental", "Inter var", Inter; /* Brand typeface */
   --md-ref-typeface-weight-bold: 700; /* Bold weight */
   --md-ref-typeface-weight-medium: 500; /* Medium weight */
   --md-ref-typeface-weight-regular: 400; /* Regular weight */

@@ -1,0 +1,38 @@
+{
+  "version": "2.0.0",
+  // "options": {
+  //   "cwd": "${workspaceFolder}"
+  // },
+  "tasks": [
+    {
+      "label": "Run apps/demo codegen",
+      "type": "shell",
+      "command": "pnpm codegen",
+      "options": {
+        "cwd": "./apps/demo"
+      },
+      // "runOptions": {
+      //   "runOn": "folderOpen"
+      // },
+      "presentation": {
+        "echo": true,
+        "revealProblems": "onProblem",
+        "focus": false,
+        "panel": "dedicated",
+        "showReuseMessage": true,
+        "clear": true
+      },
+      "problemMatcher": {
+        "owner": "shell",
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^\\[STARTED\\].*",
+          "endsPattern": ".*Watching for changes\\.\\.\\."
+        },
+        "pattern": {
+          "regexp": ""
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+* {
+  box-sizing: border-box;
+}
+
+:host {
+  --_input-on-color: var(--rk-text-field-on-color, #ffffff);
+  --_input-border-color: var(--rk-text-field-border-color, #ffffff);
+  --_input-font-size: var(--md-sys-typescale-label-large-size);
+  --_input-font-weight: var(--md-sys-typescale-label-large-weight);
+  --_label-on-color: var(--md-ref-palette-neutral-variant-50);
+  --_label-populated-color: var(--rk-text-field-label-populated-color, var(--md-sys-color-purple));
+  --_label-inset-block-start: -2px;
+  --_input-font-size: var(--md-sys-typescale-label-large-size);
+  --_label-font-weight: var(--md-sys-typescale-label-large-weight);
+}
+
+.text-field {
+  position: relative;
+}
+
+input {
+  inline-size: 100%;
+  color: var(--_input-on-color);
+  padding-block: 10px;
+  padding-inline: 0;
+  margin-block-end: 30px;
+  font-size: var(--_input-font-size);
+  font-weight: var(--_input-font-weight);
+  border: none;
+  border-block-end: 1px solid var(--_input-border-color);
+  outline: none;
+  background: transparent;
+}
+
+label {
+  position: absolute;
+  inset-block-start: var(--_label-inset-block-start);
+  inset-inline-start: 0;
+  padding-block: 10px;
+  padding-inline: 0;
+  font-size: var(--_label-font-size);
+  font-weight: var(--_label-font-weight);
+  color: var(--_label-on-color);
+  pointer-events: none;
+  transition: 0.5s;
+}
+
+.populated label,
+input:is(:active, :focus) + label {
+  --_label-inset-block-start: -28px;
+  --_label-on-color: var(--_label-populated-color);
+  --_label-font-size: 12px;
+}

@@ -1,0 +1,29 @@
+:host {
+  display: flex;
+  justify-content: space-between;
+  block-size: 100%;
+  inline-size: 100%;
+}
+
+.trailing-side {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 30px;
+  inline-size: 100%;
+  block-size: 100%;
+  padding-inline: 20px;
+}
+
+.logo {
+  will-change: filter;
+  transition: filter 300ms;
+}
+
+.logo:hover {
+  filter: drop-shadow(0 0 10px var(--md-sys-color-light-blue-alpha));
+}
+
+.logo.vue:hover {
+  filter: drop-shadow(0 0 2em #42b883aa);
+}

@@ -1,0 +1,12 @@
+* {
+  box-sizing: border-box;
+}
+
+:host {
+  --_container-border-color: var(--rk-table-border-color, var(--rk-border-color));
+
+  display: table;
+  inline-size: 100%;
+  border: 1px solid var(--_container-border-color);
+  border-radius: var(--md-sys-shape-large);
+}

@@ -1,5 +1,5 @@
 :root {
-  --md-sys-color-green: #42b883;
+  --md-sys-color-green: rgb(66, 184, 131);
   --md-sys-color-green-rgb: 66, 184, 131;
   --md-sys-color-on-green: #194431;
   --md-sys-color-green-light: #42d392;
@@ -40,6 +40,14 @@
   --md-sys-color-gray: var(--md-ref-palette-neutral-variant-50);
 }
 
+/* alerts */
+:root {
+  --md-sys-color-alert-error: #f44336;
+  --md-sys-color-alert-info: #3857f3;
+  --md-sys-color-alert-success: #4caf50;
+  --md-sys-color-alert-warning: #ff9800;
+}
+
 :root {
   --md-sys-color-text-light-1: var(--md-sys-color-indigo);
   --md-sys-color-text-light-2: rgba(60, 60, 60, 0.7);
@@ -52,9 +60,9 @@
 }
 
 :root {
-  --md-icon-font: 'Material Symbols Sharp';
+  --md-icon-font: "Material Symbols Sharp";
   --md-icon-weight: 400;
-  --md-icon-font-variation-settings: 'FILL' 0, 'wght' var(--md-icon-weight), 'GRAD' 0, 'opsz' 48;
+  --md-icon-font-variation-settings: "FILL" 0, "wght" var(--md-icon-weight), "GRAD" 0, "opsz" 48;
 }
 
 :root {
@@ -74,11 +82,7 @@
     var(--md-sys-color-magenta) 14.05%,
     var(--md-sys-color-flamingo) 89.3%
   );
-  --md-sys-color-gradient-purple-blue: linear-gradient(
-    to right,
-    var(--md-sys-color-purple),
-    var(--md-sys-color-blue)
-  );
+  --md-sys-color-gradient-purple-blue: linear-gradient(to right, var(--md-sys-color-purple), var(--md-sys-color-blue));
   --md-sys-color-gradient-flamingo-purple: linear-gradient(
     128.87deg,
     var(--md-sys-color-flamingo) 14.05%,
@@ -100,11 +104,13 @@
 }
 
 :root {
-  --bet-input-container-color: #ffffff;
-  --bet-input-text-color: rgba(42, 42, 42, 0.77);
-  --bet-input-placeholder-color: rgba(42, 42, 42, 0.57);
+  --rk-input-container-color: #ffffff;
+  --rk-input-text-color: rgba(42, 42, 42, 0.77);
+  --rk-input-placeholder-color: rgba(42, 42, 42, 0.57);
 }
 
 :root {
-  --bet-border-color: var(--md-ref-palette-neutral-variant-20, #828282);
+  --rk-border-color: var(--md-ref-palette-neutral-variant-20, #828282);
+  --rk-header-color: rgba(40, 41, 42, 0.6);
+  --rk-hover-color: rgba(40, 41, 42, 0.6);
 }

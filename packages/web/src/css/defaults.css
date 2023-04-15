@@ -1,12 +1,6 @@
 :root {
-  --md-site-header-height: 58px;
-  --md-site-footer-height: 58px;
-}
-
-*,
-:before,
-:after {
-  box-sizing: border-box;
+  --rk-site-header-height: 58px;
+  --rk-site-footer-height: 58px;
 }
 
 html:has(dialog[open]) {
@@ -14,7 +8,6 @@ html:has(dialog[open]) {
 }
 
 body {
-  /* inline-size: 100%; */
   inline-size: 100vw;
   min-inline-size: 320px;
   min-block-size: 100vh;
@@ -36,7 +29,7 @@ body {
   overflow-wrap: break-word;
   overflow: hidden;
 }
-
+/*
 blockquote,
 dl,
 dd,
@@ -66,7 +59,7 @@ h6 {
 a,
 area,
 button,
-[role='button'],
+[role="button"],
 input,
 label,
 select,
@@ -121,8 +114,8 @@ textarea {
   padding: 0;
   line-height: inherit;
   color: inherit;
-}
-
+} */
+/*
 button {
   padding: 0;
   background-color: transparent;
@@ -130,7 +123,7 @@ button {
 }
 
 button,
-[role='button'] {
+[role="button"] {
   cursor: pointer;
 }
 
@@ -179,7 +172,7 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-input[type='number'] {
+input[type="number"] {
   -moz-appearance: textfield;
 }
 
@@ -194,4 +187,4 @@ select {
 fieldset {
   margin: 0;
   padding: 0;
-}
+} */

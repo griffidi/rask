@@ -1,0 +1,9 @@
+@custom-media --rk-media-ok: (prefers-reduced-motion: no-preference);
+@custom-media --rk-motion-not-ok (prefers-reduced-motion: reduce);
+@custom-media --rk-opacity-ok (prefers-reduced-transparency: no-preference);
+@custom-media --rk-opacity-not-ok (prefers-reduced-transparency: reduce);
+@custom-media --rk-use-data-ok (prefers-reduced-data: no-preference);
+@custom-media --rk-use-data-not-ok (prefers-reduced-data: reduce);
+
+@custom-media --rk-dark: (prefers-color-scheme: dark);
+@custom-media --rk-light: (prefers-color-scheme: light);

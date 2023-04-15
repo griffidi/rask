@@ -1,0 +1,22 @@
+main {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows:
+    var(--rk-site-header-height)
+    calc(100% - var(--rk-site-header-height));
+  inline-size: 100%;
+  block-size: 100vh;
+}
+
+app-header {
+  grid-row: 1;
+}
+
+article {
+  grid-row: 2;
+}
+
+/* app-footer {
+  grid-row: 3;
+} */

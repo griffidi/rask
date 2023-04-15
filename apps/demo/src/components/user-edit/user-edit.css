@@ -1,0 +1,110 @@
+:host {
+  --md-filled-field-container-color: transparent;
+  --_invalid-color: var(--md-sys-color-red-light);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+
+  & h2 {
+    margin: 0;
+  }
+
+  & md-icon {
+    --md-icon-size: 48px;
+    --md-icon-weight: 900;
+  }
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+
+  & > div {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+  }
+
+  & > label {
+    inline-size: 75%;
+  }
+}
+
+footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+label {
+  --_label-border-color: transparent;
+  --_label-padding-inline: 12px;
+
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background-color: var(--rk-input-container-color);
+  padding-inline: var(--_label-padding-inline);
+  padding-block: 6px;
+  border-radius: var(--md-sys-shape-large);
+  border-bottom: 3px solid var(--_label-border-color);
+  box-sizing: border-box;
+
+  & md-icon {
+    /* --md-icon-color: var(--md-ref-palette-neutral-variant-80); */
+    /* --md-icon-color: var(--md-sys-color-green); */
+    --md-icon-color: var(--md-sys-color-purple);
+    --md-icon-size: 20px;
+    --md-icon-weight: 700;
+  }
+
+  & input {
+    appearance: none;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font: var(--md-sys-typescale-input-font);
+    inline-size: 100%;
+    color: var(--rk-input-text-color);
+
+    &::placeholder {
+      color: var(--rk-input-placeholder-color);
+    }
+  }
+}
+
+label:has([required]) {
+  &::after {
+    content: '*';
+    position: absolute;
+    inset-inline-end: var(--_label-padding-inline);
+    color: var(--_invalid-color);
+  }
+}
+
+label:has(:invalid) {
+  --_label-border-color: var(--_invalid-color);
+
+  &::after {
+    content: 'Required';
+    position: absolute;
+    inset-inline-end: var(--_label-padding-inline);
+    font-size: 1.1em;
+  }
+
+  &::after,
+  & input::placeholder {
+    color: var(--_invalid-color);
+  }
+}

@@ -1,19 +1,25 @@
 {
-  "extends":  "../../tsconfig.lit.json",
+  "extends": ["../../tsconfig.base.json", "../../tsconfig.lit.json"],
   "compilerOptions": {
-    "outDir": "./dist",
+    "allowJs": true,
     "rootDir": ".",
+    "useDefineForClassFields": false,
+    "experimentalDecorators": true,
     "paths": {
       "#/*": ["./src/*"],
-      "@rask/core/*":  ["../../packages/core/src/*"],
-      "@rask/web/*":  ["../../packages/web/src/*"]
+      "@rask/core/*": ["../../packages/core/src/*"],
+      "@rask/graphql/*": ["../../packages/graphql/src/*"],
+      "@rask/identity/*": ["../../packages/identity/src/*"],
+      "@rask/web/*": ["../../packages/web/src/*"]
     },
-    "types": ["node", "@rask/web/client"]
+    "types": ["@rask/web/client"]
   },
-  "include": ["src/**/*.ts"],
+  "include": ["src/**/*.ts", "app.config.js"],
   "exclude": ["dist", "node_modules"],
   "references": [
-    {"path": "../../packages/core"},
-    {"path": "../../packages/web"}
+    { "path": "../../packages/core" },
+    { "path": "../../packages/graphql" },
+    { "path": "../../packages/identity" },
+    { "path": "../../packages/web" }
   ]
 }

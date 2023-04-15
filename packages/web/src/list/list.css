@@ -1,0 +1,19 @@
+* {
+  box-sizing: border-box;
+}
+
+:host {
+  /* Set global defaults. This allows for using in calculations. */
+  --rk-list-padding-block: 8px;
+
+  --_container-color: var(--rk-list-container-color, transparent);
+  --_container-padding-block: var(--rk-list-padding-block);
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding-inline: 8px;
+  padding-block: var(--_container-padding-block);
+  background: var(--_container-color);
+}

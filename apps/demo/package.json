@@ -2,34 +2,63 @@
   "name": "@rask/demo",
   "private": true,
   "version": "0.0.1",
-  "packageManager": "pnpm@8.1.0",
+  "packageManager": "pnpm@8.2.0",
   "engines": {
-    "node": ">=16",
-    "pnpm": ">=8.0.0"
+    "node": ">=18.11.0 >=19.2.0",
+    "pnpm": ">=8.2.0"
   },
   "type": "module",
+  "imports": {
+    "#/*": "./src/**/*.js"
+  },
   "files": [
-    "**/*.{map.js,js,css}",
+    "src/**/*.{map.js,js,css}",
     "types/src/**/*.d.ts",
-    "README.md",
-    "!types/tsconfig.tsbuildinfo"
+    "README.md"
   ],
+  "exports": {
+    "./client": {
+      "types": "./src/types/client.d.ts"
+    },
+    "./src/client/*": "./src/client/*"
+  },
   "scripts": {
+    "codegen": "graphql-codegen --config codegen.yml -w",
     "dev": "wds"
   },
   "dependencies": {
+    "@apollo/client": "^3.7.12",
+    "@lit-labs/context": "^0.3.0",
+    "@lit-labs/router": "^0.1.1",
+    "@lit-labs/task": "^2.1.0",
+    "@lit/reactive-element": "^1.6.1",
+    "@material/web": "1.0.0-pre.6",
     "@rask/core": "workspace:^",
-    "@rask/web": "workspace:^",
-    "lit": "^2.7.0",
+    "@rask/graphql": "workspace:^",
+    "@rask/identity": "workspace:^",
+    "@rask/web": "workspace:*",
+    "@types/luxon": "^3.3.0",
+    "dotenv": "^16.0.3",
+    "graphql": "^16.6.0",
+    "lit": "^2.7.2",
     "tslib": "^2.5.0"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "^3.3.0",
+    "@graphql-codegen/typed-document-node": "^4.0.0",
+    "@graphql-codegen/typescript": "^3.0.3",
+    "@graphql-codegen/typescript-operations": "^3.0.3",
+    "@graphql-typed-document-node/core": "^3.2.0",
+    "@rollup/plugin-graphql": "^2.0.3",
     "@types/node": "^18.15.11",
-    "@web/dev-server": "^0.1.37",
-    "@web/dev-server-esbuild": "^0.3.5",
-    "@web/dev-server-hmr": "^0.1.11",
-    "@web/dev-server-rollup": "^0.4.0",
+    "@web/dev-server": "^0.1.38",
+    "@web/dev-server-esbuild": "^0.3.6",
+    "@web/dev-server-hmr": "^0.1.12",
+    "@web/dev-server-rollup": "^0.4.1",
+    "graphql-tag": "^2.12.6",
+    "postcss-preset-env": "^8.3.1",
+    "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-typescript-paths": "^1.4.0",
-    "typescript": "^5.0.3"
+    "typescript": "5.0.4"
   }
 }

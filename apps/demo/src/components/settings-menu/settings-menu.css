@@ -1,0 +1,23 @@
+md-switch {
+  transform: scale(0.8);
+  /* --md-switch-track-height: 24px;
+  --md-switch-state-layer-size: 28px;
+  block-size: 15px; */
+}
+
+rk-menu {
+  & label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-block: 10px;
+  }
+
+  & label:last-child {
+    justify-content: flex-end;
+  }
+
+  & a:hover {
+    color: var(--md-sys-color-blue);
+  }
+}

@@ -5,6 +5,9 @@
       "name": ".root"
     },
     {
+      "path": "api"
+    },
+    {
       "path": "apps"
     },
     {
@@ -15,7 +18,6 @@
     }
   ],
   "settings": {
-
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "javascript.format.enable": false,
     "[javascript]": {
@@ -24,15 +26,15 @@
       "editor.tabSize": 2
     },
     "typescript.format.enable": false,
-    "typescript.preferences.importModuleSpecifier": "shortest",
+    "typescript.preferences.importModuleSpecifier": "project-relative",
     "typescript.preferences.importModuleSpecifierEnding": "js",
     "typescript.preferences.useAliasesForRenames": false,
     "typescript.workspaceSymbols.scope": "currentProject",
-    // "typescript.unstable": {
-    //   "organizeImportsIgnoreCase": "false",
-    //   "organizeImportsCollation": "ordinal",
-    //   "organizeImportsCaseFirst": "lower"
-    // },
+    "typescript.unstable": {
+      "organizeImportsIgnoreCase": "false",
+      "organizeImportsCollation": "ordinal",
+      "organizeImportsCaseFirst": "lower"
+    },
     "npm.autoDetect": "off",
     "typescript.tsc.autoDetect": "off",
     // "typescript.tsserver.experimental.enableProjectDiagnostics": true,
@@ -76,24 +78,38 @@
       "editor.formatOnSave": true,
       "editor.tabSize": 2
     },
+    "[prisma]": {
+      "editor.defaultFormatter": "Prisma.prisma-insider"
+    },
 
     "cSpell.words": [
+      "clazz",
+      "dbaeumer",
+      "falso",
+      "luxon",
+      "msedge",
+      "ngneat",
       "opsz",
+      "predev",
+      "preprisma",
+      "presetenv",
       "rask",
       "Rask",
+      "srgb",
       "tsbuildinfo",
+      "tsnode",
       "wght"
     ],
 
     "editor.linkedEditing": true,
 
-
     "debug.internalConsoleOptions": "neverOpen",
     "debug.javascript.unmapMissingSources": true,
     "debug.showBreakpointsInOverviewRuler": true,
     "editor.codeActionsOnSave": {
-      "source.fixAll": true
-      // "source.fixAll.eslint": true
+      "source.fixAll": true,
+      "source.fixAll.eslint": true,
+      "source.organizeImports": true
     },
 
     "eslint.codeActionsOnSave.mode": "problems",
@@ -106,9 +122,9 @@
 
     "vscode-edge-devtools.webhint": false,
 
-
     "files.exclude": {
       ".out": true,
+      "api": true,
       "apps": true,
       "docs": true,
       "packages": true,
@@ -117,8 +133,20 @@
     },
 
     "workbench.iconTheme": "vscode-icons",
+    "[xml]": {
+      "editor.defaultFormatter": "DotJoshJohnson.xml"
+    },
+    "sqltools.connections": [
+      {
+        "previewLimit": 50,
+        "driver": "SQLite",
+        "name": "sqlite",
+        "database": "${workspaceFolder:api}/prisma/dev.db"
+      }
+    ],
+    "sqltools.useNodeRuntime": true
   },
   "extensions": {
     "recommendations": ["esbenp.prettier-vscode", "dbaeumer.vscode-eslint"]
-  },
+  }
 }

@@ -1,0 +1,107 @@
+* {
+  box-sizing: border-box;
+}
+
+:host {
+  /* --md-outlined-container-color: var(--md-ref-palette-neutral-variant-30); */
+  --md-outlined-container-color: var(--md-sys-color-green);
+  /* --md-outlined-container-color: var(--md-sys-color-surface-2); */
+  --md-outlined-text-field-hover-outline-color: var(--md-sys-color-green);
+  --md-outlined-text-field-focus-outline-color: var(--md-sys-color-green);
+  /* --md-outlined-text-field-container-color: var(--md-sys-color-green); */
+  --md-outlined-text-field-container-shape: 8px;
+  --md-outlined-text-field-container-padding-vertical: 10px;
+  --_container-inline-size: 900px;
+  --_container-padding: 40px;
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  /* padding-inline: var(--_container-padding); */
+  padding-block: var(--_container-padding);
+  inline-size: 100%;
+  block-size: calc(100vh - var(--rk-site-header-height) - calc(var(--_container-padding) * 2));
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+header,
+footer,
+form {
+  inline-size: var(--_container-inline-size);
+}
+
+header {
+  display: flex;
+}
+
+footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 15px;
+
+  & rk-button[label="Save"] {
+    --rk-button-color: var(--md-sys-color-green);
+    --rk-button-on-color: var(--md-sys-color-on-green);
+    /* --rk-button-shadow: var(--md-sys-color-blue-rgb); */
+  }
+}
+
+form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 50px;
+  /* block-size: 100%; */
+  /* background: var(--md-sys-color-surface-2); */
+  /* padding-inline: 20px;
+  padding-block: 20px;
+  border-radius: var(--md-sys-shape-large); */
+
+  & > div {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    inline-size: 400px;
+  }
+
+  & > div:first-child {
+    grid-column: 1;
+  }
+
+  & > div:last-child {
+    grid-column: 2;
+  }
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.address {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.city {
+  inline-size: 100%;
+}
+
+.state {
+  inline-size: 90px;
+}
+
+.postal {
+  inline-size: 150px;
+}

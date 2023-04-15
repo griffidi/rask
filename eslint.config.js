@@ -126,20 +126,20 @@ const litConfig = {
 
 export default [
   {
-    files: ['packages/*/src/**/*.ts'],
+    files: ['api/src/**/*.ts', 'api/prisma/**/*.ts'],
+    ignoreFiles: ['api/src/prisma/generated'],
     languageOptions: {
       sourceType: 'module',
       ecmaVersion: 2022,
       parser,
       parserOptions: {
-        project: ['./tsconfig.eslint.json', './packages/*/tsconfig.json'],
+        project: ['./tsconfig.eslint.json', './api/tsconfig.json'],
         tsconfigRootDir: ROOT_DIR,
       },
       globals: {
         ...sharedLitGlobals,
       },
     },
-    ...litConfig,
   },
   {
     files: ['apps/*/src/**/*.ts'],
@@ -155,5 +155,21 @@ export default [
         ...sharedLitGlobals,
       },
     },
+  },
+  {
+    files: ['packages/*/src/**/*.ts'],
+    languageOptions: {
+      sourceType: 'module',
+      ecmaVersion: 2022,
+      parser,
+      parserOptions: {
+        project: ['./tsconfig.eslint.json', './packages/*/tsconfig.json'],
+        tsconfigRootDir: ROOT_DIR,
+      },
+      globals: {
+        ...sharedLitGlobals,
+      },
+    },
+    ...litConfig,
   },
 ];

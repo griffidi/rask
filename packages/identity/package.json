@@ -1,0 +1,37 @@
+{
+  "name": "@rask/identity",
+  "private": true,
+  "version": "0.0.1",
+  "packageManager": "pnpm@8.2.0",
+  "engines": {
+    "node": ">=18.11.0 >=19.2.0",
+    "pnpm": ">=8.2.0"
+  },
+  "type": "module",
+  "files": [
+    "src/**/*.{map.js,js,css}",
+    "README.md"
+  ],
+  "scripts": {
+    "dev": "",
+    "build": ""
+  },
+  "dependencies": {
+    "@lit-labs/context": "^0.3.0",
+    "@lit/reactive-element": "^1.6.1",
+    "@rask/core": "workspace:^",
+    "lit": "^2.7.2",
+    "tslib": "^2.5.0"
+  },
+  "devDependencies": {
+    "@types/node": "^18.15.11",
+    "typescript": "5.0.4"
+  },
+  "peerDependencies": {
+    "@lit-labs/context": "*",
+    "@lit/reactive-element": "*",
+    "@rask/core": "workspace:*",
+    "lit": "*",
+    "typescript": "5.*"
+  }
+}

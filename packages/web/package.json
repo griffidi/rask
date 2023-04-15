@@ -2,42 +2,40 @@
   "name": "@rask/web",
   "private": true,
   "version": "0.0.1",
-  "packageManager": "pnpm@8.1.0",
+  "packageManager": "pnpm@8.2.0",
   "engines": {
-    "node": ">=16",
-    "pnpm": ">=8.0.0"
+    "node": ">=18.11.0 >=19.2.0",
+    "pnpm": ">=8.2.0"
   },
   "type": "module",
   "exports": {
-    ".": {
-      "types": "./src/index.d.ts",
-      "import": "./src/index.js"
-    },
     "./client": {
       "types": "./src/types/client.d.ts"
     },
-    "./src/client/*": "./src/client/*",
-    "./package.json": "./package.json"
+    "./src/client/*": "./src/client/*"
   },
   "files": [
-    "**/*.{map.js,js,css}",
+    "src/**/*.{map.js,js,css}",
+    "src/types/**/*.d.ts",
     "README.md"
   ],
   "scripts": {
     "dev": "",
-    "build": "tsc --pretty"
+    "build": ""
   },
   "dependencies": {
+    "@material/web": "1.0.0-pre.6",
     "@rask/core": "workspace:^",
-    "lit": "^2.7.0",
+    "lit": "^2.7.2",
     "tslib": "^2.5.0"
   },
   "devDependencies": {
     "@types/node": "^18.15.11",
-    "typescript": "^5.0.3"
+    "typescript": "5.0.4"
   },
   "peerDependencies": {
+    "@material/web": "*",
     "lit": "*",
-    "typescript": "5.0.3"
+    "typescript": "5.*"
   }
 }

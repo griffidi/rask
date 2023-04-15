@@ -1,0 +1,98 @@
+* {
+  box-sizing: border-box;
+}
+
+:host {
+  /* Set global defaults. This allows for using in calculations. */
+  --rk-list-item-container-height: 42px;
+  --rk-list-item-padding-inline: 8px;
+  --rk-list-padding-inline: 8px;
+
+  --_neutral-color: var(--md-ref-palette-neutral-variant-50);
+  --_container-height: var(--rk-list-item-container-height);
+  --_container-color: var(--rk-list-item-container-color, transparent);
+  --_container-on-color: var(--md-sys-color-text-dark-2, #ffffff);
+  --_headline-font-size: var(--rk-list-item-headline-font-size, var(--md-sys-typescale-label-large-size));
+  --_headline-font-weight: var(--rk-list-item-headline-font-weight, var(--md-sys-typescale-label-large-weight));
+  --_headline-line-height: var(--rk-list-item-headline-line-height, var(--md-sys-typescale-label-large-line-height));
+  --_container-padding-inline: var(--rk-list-padding-inline);
+  --_start-end-padding-inline: var(var(--rk-list-item-padding-inline));
+  --_container-hover-color: var(--rk-list-item-hover-container-color, transparent);
+  --_container-hover-border-color: var(--rk-list-item-hover-container-border-color, var(--_neutral-color));
+}
+
+.list-item {
+  position: relative;
+  display: block;
+  inline-size: 100%;
+  block-size: var(--_container-height);
+  padding-inline: var(--_container-padding-inline);
+  z-index: 1;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--_container-hover-color);
+    border: 1px solid var(--_neutral-color);
+    inline-size: 100%;
+    block-size: 100%;
+    opacity: 0;
+    z-index: -1;
+    border-radius: 0.625rem;
+    will-change: opacity;
+    transition: opacity 50ms ease-out;
+  }
+
+  &:focus,
+  &:hover {
+    &::before {
+      opacity: 1;
+    }
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.content,
+.body,
+::slotted([slot='start']),
+::slotted([slot='end']) {
+  display: flex;
+  align-items: center;
+  block-size: 100%;
+}
+
+.content {
+  gap: 12px;
+  inline-size: 100%;
+  background: var(--_container-color);
+}
+
+.body {
+  flex: 1 1 auto;
+}
+
+::slotted([slot='start']) {
+  --md-icon-size: 20px;
+
+  padding-inline-start: var(--_start-end-padding-inline);
+}
+
+::slotted([slot='end']) {
+  justify-content: flex-end;
+  padding-inline-end: var(--_start-end-padding-inline);
+}
+
+.headline {
+  font-size: var(--_headline-font-size);
+  font-weight: var(--_headline-font-weight);
+  line-height: var(--_headline-line-height);
+  color: var(--_container-on-color);
+}
+
+a {
+  text-decoration: none;
+}

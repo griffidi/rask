@@ -1,0 +1,20 @@
+:host {
+  --md-icon-color: var(--md-sys-color-blue);
+  --_container-padding-block: calc(var(--rk-table-cell-padding-block) - 3px);
+
+  background: var(--rk-hover-color);
+  border-block-end: 1px solid var(--rk-border-color);
+  padding-block: var(--_container-padding-block);
+}
+
+:host(:is(:first-child)) {
+  border-start-start-radius: var(--md-sys-shape-large);
+}
+
+:host(:is(:last-child)) {
+  border-start-end-radius: var(--md-sys-shape-large);
+}
+
+:host([add]) md-icon {
+  --md-icon-size: 24px;
+}

@@ -1,0 +1,10 @@
+* {
+  box-sizing: border-box;
+}
+
+:host {
+  --_container-hover-color: var(--rk-table-row-hover-color, var(--rk-hover-color));
+
+  display: table-row;
+  overflow: hidden;
+}

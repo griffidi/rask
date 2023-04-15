@@ -1,5 +1,5 @@
-import { useRegistry } from './registry.js';
-import type { Constructor } from './types.js';
+import { useRegistry } from "./registry.js";
+import type { Constructor } from "./types.js";
 
 const registry = useRegistry();
 
@@ -10,11 +10,10 @@ const registry = useRegistry();
  * @returns Implementation of interfaceName.
  */
 export function injectable(): Function {
-  // eslint-disable-next-line ts/no-explicit-any, ts/no-unused-vars
-  return (target: any, _propertyKey: string) => {
-    const { name } = target as Constructor;
-    registry.register(name, target);
-  };
+	return (target: any, _propertyKey: string) => {
+		const { name } = target as Constructor;
+		registry.register(name, target);
+	};
 }
 
 // export function injectable2() {
