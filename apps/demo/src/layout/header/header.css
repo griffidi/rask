@@ -17,7 +17,6 @@ header {
   justify-content: space-between;
   align-items: center;
   padding-inline: 20px;
-  box-sizing: border-box;
   border-block-end: 1px solid var(--rk-border-color);
   inline-size: auto;
   block-size: 100%;
