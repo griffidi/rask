@@ -8,7 +8,6 @@ import '@material/web/icon/icon.js';
 import type { TypeEvent } from '@rask/core/events/type-event.js';
 import { apolloQuery } from '@rask/graphql/decorators/apollo-query.js';
 import '@rask/web/button/button.js';
-import resetCss from '@rask/web/css/reset-component.js';
 import { Toast } from '@rask/web/notifications/toast.js';
 import '@rask/web/skeleton/skeleton.js';
 import { LitElement, html, type TemplateResult } from 'lit';
@@ -21,7 +20,7 @@ const CARD_SELECTED_CLASS = 'selected';
 
 @customElement('app-users-page')
 export class UsersPage extends LitElement {
-  static override styles = [resetCss, css];
+  static override styles = [css];
 
   #getUsers = new Task(
     this,

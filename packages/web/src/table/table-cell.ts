@@ -1,20 +1,21 @@
 import { LitElement, html, type TemplateResult } from 'lit';
-import { customElement } from 'lit/decorators.js';
+import { customElement, property } from 'lit/decorators.js';
+import sharedCss from './table-cell-shared.css' assert { type: 'css' };
 import css from './table-cell.css' assert { type: 'css' };
 
-export const TABLE_CELL_SELECTOR = 'rk-table-cell';
-
-@customElement(TABLE_CELL_SELECTOR)
+@customElement('rk-table-cell')
 export class TableCell extends LitElement {
-  static override styles = [css];
+  static override styles = [sharedCss, css];
+
+  @property({ reflect: true }) override role = 'cell';
 
   override render(): TemplateResult {
-    return html``;
+    return html`<slot></slot>`;
   }
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    TABLE_CELL_SELECTOR: TableCell;
+    'rk-table-cell': TableCell;
   }
 }

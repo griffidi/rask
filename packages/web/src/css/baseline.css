@@ -1,4 +1,5 @@
-/* @import url(reset.css); */
+@import url(reset.css);
+@import url(defaults.css);
 @import url(media.css);
 @import url(palette.css);
 @import url(variables.css);
@@ -15,7 +16,6 @@
 @import url(theme/dark.css) /*screen and (prefers-color-scheme: dark)*/;
 @import url(theme/dark.custom.css) /*screen and (prefers-color-scheme: dark)*/;
 @import url(material/override.css);
-@import url(defaults.css);
 
 /*
   toast.ts is not a component and because it can be used any where in an app,

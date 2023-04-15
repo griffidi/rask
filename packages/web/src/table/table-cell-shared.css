@@ -1,0 +1,15 @@
+* {
+  box-sizing: border-box;
+}
+
+:host {
+  --_container-min-width: var(--rk-table-cell-min-width, 100px);
+  --_container-padding-inline: var(--rk-table-cell-padding-inline, 16px);
+  --_container-padding-block: var(--rk-table-cell-padding-block, 12px);
+
+  display: table-cell;
+  padding-inline: var(--_container-padding-inline);
+  padding-block: var(--_container-padding-block);
+  vertical-align: middle;
+  min-inline-size: var(--_container-min-width);
+}

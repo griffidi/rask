@@ -8,7 +8,7 @@
   --_logo-duration: 200ms;
 
   inline-size: 100dvw;
-  block-size: var(--md-site-header-height);
+  block-size: var(--rk-site-header-height);
   color: var(--_color);
 }
 
@@ -81,7 +81,7 @@ a {
   color: var(--_color);
 
   &:before {
-    content: '';
+    content: "";
     background: var(--md-sys-color-gradient-purple-blue);
     display: block;
     position: absolute;
@@ -124,7 +124,7 @@ a:hover {
   border-radius: var(--md-sys-shape-small);
 
   &::before {
-    content: 'CTRL K';
+    content: "CTRL K";
     position: absolute;
     inset-inline-start: 12px;
     display: grid;

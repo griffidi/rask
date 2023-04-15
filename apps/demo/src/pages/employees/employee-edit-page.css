@@ -22,7 +22,7 @@
   /* padding-inline: var(--_container-padding); */
   padding-block: var(--_container-padding);
   inline-size: 100%;
-  block-size: calc(100vh - var(--md-site-header-height) - calc(var(--_container-padding) * 2));
+  block-size: calc(100vh - var(--rk-site-header-height) - calc(var(--_container-padding) * 2));
 }
 
 .container {
@@ -49,7 +49,7 @@ footer {
   align-items: center;
   gap: 15px;
 
-  & rk-button[label='Save'] {
+  & rk-button[label="Save"] {
     --rk-button-color: var(--md-sys-color-green);
     --rk-button-on-color: var(--md-sys-color-on-green);
     /* --rk-button-shadow: var(--md-sys-color-blue-rgb); */

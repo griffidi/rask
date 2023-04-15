@@ -3,7 +3,7 @@
   justify-content: center;
   align-items: center;
   inline-size: 100%;
-  block-size: calc(100vh - var(--md-site-header-height));
+  block-size: calc(100vh - var(--rk-site-header-height));
 }
 
 span {
@@ -18,7 +18,7 @@ span {
     width: 100%;
     left: 0;
     height: 8px;
-    border-radius: .625rem;
+    border-radius: 0.625rem;
     background: linear-gradient(111.3deg, #9c27b0 9.6%, #00bcd4 93.6%);
   }
 }

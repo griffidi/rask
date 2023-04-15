@@ -1,27 +1,27 @@
-import { RouteTypes } from '#/router/route-types.js';
 import { routerContext } from '#/router/router-context.js';
 import { GetEmployeesDocument, type Employee } from '#/types/graphql.js';
 import { consume } from '@lit-labs/context';
 import type { Router } from '@lit-labs/router';
 import { Task } from '@lit-labs/task';
 import '@material/web/icon/icon.js';
-import type { TypeEvent } from '@rask/core/events/type-event.js';
 import { apolloQuery } from '@rask/graphql/decorators/apollo-query.js';
 import '@rask/web/button/button.js';
-import resetCss from '@rask/web/css/reset-component.js';
 import { Toast } from '@rask/web/notifications/toast.js';
 import '@rask/web/skeleton/skeleton.js';
+import '@rask/web/table/table-cell.js';
+import '@rask/web/table/table-header-cell.js';
+import '@rask/web/table/table-row.js';
+import '@rask/web/table/table.js';
 import { LitElement, html, type TemplateResult } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
+import { keyed } from 'lit/directives/keyed.js';
 import { map } from 'lit/directives/map.js';
 import { range } from 'lit/directives/range.js';
 import css from './employees-page.css' assert { type: 'css' };
 
-const CARD_SELECTED_CLASS = 'selected';
-
 @customElement('app-employees-page')
 export class EmployeesPage extends LitElement {
-  static override styles = [resetCss, css];
+  static override styles = [css];
 
   #getEmployees = new Task(
     this,
@@ -38,77 +38,56 @@ export class EmployeesPage extends LitElement {
   override render(): TemplateResult {
     return html`
       ${this.#getEmployees.render({
-        pending: () => this.renderSkeleton(),
-        complete: (employees) => this.renderEmployees(employees),
+        pending: () => this.#renderSkeleton(),
+        complete: (employees) => this.#renderEmployees(employees),
         error: () => html`<h1>No Data</h1>`,
       })}
     `;
   }
 
-  protected renderEmployees(employees: ReadonlyArray<Readonly<Employee>>): TemplateResult {
-    return html` <div class="cards">${map(employees, (employee) => this.renderEmployee(employee))}</div> `;
-  }
-
-  protected renderEmployee(employee: Readonly<Employee>): TemplateResult {
+  #renderEmployees(employees: ReadonlyArray<Readonly<Employee>>): TemplateResult {
     return html`
-      <div class="card">
-        <header>
-          <!-- <img src="avatar.svg" alt="Avatar" width="50px" height="50px" /> -->
-          <md-icon class="avatar">person</md-icon>
-          <div class="employee-name">
-            <div class="title">${employee.firstName} ${employee.lastName}</div>
-            <div class="subtitle">${employee.jobTitle}</div>
-          </div>
-        </header>
-        <section>
-          <div class="contact-info">
-            <label>
-              <md-icon>mail</md-icon>
-              ${employee.email}
-            </label>
-            <label>
-              <md-icon>mail</md-icon>
-              ${employee.phone}
-            </label>
-          </div>
-        </section>
-        <footer>
-          <rk-button label="Edit" outlined @click=${(e: TypeEvent) => this.#handleEditClick(e, employee)}></rk-button>
-        </footer>
-      </div>
+      <rk-table>
+        <rk-table-row header>
+          <rk-table-header-cell>First Name</rk-table-header-cell>
+          <rk-table-header-cell>Last Name</rk-table-header-cell>
+          <rk-table-header-cell>Email</rk-table-header-cell>
+          <rk-table-header-cell>Phone</rk-table-header-cell>
+          <rk-table-header-cell>Job Title</rk-table-header-cell>
+          <rk-table-header-cell>Start Date</rk-table-header-cell>
+        </rk-table-row>
+        ${this.#renderRows(employees)}
+      </rk-table>
     `;
   }
 
-  protected renderSkeleton(): TemplateResult {
+  #renderRows(employees: ReadonlyArray<Readonly<Employee>>): TemplateResult {
+    return html` ${map(employees, (e) => this.#renderRow(e))} `;
+  }
+
+  #renderRow(e: Employee): TemplateResult {
     return html`
-      <div class="cards">
+      ${keyed(
+        e.id,
+        html`
+          <rk-table-row .id=${e.id}>
+            <rk-table-cell>${e.firstName}</rk-table-cell>
+            <rk-table-cell>${e.lastName}</rk-table-cell>
+            <rk-table-cell>${e.email}</rk-table-cell>
+            <rk-table-cell>${e.phone}</rk-table-cell>
+            <rk-table-cell>${e.jobTitle}</rk-table-cell>
+            <rk-table-cell>${e.dateStarted}</rk-table-cell>
+          </rk-table-row>
+        `
+      )}
+    `;
+  }
+
+  #renderSkeleton(): TemplateResult {
+    return html`
+      <div class="table">
         ${map(range(12), () => {
-          return html`
-            <div class="card">
-              <header>
-                <rk-skeleton width="50px" height="50px" circle></rk-skeleton>
-                <div class="employee-name">
-                  <rk-skeleton width="146px" title large></rk-skeleton>
-                  <rk-skeleton width="75px" label large></rk-skeleton>
-                </div>
-              </header>
-              <section>
-                <div class="contact-info">
-                  <label>
-                    <rk-skeleton width="22px" body medium></rk-skeleton>
-                    <rk-skeleton width="188px" body medium></rk-skeleton>
-                  </label>
-                  <label>
-                    <rk-skeleton width="22px" body medium></rk-skeleton>
-                    <rk-skeleton width="150px" body medium></rk-skeleton>
-                  </label>
-                </div>
-              </section>
-              <footer>
-                <rk-skeleton width="62px" button></rk-skeleton>
-              </footer>
-            </div>
-          `;
+          return html`hi`;
         })}
       </div>
     `;
@@ -123,22 +102,22 @@ export class EmployeesPage extends LitElement {
     }
   }
 
-  #handleEditClick({ target }: TypeEvent, employee: Employee): void {
-    this.currentEmployee = employee;
+  // #handleEditClick({ target }: TypeEvent, employee: Employee): void {
+  //   this.currentEmployee = employee;
 
-    const cardEl = target.closest<HTMLElement>('.card');
-    // cardEl.classList.add(CARD_SELECTED_CLASS);
-    cardEl.setAttribute(CARD_SELECTED_CLASS, '');
+  //   const cardEl = target.closest<HTMLElement>('.card');
+  //   // cardEl.classList.add(CARD_SELECTED_CLASS);
+  //   cardEl.setAttribute(CARD_SELECTED_CLASS, '');
 
-    this.exiting = true;
+  //   this.exiting = true;
 
-    const animationendHandle = () => {
-      cardEl.removeEventListener('animationend', animationendHandle);
-      this.router.goto(RouteTypes.employeeEdit.replace(/:id/, employee.id));
-    };
+  //   const animationendHandle = () => {
+  //     cardEl.removeEventListener('animationend', animationendHandle);
+  //     this.router.goto(RouteTypes.employeeEdit.replace(/:id/, employee.id));
+  //   };
 
-    cardEl.addEventListener('animationend', animationendHandle);
-  }
+  //   cardEl.addEventListener('animationend', animationendHandle);
+  // }
 }
 
 declare global {
