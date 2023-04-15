@@ -81,6 +81,11 @@
     "[prisma]": {
       "editor.defaultFormatter": "Prisma.prisma-insider"
     },
+    "[markdown]": {
+      "editor.formatOnSave": true,
+      "editor.formatOnPaste": true,
+      "files.trimTrailingWhitespace": false
+    },
 
     "cSpell.words": [
       "clazz",
@@ -109,7 +114,8 @@
     "editor.codeActionsOnSave": {
       "source.fixAll": true,
       "source.fixAll.eslint": true,
-      "source.organizeImports": true
+      "source.organizeImports": true,
+      "source.fixAll.markdownlint": true
     },
 
     "eslint.codeActionsOnSave.mode": "problems",

@@ -1,14 +1,40 @@
-# @rask/rask
+# 🦄 @rask
+
+This is a [Lit](http://lit.dev) based Monorepo that contains a web component library, a [Node.js](https://nodejs.org) based [GraphQL](https://graphql.org/) API project and several apps for demoing the features of the Monorepo.
+
+## Table of Contents
+
+- [Requirements](#requirements)
+- [Projects](#projects)
+  - [api](#api)
+  - [apps](#apps)
+  - [packages](#packages)
+
+---
 
 ### Requirements
 
+- [Node.js](https://nodejs.dev/en/download/) version `>= 18.11` or `>= 19.2`
 - Browser
   - [Chrome >= 112](1)
-  - [Edge >= 111](2),
-  - [Firefox >= ](3)
+  - [Edge >= 111](2)
+  - [Firefox >=](3)
   - Safari >= 16.4
 
-[1]: (https://www.browserstack.com/user/try-live?ref=caniuse-source&browser=chrome&category=&property=mdn-api_mediasession&caniuse_source=current-aligned-view&browser_version=112.0)
-[2]: (https://www.browserstack.com/user/try-live?ref=caniuse-source&browser=edge&category=&property=mdn-api_mediasession&caniuse_source=current-aligned-view&browser_version=111.0)
+---
 
-[3]()
+### Projects
+
+#### [api](/api/)
+
+#### apps
+
+[demo](/apps/demo/)
+
+#### packages
+
+##### [core](/packages/core/)
+
+##### [graphql](/packages/graphql/)
+
+##### [web](/packages/web/)
