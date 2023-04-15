@@ -13,3 +13,7 @@
   vertical-align: middle;
   min-inline-size: var(--_container-min-width);
 }
+
+:host(:not(:last-child)) {
+  border-inline-end: 1px solid var(--rk-border-color);
+}

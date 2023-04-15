@@ -93,7 +93,7 @@ a {
   }
 }
 
-a:hover {
+/* a:hover {
   & .logo {
     filter: var(--_logo-filter);
     /* transition: filter 0s 0s; */
@@ -108,7 +108,7 @@ a:hover {
   & h2::before {
     width: 100%;
   }
-}
+} */
 
 .search-instructions {
   --md-icon-size: 18px;

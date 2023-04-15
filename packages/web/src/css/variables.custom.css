@@ -111,5 +111,6 @@
 
 :root {
   --rk-border-color: var(--md-ref-palette-neutral-variant-20, #828282);
-  --rk-hover-color: rgba(40, 41, 42, 0.5);
+  --rk-header-color: rgba(40, 41, 42, 0.6);
+  --rk-hover-color: rgba(40, 41, 42, 0.6);
 }

@@ -10,8 +10,6 @@
 }
 
 :host(:is(:hover):not([header])) {
-  /* background: color-mix(var(--rk-sys-color-surface-1), var(--_container-hover-color), 50%)); */
-  /* background: color-mix(in srgb, var(--_container-hover-color) 90%, black); */
   background: var(--_container-hover-color);
 }
 
