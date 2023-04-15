@@ -1,0 +1,23 @@
+{
+  "Create App LitElement Directive": {
+    "scope": "typescript",
+    "prefix": "litdirective",
+    "body": [
+      "import { Directive, directive } from 'lit/directive.js';",
+      "",
+      "class ${TM_FILENAME_BASE/([a-z]*)(-)?/${1:/capitalize}/g}Directive extends Directive {",
+      "\t#maxValue = Number.MIN_VALUE;",
+      "",
+      "\trender(value: number, minValue = Number.MIN_VALUE) {",
+      "\t\tthis.#maxValue = Math.max(value, this.#maxValue, minValue);",
+      "",
+      "\t\treturn this.#maxValue;",
+      "\t}",
+      "}",
+      "",
+      "export const ${TM_FILENAME_BASE/([a-z]*)(-)?/${1:/lower}/g} = directive(${TM_FILENAME_BASE/([a-z]*)(-)?/${1:/capitalize}/g}Directive);",
+      ""
+    ],
+    "description": "New LitElement Directive"
+  }
+}

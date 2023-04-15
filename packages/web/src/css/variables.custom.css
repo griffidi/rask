@@ -113,4 +113,5 @@
   --rk-border-color: var(--md-ref-palette-neutral-variant-20, #828282);
   --rk-header-color: rgba(40, 41, 42, 0.6);
   --rk-hover-color: rgba(40, 41, 42, 0.6);
+  --rk-scrollbar-color: var(--md-ref-palette-neutral-variant-50);
 }

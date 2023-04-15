@@ -3,16 +3,18 @@
 }
 
 :host {
+  position: relative;
+}
+[scrollable] {
   --_container-padding: 40px;
 
-  position: relative;
+  /* position: relative; */
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 30px;
   padding-block-end: var(--_container-padding);
-  block-size: calc(100% - var(--rk-site-header-height) + 14px);
-  overflow: hidden auto;
+  block-size: 100%;
 }
 
 header {
@@ -22,17 +24,18 @@ header {
   --rk-button-on-color: var(--md-sys-color-green);
   --rk-button-shadow: var(--md-sys-color-green-rgb);
 
+  z-index: 1;
   position: sticky;
   display: flex;
   flex: 0 0 var(--_header-height);
   justify-content: space-between;
   align-items: center;
   inset-block-start: 0;
-  inset-inline: calc(var(--_container-padding) * -1);
+  inset-inline: 0;
   inline-size: 100%;
   padding-inline: calc(var(--_container-padding) + var(--_header-padding-inline));
   border-block-end: 1px solid var(--rk-border-color);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(13px);
 }
 
 .title {

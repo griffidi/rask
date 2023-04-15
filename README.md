@@ -37,4 +37,6 @@ This is a [Lit](http://lit.dev) based Monorepo that contains a web component lib
 
 ##### [graphql](/packages/graphql/)
 
+##### [identity](/packages/identity//)
+
 ##### [web](/packages/web/)
