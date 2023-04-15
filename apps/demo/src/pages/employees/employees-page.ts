@@ -8,6 +8,7 @@ import { DateTime } from '@rask/core/common/i18n/date-time.js';
 import { apolloQuery } from '@rask/graphql/decorators/apollo-query.js';
 import '@rask/web/button/button.js';
 import { Toast } from '@rask/web/notifications/toast.js';
+import { scrollable } from '@rask/web/scrollable/scrollable.js';
 import '@rask/web/skeleton/skeleton.js';
 import type { TableRowSelectedEvent } from '@rask/web/table/events.js';
 import '@rask/web/table/table-cell.js';
@@ -41,15 +42,17 @@ export class EmployeesPage extends LitElement {
 
   override render(): TemplateResult {
     return html`
-      <header>
-        <span class="title">Employees</span>
-        <rk-button outlined>Add Employee</rk-button>
-      </header>
-      ${this.#getEmployees.render({
-        pending: () => this.#renderSkeleton(),
-        complete: (employees) => this.#renderEmployees(employees),
-        error: () => html`<h1>No Data</h1>`,
-      })}
+      <div ${scrollable()}>
+        <header>
+          <span class="title">Employees</span>
+          <rk-button outlined>Add Employee</rk-button>
+        </header>
+        ${this.#getEmployees.render({
+          pending: () => this.#renderSkeleton(),
+          complete: (employees) => this.#renderEmployees(employees),
+          error: () => html`<h1>No Data</h1>`,
+        })}
+      </div>
     `;
   }
 

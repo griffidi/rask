@@ -11,7 +11,7 @@
       "\trender(value: number, minValue = Number.MIN_VALUE) {",
       "\t\tthis.#maxValue = Math.max(value, this.#maxValue, minValue);",
       "",
-      "\t\treturn this.maxValue;",
+      "\t\treturn this.#maxValue;",
       "\t}",
       "}",
       "",
