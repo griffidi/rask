@@ -24,16 +24,6 @@ A [Node.js](1) based [GraphQL](2) 🦄 project that uses [Prisma](3) 😍 to mod
 
 ### Technologies
 
-![Node.js](../assets/images/nodejs.svg)&nbsp;&nbsp;
-![GraphQL](../assets/images/graphql.svg)&nbsp;&nbsp;
-![Prisma](../assets/images/prisma.svg)&nbsp;&nbsp;
-![TypeGraphQL Prisma](../assets/images/typegraphql-prisma.svg)&nbsp;&nbsp;
-![SQLite](../assets/images/sqlite.svg)&nbsp;&nbsp;
-![Prisma](../assets/images/prisma.svg)&nbsp;&nbsp;
-![Koa](../assets/images/koa.svg)&nbsp;&nbsp;
-![Apollo](../assets/images/apollo.svg)&nbsp;&nbsp;
-![Typescript](../assets/images/ts.svg)
-
 - [Node.js](https://nodejs.org/en)
 - [GraphQL](https://graphql.org/)
 - [Prisma](https://www.prisma.io)
