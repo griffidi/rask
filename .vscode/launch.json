@@ -70,6 +70,17 @@
         "group": "demo",
         "order": 2
       }
+    },
+    {
+      "name": "Debug demo (edge-devtools)",
+      "type": "vscode-edge-devtools.debug",
+      "request": "attach",
+      "url": "http://localhost:8000",
+      "presentation": {
+        "hidden": false,
+        "group": "demo",
+        "order": 3
+      }
     }
   ],
   "compounds": [
