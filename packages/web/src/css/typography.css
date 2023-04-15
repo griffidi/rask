@@ -345,6 +345,9 @@
   --md-ref-typeface-weight-medium: 500;
   /* Regular weight */
   --md-ref-typeface-weight-regular: 400;
+  /* page title */
+  --md-sys-typescale-page-title-font: var(--md-sys-typescale-title-medium-size) /
+    var(--md-sys-typescale-title-medium-line-height) var(--md-sys-typescale-title-medium-weight);
   /* input */
   --md-sys-typescale-input-font: var(--md-sys-typescale-label-large-size) /
     var(--md-sys-typescale-label-large-line-height) var(--md-sys-typescale-label-large-weight);

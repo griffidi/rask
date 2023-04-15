@@ -2138,6 +2138,7 @@ export type GetEmployeesQuery = {
     zipCode: string;
     jobTitle: string;
     departmentId: string;
+    dateStarted: any;
   }>;
 };
 
@@ -2161,6 +2162,7 @@ export type GetEmployeeByIdQuery = {
     zipCode: string;
     jobTitle: string;
     departmentId: string;
+    dateStarted: any;
   }>;
 };
 
@@ -2216,6 +2218,7 @@ export type EmployeePartsFragment = {
   zipCode: string;
   jobTitle: string;
   departmentId: string;
+  dateStarted: any;
 };
 
 export type UserPartsFragment = {
@@ -2273,6 +2276,7 @@ export const EmployeePartsFragmentDoc = {
           { kind: 'Field', name: { kind: 'Name', value: 'zipCode' } },
           { kind: 'Field', name: { kind: 'Name', value: 'jobTitle' } },
           { kind: 'Field', name: { kind: 'Name', value: 'departmentId' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'dateStarted' } },
         ],
       },
     },
@@ -2454,6 +2458,7 @@ export const GetEmployeesDocument = {
           { kind: 'Field', name: { kind: 'Name', value: 'zipCode' } },
           { kind: 'Field', name: { kind: 'Name', value: 'jobTitle' } },
           { kind: 'Field', name: { kind: 'Name', value: 'departmentId' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'dateStarted' } },
         ],
       },
     },
@@ -2531,6 +2536,7 @@ export const GetEmployeeByIdDocument = {
           { kind: 'Field', name: { kind: 'Name', value: 'zipCode' } },
           { kind: 'Field', name: { kind: 'Name', value: 'jobTitle' } },
           { kind: 'Field', name: { kind: 'Name', value: 'departmentId' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'dateStarted' } },
         ],
       },
     },

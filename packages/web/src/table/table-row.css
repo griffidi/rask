@@ -8,12 +8,3 @@
   display: table-row;
   overflow: hidden;
 }
-
-:host(:is(:hover):not([header])) {
-  background: var(--_container-hover-color);
-}
-
-:host([header]) {
-  border-start-start-radius: var(--md-sys-shape-large);
-  border-start-end-radius: var(--md-sys-shape-large);
-}

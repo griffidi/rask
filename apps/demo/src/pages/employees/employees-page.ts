@@ -4,10 +4,12 @@ import { consume } from '@lit-labs/context';
 import type { Router } from '@lit-labs/router';
 import { Task } from '@lit-labs/task';
 import '@material/web/icon/icon.js';
+import { DateTime } from '@rask/core/common/i18n/date-time.js';
 import { apolloQuery } from '@rask/graphql/decorators/apollo-query.js';
 import '@rask/web/button/button.js';
 import { Toast } from '@rask/web/notifications/toast.js';
 import '@rask/web/skeleton/skeleton.js';
+import type { TableRowSelectedEvent } from '@rask/web/table/events.js';
 import '@rask/web/table/table-cell.js';
 import '@rask/web/table/table-header-cell.js';
 import '@rask/web/table/table-row.js';
@@ -23,6 +25,8 @@ import css from './employees-page.css' assert { type: 'css' };
 export class EmployeesPage extends LitElement {
   static override styles = [css];
 
+  #employees: ReadonlyArray<Readonly<Employee>> | undefined;
+
   #getEmployees = new Task(
     this,
     async () => await this.#loadEmployees(),
@@ -30,13 +34,17 @@ export class EmployeesPage extends LitElement {
   );
 
   @property({ type: Boolean, reflect: true }) exiting: boolean = false;
-  @state() protected currentEmployee: Employee | undefined;
+  @state() private currentEmployee: Employee | undefined;
 
   @apolloQuery({ query: GetEmployeesDocument }) private readonly query: Employee[];
   @consume({ context: routerContext }) router: Router;
 
   override render(): TemplateResult {
     return html`
+      <header>
+        <span class="title">Employees</span>
+        <rk-button outlined>Add Employee</rk-button>
+      </header>
       ${this.#getEmployees.render({
         pending: () => this.#renderSkeleton(),
         complete: (employees) => this.#renderEmployees(employees),
@@ -46,8 +54,10 @@ export class EmployeesPage extends LitElement {
   }
 
   #renderEmployees(employees: ReadonlyArray<Readonly<Employee>>): TemplateResult {
+    this.#employees = employees;
+
     return html`
-      <rk-table>
+      <rk-table selectable @row-selected=${this.#handleTableRowSelected}>
         <rk-table-row header>
           <rk-table-header-cell>First Name</rk-table-header-cell>
           <rk-table-header-cell>Last Name</rk-table-header-cell>
@@ -55,6 +65,7 @@ export class EmployeesPage extends LitElement {
           <rk-table-header-cell>Phone</rk-table-header-cell>
           <rk-table-header-cell>Job Title</rk-table-header-cell>
           <rk-table-header-cell>Start Date</rk-table-header-cell>
+          <rk-table-header-cell edit></rk-table-header-cell>
         </rk-table-row>
         ${this.#renderRows(employees)}
       </rk-table>
@@ -76,7 +87,8 @@ export class EmployeesPage extends LitElement {
             <rk-table-cell>${e.email}</rk-table-cell>
             <rk-table-cell>${e.phone}</rk-table-cell>
             <rk-table-cell>${e.jobTitle}</rk-table-cell>
-            <rk-table-cell>${e.dateStarted}</rk-table-cell>
+            <rk-table-cell>${DateTime.toISODate(e.dateStarted)}</rk-table-cell>
+            <rk-table-cell edit> </rk-table-cell>
           </rk-table-row>
         `
       )}
@@ -102,22 +114,20 @@ export class EmployeesPage extends LitElement {
     }
   }
 
-  // #handleEditClick({ target }: TypeEvent, employee: Employee): void {
-  //   this.currentEmployee = employee;
+  #handleTableRowSelected({ detail: { row } }: TableRowSelectedEvent): void {
+    const { id } = row;
+    const employee = this.#employees.find((e) => e.id === id);
 
-  //   const cardEl = target.closest<HTMLElement>('.card');
-  //   // cardEl.classList.add(CARD_SELECTED_CLASS);
-  //   cardEl.setAttribute(CARD_SELECTED_CLASS, '');
+    if (employee) {
+      this.currentEmployee = employee;
+      console.dir(employee);
+    }
+  }
 
-  //   this.exiting = true;
-
-  //   const animationendHandle = () => {
-  //     cardEl.removeEventListener('animationend', animationendHandle);
-  //     this.router.goto(RouteTypes.employeeEdit.replace(/:id/, employee.id));
-  //   };
-
-  //   cardEl.addEventListener('animationend', animationendHandle);
-  // }
+  #handleEditClick(): void {
+    const employee = this.currentEmployee;
+    // this.currentEmployee = employee;
+  }
 }
 
 declare global {

@@ -1,8 +1,14 @@
+* {
+  box-sizing: border-box;
+}
+
 :host {
   --_button-color: var(--rk-button-color, var(--md-sys-color-surface-5));
   --_button-on-color: var(--rk-button-on-color, var(--md-sys-color-surface-5));
   /* --_button-shadow: var(--rk-button-shadow, #000000); */
   --_button-shadow: var(--rk-button-shadow, 0 0 0);
+  --_button-padding-inline: var(--rk-button-padding-inline, 18px);
+  --_button-padding-block: var(--rk-button-padding-block, 10px);
 }
 
 button {
@@ -11,9 +17,8 @@ button {
   justify-content: center;
   align-items: center;
   inline-size: auto;
-  box-sizing: border-box;
-  padding-inline: 18px;
-  padding-block: 9px;
+  padding-inline: var(--_button-padding-inline);
+  padding-block: var(--_button-padding-block);
   border: none;
   outline: none;
   background: transparent;
@@ -31,12 +36,11 @@ button {
 :host([outlined]) button {
   &::before,
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     inset: 0;
     border: 1px solid var(--_button-color, #ffffff);
     border-radius: 9999px;
-    box-sizing: border-box;
     z-index: 1;
   }
 
@@ -51,13 +55,11 @@ button {
 }
 
 :host([filled]) button::before::after {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
-  /* border: 1px solid var(--_button-color, #ffffff); */
   background: var(--_button-color, #ffffff);
   border-radius: 9999px;
-  box-sizing: border-box;
   z-index: 1;
 
   /* &:hover::before {

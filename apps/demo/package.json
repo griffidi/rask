@@ -37,6 +37,7 @@
     "@rask/graphql": "workspace:^",
     "@rask/identity": "workspace:^",
     "@rask/web": "workspace:*",
+    "@types/luxon": "^3.3.0",
     "dotenv": "^16.0.3",
     "graphql": "^16.6.0",
     "lit": "^2.7.2",

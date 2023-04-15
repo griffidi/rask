@@ -11,4 +11,5 @@ fragment EmployeeParts on Employee {
   zipCode
   jobTitle
   departmentId
+  dateStarted
 }

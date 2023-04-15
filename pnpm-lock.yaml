@@ -160,6 +160,9 @@ importers:
       '@rask/web':
         specifier: workspace:*
         version: link:../../packages/web
+      '@types/luxon':
+        specifier: ^3.3.0
+        version: 3.3.0
       dotenv:
         specifier: ^16.0.3
         version: 16.0.3
@@ -2900,6 +2903,10 @@ packages:
 
   /@types/long@4.0.2:
     resolution: {integrity: sha512-MqTGEo5bj5t157U6fA/BiDynNkn0YknVdh48CMPkTSpFTVmvao5UQmm7uEF6xBEo7qIMAlY/JSleYaE6VOdpaA==}
+    dev: false
+
+  /@types/luxon@3.3.0:
+    resolution: {integrity: sha512-uKRI5QORDnrGFYgcdAVnHvEIvEZ8noTpP/Bg+HeUzZghwinDlIS87DEenV5r1YoOF9G4x600YsUXLWZ19rmTmg==}
     dev: false
 
   /@types/mime@3.0.1:

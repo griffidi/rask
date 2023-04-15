@@ -5,9 +5,40 @@
 :host {
   --_container-padding: 40px;
 
-  display: block;
-  padding-inline: var(--_container-padding);
-  padding-block: var(--_container-padding);
-  block-size: calc(100% - var(--rk-site-header-height) - calc(var(--_container-padding) * 1) + 14px);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  padding-block-end: var(--_container-padding);
+  block-size: calc(100% - var(--rk-site-header-height) + 14px);
   overflow: hidden auto;
+}
+
+header {
+  --_header-padding: 15px;
+  --rk-button-color: var(--md-sys-color-green);
+  --rk-button-on-color: var(--md-sys-color-green);
+  --rk-button-shadow: var(--md-sys-color-green-rgb);
+
+  position: sticky;
+  display: flex;
+  justify-content: space-between;
+  inset-block-start: 0;
+  inset-inline: calc(var(--_container-padding) * -1);
+  inline-size: 100%;
+  padding-inline: calc(var(--_container-padding) + var(--_header-padding));
+  padding-block: var(--_header-padding);
+  border-block-end: 1px solid var(--rk-border-color);
+  backdrop-filter: blur(10px);
+}
+
+.title {
+  font-size: var(--md-sys-typescale-title-large-size);
+  font-weight: var(--md-sys-typescale-title-large-weight);
+  line-height: var(--md-sys-typescale-title-large-line-height);
+}
+
+rk-table {
+  inline-size: calc(100% - calc(var(--_container-padding) * 2));
 }
