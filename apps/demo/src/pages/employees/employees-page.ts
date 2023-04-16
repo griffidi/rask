@@ -1,7 +1,6 @@
 import { routerContext } from '#/router/router-context.js';
 import { GetEmployeesDocument, type Employee } from '#/types/graphql.js';
 import { consume } from '@lit-labs/context';
-import type { Router } from '@lit-labs/router';
 import { Task } from '@lit-labs/task';
 import '@material/web/icon/icon.js';
 import { DateTime } from '@rask/core/common/i18n/date-time.js';

@@ -1,25 +1,38 @@
 {
   "folders": [
     {
-      "path": ".",
-      "name": ".root"
-    },
-    {
       "path": "api"
     },
     {
-      "path": "apps"
+      "name": "demo",
+      "path": "apps/demo"
     },
     {
-      "path": "docs"
+      "name": "core",
+      "path": "packages/core"
     },
     {
-      "path": "packages"
+      "name": "graphql",
+      "path": "packages/graphql"
+    },
+    {
+      "name": "identity",
+      "path": "packages/identity"
+    },
+    {
+      "name": "web",
+      "path": "packages/web"
+    },
+    {
+      "name": ".root",
+      "path": "."
     }
   ],
   "settings": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "javascript.format.enable": false,
+    "javascript.preferences.importModuleSpecifier": "project-relative",
+    "javascript.preferences.importModuleSpecifierEnding": "js",
     "[javascript]": {
       "editor.defaultFormatter": "esbenp.prettier-vscode",
       "editor.formatOnSave": true,
@@ -37,7 +50,7 @@
     },
     "npm.autoDetect": "off",
     "typescript.tsc.autoDetect": "off",
-    // "typescript.tsserver.experimental.enableProjectDiagnostics": true,
+    "typescript.tsserver.experimental.enableProjectDiagnostics": true,
     "typescript.tsdk": "node_modules\\typescript\\lib",
     "typescript.preferences.quoteStyle": "single",
     "[typescript]": {
@@ -103,6 +116,7 @@
       "srgb",
       "tsbuildinfo",
       "tsnode",
+      "vaadin",
       "wght"
     ],
 
@@ -118,6 +132,7 @@
       "source.fixAll.markdownlint": true
     },
 
+    "eslint.workingDirectories": [{ "mode": "auto" }],
     "eslint.codeActionsOnSave.mode": "problems",
     "eslint.experimental.useFlatConfig": true,
     "eslint.packageManager": "pnpm",

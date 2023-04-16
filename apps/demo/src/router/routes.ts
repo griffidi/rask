@@ -1,6 +1,13 @@
-import { type RouteConfig } from '@lit-labs/router';
+import { Router } from '@vaadin/router';
 import { html } from 'lit';
 import { RouteTypes } from './route-types.js';
+
+const router = new Router(document.getElementById('router-outlet'));
+
+router.setRoutes([
+  { path: '/', component: 'x-home-view' },
+  { path: '/users', component: 'x-user-list' },
+]);
 
 export default [
   {

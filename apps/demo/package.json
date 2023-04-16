@@ -29,7 +29,6 @@
   "dependencies": {
     "@apollo/client": "^3.7.12",
     "@lit-labs/context": "^0.3.0",
-    "@lit-labs/router": "^0.1.1",
     "@lit-labs/task": "^2.1.0",
     "@lit/reactive-element": "^1.6.1",
     "@material/web": "1.0.0-pre.6",
@@ -38,6 +37,7 @@
     "@rask/identity": "workspace:^",
     "@rask/web": "workspace:*",
     "@types/luxon": "^3.3.0",
+    "@vaadin/router": "^1.7.5",
     "dotenv": "^16.0.3",
     "graphql": "^16.6.0",
     "lit": "^2.7.2",

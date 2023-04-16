@@ -1,7 +1,6 @@
 import { RouteTypes } from '#/router/route-types.js';
 import { routerContext } from '#/router/router-context.js';
 import { consume } from '@lit-labs/context';
-import type { Router } from '@lit-labs/router';
 import '@material/web/button/text-button.js';
 import '@material/web/icon/icon.js';
 import { useInject } from '@rask/core/di/inject.js';

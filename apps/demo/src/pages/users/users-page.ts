@@ -2,7 +2,6 @@ import { RouteTypes } from '#/router/route-types.js';
 import { routerContext } from '#/router/router-context.js';
 import { GetUsersDocument, type User } from '#/types/graphql.js';
 import { consume } from '@lit-labs/context';
-import type { Router } from '@lit-labs/router';
 import { Task } from '@lit-labs/task';
 import '@material/web/icon/icon.js';
 import type { TypeEvent } from '@rask/core/events/type-event.js';

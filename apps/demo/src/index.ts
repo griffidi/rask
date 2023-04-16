@@ -7,7 +7,6 @@ import { routerContext } from '#/router/router-context.js';
 import routes from '#/router/routes.js';
 import type { ApolloClient, NormalizedCacheObject } from '@apollo/client';
 import { ContextProvider } from '@lit-labs/context';
-import { Router } from '@lit-labs/router';
 import { apolloClient } from '@rask/graphql/decorators/apollo-client.js';
 import '@rask/web/navigation-drawer/navigation-drawer.js';
 import { LitElement, html, type TemplateResult } from 'lit';
@@ -37,7 +36,7 @@ export class Index extends LitElement {
     return html`
       <main>
         <app-header @menu-clicked=${this.#showDrawer}></app-header>
-        <article>${this.#router.outlet()}</article>
+        <article><div id="router-outlet"></div></article>
       </main>
       <app-nav ${ref(this.#nav)}></app-nav>
       <app-search></app-search>
