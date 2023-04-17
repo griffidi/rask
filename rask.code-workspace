@@ -1,6 +1,10 @@
 {
   "folders": [
     {
+      "name": ".root",
+      "path": "."
+    },
+    {
       "path": "api"
     },
     {
@@ -22,10 +26,6 @@
     {
       "name": "web",
       "path": "packages/web"
-    },
-    {
-      "name": ".root",
-      "path": "."
     }
   ],
   "settings": {
@@ -150,6 +150,7 @@
       "docs": true,
       "packages": true,
       "**/.git": true,
+      "**/dist": true,
       "**/node_modules": true
     },
 

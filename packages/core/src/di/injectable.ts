@@ -1,27 +1,21 @@
-import { useRegistry } from "./registry.js";
-import type { Constructor } from "./types.js";
+import { useRegistry } from './registry.js';
+import type { Constructor } from './types.js';
 
 const registry = useRegistry();
 
 /**
- * Inject interface's implementation.
+ * Make class injectable.
  *
  * @param {string} interfaceName Name of implementation's interface to inject.
  * @returns Implementation of interfaceName.
  */
 export function injectable(): Function {
-	return (target: any, _propertyKey: string) => {
-		const { name } = target as Constructor;
-		registry.register(name, target);
-	};
+  // eslint-disable-next-line ts/no-unused-vars, ts/no-explicit-any
+  return (target: any) => {
+    const { name } = target as Constructor;
+
+    Reflect.defineMetadata('injectable', true, target);
+
+    registry.register(name, target);
+  };
 }
-
-// export function injectable2() {
-//   return <T extends Constructor>(value: T, { kind, name }: ClassDecoratorContext) => {
-//     if (kind !== 'class') {
-//       throw new Error('This decorator can only be applied to a class.');
-//     }
-
-//     registry.register(name, value);
-//   };
-// }

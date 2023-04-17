@@ -9,8 +9,7 @@
     "plugins": [
       {
         "name": "ts-lit-plugin",
-        "strict": true,
-        "logging": "verbose"
+        "strict": true
       }
     ]
   },

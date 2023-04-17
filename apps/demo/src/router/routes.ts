@@ -1,109 +1,96 @@
-import { Router } from '@vaadin/router';
-import { html } from 'lit';
-import { RouteTypes } from './route-types.js';
-
-const router = new Router(document.getElementById('router-outlet'));
-
-router.setRoutes([
-  { path: '/', component: 'x-home-view' },
-  { path: '/users', component: 'x-user-list' },
-]);
+import { type Route } from '@vaadin/router';
 
 export default [
   {
-    name: 'default',
     path: '/',
-    render: () => {
-      import('../pages/home/home-page.js');
-      return html`<app-home-page></app-home-page>`;
-    },
-  },
-  // {
-  //   name: 'default',
-  //   path: '/',
-  //   render: () => {
-  //     import('../pages/login/login-page.js');
-  //     return html`<app-login-page></app-login-page>`;
-  //   },
-  // },
-  {
-    name: 'documents',
-    path: RouteTypes.documents,
-    render: () => {
-      import('../pages/documents/documents-page.js');
-      return html`<app-documents-page></app-documents-page>`;
-    },
-  },
-  {
     name: 'home',
-    path: RouteTypes.home,
-    render: () => {
-      import('../pages/home/home-page.js');
-      return html`<app-home-page></app-home-page>`;
+    component: 'app-home-page',
+    action: async () => {
+      await import('../pages/home/home-page.js');
     },
   },
   {
+    path: '/login',
     name: 'login',
-    path: RouteTypes.login,
-    render: () => {
-      import('../pages/login/login-page.js');
-      return html`<app-login-page></app-login-page>`;
+    component: 'app-login-page',
+    action: async () => {
+      await import('../pages/login/login-page.js');
     },
   },
   {
+    path: '/documents',
+    name: 'documents',
+    component: 'app-documents-page',
+    action: async () => {
+      await import('../pages/documents/documents-page.js');
+    },
+  },
+  {
+    path: '/customers',
     name: 'customers',
-    path: RouteTypes.customers,
-    render: () => {
-      import('../pages/customers/customers-page.js');
-      return html`<app-customers-page></app-customers-page>`;
-    },
+    children: [
+      {
+        path: '/',
+        component: 'app-customers-page',
+        action: async () => {
+          await import('../pages/customers/customers-page.js');
+        },
+      },
+      {
+        path: '/:id',
+        component: 'app-customer-page',
+        action: async () => {
+          await import('../pages/customers/customer-page.js');
+        },
+      },
+    ],
   },
   {
-    name: 'customerEdit',
-    path: RouteTypes.customerEdit,
-    render: ({ id }: { [key: string]: string }) => {
-      import('../pages/customers/customer-edit-page.js');
-      return html`<app-customer-edit-page .customerId=${id}></app-customer-edit-page>`;
-    },
-  },
-  {
+    path: '/employees',
     name: 'employees',
-    path: RouteTypes.employees,
-    render: () => {
-      import('../pages/employees/employees-page.js');
-      return html`<app-employees-page></app-employees-page>`;
-    },
+    children: [
+      {
+        path: '/',
+        component: 'app-employees-page',
+        action: async () => {
+          await import('../pages/employees/employees-page.js');
+        },
+      },
+      {
+        path: '/:id',
+        component: 'app-employee-page',
+        action: async () => {
+          await import('../pages/employees/employee-page.js');
+        },
+      },
+    ],
   },
   {
-    name: 'employeeEdit',
-    path: RouteTypes.employeeEdit,
-    render: ({ id }: { [key: string]: string }) => {
-      import('../pages/employees/employee-edit-page.js');
-      return html`<app-employee-edit-page .employeeId=${id}></app-employee-edit-page>`;
-    },
-  },
-  {
-    name: 'settings',
-    path: RouteTypes.settings,
-    render: () => {
-      import('../pages/settings/settings-page.js');
-      return html`<app-settings-page></app-settings-page>`;
-    },
-  },
-  {
+    path: '/users',
     name: 'users',
-    path: RouteTypes.users,
-    render: () => {
-      import('../pages/users/users-page.js');
-      return html`<app-users-page></app-users-page>`;
-    },
+    children: [
+      {
+        path: '/',
+        component: 'app-users-page',
+        action: async () => {
+          await import('../pages/users/users-page.js');
+        },
+      },
+      {
+        path: '/:id',
+        component: 'app-user-page',
+        action: async () => {
+          await import('../pages/users/user-page.js');
+        },
+      },
+    ],
   },
   {
-    name: 'userEdit',
-    path: RouteTypes.userEdit,
-    render: ({ id }: { [key: string]: string }) => {
-      import('../pages/users/user-edit-page.js');
-      return html`<app-user-edit-page .userId=${id}></app-user-edit-page>`;
+    path: '/settings',
+    name: 'settings',
+    component: 'app-settings-page',
+    action: async () => {
+      await import('../pages/settings/settings-page.js');
     },
   },
-] as RouteConfig[];
+] as ReadonlyArray<Route>;

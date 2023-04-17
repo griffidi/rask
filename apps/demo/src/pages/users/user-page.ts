@@ -8,10 +8,10 @@ import '@rask/web/skeleton/skeleton.js';
 import '@rask/web/text-field/text-field.js';
 import { LitElement, html, type TemplateResult } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import css from './user-edit-page.css' assert { type: 'css' };
+import css from './user-page.css' assert { type: 'css' };
 
-@customElement('app-user-edit-page')
-export class UserEditPage extends LitElement {
+@customElement('app-user-page')
+export class UserPage extends LitElement {
   static override styles = [css];
 
   #getUsers = new Task(
@@ -69,6 +69,6 @@ export class UserEditPage extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'app-user-edit-page': UserEditPage;
+    'app-user-page': UserPage;
   }
 }

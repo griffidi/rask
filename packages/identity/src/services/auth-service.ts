@@ -1,11 +1,16 @@
 import { useStorage } from '@rask/core/cache/index.js';
 import { useCrypto } from '@rask/core/crypto/index.js';
+import { useInject } from '@rask/core/di/inject.js';
 import { injectable } from '@rask/core/di/injectable.js';
 import { throwIfEmpty } from '@rask/core/validation/assert.js';
+import { Client } from '@rask/graphql/client/client.js';
 import { TOKEN_KEY } from '../constants/token-key.js';
+import { LoginDocument } from '../types/graphql.js';
 
 @injectable()
 export class AuthService {
+  #client = useInject(Client);
+
   /**
    * Is the current user authenticated.
    *
@@ -28,17 +33,25 @@ export class AuthService {
     throwIfEmpty(userName, 'UserName is required');
     throwIfEmpty(password, 'Password is required');
 
-    // TODO add API call to sign in user
-    const success = await Promise.resolve(true);
+    const token = await this.#client.query({ query: LoginDocument, variables: { userName, password } });
 
-    if (success) {
-      const storage = useStorage();
+    if (token) {
+      const cache = useStorage();
       const crypto = useCrypto();
 
-      storage.set(TOKEN_KEY, crypto.nanoid);
+      cache.set(TOKEN_KEY, crypto.nanoid);
       return true;
     }
 
     return false;
+  }
+
+  async setToken(token: string): Promise<void> {
+    if (token) {
+      const cache = useStorage();
+      const crypto = useCrypto();
+
+      cache.set(TOKEN_KEY, crypto.nanoid);
+    }
   }
 }

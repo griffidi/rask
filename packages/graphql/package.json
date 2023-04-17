@@ -20,7 +20,9 @@
     "@apollo/client": "^3.7.12",
     "@lit-labs/context": "^0.3.0",
     "@lit/reactive-element": "^1.6.1",
+    "@rask/core": "workspace:^",
     "graphql": "^16.6.0",
+    "graphql-http": "^1.18.0",
     "lit": "^2.7.2",
     "tslib": "^2.5.0"
   },

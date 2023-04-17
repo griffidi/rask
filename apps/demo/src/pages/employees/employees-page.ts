@@ -1,6 +1,4 @@
-import { routerContext } from '#/router/router-context.js';
 import { GetEmployeesDocument, type Employee } from '#/types/graphql.js';
-import { consume } from '@lit-labs/context';
 import { Task } from '@lit-labs/task';
 import '@material/web/icon/icon.js';
 import { DateTime } from '@rask/core/common/i18n/date-time.js';
@@ -37,7 +35,6 @@ export class EmployeesPage extends LitElement {
   @state() private currentEmployee: Employee | undefined;
 
   @apolloQuery({ query: GetEmployeesDocument }) private readonly query: Employee[];
-  @consume({ context: routerContext }) router: Router;
 
   override render(): TemplateResult {
     return html`

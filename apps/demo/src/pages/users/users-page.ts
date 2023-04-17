@@ -1,7 +1,4 @@
-import { RouteTypes } from '#/router/route-types.js';
-import { routerContext } from '#/router/router-context.js';
 import { GetUsersDocument, type User } from '#/types/graphql.js';
-import { consume } from '@lit-labs/context';
 import { Task } from '@lit-labs/task';
 import '@material/web/icon/icon.js';
 import type { TypeEvent } from '@rask/core/events/type-event.js';
@@ -31,7 +28,6 @@ export class UsersPage extends LitElement {
   @state() protected currentUser: User | undefined;
 
   @apolloQuery({ query: GetUsersDocument }) private readonly query: User[];
-  @consume({ context: routerContext }) router: Router;
 
   override render(): TemplateResult {
     return html`
@@ -128,7 +124,7 @@ export class UsersPage extends LitElement {
 
     const animationendHandle = () => {
       cardEl.removeEventListener('animationend', animationendHandle);
-      this.router.goto(RouteTypes.userEdit.replace(/:id/, user.id));
+      // this.router.goto(RouteTypes.userEdit.replace(/:id/, user.id));
     };
 
     cardEl.addEventListener('animationend', animationendHandle);

@@ -16,7 +16,7 @@ export interface ApolloClientOptions {
   validateVariables?: boolean;
 }
 
-export default function createApolloClient(options: ApolloClientOptions): ApolloClient<NormalizedCacheObject> {
+export default function createApolloClient(options?: ApolloClientOptions): ApolloClient<NormalizedCacheObject> {
   const { uri, typePolicies } = options;
 
   if (!uri) {

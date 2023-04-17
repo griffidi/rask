@@ -1,5 +1,5 @@
 {
-  "extends":  ["../../tsconfig.base.json" ,"../../tsconfig.lit.json"],
+  "extends": ["../../tsconfig.base.json", "../../tsconfig.lit.json"],
   "compilerOptions": {
     "noPropertyAccessFromIndexSignature": true,
     "outDir": "./dist",
@@ -7,5 +7,5 @@
     "types": ["node"]
   },
   "include": ["src/**/*.ts"],
-  "exclude": ["dist", "node_modules"],
+  "exclude": ["dist", "node_modules"]
 }

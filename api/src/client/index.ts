@@ -12,8 +12,10 @@ const globalForPrisma = global as unknown as { prisma: PrismaClient };
 /**
  * `PrismaClient` singleton.
  */
-export const client = globalForPrisma.prisma || new PrismaClient();
+export const prisma = globalForPrisma.prisma || new PrismaClient();
 
 if (process.env['NODE_ENV'] === 'development') {
-  globalForPrisma.prisma = client;
+  globalForPrisma.prisma = prisma;
 }
+
+// export const prisma = new PrismaClient();
