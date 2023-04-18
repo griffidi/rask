@@ -1,9 +1,7 @@
-import { LoginDocument } from '#/types/graphql.js';
 import '@material/web/button/text-button.js';
 import '@material/web/icon/icon.js';
 import { useInject } from '@rask/core/di/inject.js';
 import type { TypeEvent } from '@rask/core/events/type-event.js';
-import { Client } from '@rask/graphql/client/client.js';
 import { AuthService } from '@rask/identity/services/auth-service.js';
 import '@rask/web/button/button.js';
 import { LitElement, html, type TemplateResult } from 'lit';
@@ -16,7 +14,6 @@ export class LoginPage extends LitElement {
   static override styles = [css];
 
   #authService = useInject(AuthService);
-  #client = useInject(Client);
   #userName: string = '';
   #password: string = '';
 
@@ -27,7 +24,7 @@ export class LoginPage extends LitElement {
 
   override render(): TemplateResult {
     return html`
-      <form method="submit" @submit=${this.#login}>
+      <form type="submit" @submit=${this.#login}>
         <header>
           <h3>Welcome</h3>
         </header>
@@ -65,19 +62,16 @@ export class LoginPage extends LitElement {
     `;
   }
 
-  async #login(): Promise<void> {
-    // TODO live directive not working
+  async #login(e: Event): Promise<void> {
+    e.stopPropagation();
+    e.preventDefault();
+
     // await this.updateComplete;
     const userName = this.#userName;
     const password = this.#password;
-    // const success = await this.#authService.login(userName, password);
-    const { data: token } = await this.#client.query<string>({
-      query: LoginDocument,
-      variables: { userName, password },
-    });
-    this.#authService.setToken(token);
+    const success = await this.#authService.login(userName, password);
 
-    if (token) {
+    if (success) {
       // this.router.goto(RouteTypes.home);
     }
   }

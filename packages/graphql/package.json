@@ -21,6 +21,7 @@
     "@lit-labs/context": "^0.3.0",
     "@lit/reactive-element": "^1.6.1",
     "@rask/core": "workspace:^",
+    "apollo3-cache-persist": "^0.14.1",
     "graphql": "^16.6.0",
     "graphql-http": "^1.18.0",
     "lit": "^2.7.2",

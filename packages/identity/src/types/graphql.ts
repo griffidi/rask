@@ -1259,7 +1259,7 @@ export interface Query {
   groupByEmployee: Array<EmployeeGroupBy>;
   groupByRole: Array<RoleGroupBy>;
   groupByUser: Array<UserGroupBy>;
-  login: Scalars['String'];
+  login?: Maybe<Scalars['String']>;
   role?: Maybe<Role>;
   roles: Array<Role>;
   user?: Maybe<User>;
@@ -2093,7 +2093,7 @@ export type LoginQueryVariables = Exact<{
   password: Scalars['String'];
 }>;
 
-export type LoginQuery = { __typename?: 'Query'; login: string };
+export type LoginQuery = { __typename?: 'Query'; login?: string | undefined };
 
 export const LoginDocument = {
   kind: 'Document',

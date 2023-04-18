@@ -42,7 +42,7 @@
     "typescript.preferences.importModuleSpecifier": "project-relative",
     "typescript.preferences.importModuleSpecifierEnding": "js",
     "typescript.preferences.useAliasesForRenames": false,
-    "typescript.workspaceSymbols.scope": "currentProject",
+    "typescript.workspaceSymbols.scope": "allOpenProjects",
     "typescript.unstable": {
       "organizeImportsIgnoreCase": "false",
       "organizeImportsCollation": "ordinal",
@@ -116,6 +116,7 @@
       "srgb",
       "tsbuildinfo",
       "tsnode",
+      "unmap",
       "vaadin",
       "wght"
     ],
@@ -141,7 +142,7 @@
 
     "npm.packageManager": "pnpm",
 
-    "vscode-edge-devtools.webhint": false,
+    "vscode-edge-devtools.webhint": true,
 
     "files.exclude": {
       ".out": true,
@@ -166,9 +167,14 @@
         "database": "${workspaceFolder:api}/prisma/dev.db"
       }
     ],
-    "sqltools.useNodeRuntime": true
+    "sqltools.useNodeRuntime": true,
+
+    "vscode-edge-devtools.browserFlavor": "Dev",
+    "vscode-edge-devtools.defaultUrl": "https://localhost:8000",
+    "vscode-edge-devtools.useHttps": true,
+    "vscode-edge-devtools.webRoot": "${workspaceFolder}/apps/demo/src"
   },
   "extensions": {
-    "recommendations": ["esbenp.prettier-vscode", "dbaeumer.vscode-eslint"]
+    "recommendations": ["esbenp.prettier-vscode", "dbaeumer.vscode-eslint", "vscode-icons-team.vscode-icons"]
   }
 }

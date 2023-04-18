@@ -1,64 +1,47 @@
 import {
-  ApolloClient,
-  ApolloLink,
-  HttpLink,
-  InMemoryCache,
-  type ApolloClientOptions,
+  type ApolloClient,
+  type FetchResult,
+  type MutationOptions,
   type NormalizedCacheObject,
+  type QueryOptions,
 } from '@apollo/client/core';
-import { onError } from '@apollo/client/link/error';
-import { useStorage } from '@rask/core/cache/index.js';
+import { useCache } from '@rask/core/cache/index.js';
 import { injectable } from '@rask/core/di/injectable.js';
 import { GRAPHQL_URI_CACHE_KEY } from '../constants/graphql-uri-cache-key.js';
+import { unwrapMutateResult, unwrapQueryResult } from '../utils/operation-result-unwrapper.js';
+import { createApolloClient } from './create-apollo-client.js';
 
-const cache = useStorage();
+const cache = useCache();
 const GRAPHQL_URI = cache.get<string>(GRAPHQL_URI_CACHE_KEY);
 
-const createHttpLink = (uri: string) =>
-  new HttpLink({
-    credentials: 'include',
-    fetchOptions: {
-      mode: 'cors',
-    },
-    uri,
-    headers: {
-      'Access-Control-Allow-Origin': 'true',
-    },
-  });
-
-const createErrorLink = () =>
-  onError(({ graphQLErrors, networkError }) => {
-    if (graphQLErrors) {
-      graphQLErrors.forEach(({ message, locations, path }) =>
-        console.log(`[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`)
-      );
-    }
-
-    if (networkError) {
-      console.log(`[Network error]: ${networkError}`);
-    }
-  });
-
-/**
- * An Apollo Client class derived from ApolloClient that exposes
- */
 @injectable()
-export class Client extends ApolloClient<NormalizedCacheObject> {
-  constructor(options: ApolloClientOptions<NormalizedCacheObject>) {
-    const httpLink = createHttpLink(GRAPHQL_URI);
-    const errorLink = createErrorLink();
-    const link = ApolloLink.from([errorLink, httpLink]);
-    const cache = new InMemoryCache({
-      typePolicies: {},
-    });
+export class Client {
+  #apolloClient: ApolloClient<NormalizedCacheObject> | undefined;
 
-    options = {
-      ...options,
-      link,
-      cache,
-      connectToDevTools: true,
-    };
+  constructor() {
+    this.#apolloClient = createApolloClient({ uri: GRAPHQL_URI });
+  }
 
-    super(options);
+  /**
+   * Execute a mutate operation.
+   *
+   * @param {MutationOptions} options Mutate options.
+   * @returns {Promise<FetchResult<T>>} Unwrapped result from mutate operation.
+   */
+  async mutate<T>(options: MutationOptions): Promise<T> {
+    const result = await this.#apolloClient?.mutate(options);
+    return unwrapMutateResult(result);
+  }
+
+  /**
+   * Execute a query operation.
+   *
+   * @param {QueryOptions} options Query options.
+   * @returns {Promise<ApolloQueryResult<T>>} Unwrapped result from query operation.
+   */
+  // eslint-disable-next-line ts/no-explicit-any
+  async query<T>(options: QueryOptions): Promise<T> {
+    const result = await this.#apolloClient?.query(options);
+    return unwrapQueryResult(result);
   }
 }

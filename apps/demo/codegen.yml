@@ -9,11 +9,13 @@ config:
   avoidOptionals: false
   # allowEnumStringTypes: true
   numericEnums: true
+  # dedupeOperationSuffix: true
   enumsAsConst: true
   overwrite: true
   declarationKind: "interface"
   immutableTypes: false
   maybeValue: "T | undefined"
+  # preResolveTypes: true
   useIndexSignature: true
   useTypeImports: true
 generates:

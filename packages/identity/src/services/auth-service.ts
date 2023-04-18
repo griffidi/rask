@@ -1,4 +1,4 @@
-import { useStorage } from '@rask/core/cache/index.js';
+import { useCache } from '@rask/core/cache/index.js';
 import { useCrypto } from '@rask/core/crypto/index.js';
 import { useInject } from '@rask/core/di/inject.js';
 import { injectable } from '@rask/core/di/injectable.js';
@@ -33,14 +33,23 @@ export class AuthService {
     throwIfEmpty(userName, 'UserName is required');
     throwIfEmpty(password, 'Password is required');
 
-    const token = await this.#client.query({ query: LoginDocument, variables: { userName, password } });
+    try {
+      const token = await this.#client.query<string>({
+        query: LoginDocument,
+        variables: { userName, password },
+        /** you do not want ot cache the login */
+        fetchPolicy: 'no-cache',
+      });
 
-    if (token) {
-      const cache = useStorage();
-      const crypto = useCrypto();
+      if (token) {
+        const cache = useCache();
+        const crypto = useCrypto();
 
-      cache.set(TOKEN_KEY, crypto.nanoid);
-      return true;
+        cache.set(TOKEN_KEY, crypto.nanoid);
+        return true;
+      }
+    } catch (e) {
+      console.error(e);
     }
 
     return false;
@@ -48,7 +57,7 @@ export class AuthService {
 
   async setToken(token: string): Promise<void> {
     if (token) {
-      const cache = useStorage();
+      const cache = useCache();
       const crypto = useCrypto();
 
       cache.set(TOKEN_KEY, crypto.nanoid);

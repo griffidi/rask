@@ -1259,7 +1259,7 @@ export interface Query {
   groupByEmployee: Array<EmployeeGroupBy>;
   groupByRole: Array<RoleGroupBy>;
   groupByUser: Array<UserGroupBy>;
-  login: Scalars['String'];
+  login?: Maybe<Scalars['String']>;
   role?: Maybe<Role>;
   roles: Array<Role>;
   user?: Maybe<User>;
@@ -2172,13 +2172,6 @@ export type GetEmployeeByIdQuery = {
   }>;
 };
 
-export type LoginQueryVariables = Exact<{
-  userName: Scalars['String'];
-  password: Scalars['String'];
-}>;
-
-export type LoginQuery = { __typename?: 'Query'; login: string };
-
 export type GetUsersQueryVariables = Exact<{ [key: string]: never }>;
 
 export type GetUsersQuery = {
@@ -2555,49 +2548,6 @@ export const GetEmployeeByIdDocument = {
     },
   ],
 } as unknown as DocumentNode<GetEmployeeByIdQuery, GetEmployeeByIdQueryVariables>;
-export const LoginDocument = {
-  kind: 'Document',
-  definitions: [
-    {
-      kind: 'OperationDefinition',
-      operation: 'query',
-      name: { kind: 'Name', value: 'login' },
-      variableDefinitions: [
-        {
-          kind: 'VariableDefinition',
-          variable: { kind: 'Variable', name: { kind: 'Name', value: 'userName' } },
-          type: { kind: 'NonNullType', type: { kind: 'NamedType', name: { kind: 'Name', value: 'String' } } },
-        },
-        {
-          kind: 'VariableDefinition',
-          variable: { kind: 'Variable', name: { kind: 'Name', value: 'password' } },
-          type: { kind: 'NonNullType', type: { kind: 'NamedType', name: { kind: 'Name', value: 'String' } } },
-        },
-      ],
-      selectionSet: {
-        kind: 'SelectionSet',
-        selections: [
-          {
-            kind: 'Field',
-            name: { kind: 'Name', value: 'login' },
-            arguments: [
-              {
-                kind: 'Argument',
-                name: { kind: 'Name', value: 'userName' },
-                value: { kind: 'Variable', name: { kind: 'Name', value: 'userName' } },
-              },
-              {
-                kind: 'Argument',
-                name: { kind: 'Name', value: 'password' },
-                value: { kind: 'Variable', name: { kind: 'Name', value: 'password' } },
-              },
-            ],
-          },
-        ],
-      },
-    },
-  ],
-} as unknown as DocumentNode<LoginQuery, LoginQueryVariables>;
 export const GetUsersDocument = {
   kind: 'Document',
   definitions: [

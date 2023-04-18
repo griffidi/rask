@@ -1,8 +1,8 @@
-import { useStorage } from '@rask/core/cache/index.js';
+import { useCache } from '@rask/core/cache/index.js';
 import { TOKEN_KEY } from '../constants/token-key.js';
 
 export async function authGuard(): Promise<boolean> {
-  const cache = useStorage();
+  const cache = useCache();
 
   if (cache.has(TOKEN_KEY)) {
     return true;

@@ -18,7 +18,7 @@ const userRoleId = roles.find((role) => role.name === 'User').id;
 const adminUser = {
   id: nanoid(10),
   userName: `admin.user-0000001`,
-  password: 'admin123',
+  password: generateHash('admin123'),
   email: 'dustingriffith@outlook.com',
   firstName: 'Admin',
   lastName: 'One',

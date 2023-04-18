@@ -4,7 +4,7 @@ import '#/components/search/search.js';
 import '#/layout/footer/footer.js';
 import '#/layout/header/header.js';
 import type { ApolloClient, NormalizedCacheObject } from '@apollo/client/core';
-import { useStorage } from '@rask/core/cache/index.js';
+import { useCache } from '@rask/core/cache/index.js';
 import { GRAPHQL_URI_CACHE_KEY } from '@rask/graphql/constants/graphql-uri-cache-key.js';
 import { apolloClient } from '@rask/graphql/decorators/apollo-client.js';
 import '@rask/web/navigation-drawer/navigation-drawer.js';
@@ -17,7 +17,7 @@ import { attachRouter } from './router/index.js';
 
 const { uri: GRAPHQL_URI } = config.graphql;
 
-const cache = useStorage();
+const cache = useCache();
 cache.set(GRAPHQL_URI_CACHE_KEY, GRAPHQL_URI);
 
 @customElement('app-index')

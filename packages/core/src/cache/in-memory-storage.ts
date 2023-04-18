@@ -1,29 +1,36 @@
-export class InMemroryStorage implements Storage {
+export class InMemoryStorage implements Storage {
   [name: string]: unknown;
 
-  #storage = new Map<string, string>();
+  /**
+   * Storage Map is static so that the cache is persisted across instances of this class.
+   */
+  static #storage: Map<string, string>;
+
+  static {
+    this.#storage = new Map<string, string>();
+  }
 
   get length(): number {
-    return this.#storage.size;
+    return InMemoryStorage.#storage.size;
   }
 
   clear(): void {
-    this.#storage.clear();
+    InMemoryStorage.#storage.clear();
   }
 
   getItem(key: string): string | null {
-    return this.#storage.get(key) ?? null;
+    return InMemoryStorage.#storage.get(key) ?? null;
   }
 
   key(index: number): string | null {
-    return Array.from(this.#storage.keys())[index] ?? null;
+    return Array.from(InMemoryStorage.#storage.keys())[index] ?? null;
   }
 
   removeItem(key: string): void {
-    this.#storage.delete(key);
+    InMemoryStorage.#storage.delete(key);
   }
 
   setItem(key: string, value: string): void {
-    this.#storage.set(key, value);
+    InMemoryStorage.#storage.set(key, value);
   }
 }

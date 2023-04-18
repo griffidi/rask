@@ -38,7 +38,7 @@
       }
     },
     {
-      "name": "Debug demo (dev-server)",
+      "name": "Debug demo (server)",
       "cwd": "${workspaceFolder}/apps/demo",
       "request": "launch",
       "type": "node",
@@ -70,6 +70,18 @@
         "group": "demo",
         "order": 2
       }
+    },
+    {
+      "name": "Attach demo (edge-devtools)",
+      "type": "vscode-edge-devtools.debug",
+      "request": "attach",
+      "url": "http://localhost:8000",
+      "webRoot": "${workspaceFolder}/apps/demo/src",
+      "presentation": {
+        "hidden": false,
+        "group": "demo",
+        "order": 3
+      }
     }
   ],
   "compounds": [
@@ -80,12 +92,12 @@
     },
     {
       "name": "Launch demo",
-      "configurations": ["Debug demo (dev-server)", "Debug demo (edge)"],
+      "configurations": ["Debug demo (server)", "Debug demo (edge)"],
       "stopAll": true
     },
     {
       "name": "Launch demo/api",
-      "configurations": ["Debug api", "Debug demo (dev-server)", "Debug demo (edge)"],
+      "configurations": ["Debug api", "Debug demo (server)", "Debug demo (edge)"],
       "stopAll": true
     }
   ]

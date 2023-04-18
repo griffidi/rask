@@ -1079,7 +1079,7 @@ type Query {
   groupByEmployee(by: [EmployeeScalarFieldEnum!]!, having: EmployeeScalarWhereWithAggregatesInput, orderBy: [EmployeeOrderByWithAggregationInput!], skip: Int, take: Int, where: EmployeeWhereInput): [EmployeeGroupBy!]!
   groupByRole(by: [RoleScalarFieldEnum!]!, having: RoleScalarWhereWithAggregatesInput, orderBy: [RoleOrderByWithAggregationInput!], skip: Int, take: Int, where: RoleWhereInput): [RoleGroupBy!]!
   groupByUser(by: [UserScalarFieldEnum!]!, having: UserScalarWhereWithAggregatesInput, orderBy: [UserOrderByWithAggregationInput!], skip: Int, take: Int, where: UserWhereInput): [UserGroupBy!]!
-  login(password: String!, userName: String!): String!
+  login(password: String!, userName: String!): String
   role(where: RoleWhereUniqueInput!): Role
   roles(cursor: RoleWhereUniqueInput, distinct: [RoleScalarFieldEnum!], orderBy: [RoleOrderByWithRelationInput!], skip: Int, take: Int, where: RoleWhereInput): [Role!]!
   user(where: UserWhereUniqueInput!): User
