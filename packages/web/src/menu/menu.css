@@ -1,5 +1,6 @@
 :host {
   --rk-menu-container-color: #212122;
+  --md-icon-button-icon-size: var(--rk-menu-icon-size, 24px);
 
   position: relative;
 }

@@ -28,7 +28,7 @@ export class SettingsMenu extends LitElement {
 
   override render(): TemplateResult {
     return html`
-      <rk-menu ${ref(this.#menu)} .open>
+      <rk-menu ${ref(this.#menu)} icon="account_circle" .open>
         <label>
           Dark Mode
           <md-switch .selected="${this.themeDarkModeSelected}" @change="${this.#toggleTheme}"
