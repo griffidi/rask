@@ -101,7 +101,7 @@ a {
 /* a:hover {
   & .logo {
     filter: var(--_logo-filter);
-    /* transition: filter 0s 0s; */
+    /* transition: filter 0s 0s;
   }
 
   & h2 {
@@ -129,14 +129,15 @@ a {
   border-radius: var(--md-sys-shape-small);
 
   &::before {
-    content: "CTRL K";
+    content: "CTRL K or /";
     position: absolute;
-    inset-inline-start: 12px;
+    inset-inline-start: 4px;
     display: grid;
     place-content: center;
-    inline-size: 50px;
-    block-size: 19px;
-    font-size: 0.8em;
+    inline-size: 80px;
+    block-size: 36px;
+    font-size: 0.7em;
+    font-weight: 600;
     letter-spacing: 0.5px;
     color: var(--md-sys-color-text-3);
     /* border: 1px solid var(--md-sys-color-text-3); */

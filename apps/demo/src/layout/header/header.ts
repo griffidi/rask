@@ -38,7 +38,12 @@ export class Header extends LitElement {
   }
 
   protected renderTrailingSide(): TemplateResult {
-    return html`<app-settings-menu></app-settings-menu>`;
+    return html`
+      <div class="search-instructions">
+        <md-icon>search</md-icon>
+      </div>
+      <app-settings-menu></app-settings-menu>
+    `;
   }
 
   #handleMenuClick(): void {
