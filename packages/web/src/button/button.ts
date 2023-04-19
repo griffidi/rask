@@ -2,6 +2,7 @@ import '@material/web/icon/icon.js';
 import { LitElement, html, type TemplateResult } from 'lit';
 import { customElement, property, query, state } from 'lit/decorators.js';
 import { classMap, type ClassInfo } from 'lit/directives/class-map.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
 import { when } from 'lit/directives/when.js';
 import { dispatchActivationClick, isActivationClick } from '../controllers/events.js';
 import css from './button.css' assert { type: 'css' };
@@ -37,6 +38,8 @@ export class Button extends LitElement {
   @property() label = '';
   @property({ type: Boolean }) preventClickDefault = false;
   @query('.rk-button') protected buttonElement!: HTMLElement;
+  @property({ type: String, reflect: true }) type: 'submit' | undefined;
+
   @state() protected showFocusRing = false;
 
   constructor() {
@@ -48,6 +51,8 @@ export class Button extends LitElement {
     return html`
       <button
         class="rk-button ${classMap(this.getRenderClasses())}"
+        type=${ifDefined(this.type)}
+        tabindex="0"
         ?disabled=${this.disabled}
         @click=${this.handleClick}
       >

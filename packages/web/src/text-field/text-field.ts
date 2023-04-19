@@ -72,27 +72,6 @@ export abstract class TextField extends LitElement {
    */
   @property({ type: String }) defaultValue = '';
   /**
-   * An optional prefix to display before the input value.
-   */
-  @property({ type: String }) prefixText = '';
-  /**
-   * An optional suffix to display after the input value.
-   */
-  @property({ type: String }) suffixText = '';
-  /**
-   * Whether or not the text field has a leading icon. Used for SSR.
-   */
-  @property({ type: Boolean }) hasLeadingIcon = false;
-  /**
-   * Whether or not the text field has a trailing icon. Used for SSR.
-   */
-  @property({ type: Boolean }) hasTrailingIcon = false;
-  /**
-   * Conveys additional information below the text field, such as how it should
-   * be used.
-   */
-  @property({ type: String }) supportingText = '';
-  /**
    * Override the input text CSS `direction`. Useful for RTL languages that use
    * LTR notation for fractions.
    */
@@ -131,8 +110,7 @@ export abstract class TextField extends LitElement {
     return this.closest('form');
   }
 
-  @property({ type: String, reflect: true, converter: stringConverter })
-  name = '';
+  @property({ type: String, reflect: true, converter: stringConverter }) name = '';
 
   [getFormValue]() {
     return this.value;
@@ -220,9 +198,7 @@ export abstract class TextField extends LitElement {
    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#step
    */
   @property({ type: String }) step = '';
-
-  @property({ type: String, reflect: true })
-  type: TextFieldType | UnsupportedTextFieldType = 'text';
+  @property({ type: String, reflect: true }) type: TextFieldType | UnsupportedTextFieldType = 'text';
 
   /**
    * Returns the native validation error message that would be displayed upon
@@ -353,7 +329,7 @@ export abstract class TextField extends LitElement {
       return;
     }
 
-    super.focus();
+    this.#getInput().focus();
   }
 
   /**

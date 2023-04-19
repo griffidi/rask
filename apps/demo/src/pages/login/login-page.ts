@@ -7,6 +7,8 @@ import type { TypeEvent } from '@rask/core/events/type-event.js';
 import { USER_NAME_CACHE_KEY } from '@rask/identity/constants/user-name-cache-key.js';
 import { AuthService } from '@rask/identity/services/auth-service.js';
 import '@rask/web/button/button.js';
+import '@rask/web/text-field/text-field.js';
+import type { TextField } from '@rask/web/text-field/text-field.js';
 import { Router } from '@vaadin/router';
 import { LitElement, html, type TemplateResult } from 'lit';
 import { customElement, state } from 'lit/decorators.js';
@@ -25,17 +27,10 @@ export class LoginPage extends LitElement {
   @state() private password: string = '';
 
   override firstUpdated(): void {
-    const userName = cache.get<string>(USER_NAME_CACHE_KEY);
-    let inputToFocus: HTMLInputElement | null = null;
+    this.userName = cache.get<string>(USER_NAME_CACHE_KEY) ?? '';
 
-    if (userName) {
-      this.userName = userName;
-      inputToFocus = this.shadowRoot.querySelector<HTMLInputElement>('input[placeholder="Password"]');
-    } else {
-      inputToFocus = this.shadowRoot.querySelector<HTMLInputElement>('input[placeholder="User name"]');
-    }
-
-    inputToFocus.focus();
+    const selector = this.userName.length ? '#password' : '#userName';
+    this.shadowRoot.querySelector<TextField>(selector)?.focus();
   }
 
   override render(): TemplateResult {
@@ -45,44 +40,38 @@ export class LoginPage extends LitElement {
           <h3>Welcome</h3>
         </header>
         <section>
-          <label>
-            <md-icon slot="leadingIcon">person</md-icon>
-            <input
-              type="text"
-              placeholder="User name"
-              required
-              tabindex="0"
-              .value=${live(this.#getUserNameInputValue())}
-              @change=${this.#handleInputChange}
-              @input=${this.#handleUserNameInput}
-            />
-          </label>
-          <label>
-            <md-icon slot="leadingIcon">lock</md-icon>
-            <input
-              type="password"
-              placeholder="Password"
-              required
-              tabindex="0"
-              .value=${live(this.#getPasswordInputValue())}
-              @change=${this.#handleInputChange}
-              @input=${this.#handlePasswordInput}
-            />
-          </label>
+          <rk-text-field
+            id="userName"
+            required
+            tabindex="0"
+            label="User name"
+            .value=${live(this.#getUserNameInputValue())}
+            @change=${this.#handleInputChange}
+            @input=${this.#handleUserNameInput}
+          ></rk-text-field>
+          <rk-text-field
+            id="password"
+            required
+            tabindex="0"
+            label="Password"
+            type="Password"
+            .value=${live(this.#getPasswordInputValue())}
+            @change=${this.#handleInputChange}
+            @input=${this.#handlePasswordInput}
+          ></rk-text-field>
         </section>
         <footer>
           <button type="submit" tabindex="0">Sign In</button>
-          <a>Forgot Password?</a>
         </footer>
       </form>
     `;
   }
 
   async #login(e: Event): Promise<void> {
+    // stop form from submitting
     e.stopPropagation();
     e.preventDefault();
 
-    // await this.updateComplete;
     const userName = this.userName;
     const password = this.password;
     const success = await this.#authService.login(userName, password);

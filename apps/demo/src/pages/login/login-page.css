@@ -1,4 +1,16 @@
+* {
+  box-sizing: border-box;
+}
+
 :host {
+  --_neutral-color: var(--md-ref-palette-neutral-variant-50);
+  --rk-text-field-label-populated-color: var(--_neutral-color);
+  --rk-button-color: var(--md-sys-color-gradient-blue-purple);
+  --rk-button-on-color: #ffffff;
+  --rk-button-padding-inline: 40px;
+  --rk-button-padding-block: 12px;
+  --rk-button-font-size: 16px;
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -7,7 +19,9 @@
 }
 
 form {
-  --_form-color: var(--md-sys-color-gradient-purple-blue);
+  /* color: rgb(40, 41, 42); */
+  /* --_form-color: rgb(from var(--md-sys-color-background) r g b / 0.); */
+  --_form-color: var(--md-sys-color-surface-1);
   --_form-on-color: var(--md-sys-color-on-gradient);
   --_form-shape: var(--md-sys-shape-large);
 
@@ -38,37 +52,8 @@ h3 {
 section {
   display: flex;
   flex-direction: column;
-  gap: 30px;
-
-  & label {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    block-size: 42px;
-    border-radius: var(--md-sys-shape-rounded);
-    background: var(--md-ref-palette-neutral-100);
-    overflow: hidden;
-
-    & input {
-      border: none;
-      inline-size: 100%;
-      block-size: 32px;
-      background: var(--md-ref-palette-neutral-100);
-      outline: none;
-      font-size: 16px;
-      color: var(--md-ref-palette-neutral-variant-50);
-    }
-
-    & md-icon {
-      --_icon-size: 22px;
-
-      color: var(--md-ref-palette-neutral-variant-50);
-      font-size: var(--_icon-size);
-      inline-size: var(--_icon-size);
-      block-size: var(--_icon-size);
-      padding-inline-start: 12px;
-    }
-  }
+  gap: 20px;
+  padding-block-start: 20px;
 }
 
 footer {
@@ -80,8 +65,8 @@ footer {
 
   & button {
     --_button-shape: var(--md-sys-shape-rounded);
-    --_button-on-color: var(--md-ref-palette-neutral-100);
-    --_button-color: rgba(255, 255, 255, 0.2);
+    --_button-on-color: #fff;
+    --_button-color: var(--md-sys-color-gradient-blue-purple);
 
     font-size: 18px;
     font-weight: 500;
@@ -90,7 +75,7 @@ footer {
     inline-size: 200px;
     border-radius: var(--_button-shape);
     color: var(--_button-on-color);
-    background-color: var(--_button-color);
+    background: var(--_button-color);
     block-size: 42px;
     cursor: pointer;
 
