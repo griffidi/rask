@@ -8,6 +8,7 @@ import {
   randUserName,
 } from '@ngneat/falso';
 import { nanoid } from 'nanoid';
+import { generateHash } from '../../src/crypto/hash.js';
 import { randChanceFn } from './generators/chance-fn.js';
 import { roles } from './roles.js';
 
@@ -17,7 +18,7 @@ const userRoleId = roles.find((role) => role.name === 'User').id;
 const adminUser = {
   id: nanoid(10),
   userName: `admin.user-0000001`,
-  password: 'admin123',
+  password: generateHash('test'),
   email: 'dustingriffith@outlook.com',
   firstName: 'Admin',
   lastName: 'One',
@@ -30,7 +31,7 @@ const basicUsers = Array.from({ length: 50 }, () => {
   return {
     id: nanoid(10),
     userName: `${randUserName()}-${randNumber({ length: 6, min: 2, max: 999999 }).toString().padStart(6, '0')}`,
-    password: randPassword(),
+    password: generateHash(randPassword()),
     email: randEmail(),
     firstName: randFirstName(),
     lastName: randLastName(),

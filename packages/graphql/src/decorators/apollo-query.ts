@@ -2,6 +2,7 @@ import type { QueryOptions } from '@apollo/client/core';
 import { decorateProperty } from '@lit/reactive-element/decorators.js';
 import { type ReactiveElement } from 'lit';
 import { ApolloClientConsumer } from '../controllers/apollo-client-consumer.js';
+import { unwrapQueryResult } from '../utils/operation-result-unwrapper.js';
 
 // eslint-disable-next-line ts/no-explicit-any
 export function apolloQuery(options: QueryOptions): any {
@@ -19,11 +20,7 @@ export function apolloQuery(options: QueryOptions): any {
 
         const result = await client.query(options);
 
-        // unwrap result data
-        const { data } = result;
-        const keys = Object.keys(data);
-
-        return keys.length > 0 ? data[keys[0]] : data;
+        return unwrapQueryResult(result);
       },
       enumerable: true,
       configurable: true,

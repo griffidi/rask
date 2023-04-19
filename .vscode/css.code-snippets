@@ -1,0 +1,11 @@
+{
+  "Breakpoint": {
+    "prefix": "rktextgradient",
+    "body": [
+      "background-image: linear-gradient(to right, var(--md-sys-color-${1|blue,green,hot-pink,magenta,purple|}), var(--md-sys-color-${2|blue,green,hot-pink,magenta,purple|}));",
+      "-webkit-background-clip: text;",
+      "-webkit-text-fill-color: transparent;$0"
+    ],
+    "description": "Create text gradient"
+  }
+}

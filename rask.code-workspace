@@ -1,25 +1,38 @@
 {
   "folders": [
     {
-      "path": ".",
-      "name": ".root"
+      "name": ".root",
+      "path": "."
     },
     {
       "path": "api"
     },
     {
-      "path": "apps"
+      "name": "demo",
+      "path": "apps/demo"
     },
     {
-      "path": "docs"
+      "name": "core",
+      "path": "packages/core"
     },
     {
-      "path": "packages"
+      "name": "graphql",
+      "path": "packages/graphql"
+    },
+    {
+      "name": "identity",
+      "path": "packages/identity"
+    },
+    {
+      "name": "web",
+      "path": "packages/web"
     }
   ],
   "settings": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "javascript.format.enable": false,
+    "javascript.preferences.importModuleSpecifier": "project-relative",
+    "javascript.preferences.importModuleSpecifierEnding": "js",
     "[javascript]": {
       "editor.defaultFormatter": "esbenp.prettier-vscode",
       "editor.formatOnSave": true,
@@ -29,7 +42,7 @@
     "typescript.preferences.importModuleSpecifier": "project-relative",
     "typescript.preferences.importModuleSpecifierEnding": "js",
     "typescript.preferences.useAliasesForRenames": false,
-    "typescript.workspaceSymbols.scope": "currentProject",
+    "typescript.workspaceSymbols.scope": "allOpenProjects",
     "typescript.unstable": {
       "organizeImportsIgnoreCase": "false",
       "organizeImportsCollation": "ordinal",
@@ -37,7 +50,7 @@
     },
     "npm.autoDetect": "off",
     "typescript.tsc.autoDetect": "off",
-    // "typescript.tsserver.experimental.enableProjectDiagnostics": true,
+    "typescript.tsserver.experimental.enableProjectDiagnostics": true,
     "typescript.tsdk": "node_modules\\typescript\\lib",
     "typescript.preferences.quoteStyle": "single",
     "[typescript]": {
@@ -91,6 +104,7 @@
       "clazz",
       "dbaeumer",
       "falso",
+      "horiz",
       "luxon",
       "msedge",
       "ngneat",
@@ -103,6 +117,8 @@
       "srgb",
       "tsbuildinfo",
       "tsnode",
+      "unmap",
+      "vaadin",
       "wght"
     ],
 
@@ -118,6 +134,7 @@
       "source.fixAll.markdownlint": true
     },
 
+    "eslint.workingDirectories": [{ "mode": "auto" }],
     "eslint.codeActionsOnSave.mode": "problems",
     "eslint.experimental.useFlatConfig": true,
     "eslint.packageManager": "pnpm",
@@ -126,8 +143,6 @@
 
     "npm.packageManager": "pnpm",
 
-    "vscode-edge-devtools.webhint": false,
-
     "files.exclude": {
       ".out": true,
       "api": true,
@@ -135,6 +150,7 @@
       "docs": true,
       "packages": true,
       "**/.git": true,
+      "**/dist": true,
       "**/node_modules": true
     },
 
@@ -150,9 +166,16 @@
         "database": "${workspaceFolder:api}/prisma/dev.db"
       }
     ],
-    "sqltools.useNodeRuntime": true
+    "sqltools.useNodeRuntime": true,
+
+    "vscode-edge-devtools.browserFlavor": "Dev",
+    "vscode-edge-devtools.defaultUrl": "https://localhost:8000",
+    "vscode-edge-devtools.useHttps": true,
+    "vscode-edge-devtools.webRoot": "${workspaceFolder}/apps/demo/src",
+    "vscode-edge-devtools.webhint": false,
+    "editor.fontFamily": "Consolas, 'Courier New', monospacemo"
   },
   "extensions": {
-    "recommendations": ["esbenp.prettier-vscode", "dbaeumer.vscode-eslint"]
+    "recommendations": ["esbenp.prettier-vscode", "dbaeumer.vscode-eslint", "vscode-icons-team.vscode-icons"]
   }
 }

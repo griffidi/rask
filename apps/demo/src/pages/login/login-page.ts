@@ -1,60 +1,105 @@
 import { RouteTypes } from '#/router/route-types.js';
-import { routerContext } from '#/router/router-context.js';
-import { consume } from '@lit-labs/context';
-import type { Router } from '@lit-labs/router';
 import '@material/web/button/text-button.js';
 import '@material/web/icon/icon.js';
+import { useCache } from '@rask/core/cache/index.js';
 import { useInject } from '@rask/core/di/inject.js';
+import type { TypeEvent } from '@rask/core/events/type-event.js';
+import { USER_NAME_CACHE_KEY } from '@rask/identity/constants/user-name-cache-key.js';
 import { AuthService } from '@rask/identity/services/auth-service.js';
 import '@rask/web/button/button.js';
+import '@rask/web/text-field/text-field.js';
+import type { TextField } from '@rask/web/text-field/text-field.js';
+import { Router } from '@vaadin/router';
 import { LitElement, html, type TemplateResult } from 'lit';
-import { customElement } from 'lit/decorators.js';
+import { customElement, state } from 'lit/decorators.js';
 import { live } from 'lit/directives/live.js';
 import css from './login-page.css' assert { type: 'css' };
+
+const cache = useCache();
 
 @customElement('app-login-page')
 export class LoginPage extends LitElement {
   static override styles = [css];
 
-  #userName: string = '';
-  #password: string = '';
+  #authService = useInject(AuthService);
 
-  @consume({ context: routerContext })
-  router: Router | undefined;
+  @state() private userName: string = '';
+  @state() private password: string = '';
 
-  private authService = useInject(AuthService);
+  override firstUpdated(): void {
+    this.userName = cache.get<string>(USER_NAME_CACHE_KEY) ?? '';
+
+    const selector = this.userName.length ? '#password' : '#userName';
+    this.shadowRoot.querySelector<TextField>(selector)?.focus();
+  }
 
   override render(): TemplateResult {
     return html`
-      <form method="submit" @submit=${this.#login}>
+      <form type="submit" @submit=${this.#login}>
         <header>
           <h3>Welcome</h3>
         </header>
         <section>
-          <label>
-            <md-icon slot="leadingIcon">person</md-icon>
-            <input type="text" placeholder="User name" required .value=${live(this.#userName)} />
-          </label>
-          <label>
-            <md-icon slot="leadingIcon">lock</md-icon>
-            <input type="password" placeholder="Password" required .value=${live(this.#userName)} />
-          </label>
+          <rk-text-field
+            id="userName"
+            required
+            tabindex="0"
+            label="User name"
+            .value=${live(this.#getUserNameInputValue())}
+            @change=${this.#handleInputChange}
+            @input=${this.#handleUserNameInput}
+          ></rk-text-field>
+          <rk-text-field
+            id="password"
+            required
+            tabindex="0"
+            label="Password"
+            type="Password"
+            .value=${live(this.#getPasswordInputValue())}
+            @change=${this.#handleInputChange}
+            @input=${this.#handlePasswordInput}
+          ></rk-text-field>
         </section>
         <footer>
-          <button type="submit">Sign In</button>
-          <a>Forgot Password?</a>
+          <button type="submit" tabindex="0">Sign In</button>
         </footer>
       </form>
     `;
   }
 
-  async #login(): Promise<void> {
-    // TODO live directive not working
-    const success = await this.authService.login(this.#userName, this.#password);
+  async #login(e: Event): Promise<void> {
+    // stop form from submitting
+    e.stopPropagation();
+    e.preventDefault();
+
+    const userName = this.userName;
+    const password = this.password;
+    const success = await this.#authService.login(userName, password);
 
     if (success) {
-      this.router.goto(RouteTypes.home);
+      cache.set(USER_NAME_CACHE_KEY, userName);
+      Router.go(RouteTypes.home);
     }
+  }
+
+  #getUserNameInputValue(): string {
+    return this.userName;
+  }
+
+  #getPasswordInputValue(): string {
+    return this.password;
+  }
+
+  #handleUserNameInput({ target: input }: TypeEvent<HTMLInputElement>): void {
+    this.userName = input.value;
+  }
+
+  #handlePasswordInput({ target: input }: TypeEvent<HTMLInputElement>): void {
+    this.password = input.value;
+  }
+
+  #handleInputChange(): void {
+    this.requestUpdate();
   }
 }
 

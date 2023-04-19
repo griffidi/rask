@@ -1,8 +1,8 @@
-import { useStorage } from '@rask/core/cache/index.js';
+import { useCache } from '@rask/core/cache/index.js';
 import { type ColorTheme } from './types.js';
 
 const THEME_CACHE_KEY = 'color|theme';
-const cache = useStorage();
+const cache = useCache();
 
 class Theme {
   static #instance: Theme;

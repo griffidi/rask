@@ -9,6 +9,8 @@
   --_button-shadow: var(--rk-button-shadow, 0 0 0);
   --_button-padding-inline: var(--rk-button-padding-inline, 18px);
   --_button-padding-block: var(--rk-button-padding-block, 8px);
+  --_button-font-size: var(--rk-button-font-size, 14px);
+  --_button-font-weight: var(--rk-button-font-weight, 400);
 }
 
 button {
@@ -22,6 +24,8 @@ button {
   border: none;
   outline: none;
   background: transparent;
+  font-size: var(--_button-font-size);
+  font-weight: var(--_button-font-weight);
 
   &:hover {
     cursor: pointer;
@@ -54,21 +58,9 @@ button {
   } */
 }
 
-:host([filled]) button::before::after {
-  content: "";
-  position: absolute;
-  inset: 0;
+:host([filled]) button {
   background: var(--_button-color, #ffffff);
   border-radius: 9999px;
-  z-index: 1;
-
-  /* &:hover::before {
-    box-shadow: rgb(var(--_button-shadow), 0.5) 0px 0px 10px 0px;
-  } */
-
-  /* &:hover::after {
-    box-shadow: rgb(var(--_button-shadow), 0.5) inset 0 0 8px;
-  } */
 
   & .label {
     color: var(--_button-on-color, #ffffff);

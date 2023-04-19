@@ -1,0 +1,41 @@
+{
+  "autorun": false,
+  "terminals": [
+    {
+      "name": "TS: rask/api",
+      "icon": "checklist",
+      "cwd": "[workspaceFolder]/api",
+      "command": "pnpm run build:dev"
+    },
+    {
+      "name": "TS: rask/demo",
+      "icon": "checklist",
+      "cwd": "[workspaceFolder]/apps/demo",
+      "command": "pnpm run build:dev"
+    },
+    {
+      "name": "TS: rask/core",
+      "icon": "checklist",
+      "cwd": "[workspaceFolder]/packages/core",
+      "command": "pnpm run build:dev"
+    },
+    {
+      "name": "TS: rask/graphql",
+      "icon": "checklist",
+      "cwd": "[workspaceFolder]/packages/graphql",
+      "command": "pnpm run build:dev"
+    },
+    {
+      "name": "TS: rask/identity",
+      "icon": "checklist",
+      "cwd": "[workspaceFolder]/packages/identity",
+      "command": "pnpm run build:dev"
+    },
+    {
+      "name": "TS: rask/web",
+      "icon": "checklist",
+      "cwd": "[workspaceFolder]/packages/web",
+      "command": "pnpm run build:dev"
+    }
+  ]
+}

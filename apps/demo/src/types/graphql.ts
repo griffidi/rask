@@ -1259,6 +1259,7 @@ export interface Query {
   groupByEmployee: Array<EmployeeGroupBy>;
   groupByRole: Array<RoleGroupBy>;
   groupByUser: Array<UserGroupBy>;
+  login?: Maybe<Scalars['String']>;
   role?: Maybe<Role>;
   roles: Array<Role>;
   user?: Maybe<User>;
@@ -1497,6 +1498,11 @@ export interface QueryGroupByUserArgs {
   skip?: InputMaybe<Scalars['Int']>;
   take?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<UserWhereInput>;
+}
+
+export interface QueryLoginArgs {
+  password: Scalars['String'];
+  userName: Scalars['String'];
 }
 
 export interface QueryRoleArgs {

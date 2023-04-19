@@ -1,18 +1,15 @@
-import * as cache from './cache.js';
+import { Cache } from './cache.js';
 import { type StorageType } from './types.js';
 
-const storage = cache;
-
 /**
- * Storage wrapper that exposes helper APIs.
+ * Cache wrapper.
  *
  * @param {string} [type=localStorage] Type of storage to use.
  * @returns
  */
-export const useStorage = (type: StorageType = 'localStorage'): typeof storage => {
-  cache.setStorageType(type);
-
-  return storage;
+export const useCache = (type: StorageType = 'localStorage') => {
+  const cache = new Cache(type);
+  return cache;
 };
 
 export { createCacheKey } from './cache-key.js';

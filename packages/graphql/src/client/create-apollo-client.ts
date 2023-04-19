@@ -7,8 +7,9 @@ import {
   type TypePolicies,
 } from '@apollo/client/core';
 import { onError } from '@apollo/client/link/error';
+import { useCache } from '@rask/core/src/cache/index.js';
 
-const AUTH_TOKEN_KEY = 'auth|token';
+const internalCache = useCache();
 
 export interface ApolloClientOptions {
   uri: string;
@@ -16,12 +17,21 @@ export interface ApolloClientOptions {
   validateVariables?: boolean;
 }
 
-export default function createApolloClient(options: ApolloClientOptions): ApolloClient<NormalizedCacheObject> {
+export const createApolloClient = (options?: ApolloClientOptions): ApolloClient<NormalizedCacheObject> => {
   const { uri, typePolicies } = options;
 
   if (!uri) {
     throw new Error('Apollo client requires a uri');
   }
+
+  const cache = new InMemoryCache({
+    typePolicies: typePolicies ?? {},
+  });
+
+  // persistCacheSync({
+  //   cache: cache,
+  //   storage: new LocalStorageWrapper(internalCache.storage),
+  // });
 
   const httpLink = new HttpLink({
     // credentials: 'include',
@@ -60,15 +70,16 @@ export default function createApolloClient(options: ApolloClientOptions): Apollo
   });
 
   const link = ApolloLink.from([errorLink, httpLink]);
-  const cache = new InMemoryCache({
-    typePolicies: typePolicies ?? {},
-  });
-
   const client = new ApolloClient({
     link,
     cache,
+    // defaultOptions: {
+    //   watchQuery: {
+    //     fetchPolicy: 'cache-and-network',
+    //   },
+    // },
     connectToDevTools: true,
   });
 
   return client;
-}
+};

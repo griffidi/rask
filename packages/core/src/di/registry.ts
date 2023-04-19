@@ -1,3 +1,4 @@
+import 'reflect-metadata';
 import type { Constructor } from './types.js';
 
 class Registry {
@@ -29,13 +30,16 @@ class Registry {
       return this.#nameToInstance.get(name) as InstanceType<Constructor<T>>;
     }
 
-    const componentClass = this.#nameToClass.get(name) as Constructor<T>;
+    const clazz = this.#nameToClass.get(name) as Constructor<T>;
+    const injectableDeps: Constructor<T>[] | undefined = Reflect.getMetadata('design:paramtypes', clazz);
 
-    if (componentClass === undefined) {
+    injectableDeps?.map(({ name }) => this.getInstance(name));
+
+    if (clazz === undefined) {
       throw new Error('Unknown component name: ' + name);
     }
 
-    const inst = new componentClass();
+    const inst = new clazz();
     this.#nameToInstance.set(name, inst);
 
     return inst as InstanceType<Constructor<T>>;

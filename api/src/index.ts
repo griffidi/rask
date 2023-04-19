@@ -10,29 +10,20 @@ import { ApolloServerPluginDrainHttpServer } from '@apollo/server/plugin/drainHt
 import { InMemoryLRUCache } from '@apollo/utils.keyvaluecache';
 import { koaMiddleware } from '@as-integrations/koa';
 import cors from '@koa/cors';
-import { PrismaClient } from '@prisma/client';
 import { resolvers } from '@prisma/generated/type-graphql/index.js';
-import dotenv from 'dotenv';
 import Koa from 'koa';
 import bodyParser from 'koa-bodyparser';
 import http from 'node:http';
 import { buildSchema } from 'type-graphql';
-import { IS_DEV_MODE } from './constants/env-mode.js';
+import type { Context } from './client/context.js';
+import { prisma } from './client/index.js';
+import { CORS_ORIGINS, GRAPHQL_PORT, IS_DEV_MODE } from './constants.js';
+import { LoginResolver } from './resolvers/login.js';
 
-dotenv.config({ path: `.env.${process.env?.['NODE_ENV'] ?? 'development'}` });
-
-const CORS_ORIGINS = process.env?.['CORS_ORIGIN'];
-const GRAPHQL_PORT = process.env?.['GRAPHQL_PORT'];
-
-interface Context {
-  prisma: PrismaClient;
-}
-
-const prisma = new PrismaClient();
 await prisma.$connect();
 
 const schema = await buildSchema({
-  resolvers,
+  resolvers: [...resolvers, LoginResolver],
   emitSchemaFile: './prisma/schema.graphql',
   validate: false,
 });

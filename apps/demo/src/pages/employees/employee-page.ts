@@ -1,4 +1,4 @@
-import { GetCustomerByIdDocument, type Customer } from '#/types/graphql.js';
+import { GetEmployeeByIdDocument, type Employee } from '#/types/graphql.js';
 import { Task } from '@lit-labs/task';
 import '@material/web/textfield/outlined-text-field.js';
 import { apolloQuery } from '@rask/graphql/decorators/apollo-query.js';
@@ -8,36 +8,36 @@ import '@rask/web/skeleton/skeleton.js';
 import '@rask/web/text-field/text-field.js';
 import { LitElement, html, type TemplateResult } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import css from './user-edit-page.css' assert { type: 'css' };
+import css from './employee-page.css' assert { type: 'css' };
 
-@customElement('app-customer-edit-page')
-export class CustomerEditPage extends LitElement {
+@customElement('app-employee-page')
+export class EmployeePage extends LitElement {
   static override styles = [css];
 
-  #getCustomer = new Task(
+  #getEmployee = new Task(
     this,
-    async () => await this.#loadCustomer(),
+    async () => await this.#loadEmployee(),
     () => [null]
   );
 
   @property() userId: string | undefined;
 
-  @apolloQuery({ query: GetCustomerByIdDocument }) private readonly query: Customer;
+  @apolloQuery({ query: GetEmployeeByIdDocument }) private readonly query: Employee;
 
   override render(): TemplateResult {
     return html`
-      ${this.#getCustomer.render({
+      ${this.#getEmployee.render({
         pending: () => this.renderSkeleton(),
-        complete: (e) => this.renderCustomer(e),
+        complete: (e) => this.renderEmployee(e),
         error: () => html`<h1>No Data</h1>`,
       })}
     `;
   }
 
-  protected renderCustomer(e: Customer): TemplateResult {
+  protected renderEmployee(e: Employee): TemplateResult {
     return html`
       <header>
-        <h2>Edit Customer</h2>
+        <h2>Edit Employee</h2>
       </header>
       <form>
         <div>
@@ -66,11 +66,11 @@ export class CustomerEditPage extends LitElement {
     return html`<rk-skeleton label large width="100px"></rk-skeleton>`;
   }
 
-  async #loadCustomer(): Promise<Customer> {
+  async #loadEmployee(): Promise<Employee> {
     try {
       return await this.query;
     } catch (e) {
-      setTimeout(async () => await Toast.error({ title: 'Error', message: 'Failed to loaded customer.' }));
+      setTimeout(async () => await Toast.error({ title: 'Error', message: 'Failed to loaded employee.' }));
       throw new Error();
     }
   }
@@ -78,6 +78,6 @@ export class CustomerEditPage extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'app-customer-edit-page': CustomerEditPage;
+    'app-employee-page': EmployeePage;
   }
 }

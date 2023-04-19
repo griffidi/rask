@@ -6,6 +6,8 @@ md-switch {
 }
 
 rk-menu {
+  --rk-menu-icon-size: 28px;
+
   & label {
     display: flex;
     justify-content: space-between;

@@ -2,7 +2,7 @@ import { type ApolloClient, type NormalizedCacheObject } from '@apollo/client/co
 import { ContextProvider } from '@lit-labs/context';
 import type { ReactiveController, ReactiveControllerHost, ReactiveElement } from 'lit';
 import { apolloClientContext } from '../client/apollo-client-context.js';
-import createApolloClient from '../client/create-apollo-client.js';
+import { createApolloClient } from '../client/create-apollo-client.js';
 import { ApolloClientProviderConnectedEvent, ApolloClientProviderDisconnectedEvent } from './events.js';
 import type { ApolloClientProviderOptions } from './types.js';
 

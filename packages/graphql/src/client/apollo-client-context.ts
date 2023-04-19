@@ -1,4 +1,4 @@
-import { type ApolloClient, type NormalizedCacheObject } from '@apollo/client';
+import { type ApolloClient, type NormalizedCacheObject } from '@apollo/client/core';
 import { createContext } from '@lit-labs/context';
 
 /**
