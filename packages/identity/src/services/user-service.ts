@@ -1,10 +1,10 @@
 import { useCache } from '@rask/core/cache/index.js';
 import { useInject } from '@rask/core/di/inject.js';
 import { injectable } from '@rask/core/di/injectable.js';
+import { TOKEN_CACHE_KEY } from '@rask/core/identity/constants/token-cache-key.js';
+import type { CachedToken } from '@rask/core/identity/models/cached-token.js';
 import { Client } from '@rask/graphql/client/client.js';
-import { TOKEN_CACHE_KEY } from '../constants/token-cache-key.js';
 import { USER_CACHE_KEY } from '../constants/user-cache-key.js';
-import type { CachedToken } from '../models/cached-token.js';
 import { GetUserByUserNameDocument, type User } from '../types/graphql.js';
 
 @injectable()

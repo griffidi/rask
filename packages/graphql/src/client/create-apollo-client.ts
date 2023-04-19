@@ -7,6 +7,8 @@ import {
   type TypePolicies,
 } from '@apollo/client/core';
 import { onError } from '@apollo/client/link/error';
+import { TOKEN_CACHE_KEY } from '@rask/core/identity/constants/token-caChe-key.js';
+import { type CachedToken } from '@rask/core/identity/models/cached-token.js';
 import { useCache } from '@rask/core/src/cache/index.js';
 
 const internalCache = useCache();
@@ -34,28 +36,27 @@ export const createApolloClient = (options?: ApolloClientOptions): ApolloClient<
   // });
 
   const httpLink = new HttpLink({
-    // credentials: 'include',
     fetchOptions: {
       mode: 'cors',
     },
     uri,
     headers: {
-      // authorization: localStorage.getItem(AUTH_TOKEN_KEY) || null,
       'Access-Control-Allow-Origin': 'true',
     },
   });
 
-  // const authMiddleware = new ApolloLink((operation, forward) => {
-  //   // add the authorization to the headers
-  //   operation.setContext(({ headers = {} }) => ({
-  //     headers: {
-  //       ...headers,
-  //       authorization: cache.get(AUTH_TOKEN_KEY) || null,
-  //     },
-  //   }));
+  const cachedToken = internalCache.get<CachedToken>(TOKEN_CACHE_KEY);
+  const authLink = new ApolloLink((operation, forward) => {
+    // add the authorization to the headers
+    operation.setContext(({ headers = {} }) => ({
+      headers: {
+        ...headers,
+        authorization: cachedToken.token ? `Bearer ${cachedToken.token}` : '',
+      },
+    }));
 
-  //   return forward(operation);
-  // });
+    return forward(operation);
+  });
 
   const errorLink = onError(({ graphQLErrors, networkError }) => {
     if (graphQLErrors) {
@@ -71,7 +72,7 @@ export const createApolloClient = (options?: ApolloClientOptions): ApolloClient<
 
   const link = ApolloLink.from([errorLink, httpLink]);
   const client = new ApolloClient({
-    link,
+    link: authLink.concat(link),
     cache,
     // defaultOptions: {
     //   watchQuery: {

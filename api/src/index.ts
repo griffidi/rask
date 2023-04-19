@@ -6,6 +6,7 @@
 import 'reflect-metadata';
 
 import { ApolloServer } from '@apollo/server';
+import { ApolloServerPluginUsageReportingDisabled } from '@apollo/server/plugin/disabled';
 import { ApolloServerPluginDrainHttpServer } from '@apollo/server/plugin/drainHttpServer';
 import { InMemoryLRUCache } from '@apollo/utils.keyvaluecache';
 import { koaMiddleware } from '@as-integrations/koa';
@@ -34,7 +35,7 @@ const server = new ApolloServer<Context>({
   cache: new InMemoryLRUCache(),
   schema,
   introspection: IS_DEV_MODE,
-  plugins: [ApolloServerPluginDrainHttpServer({ httpServer }) /*, ApolloServerPluginUsageReportingDisabled()*/],
+  plugins: [ApolloServerPluginDrainHttpServer({ httpServer }), ApolloServerPluginUsageReportingDisabled()],
   formatError(formattedError, error) {
     console.log((error as any).extensions.http.headers); // { status: 400, headers: HeaderMap(0) [Map] {} }
     console.log(error);
@@ -54,7 +55,11 @@ app.use(
 app.use(bodyParser());
 app.use(
   koaMiddleware<Context>(server, {
-    context: async () => ({ prisma }),
+    context: async ({ ctx }) => {
+      const token = ctx.headers.authorization;
+
+      return { prisma };
+    },
   })
 );
 
