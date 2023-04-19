@@ -8,4 +8,4 @@
 
 `admin`
 User Name: admin.user-0000001
-Password: admin123
+Password: test

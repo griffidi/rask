@@ -23,7 +23,8 @@
     "./src/client/*": "./src/client/*"
   },
   "scripts": {
-    "codegen": "graphql-codegen --config codegen.yml -w",
+    "codegen": "graphql-codegen --config codegen.yml",
+    "codegen:watch": "pnpm codegen -w",
     "dev": "wds"
   },
   "dependencies": {
