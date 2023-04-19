@@ -2095,6 +2095,46 @@ export type LoginQueryVariables = Exact<{
 
 export type LoginQuery = { __typename?: 'Query'; login?: string | undefined };
 
+export type GetUserByUserNameQueryVariables = Exact<{
+  userName: Scalars['String'];
+}>;
+
+export type GetUserByUserNameQuery = {
+  __typename?: 'Query';
+  user?:
+    | { __typename?: 'User'; id: string; userName: string; firstName: string; lastName: string; email: string }
+    | undefined;
+};
+
+export type UserPartsFragment = {
+  __typename?: 'User';
+  id: string;
+  userName: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+};
+
+export const UserPartsFragmentDoc = {
+  kind: 'Document',
+  definitions: [
+    {
+      kind: 'FragmentDefinition',
+      name: { kind: 'Name', value: 'UserParts' },
+      typeCondition: { kind: 'NamedType', name: { kind: 'Name', value: 'User' } },
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'userName' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'firstName' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'lastName' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'email' } },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<UserPartsFragment, unknown>;
 export const LoginDocument = {
   kind: 'Document',
   definitions: [
@@ -2138,3 +2178,64 @@ export const LoginDocument = {
     },
   ],
 } as unknown as DocumentNode<LoginQuery, LoginQueryVariables>;
+export const GetUserByUserNameDocument = {
+  kind: 'Document',
+  definitions: [
+    {
+      kind: 'OperationDefinition',
+      operation: 'query',
+      name: { kind: 'Name', value: 'GetUserByUserName' },
+      variableDefinitions: [
+        {
+          kind: 'VariableDefinition',
+          variable: { kind: 'Variable', name: { kind: 'Name', value: 'userName' } },
+          type: { kind: 'NonNullType', type: { kind: 'NamedType', name: { kind: 'Name', value: 'String' } } },
+        },
+      ],
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          {
+            kind: 'Field',
+            name: { kind: 'Name', value: 'user' },
+            arguments: [
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'where' },
+                value: {
+                  kind: 'ObjectValue',
+                  fields: [
+                    {
+                      kind: 'ObjectField',
+                      name: { kind: 'Name', value: 'userName' },
+                      value: { kind: 'Variable', name: { kind: 'Name', value: 'userName' } },
+                    },
+                  ],
+                },
+              },
+            ],
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [{ kind: 'FragmentSpread', name: { kind: 'Name', value: 'UserParts' } }],
+            },
+          },
+        ],
+      },
+    },
+    {
+      kind: 'FragmentDefinition',
+      name: { kind: 'Name', value: 'UserParts' },
+      typeCondition: { kind: 'NamedType', name: { kind: 'Name', value: 'User' } },
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'userName' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'firstName' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'lastName' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'email' } },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<GetUserByUserNameQuery, GetUserByUserNameQueryVariables>;

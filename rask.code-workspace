@@ -104,6 +104,7 @@
       "clazz",
       "dbaeumer",
       "falso",
+      "horiz",
       "luxon",
       "msedge",
       "ngneat",
@@ -142,8 +143,6 @@
 
     "npm.packageManager": "pnpm",
 
-    "vscode-edge-devtools.webhint": true,
-
     "files.exclude": {
       ".out": true,
       "api": true,
@@ -172,7 +171,9 @@
     "vscode-edge-devtools.browserFlavor": "Dev",
     "vscode-edge-devtools.defaultUrl": "https://localhost:8000",
     "vscode-edge-devtools.useHttps": true,
-    "vscode-edge-devtools.webRoot": "${workspaceFolder}/apps/demo/src"
+    "vscode-edge-devtools.webRoot": "${workspaceFolder}/apps/demo/src",
+    "vscode-edge-devtools.webhint": false,
+    "editor.fontFamily": "Consolas, 'Courier New', monospacemo"
   },
   "extensions": {
     "recommendations": ["esbenp.prettier-vscode", "dbaeumer.vscode-eslint", "vscode-icons-team.vscode-icons"]

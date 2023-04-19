@@ -8,14 +8,14 @@ import css from './menu.css' assert { type: 'css' };
 export class Menu extends LitElement {
   static override styles = [css];
 
-  @property() icon = 'more_horiz';
+  @property() icon = 'person';
   @property({ type: Boolean, reflect: true }) opened = false;
   @state() protected anchor: Ref<HTMLElement> = createRef();
 
   override connectedCallback(): void {
     super.connectedCallback();
 
-    this.shadowRoot.querySelector('a')?.addEventListener('click', this.#hideMenu, { capture: true });
+    this.shadowRoot.querySelector('a')?.addEventListener('click', this.#closeMenu, { capture: true });
 
     if (window?.addEventListener) {
       window.addEventListener('click', this.onWindowClick, { capture: true });
@@ -32,7 +32,7 @@ export class Menu extends LitElement {
 
   override render(): TemplateResult {
     return html`
-      <md-standard-icon-button ${ref(this.anchor)} @click=${this.#showMenu}>${this.icon}</md-standard-icon-button>
+      <md-standard-icon-button ${ref(this.anchor)} @click=${this.#openMenu}>${this.icon}</md-standard-icon-button>
       <aside>
         <slot></slot>
       </aside>
@@ -41,15 +41,23 @@ export class Menu extends LitElement {
 
   protected onWindowClick = (e: MouseEvent) => {
     if (!e.composedPath().includes(this)) {
-      this.#hideMenu();
+      this.#closeMenu();
     }
   };
 
-  #hideMenu(): void {
+  close(): void {
+    this.#closeMenu();
+  }
+
+  open(): void {
+    this.#openMenu();
+  }
+
+  #closeMenu(): void {
     this.opened = false;
   }
 
-  #showMenu(): void {
+  #openMenu(): void {
     this.opened = true;
   }
 }

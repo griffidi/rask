@@ -1,17 +1,25 @@
+import type { LitElement } from 'lit';
 import { InMemoryStorage } from './in-memory-storage.js';
-import { type CacheKey, type CacheStorage, type StorageType } from './types.js';
+import { type CacheKey, type CacheStorage, type StorageEventCallbackType, type StorageType } from './types.js';
 
 export class Cache {
   #cache: CacheStorage = {
     storage: undefined,
   };
+  #host: LitElement | undefined;
+  #subscriptions: Map<CacheKey, StorageEventCallbackType> = new Map();
 
+  /**
+   * Get the storage type used by the cache.
+   */
   get storage(): Storage {
     return this.#cache.storage;
   }
 
   constructor(type: StorageType = 'localStorage') {
     this.#setStorageType(type);
+
+    window.addEventListener('storage', this.#onWindowStorage);
   }
 
   /**
@@ -57,6 +65,50 @@ export class Cache {
    */
   remove(key: CacheKey): void {
     this.#cache.storage.removeItem(key);
+  }
+
+  /**
+   * Subscribe to cache changes by key. A host is required because the global window
+   * storage event is used to notify subscribers of changes. The host is used to
+   * remove the event listener when the host is disconnected.
+   *
+   * @param {LitElement}  host The host element.
+   * @param {CacheKey} cacheKey Key of item to subscribe to.
+   * @param {StorageEventCallbackType} callback The callback to be called when the cache changes.
+   */
+  subscribe(host: LitElement, cacheKey: CacheKey, callback: StorageEventCallbackType): void {
+    this.#registerWindowStorageEvent(host);
+    this.#subscriptions.set(cacheKey, callback);
+  }
+
+  /**
+   * Unsubscribe from cache changes.
+   *
+   * @param cacheKey {CacheKey} Key of item to unsubscribe from.
+   */
+  unsubscribe(cacheKey: CacheKey): void {
+    this.#subscriptions.delete(cacheKey);
+  }
+
+  #registerWindowStorageEvent(host: LitElement): void {
+    if (!this.#host) {
+      this.#host = host;
+      window.addEventListener('storage', this.#onWindowStorage);
+
+      host.addEventListener('disconnected', () => {
+        window.removeEventListener('storage', this.#onWindowStorage);
+      });
+    }
+  }
+
+  #onWindowStorage(event: StorageEvent): void {
+    const { key } = event;
+
+    for (const [cacheKey, callback] of this.#subscriptions.entries()) {
+      if (cacheKey === key) {
+        callback(JSON.parse(event.newValue));
+      }
+    }
   }
 
   /**

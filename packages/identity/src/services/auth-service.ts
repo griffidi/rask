@@ -1,11 +1,16 @@
 import { useCache } from '@rask/core/cache/index.js';
-import { useCrypto } from '@rask/core/crypto/index.js';
+import type { StorageEventCallbackType } from '@rask/core/cache/types.js';
 import { useInject } from '@rask/core/di/inject.js';
 import { injectable } from '@rask/core/di/injectable.js';
 import { throwIfEmpty } from '@rask/core/validation/assert.js';
 import { Client } from '@rask/graphql/client/client.js';
-import { TOKEN_KEY } from '../constants/token-key.js';
+import type { LitElement } from 'lit';
+import { TOKEN_CACHE_KEY } from '../constants/token-cache-key.js';
+import { authGuard } from '../guards/auth-guards.js';
+import type { CachedToken } from '../models/cached-token.js';
 import { LoginDocument } from '../types/graphql.js';
+
+const cache = useCache();
 
 @injectable()
 export class AuthService {
@@ -17,8 +22,7 @@ export class AuthService {
    * @returns {boolean} True if current user is authenticated.
    */
   async isAuthenticated(): Promise<boolean> {
-    // TODO Add API call to check if user is authenticated
-    return await Promise.resolve(false);
+    return await authGuard();
   }
 
   /**
@@ -33,34 +37,55 @@ export class AuthService {
     throwIfEmpty(userName, 'UserName is required');
     throwIfEmpty(password, 'Password is required');
 
-    try {
-      const token = await this.#client.query<string>({
-        query: LoginDocument,
-        variables: { userName, password },
-        /** you do not want ot cache the login */
-        fetchPolicy: 'no-cache',
-      });
+    const token = await this.#client.query<string>({
+      query: LoginDocument,
+      variables: { userName, password },
+      /** you do not want ot cache the login */
+      fetchPolicy: 'no-cache',
+    });
 
-      if (token) {
-        const cache = useCache();
-        const crypto = useCrypto();
-
-        cache.set(TOKEN_KEY, crypto.nanoid);
-        return true;
-      }
-    } catch (e) {
-      console.error(e);
+    if (token) {
+      this.#setToken(userName, token);
+      return true;
     }
 
     return false;
   }
 
-  async setToken(token: string): Promise<void> {
-    if (token) {
-      const cache = useCache();
-      const crypto = useCrypto();
+  /**
+   * Sign user out. The cached JWT token will be removed from storage.
+   */
+  logout(): void {
+    this.#removeToken();
+  }
 
-      cache.set(TOKEN_KEY, crypto.nanoid);
-    }
+  /**
+   * Subscribe to authentication state changes. A host is required so that the
+   * subscription can be unsubscribed when the host is disconnected.
+   *
+   * @param {LitElement} host The host element.
+   * @param {StorageEventCallbackType} callback The callback to be called when the authentication state changes.
+   */
+  subscribe(host: LitElement, callback: StorageEventCallbackType): void {
+    cache.subscribe(host, TOKEN_CACHE_KEY, callback);
+  }
+
+  /**
+   * Unsubscribe from authentication state changes.
+   */
+  unsubscribe(): void {
+    cache.unsubscribe(TOKEN_CACHE_KEY);
+  }
+
+  #setToken(userName: string, token: string): void {
+    const cachedToken: CachedToken = {
+      userName,
+      token,
+    };
+    cache.set(TOKEN_CACHE_KEY, cachedToken);
+  }
+
+  #removeToken(): void {
+    cache.remove(TOKEN_CACHE_KEY);
   }
 }

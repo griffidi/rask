@@ -1,25 +1,41 @@
+import { RouteTypes } from '#/router/route-types.js';
 import '@material/web/button/text-button.js';
 import '@material/web/icon/icon.js';
+import { useCache } from '@rask/core/cache/index.js';
 import { useInject } from '@rask/core/di/inject.js';
 import type { TypeEvent } from '@rask/core/events/type-event.js';
+import { USER_NAME_CACHE_KEY } from '@rask/identity/constants/user-name-cache-key.js';
 import { AuthService } from '@rask/identity/services/auth-service.js';
 import '@rask/web/button/button.js';
+import { Router } from '@vaadin/router';
 import { LitElement, html, type TemplateResult } from 'lit';
-import { customElement } from 'lit/decorators.js';
+import { customElement, state } from 'lit/decorators.js';
 import { live } from 'lit/directives/live.js';
 import css from './login-page.css' assert { type: 'css' };
+
+const cache = useCache();
 
 @customElement('app-login-page')
 export class LoginPage extends LitElement {
   static override styles = [css];
 
   #authService = useInject(AuthService);
-  #userName: string = '';
-  #password: string = '';
+
+  @state() private userName: string = '';
+  @state() private password: string = '';
 
   override firstUpdated(): void {
-    const userNameEl = this.shadowRoot.querySelector<HTMLInputElement>('input[placeholder="User name"]');
-    userNameEl.focus();
+    const userName = cache.get<string>(USER_NAME_CACHE_KEY);
+    let inputToFocus: HTMLInputElement | null = null;
+
+    if (userName) {
+      this.userName = userName;
+      inputToFocus = this.shadowRoot.querySelector<HTMLInputElement>('input[placeholder="Password"]');
+    } else {
+      inputToFocus = this.shadowRoot.querySelector<HTMLInputElement>('input[placeholder="User name"]');
+    }
+
+    inputToFocus.focus();
   }
 
   override render(): TemplateResult {
@@ -67,29 +83,30 @@ export class LoginPage extends LitElement {
     e.preventDefault();
 
     // await this.updateComplete;
-    const userName = this.#userName;
-    const password = this.#password;
+    const userName = this.userName;
+    const password = this.password;
     const success = await this.#authService.login(userName, password);
 
     if (success) {
-      // this.router.goto(RouteTypes.home);
+      cache.set(USER_NAME_CACHE_KEY, userName);
+      Router.go(RouteTypes.home);
     }
   }
 
   #getUserNameInputValue(): string {
-    return this.#userName;
+    return this.userName;
   }
 
   #getPasswordInputValue(): string {
-    return this.#password;
+    return this.password;
   }
 
   #handleUserNameInput({ target: input }: TypeEvent<HTMLInputElement>): void {
-    this.#userName = input.value;
+    this.userName = input.value;
   }
 
   #handlePasswordInput({ target: input }: TypeEvent<HTMLInputElement>): void {
-    this.#password = input.value;
+    this.password = input.value;
   }
 
   #handleInputChange(): void {

@@ -9,14 +9,19 @@ router.setRoutes([
     path: '(.*)/',
     action: async (context, commands) => {
       const isAuthenticated = await authGuard();
-      const view = new URLSearchParams(context.search).get('view');
-      const newPath = context.pathname.slice(0, -1);
+      const view = new URLSearchParams(context.search).get('view') ?? '';
+      const { pathname } = context;
+      const validPath = pathname === '/' ? pathname : pathname.replace(/\/$/, '');
 
       if (!isAuthenticated && view !== 'login') {
         return commands.redirect('/login');
       }
 
-      return commands.redirect(newPath);
+      if (pathname !== validPath) {
+        return commands.redirect(validPath);
+      }
+
+      return context.next();
     },
   },
   ...routes,

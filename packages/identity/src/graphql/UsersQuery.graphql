@@ -1,0 +1,5 @@
+query GetUserByUserName($userName: String!) {
+  user(where: { userName: $userName }) {
+    ...UserParts
+  }
+}

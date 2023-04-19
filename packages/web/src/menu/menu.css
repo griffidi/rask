@@ -10,12 +10,10 @@
   }
 }
 
-:host([opened]) {
-  & aside {
-    opacity: 1;
-    /* transform: rotateX(0); */
-    visibility: visible;
-  }
+:host([opened]) aside {
+  opacity: 1;
+  /* transform: rotateX(0); */
+  visibility: visible;
 }
 
 aside {
