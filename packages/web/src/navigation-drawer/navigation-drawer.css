@@ -22,6 +22,7 @@ aside {
   border-inline-end: 1px solid var(--rk-border-color);
   border-start-end-radius: var(--md-sys-shape-large);
   border-end-end-radius: var(--md-sys-shape-large);
+  z-index: 999;
   transform: translateX(calc(var(--_drawer-inline-size) * -1));
   will-change: transform;
   transition: transform var(--md-sys-motion-duration-500) var(--md-sys-motion-standard-easing),
