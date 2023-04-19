@@ -55,8 +55,9 @@ app.use(
 app.use(bodyParser());
 app.use(
   koaMiddleware<Context>(server, {
-    context: async (contextFnArg) => {
-      const token = contextFnArg.ctx.headers.authorization;
+    context: async ({ ctx }) => {
+      const token = ctx.headers.authorization;
+
       return { prisma };
     },
   })

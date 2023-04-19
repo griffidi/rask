@@ -1,11 +1,11 @@
 import { useCache } from '@rask/core/cache/index.js';
 import { useInject } from '@rask/core/di/inject.js';
 import { injectable } from '@rask/core/di/injectable.js';
+import { TOKEN_CACHE_KEY } from '@rask/core/identity/constants/token-cache-key.js';
+import type { CachedToken } from '@rask/core/identity/models/cached-token.js';
 import { throwIfEmpty } from '@rask/core/validation/assert.js';
 import { Client } from '@rask/graphql/client/client.js';
-import { TOKEN_CACHE_KEY } from '../constants/token-cache-key.js';
 import { authGuard } from '../guards/auth-guards.js';
-import type { CachedToken } from '../models/cached-token.js';
 import { LoginDocument } from '../types/graphql.js';
 
 const cache = useCache();
