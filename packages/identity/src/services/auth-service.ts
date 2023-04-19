@@ -1,10 +1,8 @@
 import { useCache } from '@rask/core/cache/index.js';
-import type { StorageEventCallbackType } from '@rask/core/cache/types.js';
 import { useInject } from '@rask/core/di/inject.js';
 import { injectable } from '@rask/core/di/injectable.js';
 import { throwIfEmpty } from '@rask/core/validation/assert.js';
 import { Client } from '@rask/graphql/client/client.js';
-import type { LitElement } from 'lit';
 import { TOKEN_CACHE_KEY } from '../constants/token-cache-key.js';
 import { authGuard } from '../guards/auth-guards.js';
 import type { CachedToken } from '../models/cached-token.js';
@@ -12,9 +10,14 @@ import { LoginDocument } from '../types/graphql.js';
 
 const cache = useCache();
 
+// eslint-disable-next-line ts/no-explicit-any
+// export type AuthServiceEventCallbackType = (data: any) => void;
+export type AuthServiceEventCallbackType = (isAuthenticated: boolean) => void;
+
 @injectable()
 export class AuthService {
   #client = useInject(Client);
+  #subscriptions: AuthServiceEventCallbackType[] = [];
 
   /**
    * Is the current user authenticated.
@@ -37,6 +40,8 @@ export class AuthService {
     throwIfEmpty(userName, 'UserName is required');
     throwIfEmpty(password, 'Password is required');
 
+    let isAuthenticated = false;
+
     const token = await this.#client.query<string>({
       query: LoginDocument,
       variables: { userName, password },
@@ -45,11 +50,13 @@ export class AuthService {
     });
 
     if (token) {
+      isAuthenticated = true;
       this.#setToken(userName, token);
-      return true;
     }
 
-    return false;
+    this.#dispatchSubscriptions(isAuthenticated);
+
+    return isAuthenticated;
   }
 
   /**
@@ -57,24 +64,27 @@ export class AuthService {
    */
   logout(): void {
     this.#removeToken();
+    this.#dispatchSubscriptions(false);
   }
 
   /**
-   * Subscribe to authentication state changes. A host is required so that the
-   * subscription can be unsubscribed when the host is disconnected.
+   * Subscribe to authentication state changes.
    *
-   * @param {LitElement} host The host element.
-   * @param {StorageEventCallbackType} callback The callback to be called when the authentication state changes.
+   * @param {AuthServiceEventCallbackType} callback The callback to be called when the authentication state changes.
    */
-  subscribe(host: LitElement, callback: StorageEventCallbackType): void {
-    cache.subscribe(host, TOKEN_CACHE_KEY, callback);
+  subscribe(callback: AuthServiceEventCallbackType): void {
+    this.#subscriptions.push(callback);
   }
 
   /**
    * Unsubscribe from authentication state changes.
    */
   unsubscribe(): void {
-    cache.unsubscribe(TOKEN_CACHE_KEY);
+    this.#subscriptions = [];
+  }
+
+  #dispatchSubscriptions(isAuthenticated: boolean): void {
+    this.#subscriptions.map((callback) => callback(isAuthenticated));
   }
 
   #setToken(userName: string, token: string): void {

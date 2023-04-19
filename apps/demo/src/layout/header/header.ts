@@ -19,6 +19,8 @@ export class Header extends LitElement {
     const trailingSide = isAuthenticated ? this.renderTrailingSide() : html``;
     const { title } = this.shadowRoot.ownerDocument;
 
+    console.debug(`isAuthenticated: ${isAuthenticated}`);
+
     return html`
       <header>
         <div class="leading-side">${leadingSide}</div>

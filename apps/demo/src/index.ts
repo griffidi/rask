@@ -43,7 +43,7 @@ export class Index extends LitElement {
      * the isAuthenticated property so that consumers will receive the
      * new state
      */
-    this.#authService.subscribe(this, (isAuthenticated: boolean) => {
+    this.#authService.subscribe((isAuthenticated: boolean) => {
       this.isAuthenticated = isAuthenticated;
     });
   }
