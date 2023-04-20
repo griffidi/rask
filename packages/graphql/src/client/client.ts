@@ -1,6 +1,5 @@
 import {
   type ApolloClient,
-  type FetchResult,
   type MutationOptions,
   type NormalizedCacheObject,
   type QueryOptions,

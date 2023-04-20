@@ -48,6 +48,7 @@ header {
   -webkit-text-fill-color: transparent;
 }
 
-rk-table {
+rk-table,
+rk-skeleton-table {
   inline-size: calc(100% - calc(var(--_container-padding) * 2));
 }

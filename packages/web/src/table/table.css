@@ -3,10 +3,14 @@
 }
 
 :host {
-  --_container-border-color: var(--rk-table-border-color, var(--rk-border-color));
+  --_table-border-color: var(--rk-table-border-color, var(--rk-border-color));
+  --_table-font-size: var(--rk-table-font-size, 14px);
 
   display: table;
+  table-layout: auto;
   inline-size: 100%;
-  border: 1px solid var(--_container-border-color);
+  width: 100%;
+  border: 1px solid var(--_table-border-color);
   border-radius: var(--md-sys-shape-large);
+  font-size: var(--_table-font-size);
 }

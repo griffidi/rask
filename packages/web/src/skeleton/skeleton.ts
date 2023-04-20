@@ -1,4 +1,4 @@
-import { LitElement, html, type PropertyValues } from 'lit';
+import { LitElement, html, type PropertyValues, type TemplateResult } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import css from './skeleton.css' assert { type: 'css' };
 
@@ -8,32 +8,63 @@ export enum SKELETON_TYPE {
   RECTANGLE = 'rectangle',
 }
 
+export type FontType = 'body' | 'display' | 'headline' | 'label' | 'label' | 'title';
+export type FontScale = 'large' | 'medium' | 'small';
+
 /**
- * @cssprop [--fds-skeleton-width=162px] - Height of the skeleton
- * @cssprop [--fds-skeleton-height=162px]- Width of the skeleton
- * @cssprop [--fds-skeleton-placeholder-color=var(--fds-on-surface-medium)]- Color of placeholder.
- * @cssprop [--fds-skeleton-background=var(--fds-surface-selected)] - Background color of the skeleton.
+ * @cssprop [--rk-skeleton-background=var(--md-ref-palette-neutral-variant-30)] - Background color of the skeleton.;
+ * @cssprop [--rk-skeleton-line-height=normal] - Line height of the skeleton.;
+ * @cssprop [--rk-skeleton-margin=1px] - Margin of the skeleton.;
+ * @cssprop [--rk-skeleton-shape=var(--md-sys-shape-small)] - Shape of the skeleton.;
  *
- * @attr {string} [height] - Height of the skeleton
- * @attr {string} [width] - Width of the skeleton
- * @attr {circle|text|rectangle} [type=text] - Define the type of skeleton
- * @attr {h1|h2|h3|h4|h5|h6|small|p} [size=p] - Define the size of skeleton
+ * @property {string} [height] - Height of the skeleton
+ * @property {string} [width] - Width of the skeleton
+ * @property {boolean} [circle] - Set shape to circle.
+ * @property {boolean} [rectangle] - Set shape to rectangle.
+ * @property {boolean} [text] - Set shape to text, which is similar to a rectangle,
+ * but you can also set typescale to attributes to match the size with text it is mimicing.
+ *
+ * The below attributes are not properties of Skeleton, but are used to set the
+ * typescale in css if the text property is true.
+ * @attr [label] - Font type
+ * @attr [body] - Font type
+ * @attr [headline] - Font type
+ * @attr [title] - Font type
+ * @attr [display] - Font type
+ * @attr [small] - Font scale
+ * @attr [medium] - Font scale
+ * @attr [large] - Font scale
+ *
+ * @example
+ * ```ts
+ * import '@rask/web/skeleton/skeleton.js';
+ *
+ * html`
+ *  // default
+ *  <rk-skeleton width="50px" height="20px"></rk-skeleton>
+ *
+ *  // set typescale. Use this for text skeletons
+ *  // when you need the sizes to match.
+ *  <rk-skeleton width="50px" height="20px" label large></rk-skeleton>
+ *
+ *  // circle skeleton
+ *  <rk-skeleton circle></rk-skeleton>
+ *
+ *  // rectable skeleton
+ *  <rk-skeleton rectable></rk-skeleton>
+ *`;
+ * ```
  */
 @customElement('rk-skeleton')
 export class Skeleton extends LitElement {
   static override styles = [css];
 
-  @property({ type: String, reflect: true })
-  type: 'circle' | 'rectangle' | 'text' = 'text';
+  @property({ type: Boolean, reflect: true }) circle = false;
+  @property({ type: Boolean, reflect: true }) rectangle = false;
+  @property({ type: Boolean, reflect: true }) text = true;
 
-  @property({ type: String, reflect: true })
-  size?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'small' = 'p';
-
-  @property({ type: String })
-  width?: string;
-
-  @property({ type: String })
-  height?: string;
+  @property({ type: String }) width?: string;
+  @property({ type: String }) height?: string;
 
   override connectedCallback(): void {
     super.connectedCallback();
@@ -42,12 +73,38 @@ export class Skeleton extends LitElement {
   }
 
   override willUpdate(_changedProperties: PropertyValues) {
-    if (_changedProperties.has('width')) this.#updateWidth();
-    if (_changedProperties.has('height')) this.#updateHeight();
+    if (_changedProperties.has('width')) {
+      this.#updateWidth();
+    }
+
+    if (_changedProperties.has('height')) {
+      this.#updateHeight();
+    }
   }
 
-  override render() {
+  override render(): TemplateResult {
     return html``;
+  }
+
+  // override render(): TemplateResult {
+  //   return html`${this.#renderCustomProperties()}`;
+  // }
+
+  /**
+   * Dynamically render custom properties used in CSS calculations.
+   */
+  #renderCustomProperties(): TemplateResult {
+    const width = this.width?.length ? `--rk-skeleton-width: ${this.width}` : '';
+    const height = this.width?.length ? `--rk-skeleton-height: ${this.height}` : '';
+
+    return html`
+      <style>
+        :host {
+           ${width};
+            ${height};
+        }
+      </style>
+    `;
   }
 
   #updateWidth() {
