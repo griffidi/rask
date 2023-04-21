@@ -9,7 +9,7 @@ import css from './header.css' assert { type: 'css' };
 
 @customElement('app-header')
 export class Header extends LitElement {
-  static override styles = [css];
+  static override styles = css;
 
   @consume({ context: isAuthenticatedContext, subscribe: true }) isAuthenticated: boolean;
 

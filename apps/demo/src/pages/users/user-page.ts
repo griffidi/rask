@@ -12,7 +12,7 @@ import css from './user-page.css' assert { type: 'css' };
 
 @customElement('app-user-page')
 export class UserPage extends LitElement {
-  static override styles = [css];
+  static override styles = css;
 
   #getUsers = new Task(
     this,

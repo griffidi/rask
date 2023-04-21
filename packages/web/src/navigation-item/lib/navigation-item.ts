@@ -1,13 +1,12 @@
 import '@material/web/icon/icon.js';
 import { LitElement, html, type TemplateResult } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
-import type { NavItem } from '../navigation-item/types.js';
+import { property } from 'lit/decorators.js';
 import { createNavigationItemClickedEvent } from './events.js';
 import css from './navigation-item.css' assert { type: 'css' };
+import type { NavItem } from './types.js';
 
-@customElement('rk-navigation-item')
 export class NavigationItem extends LitElement {
-  static override styles = [css];
+  static override styles = css;
 
   // get isFooterItem(): boolean {
   //   const { icon = '' } = this.item;
@@ -55,11 +54,5 @@ export class NavigationItem extends LitElement {
 
   #handleClick(): void {
     this.dispatchEvent(createNavigationItemClickedEvent(this.item));
-  }
-}
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'rk-navigation-item': NavigationItem;
   }
 }

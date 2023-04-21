@@ -12,7 +12,7 @@ import css from './customer-page.css' assert { type: 'css' };
 
 @customElement('app-customer-page')
 export class CustomerPage extends LitElement {
-  static override styles = [css];
+  static override styles = css;
 
   #getCustomer = new Task(
     this,

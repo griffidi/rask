@@ -6,7 +6,7 @@ import css from './documents-page.css' assert { type: 'css' };
 
 @customElement('app-documents-page')
 export class DocumentsPage extends LitElement {
-  static override styles = [css];
+  static override styles = css;
 
   override render(): TemplateResult {
     return html` <div class="container">${this.renderDocuments()}</div> `;

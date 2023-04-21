@@ -26,7 +26,7 @@ cache.set(GRAPHQL_URI_CACHE_KEY, GRAPHQL_URI);
 
 @customElement('app-index')
 export class Index extends LitElement {
-  static override styles = [css];
+  static override styles = css;
 
   #authService = useInject(AuthService);
   #nav: Ref<Nav> = createRef();

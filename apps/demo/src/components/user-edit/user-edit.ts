@@ -9,7 +9,7 @@ import css from './user-edit.css' assert { type: 'css' };
 
 @customElement('app-user-edit')
 export class UserEdit extends LitElement {
-  static override styles = [css];
+  static override styles = css;
 
   #form: Ref<HTMLFormElement> = createRef();
 

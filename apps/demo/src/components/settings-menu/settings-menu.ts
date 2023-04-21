@@ -7,7 +7,7 @@ import type { TypeEvent } from '@rask/core/events/type-event.js';
 import { AuthService } from '@rask/identity/services/auth-service.js';
 import { UserService } from '@rask/identity/services/user-service.js';
 import '@rask/web/menu/menu.js';
-import type { Menu } from '@rask/web/menu/menu.js';
+import type { RkMenu } from '@rask/web/menu/menu.js';
 import { useTheme } from '@rask/web/theme/index.js';
 import { Router } from '@vaadin/router';
 import { LitElement, html, type TemplateResult } from 'lit';
@@ -19,7 +19,7 @@ const theme = useTheme();
 
 @customElement('app-settings-menu')
 export class SettingsMenu extends LitElement {
-  static override styles = [css];
+  static override styles = css;
 
   #getInitials = new Task(
     this,
@@ -29,9 +29,9 @@ export class SettingsMenu extends LitElement {
 
   #authService = useInject(AuthService);
   #userService = useInject(UserService);
-  #menu: Ref<Menu> = createRef();
+  #menu: Ref<RkMenu> = createRef();
 
-  @property({ attribute: false }) sittingsMenu: Ref<Menu> = createRef();
+  @property({ attribute: false }) sittingsMenu: Ref<RkMenu> = createRef();
   @property({ type: Boolean }) themeDarkModeSelected = theme.isDark;
 
   @state() private initials = '';

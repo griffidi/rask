@@ -1,0 +1,32 @@
+:host {
+  display: block;
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* gap: 10px; */
+  block-size: 100%;
+}
+
+.status-code {
+  display: block;
+  font-size: 120px;
+  line-height: 1.1;
+  background-image: linear-gradient(to bottom, var(--md-sys-color-hot-pink), var(--md-sys-color-magenta));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.status {
+  display: block;
+  font-size: 56px;
+  line-height: 1.1;
+  background-image: linear-gradient(to top, var(--md-sys-color-hot-pink), var(--md-sys-color-magenta));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

@@ -4,7 +4,7 @@ import css from './settings-page.css' assert { type: 'css' };
 
 @customElement('app-settings-page')
 export class SettingsPage extends LitElement {
-  static override styles = [css];
+  static override styles = css;
 
   override render(): TemplateResult {
     return html`<h1>Settings</h1>`;

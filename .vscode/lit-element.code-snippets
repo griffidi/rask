@@ -1,7 +1,7 @@
 {
-  "Create App LitElement Component": {
+  "Create App LitElement (SideEffect)": {
     "scope": "typescript",
-    "prefix": "litcomponent",
+    "prefix": "litelement",
     "body": [
       "import { LitElement, html, type TemplateResult } from 'lit';",
       "import { customElement } from 'lit/decorators.js';",
@@ -9,7 +9,7 @@
       "",
       "@customElement('app-${TM_FILENAME_BASE}')",
       "export class ${TM_FILENAME_BASE/([a-z]*)(-)?/${1:/capitalize}/g} extends LitElement {",
-      "\tstatic override styles = [css];",
+      "\tstatic override styles = css;",
       "",
       "\toverride render(): TemplateResult {",
       "\t\treturn html``;",
@@ -24,11 +24,46 @@
       "}",
       ""
     ],
-    "description": "New LitElement subclass"
+    "description": "New LitElement component that includes customElement.define"
   },
-  "Create rask LitElement Component": {
+  "Create App LitElement (No SideEffect)": {
     "scope": "typescript",
-    "prefix": "litcomponent",
+    "prefix": "litelement",
+    "body": [
+      "import { LitElement, html, type TemplateResult } from 'lit';",
+      "import { customElement } from 'lit/decorators.js';",
+      "import css from './${TM_FILENAME_BASE}.css' assert { type: 'css' };",
+      "",
+      "export class ${TM_FILENAME_BASE/([a-z]*)(-)?/${1:/capitalize}/g} extends LitElement {",
+      "\tstatic override styles = css;",
+      "",
+      "\toverride render(): TemplateResult {",
+      "\t\treturn html``;",
+      "\t}",
+      "\t${0}",
+      "}",
+      ""
+    ],
+    "description": "New LitElement component that does not include customElement.define"
+  },
+  "Create App customElement.define LitElement": {
+    "scope": "typescript",
+    "prefix": "litelement",
+    "body": [
+      "customElement.define('app-${TM_FILENAME_BASE}', ${TM_FILENAME_BASE/([a-z]*)(-)?/${1:/capitalize}/g})",
+      "",
+      "declare global {",
+      "\tinterface HTMLElementTagNameMap {",
+      "\t\t'app-${TM_FILENAME_BASE}': ${TM_FILENAME_BASE/([a-z]*)(-)?/${1:/capitalize}/g};",
+      "\t}",
+      "}",
+      ""
+    ],
+    "description": "New LitElement customElement.define"
+  },
+  "Create rask LitElement (SideEffect)": {
+    "scope": "typescript",
+    "prefix": "litelement",
     "body": [
       "import { LitElement, html, type TemplateResult } from 'lit';",
       "import { customElement } from 'lit/decorators.js';",
@@ -36,7 +71,7 @@
       "",
       "@customElement('rk-${TM_FILENAME_BASE}')",
       "export class ${TM_FILENAME_BASE/([a-z]*)(-)?/${1:/capitalize}/g} extends LitElement {",
-      "\tstatic override styles = [css];",
+      "\tstatic override styles = css;",
       "",
       "\toverride render(): TemplateResult {",
       "\t\treturn html``;",
@@ -51,6 +86,41 @@
       "}",
       ""
     ],
-    "description": "New LitElement subclass"
+    "description": "New LitElement component that includes customElement.define"
+  },
+  "Create rask LitElement (No SideEffect)": {
+    "scope": "typescript",
+    "prefix": "litelement",
+    "body": [
+      "import { LitElement, html, type TemplateResult } from 'lit';",
+      "import { customElement } from 'lit/decorators.js';",
+      "import css from './${TM_FILENAME_BASE}.css' assert { type: 'css' };",
+      "",
+      "export class ${TM_FILENAME_BASE/([a-z]*)(-)?/${1:/capitalize}/g} extends LitElement {",
+      "\tstatic override styles = css;",
+      "",
+      "\toverride render(): TemplateResult {",
+      "\t\treturn html``;",
+      "\t}",
+      "\t${0}",
+      "}",
+      ""
+    ],
+    "description": "New LitElement component that does not include customElement.define"
+  },
+  "Create rask customElement.define LitElement": {
+    "scope": "typescript",
+    "prefix": "litelement",
+    "body": [
+      "customElement.define('rk-${TM_FILENAME_BASE}', ${TM_FILENAME_BASE/([a-z]*)(-)?/${1:/capitalize}/g})",
+      "",
+      "declare global {",
+      "\tinterface HTMLElementTagNameMap {",
+      "\t\t'rk-${TM_FILENAME_BASE}': ${TM_FILENAME_BASE/([a-z]*)(-)?/${1:/capitalize}/g};",
+      "\t}",
+      "}",
+      ""
+    ],
+    "description": "New LitElement customElement.define"
   }
 }

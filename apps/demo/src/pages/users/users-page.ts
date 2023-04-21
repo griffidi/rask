@@ -16,7 +16,7 @@ const CARD_SELECTED_CLASS = 'selected';
 
 @customElement('app-users-page')
 export class UsersPage extends LitElement {
-  static override styles = [css];
+  static override styles = css;
 
   #getUsers = new Task(
     this,

@@ -1,5 +1,5 @@
 import { RouteTypes } from '#/router/route-types.js';
-import type { NavItem } from '@rask/web/navigation-item/types.js';
+import type { NavItem } from '@rask/web/navigation-item/lib/types.js';
 
 export const navItems: ReadonlyArray<Readonly<NavItem>> = [
   {
