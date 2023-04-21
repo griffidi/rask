@@ -20,9 +20,6 @@
 header {
   --_header-height: 60px;
   --_header-padding-inline: 15px;
-  --rk-button-color: var(--md-sys-color-green);
-  --rk-button-on-color: var(--md-sys-color-green);
-  --rk-button-shadow: var(--md-sys-color-green-rgb);
 
   z-index: 1;
   position: sticky;

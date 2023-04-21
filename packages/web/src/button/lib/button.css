@@ -8,9 +8,44 @@
   /* --_button-shadow: var(--rk-button-shadow, #000000); */
   --_button-shadow: var(--rk-button-shadow, 0 0 0);
   --_button-padding-inline: var(--rk-button-padding-inline, 18px);
-  --_button-padding-block: var(--rk-button-padding-block, 8px);
+  --_button-padding-block: var(--rk-button-padding-block, 10px);
   --_button-font-size: var(--rk-button-font-size, 14px);
-  --_button-font-weight: var(--rk-button-font-weight, 400);
+  --_button-font-weight: var(--rk-button-font-weight, 300);
+}
+
+:host([primary]) {
+  --_button-color: var(--rk-button-color, var(--md-sys-color-primary));
+  --_button-on-color: var(--rk-button-on-color, #ffffff);
+  /* --_button-shadow: var(--rk-button-shadow, #000000); */
+  --_button-shadow: var(--rk-button-shadow, 0 0 0);
+}
+
+:host([blue]) {
+  --_button-color: var(--rk-button-color, var(--md-sys-color-blue));
+  --_button-on-color: var(--rk-button-on-color, #ffffff);
+  /* --_button-shadow: var(--rk-button-shadow, #000000); */
+  --_button-shadow: var(--rk-button-shadow, 0 0 0);
+}
+
+:host([green]) {
+  --_button-color: var(--rk-button-color, var(--md-sys-color-green));
+  --_button-on-color: var(--rk-button-on-color, #ffffff);
+  /* --_button-shadow: var(--rk-button-shadow, #000000); */
+  --_button-shadow: var(--rk-button-shadow, 0 0 0);
+}
+
+:host([red]) {
+  --_button-color: var(--rk-button-color, var(--md-sys-color-red));
+  --_button-on-color: var(--rk-button-on-color, #ffffff);
+  /* --_button-shadow: var(--rk-button-shadow, #000000); */
+  --_button-shadow: var(--rk-button-shadow, 0 0 0);
+}
+
+:host([yellow]) {
+  --_button-color: var(--rk-button-color, var(--md-sys-color-yellow));
+  --_button-on-color: var(--rk-button-on-color, #ffffff);
+  /* --_button-shadow: var(--rk-button-shadow, #000000); */
+  --_button-shadow: var(--rk-button-shadow, 0 0 0);
 }
 
 button {
@@ -59,12 +94,15 @@ button {
 }
 
 :host([filled]) button {
-  background: var(--_button-color, #ffffff);
+  background: var(--_button-color);
   border-radius: 9999px;
 
   & .label {
-    color: var(--_button-on-color, #ffffff);
-    /* font-weight: var(--md-ref-typeface-weight-normal); */
+    color: var(--_button-on-color);
     z-index: 2;
+  }
+
+  &:hover {
+    background: color-mix(in srgb, var(--_button-color) 90%, black);
   }
 }

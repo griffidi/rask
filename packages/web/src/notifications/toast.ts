@@ -3,6 +3,7 @@ import { ToastType, type ToastOptions } from './types.js';
 
 const TOAST_CONTAINER_CLASS = 'rk-toast__container';
 const TOAST_CLASS = 'rk-toast';
+const TOAST_BORDER_CLASS = 'rk-toast__border';
 const TOAST_ICON_CLASS = 'rk-toast__icon';
 const TOAST_TEXT_CONTAINER_CLASS = 'rk-toast__text-container';
 const TOAST_TITLE_TEXT_CLASS = 'rk-toast__title-text';
@@ -37,8 +38,8 @@ export abstract class Toast {
    *
    * @param options {ToastOptions} - Toast options.
    */
-  static async error(options: ToastOptions): Promise<void> {
-    return this.#show(options, ToastType.error);
+  static error(options: ToastOptions): void {
+    this.#show(options, ToastType.error);
   }
 
   /**
@@ -46,8 +47,8 @@ export abstract class Toast {
    *
    * @param options {ToastOptions} - Toast options.
    */
-  static async info(options: ToastOptions): Promise<void> {
-    await this.#show(options, ToastType.info);
+  static info(options: ToastOptions): void {
+    this.#show(options, ToastType.info);
   }
 
   /**
@@ -55,8 +56,8 @@ export abstract class Toast {
    *
    * @param options {ToastOptions} - Toast options.
    */
-  static async success(options: ToastOptions): Promise<void> {
-    await this.#show(options, ToastType.success);
+  static success(options: ToastOptions): void {
+    this.#show(options, ToastType.success);
   }
 
   /**
@@ -64,11 +65,15 @@ export abstract class Toast {
    *
    * @param options {ToastOptions} - Toast options.
    */
-  static async warning(options: ToastOptions): Promise<void> {
-    await this.#show(options, ToastType.warning);
+  static warning(options: ToastOptions): void {
+    this.#show(options, ToastType.warning);
   }
 
-  static async #show(options: ToastOptions, type: ToastType): Promise<void> {
+  static #show(options: ToastOptions, type: ToastType): void {
+    setTimeout(async () => this.#startToast(options, type));
+  }
+
+  static async #startToast(options: ToastOptions, type: ToastType): Promise<void> {
     const toast = this.#createToast(options, type);
     this.#addToast(toast);
 
@@ -88,6 +93,7 @@ export abstract class Toast {
 
   static #createToast(options: ToastOptions, type: ToastType): HTMLOutputElement {
     const toast = document.createElement('output');
+    const borderEl = this.#createBorderElement();
     const iconEl = this.#createIconElement(type);
     const messageEl = this.#createMessageElement(options);
 
@@ -95,6 +101,7 @@ export abstract class Toast {
     toast.classList.add(type);
     toast.setAttribute('role', 'status');
     toast.setAttribute('aria-live', 'polite');
+    toast.appendChild(borderEl);
     toast.appendChild(iconEl);
     toast.appendChild(messageEl);
 
@@ -105,6 +112,14 @@ export abstract class Toast {
     }
 
     return toast;
+  }
+
+  static #createBorderElement(): HTMLDivElement {
+    const borderEl = document.createElement('div');
+
+    borderEl.classList.add(TOAST_BORDER_CLASS);
+
+    return borderEl;
   }
 
   static #createMessageElement(options: ToastOptions): HTMLSpanElement {
