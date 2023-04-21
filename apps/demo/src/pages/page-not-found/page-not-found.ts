@@ -10,7 +10,10 @@ export class PageNotFound extends LitElement {
     return html`
       <div class="container">
         <div class="status-code">404</div>
-        <div class="status">Page not found</div>
+        <div class="status">
+          The page you are looking for doesn't exist or has been moved. Please go back to the homepage.
+        </div>
+        <a href="/">Go to homepage</a>
       </div>
     `;
   }

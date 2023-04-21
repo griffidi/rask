@@ -9,24 +9,37 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* gap: 10px; */
+  gap: 30px;
   block-size: 100%;
 }
 
 .status-code {
   display: block;
-  font-size: 120px;
-  line-height: 1.1;
-  background-image: linear-gradient(to bottom, var(--md-sys-color-hot-pink), var(--md-sys-color-magenta));
+  font-size: 12rem;
+  line-height: 1;
+  color: var(--md-sys-color-hot-pink);
+  /* text-shadow: 0 0 15px var(--md-sys-color-magenta); */
+  /* background-image: linear-gradient(to bottom, var(--md-sys-color-hot-pink), var(--md-sys-color-magenta));
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  -webkit-text-fill-color: transparent; */
 }
 
 .status {
   display: block;
-  font-size: 56px;
-  line-height: 1.1;
-  background-image: linear-gradient(to top, var(--md-sys-color-hot-pink), var(--md-sys-color-magenta));
+  font-size: 1.5rem;
+  line-height: 1.5;
+  inline-size: 50%;
+  text-align: center;
+  /* background-image: linear-gradient(to top, var(--md-sys-color-hot-pink), var(--md-sys-color-magenta));
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  -webkit-text-fill-color: transparent; */
+}
+
+a {
+  color: var(--md-sys-color-blue);
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
