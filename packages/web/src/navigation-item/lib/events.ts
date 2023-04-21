@@ -1,4 +1,4 @@
-import type { NavItem } from '../navigation-item/types.js';
+import type { NavItem } from './types.js';
 
 export interface NavigationItemEventDetail {
   item: NavItem;

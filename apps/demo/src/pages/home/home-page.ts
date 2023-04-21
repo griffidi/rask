@@ -4,7 +4,7 @@ import css from './home-page.css' assert { type: 'css' };
 
 @customElement('app-home-page')
 export class HomePage extends LitElement {
-  static override styles = [css];
+  static override styles = css;
 
   override render(): TemplateResult {
     return html`<span>Home Page</span>`;

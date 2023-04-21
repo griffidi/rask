@@ -12,7 +12,7 @@ import css from './employee-page.css' assert { type: 'css' };
 
 @customElement('app-employee-page')
 export class EmployeePage extends LitElement {
-  static override styles = [css];
+  static override styles = css;
 
   #getEmployee = new Task(
     this,

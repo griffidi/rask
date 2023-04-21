@@ -8,8 +8,14 @@
     "pnpm": ">=8.2.0"
   },
   "type": "module",
+  "exports": {
+    "./client/*": "./src/client/*",
+    "./constants/*": "./src/constants/*",
+    "./controllers/*": "./src/controllers/*",
+    "./decorators/*": "./src/decorators/*"
+  },
   "files": [
-    "src/**/*.{map.js,js}",
+    "src/**/*.{map.js,js,d.ts}",
     "README.md"
   ],
   "scripts": {

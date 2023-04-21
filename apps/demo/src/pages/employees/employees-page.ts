@@ -7,7 +7,7 @@ import '@rask/web/button/button.js';
 import { Toast } from '@rask/web/notifications/toast.js';
 import { scrollable } from '@rask/web/scrollable/scrollable.js';
 import '@rask/web/skeleton/skeleton-table.js';
-import type { TableRowSelectedEvent } from '@rask/web/table/events.js';
+import type { TableRowSelectedEvent } from '@rask/web/table/lib/events.js';
 import '@rask/web/table/table-cell.js';
 import '@rask/web/table/table-header-cell.js';
 import '@rask/web/table/table-row.js';
@@ -20,7 +20,7 @@ import css from './employees-page.css' assert { type: 'css' };
 
 @customElement('app-employees-page')
 export class EmployeesPage extends LitElement {
-  static override styles = [css];
+  static override styles = css;
 
   #employees: ReadonlyArray<Readonly<Employee>> | undefined;
 

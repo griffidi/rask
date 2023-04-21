@@ -1,44 +1,11 @@
-import { LitElement, html, type TemplateResult } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
-import { when } from 'lit/directives/when.js';
-import sharedCss from './table-cell-shared.css' assert { type: 'css' };
-import css from './table-header-cell.css' assert { type: 'css' };
+import { customElement } from 'lit/decorators.js';
+import { TableHeaderCell } from './lib/table-header-cell.js';
 
 @customElement('rk-table-header-cell')
-export class TableHeaderCell extends LitElement {
-  static override styles = [sharedCss, css];
-
-  @property({ type: Object }) align: 'center' | 'left' | 'right' = 'left';
-  @property({ type: Boolean, reflect: true }) add = false;
-  @property() addIcon = 'add';
-  @property({ type: Boolean, reflect: true }) edit = false;
-  @property({ type: Number }) minWidth: number | undefined;
-  @property({ type: Number }) width = 100;
-  @property({ reflect: true }) override role = 'columnheader';
-
-  override render(): TemplateResult {
-    return html`
-      ${when(
-        this.add,
-        () => this.#renderAdd(),
-        () => this.#renderSlot()
-      )}
-    `;
-  }
-
-  #renderSlot(): TemplateResult {
-    return html`<slot></slot>`;
-  }
-
-  #renderAdd(): TemplateResult {
-    return html` <div>
-      <md-icon>${this.addIcon}</md-icon>
-    </div>`;
-  }
-}
+export class RkTableHeaderCell extends TableHeaderCell {}
 
 declare global {
   interface HTMLElementTagNameMap {
-    'rk-table-header-cell': TableHeaderCell;
+    'rk-table-header-cell': RkTableHeaderCell;
   }
 }

@@ -1,4 +1,3 @@
-import { RouteTypes } from '#/router/route-types.js';
 import '@material/web/button/text-button.js';
 import '@material/web/icon/icon.js';
 import { useCache } from '@rask/core/cache/index.js';
@@ -8,7 +7,7 @@ import { USER_NAME_CACHE_KEY } from '@rask/identity/constants/user-name-cache-ke
 import { AuthService } from '@rask/identity/services/auth-service.js';
 import '@rask/web/button/button.js';
 import '@rask/web/text-field/text-field.js';
-import type { TextField } from '@rask/web/text-field/text-field.js';
+import type { RkTextField } from '@rask/web/text-field/text-field.js';
 import { Router } from '@vaadin/router';
 import { LitElement, html, type TemplateResult } from 'lit';
 import { customElement, state } from 'lit/decorators.js';
@@ -19,7 +18,7 @@ const cache = useCache();
 
 @customElement('app-login-page')
 export class LoginPage extends LitElement {
-  static override styles = [css];
+  static override styles = css;
 
   #authService = useInject(AuthService);
 
@@ -30,7 +29,7 @@ export class LoginPage extends LitElement {
     this.userName = cache.get<string>(USER_NAME_CACHE_KEY) ?? '';
 
     const selector = this.userName.length ? '#password' : '#userName';
-    this.shadowRoot.querySelector<TextField>(selector)?.focus();
+    this.shadowRoot.querySelector<RkTextField>(selector)?.focus();
   }
 
   override render(): TemplateResult {
@@ -80,7 +79,7 @@ export class LoginPage extends LitElement {
 
     if (success) {
       cache.set(USER_NAME_CACHE_KEY, userName);
-      Router.go(RouteTypes.home);
+      Router.go('/');
     }
   }
 

@@ -2,7 +2,7 @@ import { type Route } from '@vaadin/router';
 
 export default [
   {
-    path: '/home',
+    path: '/',
     name: 'home',
     component: 'app-home-page',
     action: async () => {
@@ -91,6 +91,13 @@ export default [
     component: 'app-settings-page',
     action: async () => {
       await import('../pages/settings/settings-page.js');
+    },
+  },
+  {
+    path: '(.*)',
+    component: 'app-page-not-found',
+    action: async () => {
+      await import('../pages/page-not-found/page-not-found.js');
     },
   },
 ] as ReadonlyArray<Route>;

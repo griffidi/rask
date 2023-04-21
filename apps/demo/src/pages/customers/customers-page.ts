@@ -4,7 +4,7 @@ import css from './customers-page.css' assert { type: 'css' };
 
 @customElement('app-customers-page')
 export class CustomersPage extends LitElement {
-  static override styles = [css];
+  static override styles = css;
 
   override render(): TemplateResult {
     return html``;
