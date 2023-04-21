@@ -56,6 +56,7 @@ app.use(bodyParser());
 app.use(
   koaMiddleware<Context>(server, {
     context: async ({ ctx }) => {
+      // @ts-ignore
       const token = ctx.headers.authorization;
 
       return { prisma };

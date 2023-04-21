@@ -1,9 +1,13 @@
+:host {
+  text-overflow: ellipsis;
+}
+
 :host([edit]) md-icon {
   --md-icon-size: 20px;
 }
 
 :host-context(:is(rk-table-row:hover:not([header]), :is(rk-table-row[aria-selected="true"]))) {
-  --_-color: var(--md-sys-color-green);
+  --_-color: var(--rk-table-hover-color, var(--md-sys-color-on-background));
   --md-icon-color: var(--_-color);
 
   background: var(--_container-hover-color);

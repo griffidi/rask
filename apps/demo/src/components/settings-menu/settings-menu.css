@@ -23,3 +23,18 @@ rk-menu {
     color: var(--md-sys-color-blue);
   }
 }
+
+.avatar {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  inline-size: 34px;
+  block-size: 34px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--md-sys-color-blue);
+  color: var(--md-sys-color-blue);
+  /* font-size: 0.9em; */
+  text-decoration: uppercase;
+}

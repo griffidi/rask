@@ -1,4 +1,3 @@
-import '@material/web/iconbutton/standard-icon-button.js';
 import { LitElement, html, type TemplateResult } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import { createRef, ref, type Ref } from 'lit/directives/ref.js';
@@ -8,7 +7,6 @@ import css from './menu.css' assert { type: 'css' };
 export class Menu extends LitElement {
   static override styles = [css];
 
-  @property() icon = 'person';
   @property({ type: Boolean, reflect: true }) opened = false;
   @state() protected anchor: Ref<HTMLElement> = createRef();
 
@@ -32,7 +30,7 @@ export class Menu extends LitElement {
 
   override render(): TemplateResult {
     return html`
-      <md-standard-icon-button ${ref(this.anchor)} @click=${this.#openMenu}>${this.icon}</md-standard-icon-button>
+      <slot name="trigger" ${ref(this.anchor)} @click=${this.#openMenu}></slot>
       <aside>
         <slot></slot>
       </aside>
