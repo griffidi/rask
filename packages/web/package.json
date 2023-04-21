@@ -28,7 +28,7 @@
     "./text-field/*": "./src/text-field/*"
   },
   "files": [
-    "src/**/*.{map.js,js,css,.d.ts}",
+    "src/**/*.{map.js,js,css,d.ts}",
     "README.md"
   ],
   "scripts": {

@@ -8,8 +8,15 @@
     "pnpm": ">=8.2.0"
   },
   "type": "module",
+  "exports": {
+    "./authentication/*": "./src/authentication/*.js",
+    "./constants/*": "./src/constants/*.js",
+    "./guards/*": "./src/guards/*.js",
+    "./services/*": "./src/services/*.js",
+    "./user/*": "./src/user/*.js"
+  },
   "files": [
-    "src/**/*.{map.js,js,css}",
+    "src/**/*.{map.js,js,css,dt.t}",
     "README.md"
   ],
   "scripts": {
