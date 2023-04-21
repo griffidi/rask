@@ -46,12 +46,13 @@ export const createApolloClient = (options?: ApolloClientOptions): ApolloClient<
   });
 
   const cachedToken = internalCache.get<CachedToken>(TOKEN_CACHE_KEY);
+
   const authLink = new ApolloLink((operation, forward) => {
     // add the authorization to the headers
     operation.setContext(({ headers = {} }) => ({
       headers: {
         ...headers,
-        authorization: cachedToken.token ? `Bearer ${cachedToken.token}` : '',
+        authorization: cachedToken?.token ? `Bearer ${cachedToken.token}` : '',
       },
     }));
 

@@ -5,13 +5,13 @@
     "lib": ["ESNext", "DOM", "DOM.Iterable"],
     "moduleResolution": "bundler",
     "useDefineForClassFields": false,
-    "types": ["lit"],
-    "plugins": [
-      {
-        "name": "ts-lit-plugin",
-        "strict": true
-      }
-    ]
+    "types": ["lit"]
+    // "plugins": [
+    //   {
+    //     "name": "ts-lit-plugin",
+    //     "strict": true
+    //   }
+    // ]
   },
   "files": [],
   "include": []

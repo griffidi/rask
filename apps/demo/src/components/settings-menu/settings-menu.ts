@@ -1,6 +1,5 @@
 import { RouteTypes } from '#/router/route-types.js';
 import { Task } from '@lit-labs/task';
-import '@material/web/button/text-button.js';
 import '@material/web/switch/switch.js';
 import type { MdSwitch } from '@material/web/switch/switch.js';
 import { useInject } from '@rask/core/di/inject.js';
@@ -51,11 +50,8 @@ export class SettingsMenu extends LitElement {
           Notifications
           <md-switch><md-icon>notification</md-icon></md-switch>
         </label>
-        <label>
-          <md-text-button href=${RouteTypes.settings}>Settings</md-text-button>
-        </label>
         <div class="logout">
-          <md-text-button @click=${this.#logout}>Logout</md-text-button>
+          <a @click=${this.#logout}>Logout</a>
         </div>
       </rk-menu>
     `;

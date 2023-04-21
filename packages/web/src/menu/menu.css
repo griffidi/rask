@@ -1,8 +1,11 @@
 :host {
-  --rk-menu-container-color: #212122;
+  --rk-menu-container-color: var(--md-sys-color-background);
+  --_menu-item-spacing: var(--rk-menu-item-spacing, 5px);
+  --_menu-offset-top: var(--rk-menu-offset-top, 36px);
   --md-icon-button-icon-size: var(--rk-menu-icon-size, 24px);
 
   position: relative;
+  z-index: 200;
 }
 
 :host(::slotted) {
@@ -23,23 +26,15 @@ aside {
   position: absolute;
   display: flex;
   flex-direction: column;
+  gap: var(--_menu-item-spacing);
   background: var(--rk-menu-container-color);
-  /* background-color: var(--md-sys-color-surface-2); */
   border: 1px solid var(--rk-border-color);
   border-radius: var(--md-sys-shape-medium);
   box-shadow: var(--md-sys-color-shadow-2);
-  /* padding: 0.5em 0; */
   min-inline-size: 300px;
-  /* inset-block-start: calc(100% - 0.2rem); */
-  inset-block-start: 28px;
-  /* inset-inline-start: 50%; */
+  inset-block-start: var(--_menu-offset-top);
   inset-inline-end: 0;
   opacity: 0.3;
-  /* transform: translateX(-50%); */
-  /* transform: rotateX(-90deg); */
-  /* transform-origin: top center; */
-  /* transition: 280ms all ease-out;
-  transition: 280ms all 120ms ease-out; */
   transition: 280ms opacity ease-out;
   padding-inline: 30px;
   padding-block: 20px;

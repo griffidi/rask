@@ -35,7 +35,7 @@ export class LoginPage extends LitElement {
 
   override render(): TemplateResult {
     return html`
-      <form type="submit" @submit=${this.#login}>
+      <form method="submit" @submit=${this.#login}>
         <header>
           <h3>Welcome</h3>
         </header>
@@ -48,6 +48,7 @@ export class LoginPage extends LitElement {
             .value=${live(this.#getUserNameInputValue())}
             @change=${this.#handleInputChange}
             @input=${this.#handleUserNameInput}
+            @keydown=${this.#handleInputKeydown}
           ></rk-text-field>
           <rk-text-field
             id="password"
@@ -58,10 +59,11 @@ export class LoginPage extends LitElement {
             .value=${live(this.#getPasswordInputValue())}
             @change=${this.#handleInputChange}
             @input=${this.#handlePasswordInput}
+            @keydown=${this.#handleInputKeydown}
           ></rk-text-field>
         </section>
         <footer>
-          <button type="submit" tabindex="0">Sign In</button>
+          <button type="submit">Sign In</button>
         </footer>
       </form>
     `;
@@ -100,6 +102,12 @@ export class LoginPage extends LitElement {
 
   #handleInputChange(): void {
     this.requestUpdate();
+  }
+
+  #handleInputKeydown({ key }: KeyboardEvent): void {
+    if (key === 'Enter') {
+      this.#login(new Event('submit'));
+    }
   }
 }
 

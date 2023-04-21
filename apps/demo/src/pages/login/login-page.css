@@ -68,6 +68,7 @@ footer {
     --_button-on-color: #fff;
     --_button-color: var(--md-sys-color-gradient-purple-blue);
 
+    position: relative;
     font-size: 18px;
     font-weight: 500;
     appearance: none;
@@ -79,8 +80,18 @@ footer {
     block-size: 42px;
     cursor: pointer;
 
-    &:hover {
-      --_button-color: rgba(255, 255, 255, 0.3);
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      border-radius: var(--_button-shape);
+      /* border: 2px solid var(--md-sys-color-blue); */
+    }
+
+    &:hover::before {
+      box-shadow: rgba(90, 20, 255, 0.5) 0 0 14px 0;
     }
   }
 
