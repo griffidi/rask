@@ -40,7 +40,7 @@ export class EmployeesPage extends LitElement {
       <div ${scrollable()}>
         <header>
           <span class="title">Employees</span>
-          <rk-button outlined>Add Employee</rk-button>
+          <rk-button filled>Add Employee</rk-button>
         </header>
         ${this.#getEmployees.render({
           pending: () => this.#renderSkeleton(),
@@ -99,8 +99,17 @@ export class EmployeesPage extends LitElement {
 
   async #loadEmployees(): Promise<Employee[]> {
     try {
-      return await this.query;
-    } catch (e) {
+      const start = performance.now();
+      const result = await this.query;
+      const end = performance.now();
+      const duration = end - start;
+
+      if (duration < 2000) {
+        await new Promise((resolve) => setTimeout(resolve, 2000 - duration));
+      }
+
+      return result;
+    } catch {
       setTimeout(async () => await Toast.error({ title: 'Error', message: 'Failed to loaded employees.' }));
       throw new Error();
     }

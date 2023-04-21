@@ -6,6 +6,7 @@
   --md-sys-shape-circle-size: 40px;
   --md-sys-shape-rectangle-size: 160px;
 
+  pointer-events: none;
   margin-block: var(--rk-skeleton-margin);
   box-sizing: border-box;
   line-height: var(--rk-skeleton-line-height);

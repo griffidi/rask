@@ -6,12 +6,9 @@ import '../../table/table-cell.js';
 import '../../table/table-header-cell.js';
 import '../../table/table-row.js';
 import '../../table/table.js';
-import css from './skeleton-table.css' assert { type: 'css' };
-import './skeleton.js';
+import '../skeleton.js';
 
 export class SkeletonTable extends LitElement {
-  static override styles = css;
-
   @property({ type: Number }) rows = 5;
   @property({ type: Number }) columns = 5;
 
