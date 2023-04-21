@@ -6,6 +6,7 @@ md-switch {
 }
 
 rk-menu {
+  --rk-menu-offset-top: calc(var(--rk-site-header-height) - 16px);
   --rk-menu-icon-size: 28px;
 
   & label {
@@ -25,6 +26,7 @@ rk-menu {
 }
 
 .avatar {
+  position: relative;
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -32,9 +34,41 @@ rk-menu {
   inline-size: 34px;
   block-size: 34px;
   border-radius: 50%;
-  object-fit: cover;
-  border: 1px solid var(--md-sys-color-blue);
+  border: none;
+  background: transparent;
   color: var(--md-sys-color-blue);
-  /* font-size: 0.9em; */
   text-decoration: uppercase;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    border-radius: 50%;
+    border: 2px solid var(--md-sys-color-blue);
+  }
+
+  &:hover::before {
+    box-shadow: rgba(90, 20, 255, 0.5) 0 0 6px 0;
+  }
+
+  &:hover::after {
+    box-shadow: rgba(90, 20, 255, 0.5) inset 0 0 6px;
+  }
+}
+
+.logout {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  & a {
+    cursor: pointer;
+  }
+
+  & a:hover {
+    color: #fff;
+    text-decoration: underline;
+  }
 }

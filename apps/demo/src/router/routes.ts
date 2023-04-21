@@ -2,7 +2,7 @@ import { type Route } from '@vaadin/router';
 
 export default [
   {
-    path: '/',
+    path: '/home',
     name: 'home',
     component: 'app-home-page',
     action: async () => {

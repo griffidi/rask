@@ -32,6 +32,7 @@
   --md-sys-color-flamingo: #fa97a1;
   --md-sys-color-blue-rgb: 90, 20, 255;
   --md-sys-color-blue: #5a14ff;
+  --md-sys-color-blue-rgb: rgb(90, 20, 255);
   --md-sys-color-blue-alpha: #5a14ffaa;
   --md-sys-color-light-blue-alpha: #646cffaa;
   /* --md-sys-color-hot-pink: color(display-p3 0.8596 0 0.4786); */
