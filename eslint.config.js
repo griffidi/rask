@@ -155,6 +155,7 @@ export default [
         ...sharedLitGlobals,
       },
     },
+    ...litConfig,
   },
   {
     files: ['packages/*/src/**/*.ts'],
