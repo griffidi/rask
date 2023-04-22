@@ -5,8 +5,8 @@ export const enum RouteTypes {
   customer = 'customer',
   employees = 'employees',
   employee = 'employees',
-  users = '/users',
-  user = '/user',
+  users = 'users',
+  user = 'user',
   documents = 'documents',
   settings = 'settings',
 }
