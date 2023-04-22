@@ -2,6 +2,8 @@ import { GetEmployeesDocument, type Employee } from '#/types/graphql.js';
 import { Task } from '@lit-labs/task';
 import '@material/web/icon/icon.js';
 import { DateTime } from '@rask/core/common/i18n/date-time.js';
+import { delay } from '@rask/core/reactivity/timer/delay.js';
+import { Timer } from '@rask/core/reactivity/timer/timer.js';
 import { apolloQuery } from '@rask/graphql/decorators/apollo-query.js';
 import '@rask/web/button/button.js';
 import { Toast } from '@rask/web/notifications/toast.js';
@@ -40,7 +42,7 @@ export class EmployeesPage extends LitElement {
       <div ${scrollable()}>
         <header>
           <span class="title">Employees</span>
-          <rk-button outlined>Add Employee</rk-button>
+          <rk-button filled blue>Add Employee</rk-button>
         </header>
         ${this.#getEmployees.render({
           pending: () => this.#renderSkeleton(),
@@ -99,9 +101,14 @@ export class EmployeesPage extends LitElement {
 
   async #loadEmployees(): Promise<Employee[]> {
     try {
-      return await this.query;
-    } catch (e) {
-      setTimeout(async () => await Toast.error({ title: 'Error', message: 'Failed to loaded employees.' }));
+      const timer = Timer.start();
+      const result = await this.query;
+
+      await delay(2000 - timer.stop());
+
+      return result;
+    } catch {
+      Toast.error({ title: 'Error', message: 'Failed to loaded employees.' });
       throw new Error();
     }
   }

@@ -39,9 +39,9 @@ export class Index extends LitElement {
     super.connectedCallback();
 
     /**
-     * subscribe to changes in authentication state and update
-     * the isAuthenticated property so that consumers will receive the
-     * new state
+     * subscribe to changes in authentication state and
+     * update the isAuthenticated property so that consumers
+     * will receive the new state.
      */
     this.#authService.subscribe((isAuthenticated: boolean) => {
       this.isAuthenticated = isAuthenticated;
@@ -51,6 +51,11 @@ export class Index extends LitElement {
   override disconnectedCallback(): void {
     super.disconnectedCallback();
 
+    /**
+     * even though this is the root component, we unsubscribe
+     * to make sure there is no references remaining in memory.
+     * just for good practice. 😉
+     */
     this.#authService.unsubscribe();
   }
 

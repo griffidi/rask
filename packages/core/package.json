@@ -9,16 +9,16 @@
   },
   "type": "module",
   "exports": {
-    "./cache/*": "./cache/*",
-    "./common/*": "./common/*",
-    "./crypto/*": "./crypto/*",
-    "./di/*": "./di/*",
-    "./events/*": "./events/*",
-    "./fonts/*": "./fonts/*",
-    "./identity/*": "./identity/*",
-    "./reactivity/*": "./reactivity/*",
-    "./types/*": "./types/*",
-    "./validation/*": "./validation/*"
+    "./cache/*": "./src/cache/*",
+    "./common/*": "./src/common/*",
+    "./crypto/*": "./src/crypto/*",
+    "./di/*": "./src/di/*",
+    "./events/*": "./src/events/*",
+    "./fonts/*": "./src/fonts/*",
+    "./identity/*": "./src/identity/*",
+    "./reactivity/*": "./src/reactivity/*",
+    "./types/*": "./src/types/*",
+    "./validation/*": "./src/validation/*"
   },
   "files": [
     "src/**/*.{map.js,js,d.ts}",
