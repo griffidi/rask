@@ -20,6 +20,7 @@
     "./navigation-drawer/*": "./src/navigation-drawer/*",
     "./navigation-item/*": "./src/navigation-item/*",
     "./notifications/*": "./src/notifications/*",
+    "./progress-bar/*": "./src/progress-bar/*",
     "./src/client/*": "./src/client/*",
     "./scrollable/*": "./src/scrollable/*",
     "./search/*": "./src/search/*",

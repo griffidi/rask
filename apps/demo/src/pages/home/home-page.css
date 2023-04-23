@@ -22,3 +22,7 @@ span {
     background: linear-gradient(111.3deg, #9c27b0 9.6%, #5a14ff 93.6%);
   }
 }
+
+rk-progress-bar {
+  /* inline-size: 300px; */
+}
