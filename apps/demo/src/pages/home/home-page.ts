@@ -1,5 +1,4 @@
-import { delay } from '@rask/core/reactivity/timer/delay.js';
-import '@rask/web/progress-bar/progress-bar.js';
+import toast from '@rask/web/notifications/toast.js';
 import { LitElement, html, type TemplateResult } from 'lit';
 import { customElement, state } from 'lit/decorators.js';
 import css from './home-page.css' assert { type: 'css' };
@@ -11,21 +10,11 @@ export class HomePage extends LitElement {
   @state() value = 0;
 
   override render(): TemplateResult {
-    return html`
-      <button @click=${this.#updateValue}>Update Value</button>
-      <rk-progress-bar .value=${this.value}></rk-progress-bar>
-      <!-- <span>Home Page</span> -->
-    `;
+    return html` <span>Home Page</span>`;
   }
 
-  async #updateValue(): Promise<void> {
-    let i = 0;
-
-    while (i < 100) {
-      i += 4;
-      this.value = i;
-      await delay(200);
-    }
+  override firstUpdated(): void {
+    toast.success({ title: 'Saved Client', message: 'You have updated the client.' });
   }
 }
 
