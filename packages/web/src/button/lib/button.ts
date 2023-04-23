@@ -28,9 +28,10 @@ export class Button extends LitElement {
   override render(): TemplateResult {
     return html`
       <button
+        role="button"
+        tabindex="0"
         class="rk-button ${classMap(this.getRenderClasses())}"
         type=${ifDefined(this.type)}
-        tabindex="0"
         ?disabled=${this.disabled}
         @click=${this.handleClick}
       >
