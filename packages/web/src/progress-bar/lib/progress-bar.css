@@ -30,7 +30,7 @@
   border-block-start-style: solid;
   border-block-start-width: var(--_host-block-size);
   border-block-start-color: var(--md-sys-color-blue);
-  inline-size: 100%;
+  /* inline-size: 100%; */
   block-size: 100%;
   transform: scaleX(0);
   will-change: transform;

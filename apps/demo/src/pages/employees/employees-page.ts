@@ -123,7 +123,9 @@ export class EmployeesPage extends LitElement {
     }
   }
 
+  // @ts-ignore
   #handleEditClick(): void {
+    // @ts-ignore
     const employee = this.currentEmployee;
     // this.currentEmployee = employee;
   }

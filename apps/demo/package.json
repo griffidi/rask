@@ -52,7 +52,6 @@
     "@types/node": "^18.15.13",
     "@web/dev-server": "^0.1.38",
     "@web/dev-server-esbuild": "^0.3.6",
-    "@web/dev-server-hmr": "^0.1.12",
     "@web/dev-server-rollup": "^0.4.1",
     "graphql-tag": "^2.12.6",
     "postcss-preset-env": "^8.3.2",

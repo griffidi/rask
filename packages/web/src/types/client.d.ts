@@ -1,5 +1,3 @@
-/// <reference path="./importMeta.d.ts" />
-
 // CSS modules
 interface CSSModuleClasses {
   readonly [key: string]: string;
