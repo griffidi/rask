@@ -18,7 +18,7 @@ const TOAST_ICON: Record<ToastType, string> = {
 };
 
 const MATERIAL_ICON_CLASS = 'material-symbols-sharp';
-export abstract class Toast {
+export default abstract class {
   static #container: HTMLElement | undefined;
 
   static {
