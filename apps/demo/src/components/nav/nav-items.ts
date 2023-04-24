@@ -1,4 +1,4 @@
-import { RouteTypes } from '#/router/route-types.js';
+import { RouteTypes } from ':/router/route-types.js';
 import type { NavItem } from '@rask/web/navigation-item/lib/types.js';
 import { urlForName } from '../../router/index.js';
 

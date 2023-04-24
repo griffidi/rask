@@ -1,14 +1,10 @@
+import '@material/web/';
+import { render, type TemplateResult } from 'lit';
+import { when } from 'lit/directives/when.js';
+import { html } from 'lit/static-html.js';
 import { Motion } from '../css/motion.js';
 import { ToastType, type ToastOptions } from './types.js';
-
 const TOAST_CONTAINER_CLASS = 'rk-toast__container';
-const TOAST_CLASS = 'rk-toast';
-const TOAST_BORDER_CLASS = 'rk-toast__border';
-const TOAST_ICON_CLASS = 'rk-toast__icon';
-const TOAST_TEXT_CONTAINER_CLASS = 'rk-toast__text-container';
-const TOAST_TITLE_TEXT_CLASS = 'rk-toast__title-text';
-const TOAST_TEXT_CLASS = 'rk-toast__text';
-const TOAST_CLOSE_BUTTON_CLASS = 'rk-toast__close-button';
 
 const TOAST_ICON: Record<ToastType, string> = {
   [ToastType.error]: 'error',
@@ -17,11 +13,50 @@ const TOAST_ICON: Record<ToastType, string> = {
   [ToastType.warning]: 'warning',
 };
 
-const MATERIAL_ICON_CLASS = 'material-symbols-sharp';
-export abstract class Toast {
-  static #container: HTMLElement | undefined;
+/**
+ * Create a new toast template applying the parameters to the template.
+ *
+ * @param {string} id The ID to assign to this toast instance.
+ * @param {ToastType} type The type of toast to display.
+ * @param {ToastOptions} options The options to apply to the toast.
+ * @returns {TemplateResult} Toast template to render.
+ */
+const createToastHtml = (
+  id: string,
+  type: ToastType,
+  { title, message, hideCloseButton }: ToastOptions
+): TemplateResult => html`
+  <output
+    id=${id}
+    class="rk-toast"
+    role="status"
+    aria-live="polite">
+    <div class="rk-toast__inner-container">
+      <span class="rk-toast__icon material-symbols-sharp ${TOAST_ICON[type]}">check_circle</span>
+      <span class="rk-toast__text-container">
+        <span class="rk-toast__title-text">${title}</span>
+        <span class="rk-toast__text">${message}</span>
+      </span>
+      ${when(
+        !hideCloseButton,
+        () =>
+          html`
+            <span
+              class="rk-toast__close-button material-symbols-sharp"
+              aria-label="Close">
+              close
+            </span>
+          `
+      )}
+    </div>
+    <div class="rk-toast__border"></div>
+  </output>
+`;
 
-  static {
+class Toast {
+  #container: HTMLElement | undefined;
+
+  constructor() {
     let container = document.querySelector<HTMLElement>(`.${TOAST_CONTAINER_CLASS}`);
 
     if (!container) {
@@ -38,8 +73,8 @@ export abstract class Toast {
    *
    * @param options {ToastOptions} - Toast options.
    */
-  static error(options: ToastOptions): void {
-    this.#show(options, ToastType.error);
+  error(options: ToastOptions): void {
+    this.#show(ToastType.error, options);
   }
 
   /**
@@ -47,8 +82,8 @@ export abstract class Toast {
    *
    * @param options {ToastOptions} - Toast options.
    */
-  static info(options: ToastOptions): void {
-    this.#show(options, ToastType.info);
+  info(options: ToastOptions): void {
+    this.#show(ToastType.info, options);
   }
 
   /**
@@ -56,8 +91,8 @@ export abstract class Toast {
    *
    * @param options {ToastOptions} - Toast options.
    */
-  static success(options: ToastOptions): void {
-    this.#show(options, ToastType.success);
+  success(options: ToastOptions): void {
+    this.#show(ToastType.success, options);
   }
 
   /**
@@ -65,103 +100,41 @@ export abstract class Toast {
    *
    * @param options {ToastOptions} - Toast options.
    */
-  static warning(options: ToastOptions): void {
-    this.#show(options, ToastType.warning);
+  warning(options: ToastOptions): void {
+    this.#show(ToastType.warning, options);
   }
 
-  static #show(options: ToastOptions, type: ToastType): void {
-    setTimeout(async () => this.#startToast(options, type));
+  #show(type: ToastType, options: ToastOptions): void {
+    setTimeout(async () => this.#startToast(type, options));
   }
 
-  static async #startToast(options: ToastOptions, type: ToastType): Promise<void> {
-    const toast = this.#createToast(options, type);
-    this.#addToast(toast);
+  async #startToast(type: ToastType, options: ToastOptions): Promise<void> {
+    const id = `t${Date.now().toString()}`;
+    const template = createToastHtml(id, type, options);
 
-    return new Promise<void>(async (resolve) => {
-      await Promise.allSettled(toast.getAnimations().map((animation) => animation.finished));
+    this.#addToast(template);
+
+    return new Promise<void>(async resolve => {
+      const container = this.#container;
+      const toast = container.querySelector<HTMLElement>(`output#${id}`);
+
+      await Promise.allSettled(toast.getAnimations().map(animation => animation.finished));
+
       this.#closeToast(toast);
       resolve();
     });
   }
 
-  static #addToast(toast: HTMLOutputElement): void {
+  #addToast(template: TemplateResult): void {
     const { matches: motionOK } = window.matchMedia('(prefers-reduced-motion: no-preference)');
     const container = this.#container;
 
-    container.children.length && motionOK ? this.#flipToast(toast) : container.appendChild(toast);
-  }
-
-  static #createToast(options: ToastOptions, type: ToastType): HTMLOutputElement {
-    const toast = document.createElement('output');
-    const borderEl = this.#createBorderElement();
-    const iconEl = this.#createIconElement(type);
-    const messageEl = this.#createMessageElement(options);
-
-    toast.classList.add(TOAST_CLASS);
-    toast.classList.add(type);
-    toast.setAttribute('role', 'status');
-    toast.setAttribute('aria-live', 'polite');
-    toast.appendChild(borderEl);
-    toast.appendChild(iconEl);
-    toast.appendChild(messageEl);
-
-    if (!options.hideCloseButton) {
-      const closeButton = this.#createCloseButton();
-      closeButton.addEventListener('click', () => this.#closeToast(toast));
-      toast.appendChild(closeButton);
+    if (container.children.length && motionOK) {
+      this.#flipToast(null);
+      return;
     }
 
-    return toast;
-  }
-
-  static #createBorderElement(): HTMLDivElement {
-    const borderEl = document.createElement('div');
-
-    borderEl.classList.add(TOAST_BORDER_CLASS);
-
-    return borderEl;
-  }
-
-  static #createMessageElement(options: ToastOptions): HTMLSpanElement {
-    const messageEl = document.createElement('span');
-    const { message, title } = options;
-
-    messageEl.classList.add(TOAST_TEXT_CONTAINER_CLASS);
-
-    if (title) {
-      const titleEl = document.createElement('span', {});
-      titleEl.classList.add(TOAST_TITLE_TEXT_CLASS);
-      titleEl.innerText = title;
-      messageEl.appendChild(titleEl);
-    }
-
-    const textEl = document.createElement('span');
-    textEl.classList.add(TOAST_TEXT_CLASS);
-    textEl.innerText = message;
-    messageEl.appendChild(textEl);
-
-    return messageEl;
-  }
-
-  static #createIconElement(type: ToastType): HTMLSpanElement {
-    const iconEl = document.createElement('span');
-
-    iconEl.classList.add(TOAST_ICON_CLASS);
-    iconEl.classList.add(MATERIAL_ICON_CLASS);
-    iconEl.innerText = TOAST_ICON[type];
-
-    return iconEl;
-  }
-
-  static #createCloseButton(): HTMLSpanElement {
-    const button = document.createElement('span');
-
-    button.textContent = 'close';
-    button.classList.add(TOAST_CLOSE_BUTTON_CLASS);
-    button.classList.add(MATERIAL_ICON_CLASS);
-    button.setAttribute('aria-label', 'Close');
-
-    return button;
+    render(template, container);
   }
 
   /**
@@ -171,14 +144,15 @@ export abstract class Toast {
    *
    * @param toasts {HTMLOutputElement} - Toast element to be added to container.
    */
-  static #flipToast(toast: HTMLOutputElement): void {
+  #flipToast(template: TemplateResult): void {
     const container = this.#container;
 
     // first (initial state of element)
     const first = container.offsetHeight;
 
     // add new child to change container size
-    container.appendChild(toast);
+    // container.appendChild(toast);
+    render(template, container);
 
     // last (final state of element)
     const last = container.offsetHeight;
@@ -187,15 +161,26 @@ export abstract class Toast {
     const invert = last - first;
 
     // play animation
-    const animation = container.animate([{ transform: `translateY(${invert}px)` }, { transform: 'translateY(0)' }], {
-      duration: 150,
-      easing: Motion.decelerationEasing,
-    });
+    const animation = container.animate(
+      [
+        { transform: `translateY(${invert}px)` },
+        { transform: 'translateY(0)' },
+      ],
+      {
+        duration: 150,
+        easing: Motion.decelerationEasing,
+      }
+    );
 
     animation.startTime = document.timeline.currentTime;
   }
 
-  static #closeToast(toast: HTMLOutputElement): void {
+  #closeToast(toast: HTMLElement): void {
     this.#container.removeChild(toast);
   }
 }
+
+/**
+ * TODO: Change to lazy load instance.
+ */
+export default new Toast();

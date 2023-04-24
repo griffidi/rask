@@ -1,10 +1,10 @@
-import { GetUsersDocument, type User } from '#/types/graphql.js';
+import { GetUsersDocument, type User } from ':/types/graphql.js';
 import { Task } from '@lit-labs/task';
 import '@material/web/icon/icon.js';
 import type { TypeEvent } from '@rask/core/events/type-event.js';
 import { apolloQuery } from '@rask/graphql/decorators/apollo-query.js';
 import '@rask/web/button/button.js';
-import { Toast } from '@rask/web/notifications/toast.js';
+import toast from '@rask/web/notifications/toast.js';
 import '@rask/web/skeleton/skeleton.js';
 import { LitElement, html, type TemplateResult } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
@@ -108,7 +108,7 @@ export class UsersPage extends LitElement {
     try {
       return await this.query;
     } catch (e) {
-      setTimeout(async () => await Toast.error({ title: 'Error', message: 'Failed to loaded users.' }));
+      toast.error({ title: 'Error', message: 'Failed to loaded users.' });
       throw new Error();
     }
   }

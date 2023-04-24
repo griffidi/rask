@@ -62,7 +62,8 @@
     "[json]": {
       "editor.defaultFormatter": "esbenp.prettier-vscode",
       "editor.formatOnSave": true,
-      "editor.tabSize": 2
+      "editor.tabSize": 2,
+      "editor.rulers": [80]
     },
     "[jsonc]": {
       "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -176,6 +177,10 @@
     "editor.fontFamily": "Consolas, 'Courier New', monospacemo"
   },
   "extensions": {
-    "recommendations": ["esbenp.prettier-vscode", "dbaeumer.vscode-eslint", "vscode-icons-team.vscode-icons"]
+    "recommendations": [
+      "esbenp.prettier-vscode",
+      "dbaeumer.vscode-eslint",
+      "vscode-icons-team.vscode-icons"
+    ]
   }
 }

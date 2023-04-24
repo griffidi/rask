@@ -9,6 +9,7 @@
   },
   "type": "module",
   "exports": {
+    "./package.json": "./package.json",
     "./authentication/*": "./src/authentication/*.js",
     "./constants/*": "./src/constants/*.js",
     "./guards/*": "./src/guards/*.js",

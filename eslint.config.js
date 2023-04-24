@@ -19,6 +19,14 @@ const sharedRules = {
   ...ts.rules['stylistic-type-checked'],
   ...ts.rules['strict-type-checked'],
   ...prettier.rules,
+  'array-element-newline': [
+    'error',
+    'always',
+  ],
+  'arrow-parens': [
+    'error',
+    'as-needed',
+  ],
 };
 
 const sharedLitRules = {
@@ -66,8 +74,16 @@ const litConfig = {
 
 export default [
   {
-    files: ['api/src/**/*.ts', 'api/prisma/**/*.ts'],
-    ignoreFiles: ['api/src/prisma/generated'],
+    files: [
+      './tsconfig.json',
+      'tsconfig.*.json',
+    ],
+  },
+  {
+    files: [
+      'api/src/**/*.ts',
+      'api/prisma/**/*.ts',
+    ],
     languageOptions: {
       sourceType: 'module',
       ecmaVersion: 2022,

@@ -1,4 +1,4 @@
-import { GetEmployeesDocument, type Employee } from '#/types/graphql.js';
+import { GetEmployeesDocument, type Employee } from ':/types/graphql.js';
 import { Task } from '@lit-labs/task';
 import '@material/web/icon/icon.js';
 import { DateTime } from '@rask/core/common/i18n/date-time.js';
@@ -6,7 +6,7 @@ import { delay } from '@rask/core/reactivity/timer/delay.js';
 import { Timer } from '@rask/core/reactivity/timer/timer.js';
 import { apolloQuery } from '@rask/graphql/decorators/apollo-query.js';
 import '@rask/web/button/button.js';
-import { Toast } from '@rask/web/notifications/toast.js';
+import toast from '@rask/web/notifications/toast.js';
 import { scrollable } from '@rask/web/scrollable/scrollable.js';
 import '@rask/web/skeleton/skeleton-table.js';
 import type { TableRowSelectedEvent } from '@rask/web/table/lib/events.js';
@@ -108,7 +108,7 @@ export class EmployeesPage extends LitElement {
 
       return result;
     } catch {
-      Toast.error({ title: 'Error', message: 'Failed to loaded employees.' });
+      toast.error({ title: 'Error', message: 'Failed to loaded employees.' });
       throw new Error();
     }
   }

@@ -1,8 +1,8 @@
-import '#/components/nav/nav.js';
-import type { Nav } from '#/components/nav/nav.js';
-import '#/components/search/search.js';
-import '#/layout/footer/footer.js';
-import '#/layout/header/header.js';
+import ':/components/nav/nav.js';
+import type { Nav } from ':/components/nav/nav.js';
+import ':/components/search/search.js';
+import ':/layout/footer/footer.js';
+import ':/layout/header/header.js';
 import type { ApolloClient, NormalizedCacheObject } from '@apollo/client/core';
 import { provide } from '@lit-labs/context';
 import { useCache } from '@rask/core/cache/index.js';
