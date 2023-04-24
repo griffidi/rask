@@ -5,7 +5,6 @@ charset = utf-8
 end_of_line = lf
 indent_style = space
 insert_final_newline = true
-max_line_length = 120
 trim_trailing_whitespace = true
 
 [*.{js,ts}]
@@ -13,6 +12,7 @@ quote_type = single
 
 [*.{css,html,js,md,ts,yml}]
 indent_size = 2
+max_line_length = 120
 tab_width = 2
 
 [*.{html,js,md,ts}]
@@ -27,3 +27,6 @@ quote_type = double
 block_comment_start = /*
 block_comment = *
 block_comment_end = */
+
+[*.json]
+max_line_length = 80

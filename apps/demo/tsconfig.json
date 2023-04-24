@@ -1,12 +1,32 @@
 {
   "extends": ["../../tsconfig.base.json", "../../tsconfig.lit.json"],
   "compilerOptions": {
+    /*
+      TODO: look into moving settings from changing app.config.js to .env.
+      Then I can disable allowJs and look into setting emitDeclarationOnly to false.
+      I think this is needed to produce production output.
+    */
     "allowJs": true,
-    "rootDir": ".",
-    "useDefineForClassFields": false,
     "experimentalDecorators": true,
+    /*
+      TODO: not sure if emitDeclarationOnly=false and noEmit=true is the correct
+      configuration for this project.
+    */
+    "emitDeclarationOnly": false,
+    "noEmit": true,
+    "resolveJsonModule": true,
+    "rootDir": ".",
+    /*
+      TODO: This probably shouldn't be here b/c you won't be able to debug
+    */
+    "sourceMap": false,
+    /*
+      Even though this is set in tsconfig.lit.json, unless it is set
+      here the build tools (i.e. @web/dev-server) can't read it.
+    */
+    "useDefineForClassFields": false,
     "paths": {
-      "#/*": ["./src/*"],
+      ":/*": ["./src/*"],
       "@rask/core/*": ["../../packages/core/src/*"],
       "@rask/graphql/*": ["../../packages/graphql/src/*"],
       "@rask/identity/*": ["../../packages/identity/src/*"],

@@ -9,10 +9,8 @@
   },
   "type": "module",
   "exports": {
+    "./package.json": "./package.json",
     "./button/*": "./src/button/*",
-    "./client": {
-      "types": "./src/types/client.d.ts"
-    },
     "./command-palette/*": "./src/command-palette/*",
     "./list/*": "./src/list/*",
     "./menu/*": "./src/menu/*",
@@ -20,12 +18,15 @@
     "./navigation-drawer/*": "./src/navigation-drawer/*",
     "./navigation-item/*": "./src/navigation-item/*",
     "./notifications/*": "./src/notifications/*",
-    "./src/client/*": "./src/client/*",
     "./scrollable/*": "./src/scrollable/*",
     "./search/*": "./src/search/*",
     "./skeleton/*": "./src/skeleton/*",
     "./table/*": "./src/table/*",
-    "./text-field/*": "./src/text-field/*"
+    "./text-field/*": "./src/text-field/*",
+    "./client": {
+      "types": "./src/types/client.d.ts"
+    },
+    "./src/client/*": "./src/client/*"
   },
   "files": [
     "src/**/*.{map.js,js,css,d.ts}",

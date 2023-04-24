@@ -1,4 +1,4 @@
-import type { User } from '#/types/graphql.js';
+import type { User } from ':/types/graphql.js';
 
 export type UserEditCancelEventDetail = {};
 

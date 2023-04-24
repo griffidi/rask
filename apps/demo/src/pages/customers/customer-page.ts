@@ -1,9 +1,9 @@
-import { GetCustomerByIdDocument, type Customer } from '#/types/graphql.js';
+import { GetCustomerByIdDocument, type Customer } from ':/types/graphql.js';
 import { Task } from '@lit-labs/task';
 import '@material/web/textfield/outlined-text-field.js';
 import { apolloQuery } from '@rask/graphql/decorators/apollo-query.js';
 import '@rask/web/button/button.js';
-import { Toast } from '@rask/web/notifications/toast.js';
+import toast from '@rask/web/notifications/toast.js';
 import '@rask/web/skeleton/skeleton.js';
 import '@rask/web/text-field/text-field.js';
 import { LitElement, html, type TemplateResult } from 'lit';
@@ -70,7 +70,7 @@ export class CustomerPage extends LitElement {
     try {
       return await this.query;
     } catch (e) {
-      setTimeout(async () => await Toast.error({ title: 'Error', message: 'Failed to loaded customer.' }));
+      toast.error({ title: 'Error', message: 'Failed to loaded customer.' });
       throw new Error();
     }
   }

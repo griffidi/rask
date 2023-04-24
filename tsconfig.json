@@ -1,9 +1,6 @@
 {
-  "compilerOptions": {
-    "strict": true
-  },
+  "extends": "./tsconfig.base.json",
   "files": [],
-  "include": [],
   "references": [
     { "path": "./api" },
     { "path": "./apps/demo" },

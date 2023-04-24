@@ -1,4 +1,4 @@
-import '#/components/settings-menu/settings-menu.js';
+import ':/components/settings-menu/settings-menu.js';
 import { consume } from '@lit-labs/context';
 import '@material/web/icon/icon.js';
 import '@material/web/iconbutton/standard-icon-button.js';

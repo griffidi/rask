@@ -5,8 +5,16 @@
     "noEmit": true
   },
   "include": [
-    "apps/demo/src/**/*.ts",
-    "packages/core/src/**/*.ts",
-    "packages/web/src/**/*.ts",
+    "api/prisma/**/*.ts",
+    "api/src/**/*.ts",
+    "apps/*/src/**/*.ts",
+    "packages/*/src/**/*.ts"
+  ],
+  "exclude": [
+    "**/.cache/**/*",
+    "**/.next/**/*",
+    "**/build/**/*",
+    "**/dist/**/*",
+    "**/node_modules/**/*"
   ]
 }

@@ -9,7 +9,7 @@
   },
   "type": "module",
   "imports": {
-    "#/*": "./src/**/*.js"
+    ":/*": "./src/**/*.js"
   },
   "files": [
     "src/**/*.{map.js,js,css}",

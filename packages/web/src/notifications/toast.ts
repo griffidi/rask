@@ -1,9 +1,9 @@
+import '@material/web/';
 import { render, type TemplateResult } from 'lit';
 import { when } from 'lit/directives/when.js';
 import { html } from 'lit/static-html.js';
 import { Motion } from '../css/motion.js';
 import { ToastType, type ToastOptions } from './types.js';
-
 const TOAST_CONTAINER_CLASS = 'rk-toast__container';
 
 const TOAST_ICON: Record<ToastType, string> = {
@@ -13,31 +13,50 @@ const TOAST_ICON: Record<ToastType, string> = {
   [ToastType.warning]: 'warning',
 };
 
+/**
+ * Create a new toast template applying the parameters to the template.
+ *
+ * @param {string} id The ID to assign to this toast instance.
+ * @param {ToastType} type The type of toast to display.
+ * @param {ToastOptions} options The options to apply to the toast.
+ * @returns {TemplateResult} Toast template to render.
+ */
 const createToastHtml = (
   id: string,
   type: ToastType,
   { title, message, hideCloseButton }: ToastOptions
 ): TemplateResult => html`
-  <output id=${id} class="rk-toast" role="status" aria-live="polite">
-    <div class="rk-toast__border ${TOAST_ICON[type]}"></div>
-    <div class="rk-toast-container">
-      <span class="rk-toast__icon material-symbols-sharp">check_circle</span>
+  <output
+    id=${id}
+    class="rk-toast"
+    role="status"
+    aria-live="polite">
+    <div class="rk-toast__inner-container">
+      <span class="rk-toast__icon material-symbols-sharp ${TOAST_ICON[type]}">check_circle</span>
       <span class="rk-toast__text-container">
         <span class="rk-toast__title-text">${title}</span>
         <span class="rk-toast__text">${message}</span>
       </span>
+      ${when(
+        !hideCloseButton,
+        () =>
+          html`
+            <span
+              class="rk-toast__close-button material-symbols-sharp"
+              aria-label="Close">
+              close
+            </span>
+          `
+      )}
     </div>
-    ${when(
-      !hideCloseButton,
-      () => html` <span class="rk-toast__close-button material-symbols-sharp" aria-label="Close">close</span> `
-    )}
+    <div class="rk-toast__border"></div>
   </output>
 `;
 
-export default abstract class {
-  static #container: HTMLElement | undefined;
+class Toast {
+  #container: HTMLElement | undefined;
 
-  static {
+  constructor() {
     let container = document.querySelector<HTMLElement>(`.${TOAST_CONTAINER_CLASS}`);
 
     if (!container) {
@@ -54,7 +73,7 @@ export default abstract class {
    *
    * @param options {ToastOptions} - Toast options.
    */
-  static error(options: ToastOptions): void {
+  error(options: ToastOptions): void {
     this.#show(ToastType.error, options);
   }
 
@@ -63,7 +82,7 @@ export default abstract class {
    *
    * @param options {ToastOptions} - Toast options.
    */
-  static info(options: ToastOptions): void {
+  info(options: ToastOptions): void {
     this.#show(ToastType.info, options);
   }
 
@@ -72,7 +91,7 @@ export default abstract class {
    *
    * @param options {ToastOptions} - Toast options.
    */
-  static success(options: ToastOptions): void {
+  success(options: ToastOptions): void {
     this.#show(ToastType.success, options);
   }
 
@@ -81,32 +100,32 @@ export default abstract class {
    *
    * @param options {ToastOptions} - Toast options.
    */
-  static warning(options: ToastOptions): void {
+  warning(options: ToastOptions): void {
     this.#show(ToastType.warning, options);
   }
 
-  static #show(type: ToastType, options: ToastOptions): void {
+  #show(type: ToastType, options: ToastOptions): void {
     setTimeout(async () => this.#startToast(type, options));
   }
 
-  static async #startToast(type: ToastType, options: ToastOptions): Promise<void> {
+  async #startToast(type: ToastType, options: ToastOptions): Promise<void> {
     const id = `t${Date.now().toString()}`;
     const template = createToastHtml(id, type, options);
 
     this.#addToast(template);
 
-    return new Promise<void>(async (resolve) => {
+    return new Promise<void>(async resolve => {
       const container = this.#container;
       const toast = container.querySelector<HTMLElement>(`output#${id}`);
 
-      await Promise.allSettled(toast.getAnimations().map((animation) => animation.finished));
+      await Promise.allSettled(toast.getAnimations().map(animation => animation.finished));
 
       this.#closeToast(toast);
       resolve();
     });
   }
 
-  static #addToast(template: TemplateResult): void {
+  #addToast(template: TemplateResult): void {
     const { matches: motionOK } = window.matchMedia('(prefers-reduced-motion: no-preference)');
     const container = this.#container;
 
@@ -125,7 +144,7 @@ export default abstract class {
    *
    * @param toasts {HTMLOutputElement} - Toast element to be added to container.
    */
-  static #flipToast(template: TemplateResult): void {
+  #flipToast(template: TemplateResult): void {
     const container = this.#container;
 
     // first (initial state of element)
@@ -142,15 +161,26 @@ export default abstract class {
     const invert = last - first;
 
     // play animation
-    const animation = container.animate([{ transform: `translateY(${invert}px)` }, { transform: 'translateY(0)' }], {
-      duration: 150,
-      easing: Motion.decelerationEasing,
-    });
+    const animation = container.animate(
+      [
+        { transform: `translateY(${invert}px)` },
+        { transform: 'translateY(0)' },
+      ],
+      {
+        duration: 150,
+        easing: Motion.decelerationEasing,
+      }
+    );
 
     animation.startTime = document.timeline.currentTime;
   }
 
-  static #closeToast(toast: HTMLElement): void {
+  #closeToast(toast: HTMLElement): void {
     this.#container.removeChild(toast);
   }
 }
+
+/**
+ * TODO: Change to lazy load instance.
+ */
+export default new Toast();

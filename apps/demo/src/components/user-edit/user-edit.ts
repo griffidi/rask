@@ -1,4 +1,4 @@
-import type { User } from '#/types/graphql.js';
+import type { User } from ':/types/graphql.js';
 import '@material/web/icon/icon.js';
 import '@rask/web/button/button.js';
 import { LitElement, html, type TemplateResult } from 'lit';

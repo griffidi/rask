@@ -1,17 +1,11 @@
 {
   "compilerOptions": {
     "allowArbitraryExtensions": true,
-    "emitDeclarationOnly": true,
     "lib": ["ESNext", "DOM", "DOM.Iterable"],
     "moduleResolution": "bundler",
-    "useDefineForClassFields": false,
-    "types": ["lit"]
-    // "plugins": [
-    //   {
-    //     "name": "ts-lit-plugin",
-    //     "strict": true
-    //   }
-    // ]
+    "sourceMap": true,
+    "types": ["lit"],
+    "useDefineForClassFields": false
   },
   "files": [],
   "include": []

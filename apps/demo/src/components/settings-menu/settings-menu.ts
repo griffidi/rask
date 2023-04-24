@@ -1,4 +1,4 @@
-import { RouteTypes } from '#/router/route-types.js';
+import { RouteTypes } from ':/router/route-types.js';
 import { Task } from '@lit-labs/task';
 import '@material/web/switch/switch.js';
 import type { MdSwitch } from '@material/web/switch/switch.js';
