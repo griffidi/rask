@@ -1,31 +1,24 @@
-:host {
-  display: flex;
-  /* justify-content: center;
-  align-items: center; */
-  inline-size: 100%;
-  block-size: calc(100vh - var(--rk-site-header-height));
+* {
+  box-sizing: border-box;
 }
 
-h1 {
-  position: relative;
-  font-size: 58px;
-  padding-block: 30px;
-
-  &::before {
-    content: "";
-    position: absolute;
-    top: 100%;
-    width: 100%;
-    left: 0;
-    height: 8px;
-    border-radius: 0.625rem;
-    background: linear-gradient(111.3deg, #9c27b0 9.6%, #5a14ff 93.6%);
-  }
+:host {
+  display: block;
+  block-size: calc(100vh - var(--rk-site-header-height));
+  padding-inline: 20px;
+  padding-block: 20px;
 }
 
 .container {
-  inline-size: 600px;
-  /* block-size: 100%; */
-  padding-inline: 20px;
-  padding-block: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  inline-size: 100%;
+  column-gap: 1em;
+  container: accordion / inline-size;
+}
+
+@container (width < 800px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
 }

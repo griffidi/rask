@@ -16,6 +16,8 @@
 details {
   --_details-block-size: auto;
   --_button-toggle-rotate: 0deg;
+  --_details-padding-inline: 20px;
+  --_details-padding-block: 10px;
 
   appearance: none;
   outline: none;
@@ -27,7 +29,7 @@ details {
   font-size: var(--_details-font-size);
   font-weight: var(--_details-font-weight);
 
-  &[open] {
+  &[aria-expanded="true"] {
     --_button-toggle-rotate: 90deg;
   }
 
@@ -42,8 +44,8 @@ details {
     justify-content: space-between;
     align-items: center;
     min-block-size: 22px;
-    padding-inline: 10px;
-    padding-block: 10px;
+    padding-inline: var(--_details-padding-inline);
+    padding-block: var(--_details-padding-block);
     list-style: none;
     font-size: var(--_summary-font-size);
     font-weight: var(--_summary-font-weight);
@@ -56,6 +58,6 @@ details {
 }
 
 .content {
-  padding-inline: 10px;
-  padding-block: 10px;
+  padding-inline: var(--_details-padding-inline);
+  padding-block: var(--_details-padding-inline);
 }

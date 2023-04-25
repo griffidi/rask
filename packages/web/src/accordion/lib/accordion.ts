@@ -48,7 +48,7 @@ export class Accordion extends LitElement {
       this.#close();
     }
 
-    this.expanded = String(details.open) as ARIAExpanded;
+    this.expanded = this.expanded === 'true' ? 'false' : 'true';
     // TODO: this is not working
     // details.focus();
   }
