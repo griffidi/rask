@@ -10,7 +10,7 @@ export class TableRow extends LitElement {
   static override styles = css;
 
   @property({ type: Boolean, reflect: true }) header = false;
-  @property({ reflect: true }) override role = 'row';
+  @property({ reflect: true }) type = 'row';
 
   override connectedCallback(): void {
     super.connectedCallback();
@@ -23,7 +23,9 @@ export class TableRow extends LitElement {
   }
 
   override render(): TemplateResult {
-    return html`<slot></slot>`;
+    return html`
+      <slot></slot>
+    `;
   }
 
   #handleRowClick(e: MouseEvent): void {

@@ -14,22 +14,24 @@ export class ListItemLink extends ListItemEl {
   @property() target!: string;
 
   protected override renderListItem(content: unknown) {
-    return html` <a
-      tabindex=${this.disabled ? -1 : this.itemTabIndex}
-      role=${this.role}
-      aria-selected=${this.ariaSelected || nothing}
-      aria-checked=${this.ariaChecked || nothing}
-      class="list-item ${classMap(this.getRenderListItemClasses())}"
-      href=${this.href}
-      target=${(this.target as LinkTarget) || nothing}
-      @pointerdown=${this.onPointerdown}
-      @focus=${this.onFocus}
-      @blur=${this.onBlur}
-      @click=${this.onClick}
-      @pointerenter=${this.onPointerenter}
-      @pointerleave=${this.onPointerleave}
-      @keydown=${this.onKeydown}
-      >${content}
-    </a>`;
+    return html`
+      <a
+        tabindex=${this.disabled ? -1 : this.itemTabIndex}
+        role=${this.type}
+        aria-selected=${this.ariaSelected || nothing}
+        aria-checked=${this.ariaChecked || nothing}
+        class="list-item ${classMap(this.getRenderListItemClasses())}"
+        href=${this.href}
+        target=${(this.target as LinkTarget) || nothing}
+        @pointerdown=${this.onPointerdown}
+        @focus=${this.onFocus}
+        @blur=${this.onBlur}
+        @click=${this.onClick}
+        @pointerenter=${this.onPointerenter}
+        @pointerleave=${this.onPointerleave}
+        @keydown=${this.onKeydown}>
+        ${content}
+      </a>
+    `;
   }
 }

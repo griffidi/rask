@@ -7,7 +7,7 @@ import css from './table.css' assert { type: 'css' };
 export class Table extends LitElement {
   static override styles = css;
 
-  @property({ reflect: true }) override role = 'table';
+  @property({ reflect: true }) type = 'table';
   @property({ type: Boolean }) selectable = false;
 
   @queryAssignedElements({ selector: 'rk-table-row:not([header])', flatten: true }) rows: TableRow[];
@@ -22,7 +22,9 @@ export class Table extends LitElement {
   }
 
   override render(): TemplateResult {
-    return html` <slot></slot> `;
+    return html`
+      <slot></slot>
+    `;
   }
 
   async #handleInternalRowSelected(e: Event): Promise<void> {
@@ -30,7 +32,7 @@ export class Table extends LitElement {
 
     const { row } = (e as TableInternalRowSelectedEvent)['detail'];
 
-    const prevRowSelected = this.rows.find((r) => r.getAttribute('aria-selected') === 'true');
+    const prevRowSelected = this.rows.find(r => r.getAttribute('aria-selected') === 'true');
 
     if (prevRowSelected) {
       prevRowSelected.removeAttribute('selected');
@@ -50,7 +52,7 @@ export class Table extends LitElement {
 
     const { row } = (e as TableInternalRowSelectedEvent)['detail'];
 
-    const prevRowSelected = this.rows.find((r) => r.getAttribute('aria-selected') === 'true');
+    const prevRowSelected = this.rows.find(r => r.getAttribute('aria-selected') === 'true');
 
     if (prevRowSelected) {
       prevRowSelected.removeAttribute('selected');

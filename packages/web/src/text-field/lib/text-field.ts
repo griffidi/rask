@@ -1,7 +1,6 @@
 import { redispatchEvent } from '@material/web/controller/events.js';
 import { FormController, getFormValue } from '@material/web/controller/form-controller.js';
 import { stringConverter } from '@material/web/controller/string-converter.js';
-import { ariaProperty } from '@material/web/decorators/aria-property.js';
 import { type ARIAAutoComplete, type ARIAExpanded, type ARIARole } from '@material/web/types/aria.js';
 import { LitElement, html, nothing, type PropertyValues } from 'lit';
 import { property, query, state } from 'lit/decorators.js';
@@ -33,118 +32,35 @@ export abstract class TextField extends LitElement {
   static override styles = css;
 
   @property({ type: Boolean, reflect: true }) disabled = false;
-  /**
-   * Gets or sets whether or not the text field is in a visually invalid state.
-   *
-   * Calling `reportValidity()` will automatically update `error`.
-   */
   @property({ type: Boolean, reflect: true }) error = false;
-  /**
-   * The error message that replaces supporting text when `error` is true. If
-   * `errorText` is an empty string, then the supporting text will continue to
-   * show.
-   *
-   * Calling `reportValidity()` will automatically update `errorText` to the
-   * native `validationMessage`.
-   */
-  @property({ type: String }) errorText = '';
-  @property({ type: String }) label?: string;
+  @property() errorText = '';
+  @property() label?: string;
   @property({ type: Boolean, reflect: true }) required = false;
-  /**
-   * The current value of the text field. It is always a string.
-   *
-   * This is equal to `defaultValue` before user input.
-   */
-  @property({ type: String }) value = '';
-  /**
-   * The default value of the text field. Before user input, changing the
-   * default value will update `value` as well.
-   *
-   * When the text field is reset, its `value` will be set to this default
-   * value.
-   */
-  @property({ type: String }) defaultValue = '';
-  /**
-   * Override the input text CSS `direction`. Useful for RTL languages that use
-   * LTR notation for fractions.
-   */
-  @property({ type: String }) textDirection = '';
-
-  // ARIA
-  @property({ type: String, attribute: 'data-aria-autocomplete', noAccessor: true })
-  @ariaProperty // tslint:disable-line:no-new-decorators
-  override ariaAutoComplete: ARIAAutoComplete | null = null;
-
-  @property({ type: String, attribute: 'data-aria-controls', noAccessor: true })
-  @ariaProperty // tslint:disable-line:no-new-decorators
-  ariaControls: string | null = null;
-
-  @property({ type: String, attribute: 'data-aria-activedescendant', noAccessor: true })
-  @ariaProperty // tslint:disable-line:no-new-decorators
-  ariaActiveDescendant: string | null = null;
-
-  @property({ type: String, attribute: 'data-aria-expanded', noAccessor: true })
-  @ariaProperty // tslint:disable-line:no-new-decorators
-  override ariaExpanded: ARIAExpanded | null = null;
-
-  /**
-   * The `aria-label` of the text field's input.
-   */
-  @property({ type: String, attribute: 'data-aria-label', noAccessor: true })
-  @ariaProperty // tslint:disable-line:no-new-decorators
-  override ariaLabel!: string;
-
-  @property({ type: String, attribute: 'data-role', noAccessor: true })
-  @ariaProperty // tslint:disable-line:no-new-decorators
-  override role: ARIARole | null = null;
+  @property() value = '';
+  @property() defaultValue = '';
+  @property() textDirection = '';
+  @property() override ariaAutoComplete: ARIAAutoComplete | null = null;
+  @property() ariaControls: string | null = null;
+  @property() ariaActiveDescendant: string | null = null;
+  @property() override ariaExpanded: ARIAExpanded | null = null;
+  @property() override ariaLabel!: string;
+  @property() typeRole: ARIARole | null = null;
+  @property({ reflect: true, converter: stringConverter }) name = '';
+  @property() max = '';
+  @property({ type: Number }) maxLength = -1;
+  @property() min = '';
+  @property({ type: Number }) minLength = -1;
+  @property() pattern = '';
+  @property({ reflect: true, converter: stringConverter }) placeholder = '';
 
   // FormElement
   get form() {
     return this.closest('form');
   }
 
-  @property({ type: String, reflect: true, converter: stringConverter }) name = '';
-
   [getFormValue]() {
     return this.value;
   }
-
-  // <input> properties
-  /**
-   * Defines the greatest value in the range of permitted values.
-   *
-   * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#max
-   */
-  @property({ type: String }) max = '';
-  /**
-   * The maximum number of characters a user can enter into the text field. Set
-   * to -1 for none.
-   *
-   * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#maxlength
-   */
-  @property({ type: Number }) maxLength = -1;
-  /**
-   * Defines the most negative value in the range of permitted values.
-   *
-   * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#min
-   */
-  @property({ type: String }) min = '';
-  /**
-   * The minimum number of characters a user can enter into the text field. Set
-   * to -1 for none.
-   *
-   * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#minlength
-   */
-  @property({ type: Number }) minLength = -1;
-  /**
-   * A regular expression that the text field's value must match to pass
-   * constraint validation.
-   *
-   * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#pattern
-   */
-  @property({ type: String }) pattern = '';
-  @property({ type: String, reflect: true, converter: stringConverter })
-  placeholder = '';
 
   /**
    * Indicates whether or not a user should be able to edit the text field's
@@ -190,8 +106,8 @@ export abstract class TextField extends LitElement {
    *
    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#step
    */
-  @property({ type: String }) step = '';
-  @property({ type: String, reflect: true }) type: TextFieldType | UnsupportedTextFieldType = 'text';
+  @property() step = '';
+  @property({ reflect: true }) type: TextFieldType | UnsupportedTextFieldType = 'text';
 
   /**
    * Returns the native validation error message that would be displayed upon
@@ -511,30 +427,31 @@ export abstract class TextField extends LitElement {
 
     // TODO(b/243805848): remove `as unknown as number` once lit analyzer is
     // fixed
-    return html`<input
-      style=${styleMap(style)}
-      aria-activedescendant=${this.ariaActiveDescendant || nothing}
-      aria-autocomplete=${this.ariaAutoComplete || nothing}
-      aria-controls=${this.ariaControls || nothing}
-      aria-expanded=${this.ariaExpanded || nothing}
-      aria-invalid=${this.#hasError}
-      aria-label=${this.ariaLabel || this.label || nothing}
-      ?disabled=${this.disabled}
-      max=${(this.max || nothing) as unknown as number}
-      maxlength=${this.maxLength > -1 ? this.maxLength : nothing}
-      min=${(this.min || nothing) as unknown as number}
-      minlength=${this.minLength > -1 ? this.minLength : nothing}
-      pattern=${this.pattern || nothing}
-      role=${this.role || nothing}
-      ?readonly=${this.readOnly}
-      ?required=${this.required}
-      step=${(this.step || nothing) as unknown as number}
-      type=${this.type}
-      .value=${live(this.#getInputValue())}
-      @change=${this.#redispatchEvent}
-      @input=${this.#handleInput}
-      @select=${this.#redispatchEvent}
-    />`;
+    return html`
+      <input
+        style=${styleMap(style)}
+        aria-activedescendant=${this.ariaActiveDescendant || nothing}
+        aria-autocomplete=${this.ariaAutoComplete || nothing}
+        aria-controls=${this.ariaControls || nothing}
+        aria-expanded=${this.ariaExpanded || nothing}
+        aria-invalid=${this.#hasError}
+        aria-label=${this.ariaLabel || this.label || nothing}
+        ?disabled=${this.disabled}
+        max=${(this.max || nothing) as unknown as number}
+        maxlength=${this.maxLength > -1 ? this.maxLength : nothing}
+        min=${(this.min || nothing) as unknown as number}
+        minlength=${this.minLength > -1 ? this.minLength : nothing}
+        pattern=${this.pattern || nothing}
+        role=${this.typeRole || nothing}
+        ?readonly=${this.readOnly}
+        ?required=${this.required}
+        step=${(this.step || nothing) as unknown as number}
+        type=${this.type}
+        .value=${live(this.#getInputValue())}
+        @change=${this.#redispatchEvent}
+        @input=${this.#handleInput}
+        @select=${this.#redispatchEvent} />
+    `;
   }
 
   #getInputValue() {

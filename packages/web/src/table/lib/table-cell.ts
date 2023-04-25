@@ -7,12 +7,15 @@ import sharedCss from './table-cell-shared.css' assert { type: 'css' };
 import css from './table-cell.css' assert { type: 'css' };
 
 export class TableCell extends LitElement {
-  static override styles = [sharedCss, css];
+  static override styles = [
+    sharedCss,
+    css,
+  ];
 
   @property({ type: Boolean, reflect: true }) edit = false;
   @property() editIcon = 'edit';
 
-  @property({ reflect: true }) override role = 'cell';
+  @property({ reflect: true }) type = 'cell';
 
   override render(): TemplateResult {
     return html`
@@ -25,13 +28,17 @@ export class TableCell extends LitElement {
   }
 
   #renderSlot(): TemplateResult {
-    return html`<slot></slot>`;
+    return html`
+      <slot></slot>
+    `;
   }
 
   #renderEdit(): TemplateResult {
-    return html` <div @click=${this.#handleEditClick}>
-      <md-icon>${this.editIcon}</md-icon>
-    </div>`;
+    return html`
+      <div @click=${this.#handleEditClick}>
+        <md-icon>${this.editIcon}</md-icon>
+      </div>
+    `;
   }
 
   #handleEditClick(e: MouseEvent): void {

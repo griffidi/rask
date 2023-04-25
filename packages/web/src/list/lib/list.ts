@@ -1,4 +1,3 @@
-import { ariaProperty } from '@material/web/decorators/aria-property.js';
 import { type ARIARole } from '@material/web/types/aria.js';
 import { LitElement, html, type TemplateResult } from 'lit';
 import { property, query, queryAssignedElements } from 'lit/decorators.js';
@@ -12,18 +11,11 @@ export class List extends LitElement {
   static override shadowRootOptions: ShadowRootInit = { mode: 'open', delegatesFocus: true };
   static override styles = css;
 
-  @ariaProperty
-  @property({ attribute: 'data-aria-label', noAccessor: true })
-  override ariaLabel!: string;
-
-  @ariaProperty
-  @property({ attribute: 'data-aria-role', noAccessor: true })
-  ariaRole: ARIARole = 'list';
-
+  @property() override ariaLabel!: string;
   @property({ type: Number }) listTabIndex = 0;
+  @property() type: ARIARole = 'list';
 
-  @queryAssignedElements({ flatten: true, selector: '[rk-list-item]' })
-  items!: ListItem[];
+  @queryAssignedElements({ flatten: true, selector: '[rk-list-item]' }) items!: ListItem[];
 
   @query('rk-list') listRoot!: HTMLElement;
 
@@ -36,17 +28,18 @@ export class List extends LitElement {
       <ul
         ariaLabel=${this.ariaLabel}
         class="rk-list ${classMap(this.getRenderListClasses())}"
-        role=${this.ariaRole}
+        role=${this.type}
         tabindex=${this.listTabIndex}
-        @keydown=${this.#handleKeydown}
-      >
+        @keydown=${this.#handleKeydown}>
         ${this.renderContent()}
       </ul>
     `;
   }
 
   protected renderContent(): TemplateResult {
-    return html` <span><slot @click=${(e: Event) => e.stopPropagation()}> </slot> </span> `;
+    return html`
+      <span><slot @click=${(e: Event) => e.stopPropagation()}></slot></span>
+    `;
   }
 
   protected getRenderListClasses(): ClassInfo {
