@@ -1,4 +1,3 @@
-import { ariaProperty } from '@material/web/decorators/aria-property.js';
 import { type ARIARole } from '@material/web/types/aria.js';
 import { LitElement, html, nothing, type PropertyValues, type TemplateResult } from 'lit';
 import { property, query } from 'lit/decorators.js';
@@ -19,24 +18,15 @@ export class ListItemEl extends LitElement implements ListItem {
 
   #isFirstUpdate = true;
 
-  @ariaProperty
-  @property({ attribute: 'data-role', noAccessor: true })
-  ariaRole: ARIARole = 'listitem';
-
-  @ariaProperty
-  @property({ attribute: 'data-aria-selected', noAccessor: true })
-  override ariaSelected!: 'false' | 'true';
-
-  @ariaProperty
-  @property({ attribute: 'data-aria-checked', noAccessor: true })
-  override ariaChecked!: 'false' | 'true';
-
+  @property() override ariaSelected!: 'false' | 'true';
+  @property() override ariaChecked!: 'false' | 'true';
   @property({ type: Boolean, reflect: true }) active = false;
   @property({ type: Boolean, reflect: true }) disabled = false;
   @property() headline = '';
   @property({ type: Number }) itemTabIndex = -1;
   @property({ type: Boolean, attribute: 'rk-list-item', reflect: true }) isListItem = true;
   @property() supportingText = '';
+  @property() type: ARIARole = 'listitem';
 
   /**
    * Only meant to be overridden by subclassing and not by the user. This is
@@ -94,7 +84,7 @@ export class ListItemEl extends LitElement implements ListItem {
         aria-selected=${this.ariaSelected || nothing}
         aria-checked=${this.ariaChecked || nothing}
         class="list-item ${classMap(this.getRenderListItemClasses())}"
-        role=${this.role}
+        role=${this.type}
         tabindex=${this.disabled ? -1 : this.itemTabIndex}
         @pointerdown=${this.onPointerdown}
         @focus=${this.onFocus}
@@ -102,15 +92,16 @@ export class ListItemEl extends LitElement implements ListItem {
         @click=${this.onClick}
         @pointerenter=${this.onPointerenter}
         @pointerleave=${this.onPointerleave}
-        @keydown=${this.onKeydown}
-      >
+        @keydown=${this.onKeydown}>
         ${content}
       </li>
     `;
   }
 
   protected renderStart(): TemplateResult {
-    return html` <slot name="start"></slot> `;
+    return html`
+      <slot name="start"></slot>
+    `;
   }
 
   protected renderBody(): TemplateResult {
@@ -123,11 +114,15 @@ export class ListItemEl extends LitElement implements ListItem {
   }
 
   protected renderSupportingText(): TemplateResult {
-    return html` <span class="supporting-text">${this.supportingText}</span> `;
+    return html`
+      <span class="supporting-text">${this.supportingText}</span>
+    `;
   }
 
   protected renderEnd(): TemplateResult {
-    return html` <slot name="end"></slot> `;
+    return html`
+      <slot name="end"></slot>
+    `;
   }
 
   protected getRenderListItemClasses(): ClassInfo {

@@ -5,7 +5,10 @@ import sharedCss from './table-cell-shared.css' assert { type: 'css' };
 import css from './table-header-cell.css' assert { type: 'css' };
 
 export class TableHeaderCell extends LitElement {
-  static override styles = [sharedCss, css];
+  static override styles = [
+    sharedCss,
+    css,
+  ];
 
   @property({ type: Object }) align: 'center' | 'left' | 'right' = 'left';
   @property({ type: Boolean, reflect: true }) add = false;
@@ -13,7 +16,7 @@ export class TableHeaderCell extends LitElement {
   @property({ type: Boolean, reflect: true }) edit = false;
   @property({ type: Number }) minWidth: number | undefined;
   @property({ type: Number }) width = 100;
-  @property({ reflect: true }) override role = 'columnheader';
+  @property({ reflect: true }) type = 'columnheader';
 
   override render(): TemplateResult {
     return html`
@@ -26,12 +29,16 @@ export class TableHeaderCell extends LitElement {
   }
 
   #renderSlot(): TemplateResult {
-    return html`<slot></slot>`;
+    return html`
+      <slot></slot>
+    `;
   }
 
   #renderAdd(): TemplateResult {
-    return html` <div>
-      <md-icon>${this.addIcon}</md-icon>
-    </div>`;
+    return html`
+      <div>
+        <md-icon>${this.addIcon}</md-icon>
+      </div>
+    `;
   }
 }
