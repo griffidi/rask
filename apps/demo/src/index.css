@@ -17,6 +17,30 @@ article {
   grid-row: 2;
 }
 
-/* app-footer {
-  grid-row: 3;
-} */
+#route-outlet > .leaving {
+  animation: 0.2s fadeOut ease-in;
+}
+
+#route-outlet > .entering {
+  animation: 0.6 fadeIn linear;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
