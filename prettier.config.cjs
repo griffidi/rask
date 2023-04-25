@@ -16,4 +16,13 @@ module.exports = {
   trailingComma: 'es5',
   useTabs: false,
   plugins: ['prettier-plugin-multiline-arrays'],
+
+  overrides: [
+    {
+      files: '*.css',
+      options: {
+        singleQuote: false,
+      },
+    },
+  ],
 };

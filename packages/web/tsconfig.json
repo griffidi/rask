@@ -1,5 +1,8 @@
 {
-  "extends": ["../../tsconfig.base.json", "../../tsconfig.lit.json"],
+  "extends": [
+    "../../tsconfig.base.json",
+    "../../tsconfig.lit.json"
+  ],
   "compilerOptions": {
     "rootDir": ".",
     "paths": {
@@ -7,6 +10,9 @@
     }
   },
   "include": ["src/**/*.ts"],
-  "exclude": ["dist", "node_modules"],
+  "exclude": [
+    "dist",
+    "node_modules"
+  ],
   "references": [{ "path": "../core" }]
 }

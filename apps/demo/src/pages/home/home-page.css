@@ -1,12 +1,12 @@
 :host {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  /* justify-content: center;
+  align-items: center; */
   inline-size: 100%;
   block-size: calc(100vh - var(--rk-site-header-height));
 }
 
-span {
+h1 {
   position: relative;
   font-size: 58px;
   padding-block: 30px;
@@ -23,6 +23,9 @@ span {
   }
 }
 
-rk-progress-bar {
-  /* inline-size: 300px; */
+.container {
+  inline-size: 600px;
+  /* block-size: 100%; */
+  padding-inline: 20px;
+  padding-block: 20px;
 }

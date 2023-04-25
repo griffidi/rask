@@ -50,13 +50,14 @@ export class NavigationDrawer extends LitElement {
     const ariaHidden = !this.opened ? 'true' : 'false';
 
     return html`
-      <div class="scrim ${classMap(this.getScrimClasses())}" @click=${this.#closeDrawer}></div>
+      <div
+        class="scrim ${classMap(this.getScrimClasses())}"
+        @click=${this.#closeDrawer}></div>
       <aside
         role="dialog"
         aria-expanded="${ariaExpanded}"
         aria-hidden="${ariaHidden}"
-        class=${classMap(this.getDrawerClasses())}
-      >
+        class=${classMap(this.getDrawerClasses())}>
         ${this.renderNav()} ${this.renderFooter()}
       </aside>
     `;
@@ -71,17 +72,27 @@ export class NavigationDrawer extends LitElement {
       <nav>
         <h4>
           ${this.headline}
-          <md-standard-icon-button @click=${this.#closeDrawer}>menu_open</md-standard-icon-button>
+          <md-standard-icon-button
+            tabindex="0"
+            @click=${this.#closeDrawer}>
+            menu_open
+          </md-standard-icon-button>
         </h4>
-        ${map(this.items, (item) => {
-          return html` <rk-navigation-item .item=${item} @click=${this.#handleItemClicked}></rk-navigation-item> `;
+        ${map(this.items, item => {
+          return html`
+            <rk-navigation-item
+              .item=${item}
+              @click=${this.#handleItemClicked}></rk-navigation-item>
+          `;
         })}
       </nav>
     `;
   }
 
   protected renderFooter(): TemplateResult {
-    return html`<footer></footer>`;
+    return html`
+      <footer></footer>
+    `;
     //   if (isEmpty(this.footerItems)) {
     //     return html``;
     //   }
@@ -133,6 +144,7 @@ export class NavigationDrawer extends LitElement {
 
   #openDrawer(): void {
     this.opened = true;
+    this.focus();
   }
 
   #handleItemClicked(): void {

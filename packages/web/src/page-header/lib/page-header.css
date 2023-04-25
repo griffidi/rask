@@ -1,0 +1,27 @@
+header {
+  --_header-height: 60px;
+  --_header-padding-inline: 15px;
+
+  z-index: 1;
+  position: sticky;
+  display: flex;
+  flex: 0 0 var(--_header-height);
+  justify-content: space-between;
+  align-items: center;
+  inset-block-start: 0;
+  inset-inline: 0;
+  inline-size: 100%;
+  padding-inline: calc(var(--_container-padding) + var(--_header-padding-inline));
+  border-block-end: 1px solid var(--rk-border-color);
+  backdrop-filter: blur(13px);
+}
+
+slot[name="headline"] {
+  font-size: var(--md-sys-typescale-title-large-size);
+  font-weight: var(--md-sys-typescale-title-large-weight);
+  line-height: var(--md-sys-typescale-title-large-line-height);
+  background-image: var(--md-sy-color-gradient-purple-blue);
+  background-image: linear-gradient(to right, #a532e7, #5a14ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

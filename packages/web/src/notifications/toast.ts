@@ -1,4 +1,3 @@
-import '@material/web/';
 import { render, type TemplateResult } from 'lit';
 import { when } from 'lit/directives/when.js';
 import { html } from 'lit/static-html.js';
