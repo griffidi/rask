@@ -4,6 +4,7 @@ export default [
   {
     path: '/',
     name: 'home',
+    animate: true,
     component: 'app-home-page',
     action: async () => {
       await import('../pages/home/home-page.js');
@@ -12,6 +13,7 @@ export default [
   {
     path: '/login',
     name: 'login',
+    animate: true,
     component: 'app-login-page',
     action: async () => {
       await import('../pages/login/login-page.js');
@@ -20,6 +22,7 @@ export default [
   {
     path: '/documents',
     name: 'documents',
+    animate: true,
     component: 'app-documents-page',
     action: async () => {
       await import('../pages/documents/documents-page.js');
@@ -28,6 +31,7 @@ export default [
   {
     path: '/customers',
     name: 'customers',
+    animate: true,
     children: [
       {
         path: '/',
@@ -48,6 +52,7 @@ export default [
   {
     path: '/employees',
     name: 'employees',
+    animate: true,
     children: [
       {
         path: '/',
@@ -68,6 +73,7 @@ export default [
   {
     path: '/users',
     name: 'users',
+    animate: true,
     children: [
       {
         path: '/',
@@ -88,6 +94,7 @@ export default [
   {
     path: '/settings',
     name: 'settings',
+    animate: true,
     component: 'app-settings-page',
     action: async () => {
       await import('../pages/settings/settings-page.js');
@@ -95,6 +102,7 @@ export default [
   },
   {
     path: '(.*)',
+    animate: true,
     component: 'app-page-not-found',
     action: async () => {
       await import('../pages/page-not-found/page-not-found.js');

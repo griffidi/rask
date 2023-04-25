@@ -70,7 +70,7 @@ export class Index extends LitElement {
     return html`
       <main role="main">
         <app-header @menu-clicked=${this.#showDrawer}></app-header>
-        <article><output></output></article>
+        <article><output id="route-outlet"></output></article>
       </main>
       <app-nav ${ref(this.#nav)}></app-nav>
       <app-search></app-search>
