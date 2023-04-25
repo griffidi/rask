@@ -9,12 +9,12 @@
   },
   "type": "module",
   "exports": {
-    "./package.json": "./package.json",
     "./authentication/*": "./src/authentication/*.js",
     "./constants/*": "./src/constants/*.js",
     "./guards/*": "./src/guards/*.js",
     "./services/*": "./src/services/*.js",
-    "./user/*": "./src/user/*.js"
+    "./user/*": "./src/user/*.js",
+    "./package.json": "./package.json"
   },
   "files": [
     "src/**/*.{map.js,js,css,dt.t}",

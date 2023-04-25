@@ -9,7 +9,6 @@
   },
   "type": "module",
   "exports": {
-    "./package.json": "./package.json",
     "./cache/*": "./src/cache/*",
     "./common/*": "./src/common/*",
     "./crypto/*": "./src/crypto/*",
@@ -19,7 +18,8 @@
     "./identity/*": "./src/identity/*",
     "./reactivity/*": "./src/reactivity/*",
     "./types/*": "./src/types/*",
-    "./validation/*": "./src/validation/*"
+    "./validation/*": "./src/validation/*",
+    "./package.json": "./package.json"
   },
   "files": [
     "src/**/*.{map.js,js,d.ts}",

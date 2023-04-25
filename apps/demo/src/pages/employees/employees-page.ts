@@ -42,12 +42,19 @@ export class EmployeesPage extends LitElement {
       <div ${scrollable()}>
         <header>
           <span class="title">Employees</span>
-          <rk-button filled blue>Add Employee</rk-button>
+          <rk-button
+            filled
+            blue>
+            Add Employee
+          </rk-button>
         </header>
         ${this.#getEmployees.render({
           pending: () => this.#renderSkeleton(),
-          complete: (employees) => this.#renderEmployees(employees),
-          error: () => html`<h1>No Data</h1>`,
+          complete: employees => this.#renderEmployees(employees),
+          error: () =>
+            html`
+              <h1>No Data</h1>
+            `,
         })}
       </div>
     `;
@@ -57,7 +64,9 @@ export class EmployeesPage extends LitElement {
     this.#employees = employees;
 
     return html`
-      <rk-table selectable @row-selected=${this.#handleTableRowSelected}>
+      <rk-table
+        selectable
+        @row-selected=${this.#handleTableRowSelected}>
         <rk-table-row header>
           <rk-table-header-cell>First Name</rk-table-header-cell>
           <rk-table-header-cell>Last Name</rk-table-header-cell>
@@ -73,7 +82,9 @@ export class EmployeesPage extends LitElement {
   }
 
   #renderRows(employees: ReadonlyArray<Readonly<Employee>>): TemplateResult {
-    return html` ${map(employees, (e) => this.#renderRow(e))} `;
+    return html`
+      ${map(employees, e => this.#renderRow(e))}
+    `;
   }
 
   #renderRow(e: Employee): TemplateResult {
@@ -88,7 +99,7 @@ export class EmployeesPage extends LitElement {
             <rk-table-cell>${e.phone}</rk-table-cell>
             <rk-table-cell>${e.jobTitle}</rk-table-cell>
             <rk-table-cell>${DateTime.toISODate(e.dateStarted)}</rk-table-cell>
-            <rk-table-cell edit> </rk-table-cell>
+            <rk-table-cell edit></rk-table-cell>
           </rk-table-row>
         `
       )}
@@ -96,7 +107,11 @@ export class EmployeesPage extends LitElement {
   }
 
   #renderSkeleton(): TemplateResult {
-    return html`<rk-skeleton-table rows="20" columns="7"></rk-skeleton-table> `;
+    return html`
+      <rk-skeleton-table
+        rows="20"
+        columns="7"></rk-skeleton-table>
+    `;
   }
 
   async #loadEmployees(): Promise<Employee[]> {
@@ -115,7 +130,7 @@ export class EmployeesPage extends LitElement {
 
   #handleTableRowSelected({ detail: { row } }: TableRowSelectedEvent): void {
     const { id } = row;
-    const employee = this.#employees.find((e) => e.id === id);
+    const employee = this.#employees.find(e => e.id === id);
 
     if (employee) {
       this.currentEmployee = employee;

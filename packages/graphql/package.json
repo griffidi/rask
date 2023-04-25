@@ -9,11 +9,11 @@
   },
   "type": "module",
   "exports": {
-    "./package.json": "./package.json",
     "./client/*": "./src/client/*",
     "./constants/*": "./src/constants/*",
     "./controllers/*": "./src/controllers/*",
-    "./decorators/*": "./src/decorators/*"
+    "./decorators/*": "./src/decorators/*",
+    "./package.json": "./package.json"
   },
   "files": [
     "src/**/*.{map.js,js,d.ts}",

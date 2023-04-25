@@ -28,7 +28,10 @@ export class NavigationItem extends LitElement {
     const { icon, label, path } = this.item;
 
     return html`
-      <a href=${path} @click=${this.#handleClick}>
+      <a
+        tabindex="0"
+        href=${path}
+        @click=${this.#handleClick}>
         <md-icon>${icon}</md-icon>
         <span>${label}</span>
         <div class="active-indicator"></div>
@@ -40,8 +43,15 @@ export class NavigationItem extends LitElement {
     const { icon, path } = this.item;
 
     return html`
-      <a class="logo" target="_blank" href=${path}>
-        <img src=${icon} alt="NavigationItem" width="22px" height="22px" />
+      <a
+        class="logo"
+        target="_blank"
+        href=${path}>
+        <img
+          src=${icon}
+          alt="NavigationItem"
+          width="22px"
+          height="22px" />
       </a>
     `;
   }

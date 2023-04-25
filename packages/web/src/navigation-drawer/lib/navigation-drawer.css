@@ -87,3 +87,7 @@ footer {
   /* inset-block-start: -2px;
   inset-inline-end: 10px; */
 }
+
+md-standard-icon-button {
+  outline: none;
+}

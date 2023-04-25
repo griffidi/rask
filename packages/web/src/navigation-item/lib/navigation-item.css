@@ -23,8 +23,10 @@ a {
   inline-size: 100%;
   color: var(--_on-color);
   font-weight: var(--_font-weight);
+  outline: none;
 
-  &:hover {
+  &:hover,
+  &:focus {
     --_active-indicator-opacity: 1;
     --_active-indicator-visibility: visible;
   }
@@ -51,5 +53,5 @@ a {
 }
 
 md-icon {
-  font-variation-settings: 'wght' var(--_icon-weight);
+  font-variation-settings: "wght" var(--_icon-weight);
 }
