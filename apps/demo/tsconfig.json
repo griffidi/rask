@@ -1,5 +1,8 @@
 {
-  "extends": ["../../tsconfig.base.json", "../../tsconfig.lit.json"],
+  "extends": [
+    "../../tsconfig.base.json",
+    "../../tsconfig.lit.json"
+  ],
   "compilerOptions": {
     /*
       TODO: look into moving settings from changing app.config.js to .env.
@@ -32,14 +35,22 @@
       "@rask/identity/*": ["../../packages/identity/src/*"],
       "@rask/web/*": ["../../packages/web/src/*"]
     },
-    "types": ["@rask/web/client"]
+    "types": [
+      "@rask/web/client",
+      "@rask/core/hmr"
+    ]
   },
-  "include": ["src/**/*.ts", "app.config.js"],
-  "exclude": ["dist", "node_modules"],
+  "include": [
+    "src/**/*.ts",
+    "app.config.js"
+  ],
+  "exclude": [
+    "dist",
+    "node_modules"
+  ],
   "references": [
     { "path": "../../packages/core" },
     { "path": "../../packages/graphql" },
     { "path": "../../packages/identity" },
-    { "path": "../../packages/web" }
-  ]
+    { "path": "../../packages/web" }]
 }
