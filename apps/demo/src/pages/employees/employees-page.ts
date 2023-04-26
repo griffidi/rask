@@ -9,11 +9,12 @@ import '@rask/web/button/button.js';
 import toast from '@rask/web/notifications/toast.js';
 import { scrollable } from '@rask/web/scrollable/scrollable.js';
 import '@rask/web/skeleton/skeleton-table.js';
-import type { TableRowSelectedEvent } from '@rask/web/table/lib/events.js';
+import type { TableRowEditEvent, TableRowSelectedEvent } from '@rask/web/table/lib/events.js';
 import '@rask/web/table/table-cell.js';
 import '@rask/web/table/table-header-cell.js';
 import '@rask/web/table/table-row.js';
 import '@rask/web/table/table.js';
+import { Router } from '@vaadin/router';
 import { LitElement, html, type TemplateResult } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import { keyed } from 'lit/directives/keyed.js';
@@ -66,7 +67,8 @@ export class EmployeesPage extends LitElement {
     return html`
       <rk-table
         selectable
-        @row-selected=${this.#handleTableRowSelected}>
+        @row-selected=${this.#handleTableRowSelected}
+        @row-edit=${this.#handleTableRowEdit}>
         <rk-table-row header>
           <rk-table-header-cell>First Name</rk-table-header-cell>
           <rk-table-header-cell>Last Name</rk-table-header-cell>
@@ -130,19 +132,22 @@ export class EmployeesPage extends LitElement {
 
   #handleTableRowSelected({ detail: { row } }: TableRowSelectedEvent): void {
     const { id } = row;
-    const employee = this.#employees.find(e => e.id === id);
+    // const employee = this.#employees.find(e => e.id === id);
 
-    if (employee) {
-      this.currentEmployee = employee;
-      console.dir(employee);
-    }
+    // if (employee) {
+    //   this.currentEmployee = employee;
+    //   console.dir(employee);
+    // }
+
+    Router.go(`/employees/${id}`);
   }
 
   // @ts-ignore
-  #handleEditClick(): void {
-    // @ts-ignore
-    const employee = this.currentEmployee;
+  #handleTableRowEdit({ details: { row } }: TableRowEditEvent): void {
+    const { id } = row;
+    // const employee = this.currentEmployee;
     // this.currentEmployee = employee;
+    Router.go(`/${id}`);
   }
 }
 
