@@ -1,13 +1,21 @@
 import type { ListItem } from './list-item.js';
 
-export interface ListChangeEventDetail {
+export interface ListEventDetail {
   item: ListItem;
 }
 
-export interface ListChangeEvent extends CustomEvent<ListChangeEventDetail> {}
+export interface ListChangeEvent extends CustomEvent<ListEventDetail> {}
 
-export const createListChangeClickedEvent = (item: ListItem) => {
-  return new CustomEvent<ListChangeEventDetail>('change', {
+export const createListChangeEvent = (item: ListItem) => {
+  return new CustomEvent<ListEventDetail>('change', {
+    detail: { item },
+    bubbles: true,
+    composed: true,
+  });
+};
+
+export const createListItemClickedEvent = (item: ListItem) => {
+  return new CustomEvent<ListEventDetail>('clicked', {
     detail: { item },
     bubbles: true,
     composed: true,
