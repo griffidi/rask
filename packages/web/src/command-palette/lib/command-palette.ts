@@ -83,8 +83,7 @@ export class CommandPalette extends LitElement {
         aria-haspopup="listbox"
         aria-expanded="${ariaExpanded}"
         aria-hidden="${ariaHidden}"
-        @transitionend=${() => (this.animating = false)}
-      ></div>
+        @transitionend=${() => (this.animating = false)}></div>
       <div class="container">${when(this.opened, () => cache(this.renderCommandPalette()))}</div>
     `;
   }
@@ -121,8 +120,7 @@ export class CommandPalette extends LitElement {
             placeholder="Search or jump to..."
             .value=${live(this.value)}
             @keydown=${this.#handleInputKeydown}
-            @input=${this.#debounceHandleInput}
-          />
+            @input=${this.#debounceHandleInput} />
         </label>
       </header>
     `;
@@ -130,11 +128,16 @@ export class CommandPalette extends LitElement {
 
   protected renderActivePath(): TemplateResult {
     const { text } = this.activeListItem;
-    return html` <span class="active-path">${text}</span><span class="active-path-seperator">/</span>`;
+    return html`
+      <span class="active-path">${text}</span>
+      <span class="active-path-seperator">/</span>
+    `;
   }
 
   protected renderSearchResults(): TemplateResult {
-    return html` <section></section> `;
+    return html`
+      <section></section>
+    `;
   }
 
   protected renderJumpTo(): TemplateResult {
@@ -144,10 +147,15 @@ export class CommandPalette extends LitElement {
      */
     return html`
       <section>
-        <rk-list ${ref(this.#jumpToListRef)} class="jump-to" @change=${this.#handleListChange}>
-          ${map(this.jumpTos, (jumpTo) => {
+        <rk-list
+          ${ref(this.#jumpToListRef)}
+          class="jump-to"
+          @change=${this.#handleListChange}>
+          ${map(this.jumpTos, jumpTo => {
             return html`
-              <rk-list-item-link .href=${jumpTo.path} .headline=${jumpTo.label}>
+              <rk-list-item-link
+                .href=${jumpTo.path}
+                .headline=${jumpTo.label}>
                 <div slot="start">
                   <md-icon>${jumpTo.icon}</md-icon>
                 </div>
@@ -179,8 +187,11 @@ export class CommandPalette extends LitElement {
           </label>
         </div>
         <div class="search-by">
-          <span> Powered by </span>
-          <img src="rask.svg" width="24px" height="24px" />
+          <span>Powered by</span>
+          <img
+            src="rask.svg"
+            width="24px"
+            height="24px" />
         </div>
       </footer>
     `;
@@ -233,15 +244,6 @@ export class CommandPalette extends LitElement {
     const itemIndex = key === NAVIGABLE_KEYS.ArrowDown || key === NAVIGABLE_KEYS.Home ? 0 : -1;
     items.at(itemIndex).active = true;
   };
-
-  // @ts-ignore
-  #listChange(): void {
-    /**
-     * TODO: When ListItemChangeEvent support is added to MdList add logic here
-     * to set this.value = e.item.headline so that the active ListItem
-     * headline is displayed in the search input element.
-     */
-  }
 
   #showModal(): void {
     this.opened = true;

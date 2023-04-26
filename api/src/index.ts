@@ -24,7 +24,10 @@ import { LoginResolver } from './resolvers/login.js';
 await prisma.$connect();
 
 const schema = await buildSchema({
-  resolvers: [...resolvers, LoginResolver],
+  resolvers: [
+    ...resolvers,
+    LoginResolver,
+  ],
   emitSchemaFile: './prisma/schema.graphql',
   validate: false,
 });
@@ -35,7 +38,10 @@ const server = new ApolloServer<Context>({
   cache: new InMemoryLRUCache(),
   schema,
   introspection: IS_DEV_MODE,
-  plugins: [ApolloServerPluginDrainHttpServer({ httpServer }), ApolloServerPluginUsageReportingDisabled()],
+  plugins: [
+    ApolloServerPluginDrainHttpServer({ httpServer }),
+    ApolloServerPluginUsageReportingDisabled(),
+  ],
   formatError(formattedError, error) {
     console.log((error as any).extensions.http.headers); // { status: 400, headers: HeaderMap(0) [Map] {} }
     console.log(error);
@@ -48,7 +54,10 @@ await server.start();
 
 app.use(
   cors({
-    allowMethods: ['POST', 'OPTIONS'],
+    allowMethods: [
+      'POST',
+      'OPTIONS',
+    ],
     origin: CORS_ORIGINS,
   })
 );
@@ -64,4 +73,4 @@ app.use(
   })
 );
 
-await new Promise<void>((resolve) => httpServer.listen({ port: GRAPHQL_PORT }, resolve));
+await new Promise<void>(resolve => httpServer.listen({ port: GRAPHQL_PORT }, resolve));

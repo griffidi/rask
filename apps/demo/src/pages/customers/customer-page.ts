@@ -28,8 +28,11 @@ export class CustomerPage extends LitElement {
     return html`
       ${this.#getCustomer.render({
         pending: () => this.renderSkeleton(),
-        complete: (e) => this.renderCustomer(e),
-        error: () => html`<h1>No Data</h1>`,
+        complete: e => this.renderCustomer(e),
+        error: () =>
+          html`
+            <h1>No Data</h1>
+          `,
       })}
     `;
   }
@@ -41,29 +44,54 @@ export class CustomerPage extends LitElement {
       </header>
       <form>
         <div>
-          <rk-text-field label="Full Name" .value=${e.firstName}></rk-text-field>
-          <rk-text-field label="Full Name" .value=${e.lastName}></rk-text-field>
-          <rk-text-field label="Email" .value=${e.email}></rk-text-field>
-          <rk-text-field label="Phone" .value=${e.phone}></rk-text-field>
+          <rk-text-field
+            label="Full Name"
+            .value=${e.firstName}></rk-text-field>
+          <rk-text-field
+            label="Full Name"
+            .value=${e.lastName}></rk-text-field>
+          <rk-text-field
+            label="Email"
+            .value=${e.email}></rk-text-field>
+          <rk-text-field
+            label="Phone"
+            .value=${e.phone}></rk-text-field>
         </div>
         <div>
-          <rk-text-field label="Street Address" .value=${e.streetAddress}></rk-text-field>
+          <rk-text-field
+            label="Street Address"
+            .value=${e.streetAddress}></rk-text-field>
           <div class="address">
-            <rk-text-field label="City" .value=${e.city}></rk-text-field>
-            <rk-text-field label="State" .value=${e.state}></rk-text-field>
-            <rk-text-field label="Postal" .value=${e.zipCode}></rk-text-field>
+            <rk-text-field
+              label="City"
+              .value=${e.city}></rk-text-field>
+            <rk-text-field
+              label="State"
+              .value=${e.state}></rk-text-field>
+            <rk-text-field
+              label="Postal"
+              .value=${e.zipCode}></rk-text-field>
           </div>
         </div>
       </form>
       <footer>
-        <rk-button label="Save" filled></rk-button>
-        <rk-button label="Cancel" outlined></rk-button>
+        <rk-button
+          label="Save"
+          filled></rk-button>
+        <rk-button
+          label="Cancel"
+          outlined></rk-button>
       </footer>
     `;
   }
 
   protected renderSkeleton(): TemplateResult {
-    return html`<rk-skeleton label large width="100px"></rk-skeleton>`;
+    return html`
+      <rk-skeleton
+        label
+        large
+        width="100px"></rk-skeleton>
+    `;
   }
 
   async #loadCustomer(): Promise<Customer> {

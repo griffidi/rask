@@ -3,7 +3,7 @@ import { LitElement, html, type TemplateResult } from 'lit';
 import { property, query, queryAssignedElements } from 'lit/decorators.js';
 import { classMap, type ClassInfo } from 'lit/directives/class-map.js';
 import { NAVIGABLE_KEYS, isNavigableKey } from '../../navigation/navigable.js';
-import { createListChangeClickedEvent } from './events.js';
+import { createListChangeEvent } from './events.js';
 import { type ListItem } from './list-item.js';
 import css from './list.css' assert { type: 'css' };
 
@@ -112,7 +112,7 @@ export class List extends LitElement {
   #setActiveListItem(item: ListItem): void {
     if (item) {
       item.active = true;
-      this.dispatchEvent(createListChangeClickedEvent(item));
+      this.dispatchEvent(createListChangeEvent(item));
     }
   }
 

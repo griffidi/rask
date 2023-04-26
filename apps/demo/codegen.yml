@@ -3,8 +3,8 @@ debug: true
 verbose: true
 errorsOnly: false
 emitLegacyCommonJSImports: false
-schema: "../../api/prisma/schema.graphql"
-documents: ["./src/graphql/**/*.graphql"]
+schema: '../../api/prisma/schema.graphql'
+documents: ['./src/graphql/**/*.graphql']
 config:
   avoidOptionals: false
   # allowEnumStringTypes: true
@@ -12,9 +12,9 @@ config:
   # dedupeOperationSuffix: true
   enumsAsConst: true
   overwrite: true
-  declarationKind: "interface"
+  declarationKind: 'interface'
   immutableTypes: false
-  maybeValue: "T | undefined"
+  maybeValue: 'T | undefined'
   # preResolveTypes: true
   useIndexSignature: true
   useTypeImports: true
@@ -25,4 +25,4 @@ generates:
       - typescript-operations
       - typed-document-node
 hooks:
-  afterAllFileWrite: ["prettier --write"]
+  afterAllFileWrite: ['prettier --write']

@@ -3,6 +3,7 @@ import { LitElement, html, nothing, type PropertyValues, type TemplateResult } f
 import { property, query } from 'lit/decorators.js';
 import { classMap, type ClassInfo } from 'lit/directives/class-map.js';
 import { when } from 'lit/directives/when.js';
+import { createListItemClickedEvent } from './events.js';
 import css from './list-item.css' assert { type: 'css' };
 
 interface ListItemSelf {
@@ -147,14 +148,16 @@ export class ListItemEl extends LitElement implements ListItem {
   //   this.hasFocus = false;
   // }
 
+  protected onClick(_e: Event): void {
+    this.dispatchEvent(createListItemClickedEvent(this));
+  }
+
   // eslint-disable-next-line ts/no-unused-vars
   protected onPointerdown(_e: Event): void {}
   // eslint-disable-next-line ts/no-unused-vars
   protected onFocus(_e: Event): void {}
   // eslint-disable-next-line ts/no-unused-vars
   protected onBlur(_e: Event): void {}
-  // eslint-disable-next-line ts/no-unused-vars
-  protected onClick(_e: Event): void {}
   // eslint-disable-next-line ts/no-unused-vars
   protected onKeydown(_e: Event): void {}
   // eslint-disable-next-line ts/no-unused-vars
