@@ -36,8 +36,7 @@
       "@rask/web/*": ["../../packages/web/src/*"]
     },
     "types": [
-      "@rask/web/client",
-      "@rask/core/hmr"
+      "@rask/web/client"
     ]
   },
   "include": [
