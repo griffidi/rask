@@ -19,6 +19,10 @@
     "./reactivity/*": "./src/reactivity/*",
     "./types/*": "./src/types/*",
     "./validation/*": "./src/validation/*",
+    "./hmr": {
+      "types": "./src/types/hmr.d.ts"
+    },
+    "./src/hmr/*": "./src/hmr/*",
     "./package.json": "./package.json"
   },
   "files": [
