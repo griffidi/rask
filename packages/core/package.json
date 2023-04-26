@@ -19,6 +19,10 @@
     "./reactivity/*": "./src/reactivity/*",
     "./types/*": "./src/types/*",
     "./validation/*": "./src/validation/*",
+    "./router": {
+      "types": "./src/types/lit-element.d.ts"
+    },
+    "./src/router/*": "./src/router/*",
     "./package.json": "./package.json"
   },
   "files": [
@@ -30,6 +34,7 @@
     "build": ""
   },
   "dependencies": {
+    "@vaadin/router": "^1.7.5",
     "lit": "^2.7.2",
     "nanoid": "^4.0.2",
     "reflect-metadata": "^0.1.13",

@@ -123,6 +123,9 @@
       "wght"
     ],
 
+    // "terminal.integrated.defaultLocation": "editor",
+    // "terminal.integrated.cwd": "${workspaceFolder}",
+
     "editor.linkedEditing": true,
 
     "debug.internalConsoleOptions": "neverOpen",
@@ -139,7 +142,13 @@
     "eslint.codeActionsOnSave.mode": "problems",
     "eslint.experimental.useFlatConfig": true,
     "eslint.packageManager": "pnpm",
-    "eslint.validate": ["json", "javascript", "typescript", "html", "css"],
+    "eslint.validate": [
+      "json",
+      "javascript",
+      "typescript",
+      "html",
+      "css"
+    ],
     "eslint.debug": true,
 
     "npm.packageManager": "pnpm",

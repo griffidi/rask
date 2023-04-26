@@ -36,12 +36,14 @@
       "@rask/web/*": ["../../packages/web/src/*"]
     },
     "types": [
+      "@rask/core/router",
       "@rask/web/client"
     ]
   },
   "include": [
     "src/**/*.ts",
-    "app.config.js"
+    "app.config.js",
+    "../../packages/core/src/types/lit-element.d.ts"
   ],
   "exclude": [
     "dist",

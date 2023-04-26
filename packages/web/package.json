@@ -50,6 +50,7 @@
   },
   "peerDependencies": {
     "@material/web": "*",
+    "@rask/core": "workspace:*",
     "lit": "*",
     "typescript": "5.*"
   }

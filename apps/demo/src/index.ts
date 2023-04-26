@@ -12,12 +12,18 @@ import { apolloClient } from '@rask/graphql/decorators/apollo-client.js';
 import { isAuthenticatedContext } from '@rask/identity/authentication/is-authenticated-context.js';
 import { AuthService } from '@rask/identity/services/auth-service.js';
 import '@rask/web/navigation-drawer/navigation-drawer.js';
+import type { Router, RouterLocation } from '@vaadin/router';
 import { LitElement, html, type TemplateResult } from 'lit';
 import { customElement } from 'lit/decorators.js';
 import { createRef, ref, type Ref } from 'lit/directives/ref.js';
 import config from '../app.config.js';
 import css from './index.css' assert { type: 'css' };
 import { attachRouter } from './router/index.js';
+
+type RouterLocationChangedEvent = CustomEvent<{
+  router: Router;
+  location: RouterLocation;
+}>;
 
 const cache = useCache();
 const { uri: GRAPHQL_URI } = config.graphql;
@@ -38,6 +44,10 @@ export class Index extends LitElement {
   override connectedCallback(): void {
     super.connectedCallback();
 
+    if (window.addEventListener) {
+      window.addEventListener('vaadin-router-location-changed', this.#handleRouterLocationChanged);
+    }
+
     /**
      * subscribe to changes in authentication state and
      * update the isAuthenticated property so that consumers
@@ -57,6 +67,10 @@ export class Index extends LitElement {
      * just for good practice. 😉
      */
     this.#authService.unsubscribe();
+
+    if (window.addEventListener) {
+      window.removeEventListener('vaadin-router-location-changed', this.#handleRouterLocationChanged);
+    }
   }
 
   override async firstUpdated(): Promise<void> {
@@ -75,6 +89,10 @@ export class Index extends LitElement {
       <app-nav ${ref(this.#nav)}></app-nav>
       <app-search></app-search>
     `;
+  }
+
+  #handleRouterLocationChanged(e: RouterLocationChangedEvent) {
+    console.dir(e.detail);
   }
 
   #showDrawer(): void {

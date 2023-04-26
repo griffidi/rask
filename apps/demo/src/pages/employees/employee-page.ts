@@ -21,8 +21,7 @@ export class EmployeePage extends LitElement {
     this,
     async () => await this.#loadEmployee(),
     () => {
-      const userId = location.pathname.split('/').pop();
-
+      const userId = this.location.params['id'];
       return [userId];
     }
   );

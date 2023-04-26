@@ -2,9 +2,10 @@ import { GetEmployeesDocument, type Employee } from ':/types/graphql.js';
 import { Task } from '@lit-labs/task';
 import '@material/web/icon/icon.js';
 import { DateTime } from '@rask/core/common/i18n/date-time.js';
+import { useInject } from '@rask/core/di/inject.js';
 import { delay } from '@rask/core/reactivity/timer/delay.js';
 import { Timer } from '@rask/core/reactivity/timer/timer.js';
-import { apolloQuery } from '@rask/graphql/decorators/apollo-query.js';
+import { Client } from '@rask/graphql/client/client.js';
 import '@rask/web/button/button.js';
 import toast from '@rask/web/notifications/toast.js';
 import { scrollable } from '@rask/web/scrollable/scrollable.js';
@@ -16,7 +17,7 @@ import '@rask/web/table/table-row.js';
 import '@rask/web/table/table.js';
 import { Router } from '@vaadin/router';
 import { LitElement, html, type TemplateResult } from 'lit';
-import { customElement, property, state } from 'lit/decorators.js';
+import { customElement, property } from 'lit/decorators.js';
 import { keyed } from 'lit/directives/keyed.js';
 import { map } from 'lit/directives/map.js';
 import css from './employees-page.css' assert { type: 'css' };
@@ -25,7 +26,7 @@ import css from './employees-page.css' assert { type: 'css' };
 export class EmployeesPage extends LitElement {
   static override styles = css;
 
-  #employees: ReadonlyArray<Readonly<Employee>> | undefined;
+  #client = useInject(Client);
 
   #getEmployees = new Task(
     this,
@@ -34,9 +35,6 @@ export class EmployeesPage extends LitElement {
   );
 
   @property({ type: Boolean, reflect: true }) exiting: boolean = false;
-  @state() private currentEmployee: Employee | undefined;
-
-  @apolloQuery({ query: GetEmployeesDocument }) private readonly query: Employee[];
 
   override render(): TemplateResult {
     return html`
@@ -62,8 +60,6 @@ export class EmployeesPage extends LitElement {
   }
 
   #renderEmployees(employees: ReadonlyArray<Readonly<Employee>>): TemplateResult {
-    this.#employees = employees;
-
     return html`
       <rk-table
         selectable
@@ -119,7 +115,7 @@ export class EmployeesPage extends LitElement {
   async #loadEmployees(): Promise<Employee[]> {
     try {
       const timer = Timer.start();
-      const result = await this.query;
+      const result = await this.#client.query<Employee[]>({ query: GetEmployeesDocument });
 
       await delay(2000 - timer.stop());
 
@@ -138,7 +134,6 @@ export class EmployeesPage extends LitElement {
     //   this.currentEmployee = employee;
     //   console.dir(employee);
     // }
-
     Router.go(`/employees/${id}`);
   }
 
