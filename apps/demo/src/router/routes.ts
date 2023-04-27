@@ -108,4 +108,4 @@ export default [
       await import('../pages/page-not-found/page-not-found.js');
     },
   },
-] as ReadonlyArray<Route>;
+] satisfies Route[];

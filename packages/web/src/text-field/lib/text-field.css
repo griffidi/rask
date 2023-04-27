@@ -12,6 +12,8 @@
   --_label-inset-block-start: -2px;
   --_input-font-size: var(--md-sys-typescale-label-large-size);
   --_label-font-weight: var(--md-sys-typescale-label-large-weight);
+
+  outline: none;
 }
 
 .text-field {

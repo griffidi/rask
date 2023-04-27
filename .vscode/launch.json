@@ -58,7 +58,7 @@
       "type": "pwa-msedge",
       "request": "launch",
       "runtimeExecutable": "dev",
-      "url": "https://localhost:8000",
+      "url": "http://localhost:8000",
       "webRoot": "${workspaceFolder}/apps/demo/src",
       "skipFiles": ["<node_internals>/**"],
       "userDataDir": "${workspaceFolder}/.out/edge/apps/demo",
@@ -87,17 +87,27 @@
   "compounds": [
     {
       "name": "Launch api",
-      "configurations": ["Debug api", "Debug graphql (edge)"],
+      "configurations": [
+        "Debug api",
+        "Debug graphql (edge)"
+      ],
       "stopAll": true
     },
     {
       "name": "Launch demo",
-      "configurations": ["Debug demo (server)", "Debug demo (edge)"],
+      "configurations": [
+        "Debug demo (server)",
+        "Debug demo (edge)"
+      ],
       "stopAll": true
     },
     {
       "name": "Launch demo/api",
-      "configurations": ["Debug api", "Debug demo (server)", "Debug demo (edge)"],
+      "configurations": [
+        "Debug api",
+        "Debug demo (server)",
+        "Debug demo (edge)"
+      ],
       "stopAll": true
     }
   ]

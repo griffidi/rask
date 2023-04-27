@@ -1,4 +1,4 @@
-import { navItems } from ':/components/nav/nav-items.js';
+import navItems from ':/components/nav/nav-items.js';
 import '@rask/web/command-palette/command-palette.js';
 import { LitElement, html, type TemplateResult } from 'lit';
 import { customElement } from 'lit/decorators.js';

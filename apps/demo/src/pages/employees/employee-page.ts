@@ -21,6 +21,7 @@ export class EmployeePage extends LitElement {
     this,
     async () => await this.#loadEmployee(),
     () => {
+      // TODO: #41 this is firing multiple times
       const userId = this.location.params['id'];
       return [userId];
     }

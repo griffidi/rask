@@ -35,13 +35,13 @@
   },
   "dependencies": {
     "@vaadin/router": "^1.7.5",
-    "lit": "^2.7.2",
+    "lit": "^2.7.3",
     "nanoid": "^4.0.2",
     "reflect-metadata": "^0.1.13",
     "tslib": "^2.5.0"
   },
   "devDependencies": {
-    "@types/node": "^18.16.0",
+    "@types/node": "^18.16.1",
     "typescript": "5.1.0-beta"
   },
   "peerDependencies": {
