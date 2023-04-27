@@ -32,9 +32,9 @@ export default /** @type {import("@web/dev-server").DevServerConfig} */ ({
     ],
   },
   port: 8000,
-  http2: true,
-  sslKey: './certs/.rask-self-signed-ssl.key',
-  sslCert: './certs/.rask-self-signed-ssl.cert',
+  // http2: true,
+  // sslKey: './certs/.rask-self-signed-ssl.key',
+  // sslCert: './certs/.rask-self-signed-ssl.cert',
   mimeTypes: {
     'src/**/*.graphql': 'js',
     '*.html': 'html',

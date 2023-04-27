@@ -429,6 +429,7 @@ export abstract class TextField extends LitElement {
     // fixed
     return html`
       <input
+        tabindex=${this.disabled ? '-1' : this.tabIndex}
         style=${styleMap(style)}
         aria-activedescendant=${this.ariaActiveDescendant || nothing}
         aria-autocomplete=${this.ariaAutoComplete || nothing}

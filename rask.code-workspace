@@ -178,11 +178,11 @@
     ],
     "sqltools.useNodeRuntime": true,
 
-    "vscode-edge-devtools.browserFlavor": "Dev",
-    "vscode-edge-devtools.defaultUrl": "https://localhost:8000",
-    "vscode-edge-devtools.useHttps": true,
-    "vscode-edge-devtools.webRoot": "${workspaceFolder}/apps/demo/src",
-    "vscode-edge-devtools.webhint": false,
+    // "vscode-edge-devtools.browserFlavor": "Dev",
+    // "vscode-edge-devtools.defaultUrl": "http://localhost:8000",
+    // "vscode-edge-devtools.useHttps": true,
+    // "vscode-edge-devtools.webRoot": "${workspaceFolder}/apps/demo/src",
+    // "vscode-edge-devtools.webhint": false,
     "editor.fontFamily": "Consolas, 'Courier New', monospacemo"
   },
   "extensions": {

@@ -7,9 +7,9 @@ import {
   type TypePolicies,
 } from '@apollo/client/core';
 import { onError } from '@apollo/client/link/error';
+import { useCache } from '@rask/core/cache/index.js';
 import { TOKEN_CACHE_KEY } from '@rask/core/identity/constants/token-caChe-key.js';
 import { type CachedToken } from '@rask/core/identity/models/cached-token.js';
-import { useCache } from '@rask/core/src/cache/index.js';
 
 const internalCache = useCache();
 
@@ -71,7 +71,10 @@ export const createApolloClient = (options?: ApolloClientOptions): ApolloClient<
     }
   });
 
-  const link = ApolloLink.from([errorLink, httpLink]);
+  const link = ApolloLink.from([
+    errorLink,
+    httpLink,
+  ]);
   const client = new ApolloClient({
     link: authLink.concat(link),
     cache,
