@@ -1,7 +1,8 @@
 import { GetCustomerByIdDocument, type Customer } from ':/types/graphql.js';
 import { Task } from '@lit-labs/task';
 import '@material/web/textfield/outlined-text-field.js';
-import { apolloQuery } from '@rask/graphql/decorators/apollo-query.js';
+import { useInject } from '@rask/core/di/inject.js';
+import { Client } from '@rask/graphql/client/client.js';
 import '@rask/web/button/button.js';
 import toast from '@rask/web/notifications/toast.js';
 import '@rask/web/skeleton/skeleton.js';
@@ -14,6 +15,8 @@ import css from './customer-page.css' assert { type: 'css' };
 export class CustomerPage extends LitElement {
   static override styles = css;
 
+  #client = useInject(Client);
+
   #getCustomer = new Task(
     this,
     async () => await this.#loadCustomer(),
@@ -21,8 +24,6 @@ export class CustomerPage extends LitElement {
   );
 
   @property() userId: string | undefined;
-
-  @apolloQuery({ query: GetCustomerByIdDocument }) private readonly query: Customer;
 
   override render(): TemplateResult {
     return html`
@@ -96,8 +97,8 @@ export class CustomerPage extends LitElement {
 
   async #loadCustomer(): Promise<Customer> {
     try {
-      return await this.query;
-    } catch (e) {
+      return await this.#client.query({ query: GetCustomerByIdDocument });
+    } catch {
       toast.error({ title: 'Error', message: 'Failed to loaded customer.' });
       throw new Error();
     }

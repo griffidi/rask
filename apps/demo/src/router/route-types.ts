@@ -9,4 +9,5 @@ export const enum RouteTypes {
   user = 'user',
   documents = 'documents',
   settings = 'settings',
+  default = home,
 }

@@ -4,13 +4,14 @@
   "version": "0.0.1",
   "packageManager": "pnpm@8.2.0",
   "engines": {
-    "node": ">=18.11.0 >=19.2.0",
+    "node": ">=18.11.0 || >=19.2.0",
     "pnpm": ">=8.2.0"
   },
   "type": "module",
   "exports": {
     "./accordion/*": "./src/accordion/*",
     "./button/*": "./src/button/*",
+    "./breadcrumb/*": "./src/breadcrumb/*",
     "./command-palette/*": "./src/command-palette/*",
     "./list/*": "./src/list/*",
     "./menu/*": "./src/menu/*",
