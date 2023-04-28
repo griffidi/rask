@@ -1,0 +1,31 @@
+:host(:not(:nth-child(1))) {
+}
+
+:host(:not(:nth-child(1)))::before {
+  content: "/";
+  color: inherit;
+  font-weight: 400;
+}
+
+a {
+  --_border-color: var(--rk-breadcrumb-item-border-color, transparent);
+  --_hover-border-color: var(--rk-breadcrumb-item-hover-border-color, var(--md-sys-color-blue));
+  --_color: var(--rk-breadcrumb-item-color, transparent);
+  --_hover-color: var(--rk-breadcrumb-item-hover-color, var(--md-sys-color-blue));
+  --_on-color: var(--rk-breadcrumb-item-on-color, inherit);
+  --_hover-on-color: var(--rk-breadcrumb-item-hover-on-color, var(--md-sys-color-blue));
+
+  font-size: var(--md-sys-typescale-title-small-size);
+  text-decoration: none;
+  padding-inline: 6px;
+  padding-block: 4px;
+  border: 1px solid var(--_border-color);
+  border-radius: var(--md-sys-shape-small);
+  background: var(--_color);
+  color: var(--_on-color);
+
+  &:hover {
+    --_border-color: var(--_hover-border-color);
+    --_on-color: var(--_hover-on-color);
+  }
+}

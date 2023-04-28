@@ -29,6 +29,7 @@ a {
   &:focus {
     --_active-indicator-opacity: 1;
     --_active-indicator-visibility: visible;
+    /* --_on-color: var(--md-sys-color-blue); */
   }
 }
 

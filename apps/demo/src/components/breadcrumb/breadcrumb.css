@@ -1,0 +1,6 @@
+:host {
+  display: flex;
+  align-items: center;
+  block-size: var(--rk-site-breadcrumb-height);
+  padding-inline: 20px;
+}

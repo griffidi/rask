@@ -15,8 +15,8 @@ export class Header extends LitElement {
 
   override render(): TemplateResult {
     const isAuthenticated = this.isAuthenticated;
-    const leadingSide = isAuthenticated ? this.renderLeadingSide() : html``;
-    const trailingSide = isAuthenticated ? this.renderTrailingSide() : html``;
+    const leadingSide = isAuthenticated ? this.#renderLeadingSide() : html``;
+    const trailingSide = isAuthenticated ? this.#renderTrailingSide() : html``;
     const { title } = this.shadowRoot.ownerDocument;
 
     console.debug(`isAuthenticated: ${isAuthenticated}`);
@@ -35,11 +35,13 @@ export class Header extends LitElement {
     `;
   }
 
-  protected renderLeadingSide(): TemplateResult {
-    return html` <md-standard-icon-button @click=${this.#handleMenuClick}>menu</md-standard-icon-button> `;
+  #renderLeadingSide(): TemplateResult {
+    return html`
+      <md-standard-icon-button @click=${this.#handleMenuClick}>menu</md-standard-icon-button>
+    `;
   }
 
-  protected renderTrailingSide(): TemplateResult {
+  #renderTrailingSide(): TemplateResult {
     return html`
       <div class="search-instructions">
         <md-icon>search</md-icon>

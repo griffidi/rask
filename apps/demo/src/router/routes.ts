@@ -51,11 +51,12 @@ export default [
   },
   {
     path: '/employees',
-    name: 'employees',
+    // name: 'employees',
     animate: true,
     children: [
       {
         path: '/',
+        name: 'employees',
         component: 'app-employees-page',
         action: async () => {
           await import('../pages/employees/employees-page.js');
@@ -63,6 +64,7 @@ export default [
       },
       {
         path: '/:id',
+        name: 'employee',
         component: 'app-employee-page',
         action: async () => {
           await import('../pages/employees/employee-page.js');

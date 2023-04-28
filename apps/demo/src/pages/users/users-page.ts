@@ -1,8 +1,9 @@
 import { GetUsersDocument, type User } from ':/types/graphql.js';
 import { Task } from '@lit-labs/task';
 import '@material/web/icon/icon.js';
+import { useInject } from '@rask/core/di/inject.js';
 import type { TypeEvent } from '@rask/core/events/type-event.js';
-import { apolloQuery } from '@rask/graphql/decorators/apollo-query.js';
+import { Client } from '@rask/graphql/client/client.js';
 import '@rask/web/button/button.js';
 import toast from '@rask/web/notifications/toast.js';
 import '@rask/web/skeleton/skeleton.js';
@@ -18,6 +19,8 @@ const CARD_SELECTED_CLASS = 'selected';
 export class UsersPage extends LitElement {
   static override styles = css;
 
+  #client = useInject(Client);
+
   #getUsers = new Task(
     this,
     async () => await this.#loadUsers(),
@@ -27,20 +30,23 @@ export class UsersPage extends LitElement {
   @property({ type: Boolean, reflect: true }) exiting: boolean = false;
   @state() protected currentUser: User | undefined;
 
-  @apolloQuery({ query: GetUsersDocument }) private readonly query: User[];
-
   override render(): TemplateResult {
     return html`
       ${this.#getUsers.render({
         pending: () => this.renderSkeleton(),
-        complete: (users) => this.renderUsers(users),
-        error: () => html`<h1>No Data</h1>`,
+        complete: users => this.renderUsers(users),
+        error: () =>
+          html`
+            <h1>No Data</h1>
+          `,
       })}
     `;
   }
 
   protected renderUsers(users: ReadonlyArray<Readonly<User>>): TemplateResult {
-    return html` <div class="cards">${map(users, (user) => this.renderUser(user))}</div> `;
+    return html`
+      <div class="cards">${map(users, user => this.renderUser(user))}</div>
+    `;
   }
 
   protected renderUser(user: Readonly<User>): TemplateResult {
@@ -63,7 +69,10 @@ export class UsersPage extends LitElement {
           </div>
         </section>
         <footer>
-          <rk-button label="Edit" outlined @click=${(e: TypeEvent) => this.#handleEditClick(e, user)}></rk-button>
+          <rk-button
+            label="Edit"
+            outlined
+            @click=${(e: TypeEvent) => this.#handleEditClick(e, user)}></rk-button>
         </footer>
       </div>
     `;
@@ -76,26 +85,49 @@ export class UsersPage extends LitElement {
           return html`
             <div class="card">
               <header>
-                <rk-skeleton width="50px" height="50px" circle></rk-skeleton>
+                <rk-skeleton
+                  width="50px"
+                  height="50px"
+                  circle></rk-skeleton>
                 <div class="user-name">
-                  <rk-skeleton width="146px" title large></rk-skeleton>
-                  <rk-skeleton width="75px" label large></rk-skeleton>
+                  <rk-skeleton
+                    width="146px"
+                    title
+                    large></rk-skeleton>
+                  <rk-skeleton
+                    width="75px"
+                    label
+                    large></rk-skeleton>
                 </div>
               </header>
               <section>
                 <div class="contact-info">
                   <label>
-                    <rk-skeleton width="22px" body medium></rk-skeleton>
-                    <rk-skeleton width="188px" body medium></rk-skeleton>
+                    <rk-skeleton
+                      width="22px"
+                      body
+                      medium></rk-skeleton>
+                    <rk-skeleton
+                      width="188px"
+                      body
+                      medium></rk-skeleton>
                   </label>
                   <label>
-                    <rk-skeleton width="22px" body medium></rk-skeleton>
-                    <rk-skeleton width="150px" body medium></rk-skeleton>
+                    <rk-skeleton
+                      width="22px"
+                      body
+                      medium></rk-skeleton>
+                    <rk-skeleton
+                      width="150px"
+                      body
+                      medium></rk-skeleton>
                   </label>
                 </div>
               </section>
               <footer>
-                <rk-skeleton width="62px" button></rk-skeleton>
+                <rk-skeleton
+                  width="62px"
+                  button></rk-skeleton>
               </footer>
             </div>
           `;
@@ -106,7 +138,7 @@ export class UsersPage extends LitElement {
 
   async #loadUsers(): Promise<User[]> {
     try {
-      return await this.query;
+      return await this.#client.query({ query: GetUsersDocument });
     } catch (e) {
       toast.error({ title: 'Error', message: 'Failed to loaded users.' });
       throw new Error();

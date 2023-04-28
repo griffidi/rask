@@ -1,4 +1,6 @@
 :root {
+  --rk-site-breadcrumb-height: 58px;
+  /* --rk-site-header-height: calc(var(--rk-site-breadcrumb-height) + 48px); */
   --rk-site-header-height: 58px;
   --rk-site-footer-height: 58px;
 }

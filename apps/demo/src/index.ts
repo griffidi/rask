@@ -3,12 +3,10 @@ import type { Nav } from ':/components/nav/nav.js';
 import ':/components/search/search.js';
 import ':/layout/footer/footer.js';
 import ':/layout/header/header.js';
-import type { ApolloClient, NormalizedCacheObject } from '@apollo/client/core';
 import { provide } from '@lit-labs/context';
 import { useCache } from '@rask/core/cache/index.js';
 import { useInject } from '@rask/core/di/inject.js';
 import { GRAPHQL_URI_CACHE_KEY } from '@rask/graphql/constants/graphql-uri-cache-key.js';
-import { apolloClient } from '@rask/graphql/decorators/apollo-client.js';
 import { isAuthenticatedContext } from '@rask/identity/authentication/is-authenticated-context.js';
 import { AuthService } from '@rask/identity/services/auth-service.js';
 import '@rask/web/navigation-drawer/navigation-drawer.js';
@@ -37,15 +35,13 @@ export class Index extends LitElement {
   #authService = useInject(AuthService);
   #nav: Ref<Nav> = createRef();
 
-  @apolloClient({ uri: GRAPHQL_URI }) readonly client!: ApolloClient<NormalizedCacheObject>;
-
   @provide({ context: isAuthenticatedContext }) isAuthenticated: boolean = false;
 
   override connectedCallback(): void {
     super.connectedCallback();
 
     if (window.addEventListener) {
-      window.addEventListener('vaadin-router-location-changed', this.#handleRouterLocationChanged);
+      window.addEventListener('vaadin-router-error', this.#handleRouterError);
     }
 
     /**
@@ -68,8 +64,8 @@ export class Index extends LitElement {
      */
     this.#authService.unsubscribe();
 
-    if (window.addEventListener) {
-      window.removeEventListener('vaadin-router-location-changed', this.#handleRouterLocationChanged);
+    if (window.removeEventListener) {
+      window.removeEventListener('vaadin-router-error', this.#handleRouterError);
     }
   }
 
@@ -91,8 +87,8 @@ export class Index extends LitElement {
     `;
   }
 
-  #handleRouterLocationChanged(e: RouterLocationChangedEvent) {
-    console.dir(e.detail);
+  #handleRouterError(e: Event): void {
+    console.error('Router error', e);
   }
 
   #showDrawer(): void {
