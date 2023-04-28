@@ -42,7 +42,7 @@
   "dependencies": {
     "@material/web": "1.0.0-pre.7",
     "@rask/core": "workspace:^",
-    "lit": "^2.7.3",
+    "lit": "3.0.0-pre.0",
     "tslib": "^2.5.0"
   },
   "devDependencies": {
