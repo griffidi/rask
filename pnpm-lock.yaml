@@ -172,6 +172,9 @@ importers:
       '@vaadin/router':
         specifier: ^1.7.5
         version: 1.7.5
+      chart.js:
+        specifier: ^4.2.1
+        version: 4.2.1
       graphql:
         specifier: ^16.6.0
         version: 16.6.0
@@ -2384,6 +2387,10 @@ packages:
       vary: 1.1.2
     dev: false
 
+  /@kurkle/color@0.3.2:
+    resolution: {integrity: sha512-fuscdXJ9G1qb7W8VdHi+IwRqij3lBkosAm4ydQtEmbY58OzHXqQhvlxqEkoz0yssNVn38bcpRWgA9PP+OGoisw==}
+    dev: false
+
   /@lit-labs/context@0.3.2-pre.0:
     resolution: {integrity: sha512-gKIXnxZP8s5ILn2nWNe+Db7b1Wy18I9L1T+5kDfWq6X6PqOgKHAPctyigubB1T811wO+SfvGlBtkZLvfhDrCJw==}
     dependencies:
@@ -3892,6 +3899,13 @@ packages:
   /chardet@0.7.0:
     resolution: {integrity: sha512-mT8iDcrh03qDGRRmoA2hmBJnxpllMR+0/0qlzjqZES6NdiWDcZkCNAk4rPFZ9Q85r27unkiNNg8ZOiwZXBHwcA==}
     dev: true
+
+  /chart.js@4.2.1:
+    resolution: {integrity: sha512-6YbpQ0nt3NovAgOzbkSSeeAQu/3za1319dPUQTXn9WcOpywM8rGKxJHrhS8V8xEkAlk8YhEfjbuAPfUyp6jIsw==}
+    engines: {pnpm: ^7.0.0}
+    dependencies:
+      '@kurkle/color': 0.3.2
+    dev: false
 
   /checkpoint-client@1.1.23:
     resolution: {integrity: sha512-NrGvMiH1fUcZwrYc0Z+YTn7q9ysV0kPgVyDKZ5jrfIerFJuSllvyGsY7bHeQSEiljaIaUP1Q/xutZ8q1s7PGzg==}

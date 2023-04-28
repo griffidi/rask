@@ -10,27 +10,19 @@ export class HomePage extends LitElement {
   @state() value = 0;
 
   override render(): TemplateResult {
+    return html``;
+  }
+
+  #renderChart(id: string): TemplateResult {
     return html`
-      <div class="container">
-        <rk-accordion>
-          <div slot="headline">Account Stuff</div>
-          <span>
-            Accounting is the systematic process of recording, classifying, and summarizing financial transactions to
-            provide an accurate picture of a business's financial health. It involves analyzing and interpreting
-            financial data to make informed decisions and assess the overall performance of a company. Accounting plays
-            a crucial role in business management and is essential for the success and growth of any organization.
-          </span>
-        </rk-accordion>
-        <rk-accordion>
-          <div slot="headline">Inventory Stuff</div>
-          <span>
-            Accounting is the systematic process of recording, classifying, and summarizing financial transactions to
-            provide an accurate picture of a business's financial health. It involves analyzing and interpreting
-            financial data to make informed decisions and assess the overall performance of a company. Accounting plays
-            a crucial role in business management and is essential for the success and growth of any organization.
-          </span>
-        </rk-accordion>
+      <div class="chart-container">
+        <canvas
+          id="${id}"
+          width="100%"
+          height="100%"
+          class="chart"></canvas>
       </div>
+      s
     `;
   }
 }
