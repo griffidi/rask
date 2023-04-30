@@ -218,6 +218,9 @@ importers:
       '@web/dev-server-esbuild':
         specifier: ^0.4.1
         version: 0.4.1
+      '@web/dev-server-hmr':
+        specifier: ^0.2.1
+        version: 0.2.1
       '@web/dev-server-rollup':
         specifier: ^0.5.0
         version: 0.5.0
@@ -3424,6 +3427,17 @@ packages:
       esbuild: 0.17.18
       parse5: 6.0.1
       ua-parser-js: 1.0.35
+    transitivePeerDependencies:
+      - bufferutil
+      - supports-color
+      - utf-8-validate
+    dev: true
+
+  /@web/dev-server-hmr@0.2.1:
+    resolution: {integrity: sha512-RXxRhckCJ0DUdxvOEWnKEHMzWV+xwLBp9mBgtM9xtZ0PBCdH93/NVmtxVkCLrrwwznGYtCuEt42snEbigS8KAQ==}
+    engines: {node: '>=16.0.0'}
+    dependencies:
+      '@web/dev-server-core': 0.5.1
     transitivePeerDependencies:
       - bufferutil
       - supports-color

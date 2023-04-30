@@ -1,6 +1,6 @@
 import rollupGraphQl from '@rollup/plugin-graphql';
 import { esbuildPlugin } from '@web/dev-server-esbuild';
-// import { hmrPlugin } from '@web/dev-server-hmr';
+import { hmrPlugin } from '@web/dev-server-hmr';
 import { fromRollup } from '@web/dev-server-rollup';
 // import presetenv from 'postcss-preset-env';
 // import postcssPlugin from 'rollup-plugin-postcss';
@@ -62,6 +62,6 @@ export default /** @type {import("@web/dev-server").DevServerConfig} */ ({
       tsconfig: fileURLToPath(new URL('./tsconfig.json', import.meta.url)),
       ts: true,
     }),
-    // hmrPlugin(),
+    hmrPlugin(),
   ],
 });
