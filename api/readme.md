@@ -34,7 +34,7 @@ The project dependencies are managed by the workspace. Refer to the root [README
 
 ### Database
 
-[Prisma](1) is used to model, generate and seed the [SQLite](2) database. The database is stored locally in the project as a `dev.db` file in the root of the [`prisma/dev.db`](3) directory. SQLite was chosen for this project because it is 100% managed by this project with zero configuration required.
+[Prisma](1) is used to model, generate and seed the [SQLite](2) database. The database is stored locally in the project as a `dev.db` file in the root of the [`/prisma`](3) directory. SQLite was chosen for this project because it is 100% managed by this project with zero configuration required.
 
 > The first time this project is ran using the `dev` script, if the `dev.db` does not exists, then the scripts responsible for generating the database, type classes and CRUD resolvers and GraphQL schemas are executed to ensure all runtime dependencices are available.
 
