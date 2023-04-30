@@ -39,6 +39,24 @@ model Department {
   dateUpdated DateTime?  @updatedAt
 }
 
+model Product {
+  id          String      @id @default(nanoid(10))
+  name        String      @unique
+  dateCreated DateTime    @default(now())
+  dateUpdated DateTime?   @updatedAt
+  Inventory   Inventory[]
+}
+
+model Inventory {
+  id          String    @id @default(nanoid(10))
+  productId   String
+  quantity    Int
+  size        String
+  dateCreated DateTime  @default(now())
+  dateUpdated DateTime? @updatedAt
+  product     Product   @relation(fields: [productId], references: [id])
+}
+
 model Employee {
   id            String     @id @default(nanoid(10))
   firstName     String

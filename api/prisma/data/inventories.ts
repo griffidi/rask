@@ -1,0 +1,156 @@
+import { randNumber, randPastDate } from '@ngneat/falso';
+import { nanoid } from 'nanoid';
+import { randChanceFn } from './generators/chance-fn.js';
+import { HAT_NAME, HOODIE_NAME, PANTS_NAME, SHORTS_NAME, SWEATER_NAME, TSHIRT_NAME, products } from './products.js';
+
+export const inventories = [
+  {
+    id: nanoid(10),
+    productId: products.find(type => type.name === TSHIRT_NAME).id,
+    quantity: randNumber({ min: 1, max: 999 }),
+    size: 'Small',
+    dateCreated: randPastDate({ years: 10 }),
+    dateUpdated: randChanceFn({ chanceTrue: 0.4 }, () => randPastDate({ years: 10 })),
+  },
+  {
+    id: nanoid(10),
+    productId: products.find(type => type.name === TSHIRT_NAME).id,
+    quantity: randNumber({ min: 1, max: 999 }),
+    size: 'Medium',
+    dateCreated: randPastDate({ years: 10 }),
+    dateUpdated: randChanceFn({ chanceTrue: 0.4 }, () => randPastDate({ years: 10 })),
+  },
+  {
+    id: nanoid(10),
+    productId: products.find(type => type.name === TSHIRT_NAME).id,
+    quantity: randNumber({ min: 1, max: 999 }),
+    size: 'Large',
+    dateCreated: randPastDate({ years: 10 }),
+    dateUpdated: randChanceFn({ chanceTrue: 0.4 }, () => randPastDate({ years: 10 })),
+  },
+  {
+    id: nanoid(10),
+    productId: products.find(type => type.name === PANTS_NAME).id,
+    quantity: randNumber({ min: 1, max: 999 }),
+    size: 'Small',
+    dateCreated: randPastDate({ years: 10 }),
+    dateUpdated: randChanceFn({ chanceTrue: 0.4 }, () => randPastDate({ years: 10 })),
+  },
+
+  {
+    id: nanoid(10),
+    productId: products.find(type => type.name === PANTS_NAME).id,
+    quantity: randNumber({ min: 1, max: 999 }),
+    size: 'Medium',
+    dateCreated: randPastDate({ years: 10 }),
+    dateUpdated: randChanceFn({ chanceTrue: 0.4 }, () => randPastDate({ years: 10 })),
+  },
+
+  {
+    id: nanoid(10),
+    productId: products.find(type => type.name === PANTS_NAME).id,
+    quantity: randNumber({ min: 1, max: 999 }),
+    size: 'Large',
+    dateCreated: randPastDate({ years: 10 }),
+    dateUpdated: randChanceFn({ chanceTrue: 0.4 }, () => randPastDate({ years: 10 })),
+  },
+  {
+    id: nanoid(10),
+    productId: products.find(type => type.name === SHORTS_NAME).id,
+    quantity: randNumber({ min: 1, max: 999 }),
+    size: 'Small',
+    dateCreated: randPastDate({ years: 10 }),
+    dateUpdated: randChanceFn({ chanceTrue: 0.4 }, () => randPastDate({ years: 10 })),
+  },
+  {
+    id: nanoid(10),
+    productId: products.find(type => type.name === SHORTS_NAME).id,
+    quantity: randNumber({ min: 1, max: 999 }),
+    size: 'Medium',
+    dateCreated: randPastDate({ years: 10 }),
+    dateUpdated: randChanceFn({ chanceTrue: 0.4 }, () => randPastDate({ years: 10 })),
+  },
+  {
+    id: nanoid(10),
+    productId: products.find(type => type.name === SHORTS_NAME).id,
+    quantity: randNumber({ min: 1, max: 999 }),
+    size: 'Large',
+    dateCreated: randPastDate({ years: 10 }),
+    dateUpdated: randChanceFn({ chanceTrue: 0.4 }, () => randPastDate({ years: 10 })),
+  },
+  {
+    id: nanoid(10),
+    productId: products.find(type => type.name === SWEATER_NAME).id,
+    quantity: randNumber({ min: 1, max: 999 }),
+    size: 'Small',
+    dateCreated: randPastDate({ years: 10 }),
+    dateUpdated: randChanceFn({ chanceTrue: 0.4 }, () => randPastDate({ years: 10 })),
+  },
+  {
+    id: nanoid(10),
+    productId: products.find(type => type.name === SWEATER_NAME).id,
+    quantity: randNumber({ min: 1, max: 999 }),
+    size: 'Medium',
+    dateCreated: randPastDate({ years: 10 }),
+    dateUpdated: randChanceFn({ chanceTrue: 0.4 }, () => randPastDate({ years: 10 })),
+  },
+
+  {
+    id: nanoid(10),
+    productId: products.find(type => type.name === SWEATER_NAME).id,
+    quantity: randNumber({ min: 1, max: 999 }),
+    size: 'Large',
+    dateCreated: randPastDate({ years: 10 }),
+    dateUpdated: randChanceFn({ chanceTrue: 0.4 }, () => randPastDate({ years: 10 })),
+  },
+  {
+    id: nanoid(10),
+    productId: products.find(type => type.name === HAT_NAME).id,
+    quantity: randNumber({ min: 1, max: 999 }),
+    size: 'Small',
+    dateCreated: randPastDate({ years: 10 }),
+    dateUpdated: randChanceFn({ chanceTrue: 0.4 }, () => randPastDate({ years: 10 })),
+  },
+  {
+    id: nanoid(10),
+    productId: products.find(type => type.name === HAT_NAME).id,
+    quantity: randNumber({ min: 1, max: 999 }),
+    size: 'Medium',
+    dateCreated: randPastDate({ years: 10 }),
+    dateUpdated: randChanceFn({ chanceTrue: 0.4 }, () => randPastDate({ years: 10 })),
+  },
+
+  {
+    id: nanoid(10),
+    productId: products.find(type => type.name === HAT_NAME).id,
+    quantity: randNumber({ min: 1, max: 999 }),
+    size: 'Large',
+    dateCreated: randPastDate({ years: 10 }),
+    dateUpdated: randChanceFn({ chanceTrue: 0.4 }, () => randPastDate({ years: 10 })),
+  },
+  {
+    id: nanoid(10),
+    productId: products.find(type => type.name === HOODIE_NAME).id,
+    quantity: randNumber({ min: 1, max: 999 }),
+    size: 'Small',
+    dateCreated: randPastDate({ years: 10 }),
+    dateUpdated: randChanceFn({ chanceTrue: 0.4 }, () => randPastDate({ years: 10 })),
+  },
+
+  {
+    id: nanoid(10),
+    productId: products.find(type => type.name === HOODIE_NAME).id,
+    quantity: randNumber({ min: 1, max: 999 }),
+    size: 'Medium',
+    dateCreated: randPastDate({ years: 10 }),
+    dateUpdated: randChanceFn({ chanceTrue: 0.4 }, () => randPastDate({ years: 10 })),
+  },
+  {
+    id: nanoid(10),
+    productId: products.find(type => type.name === HOODIE_NAME).id,
+    quantity: randNumber({ min: 1, max: 999 }),
+    size: 'Large',
+    dateCreated: randPastDate({ years: 10 }),
+    dateUpdated: randChanceFn({ chanceTrue: 0.4 }, () => randPastDate({ years: 10 })),
+  },
+];

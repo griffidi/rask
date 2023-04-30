@@ -1,5 +1,5 @@
 import { randChanceBoolean } from '@ngneat/falso';
-import type { FakeOptions } from '@ngneat/falso/core/core.js';
+import type { FakeOptions } from '@ngneat/falso/lib/core/core.js';
 
 interface RandChangeBooleanOptions extends FakeOptions {
   chanceTrue?: number;

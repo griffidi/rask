@@ -25,6 +25,20 @@ type AggregateEmployee {
   _min: EmployeeMinAggregate
 }
 
+type AggregateInventory {
+  _avg: InventoryAvgAggregate
+  _count: InventoryCountAggregate
+  _max: InventoryMaxAggregate
+  _min: InventoryMinAggregate
+  _sum: InventorySumAggregate
+}
+
+type AggregateProduct {
+  _count: ProductCountAggregate
+  _max: ProductMaxAggregate
+  _min: ProductMinAggregate
+}
+
 type AggregateRole {
   _count: RoleCountAggregate
   _max: RoleMaxAggregate
@@ -911,35 +925,335 @@ input EmployeeWhereUniqueInput {
   id: String
 }
 
+input IntFilter {
+  equals: Int
+  gt: Int
+  gte: Int
+  in: [Int!]
+  lt: Int
+  lte: Int
+  not: NestedIntFilter
+  notIn: [Int!]
+}
+
+input IntWithAggregatesFilter {
+  _avg: NestedFloatFilter
+  _count: NestedIntFilter
+  _max: NestedIntFilter
+  _min: NestedIntFilter
+  _sum: NestedIntFilter
+  equals: Int
+  gt: Int
+  gte: Int
+  in: [Int!]
+  lt: Int
+  lte: Int
+  not: NestedIntWithAggregatesFilter
+  notIn: [Int!]
+}
+
+type Inventory {
+  dateCreated: DateTime!
+  dateUpdated: DateTime
+  id: String!
+  product: Product!
+  productId: String!
+  quantity: Int!
+  size: String!
+}
+
+type InventoryAvgAggregate {
+  quantity: Float
+}
+
+input InventoryAvgOrderByAggregateInput {
+  quantity: SortOrder
+}
+
+type InventoryCountAggregate {
+  _all: Int!
+  dateCreated: Int!
+  dateUpdated: Int!
+  id: Int!
+  productId: Int!
+  quantity: Int!
+  size: Int!
+}
+
+input InventoryCountOrderByAggregateInput {
+  dateCreated: SortOrder
+  dateUpdated: SortOrder
+  id: SortOrder
+  productId: SortOrder
+  quantity: SortOrder
+  size: SortOrder
+}
+
+input InventoryCreateInput {
+  dateCreated: DateTime
+  dateUpdated: DateTime
+  id: String
+  product: ProductCreateNestedOneWithoutInventoryInput!
+  quantity: Int!
+  size: String!
+}
+
+input InventoryCreateNestedManyWithoutProductInput {
+  connect: [InventoryWhereUniqueInput!]
+  connectOrCreate: [InventoryCreateOrConnectWithoutProductInput!]
+  create: [InventoryCreateWithoutProductInput!]
+}
+
+input InventoryCreateOrConnectWithoutProductInput {
+  create: InventoryCreateWithoutProductInput!
+  where: InventoryWhereUniqueInput!
+}
+
+input InventoryCreateWithoutProductInput {
+  dateCreated: DateTime
+  dateUpdated: DateTime
+  id: String
+  quantity: Int!
+  size: String!
+}
+
+type InventoryGroupBy {
+  _avg: InventoryAvgAggregate
+  _count: InventoryCountAggregate
+  _max: InventoryMaxAggregate
+  _min: InventoryMinAggregate
+  _sum: InventorySumAggregate
+  dateCreated: DateTime!
+  dateUpdated: DateTime
+  id: String!
+  productId: String!
+  quantity: Int!
+  size: String!
+}
+
+input InventoryListRelationFilter {
+  every: InventoryWhereInput
+  none: InventoryWhereInput
+  some: InventoryWhereInput
+}
+
+type InventoryMaxAggregate {
+  dateCreated: DateTime
+  dateUpdated: DateTime
+  id: String
+  productId: String
+  quantity: Int
+  size: String
+}
+
+input InventoryMaxOrderByAggregateInput {
+  dateCreated: SortOrder
+  dateUpdated: SortOrder
+  id: SortOrder
+  productId: SortOrder
+  quantity: SortOrder
+  size: SortOrder
+}
+
+type InventoryMinAggregate {
+  dateCreated: DateTime
+  dateUpdated: DateTime
+  id: String
+  productId: String
+  quantity: Int
+  size: String
+}
+
+input InventoryMinOrderByAggregateInput {
+  dateCreated: SortOrder
+  dateUpdated: SortOrder
+  id: SortOrder
+  productId: SortOrder
+  quantity: SortOrder
+  size: SortOrder
+}
+
+input InventoryOrderByRelationAggregateInput {
+  _count: SortOrder
+}
+
+input InventoryOrderByWithAggregationInput {
+  _avg: InventoryAvgOrderByAggregateInput
+  _count: InventoryCountOrderByAggregateInput
+  _max: InventoryMaxOrderByAggregateInput
+  _min: InventoryMinOrderByAggregateInput
+  _sum: InventorySumOrderByAggregateInput
+  dateCreated: SortOrder
+  dateUpdated: SortOrder
+  id: SortOrder
+  productId: SortOrder
+  quantity: SortOrder
+  size: SortOrder
+}
+
+input InventoryOrderByWithRelationInput {
+  dateCreated: SortOrder
+  dateUpdated: SortOrder
+  id: SortOrder
+  product: ProductOrderByWithRelationInput
+  productId: SortOrder
+  quantity: SortOrder
+  size: SortOrder
+}
+
+enum InventoryScalarFieldEnum {
+  dateCreated
+  dateUpdated
+  id
+  productId
+  quantity
+  size
+}
+
+input InventoryScalarWhereInput {
+  AND: [InventoryScalarWhereInput!]
+  NOT: [InventoryScalarWhereInput!]
+  OR: [InventoryScalarWhereInput!]
+  dateCreated: DateTimeFilter
+  dateUpdated: DateTimeNullableFilter
+  id: StringFilter
+  productId: StringFilter
+  quantity: IntFilter
+  size: StringFilter
+}
+
+input InventoryScalarWhereWithAggregatesInput {
+  AND: [InventoryScalarWhereWithAggregatesInput!]
+  NOT: [InventoryScalarWhereWithAggregatesInput!]
+  OR: [InventoryScalarWhereWithAggregatesInput!]
+  dateCreated: DateTimeWithAggregatesFilter
+  dateUpdated: DateTimeNullableWithAggregatesFilter
+  id: StringWithAggregatesFilter
+  productId: StringWithAggregatesFilter
+  quantity: IntWithAggregatesFilter
+  size: StringWithAggregatesFilter
+}
+
+type InventorySumAggregate {
+  quantity: Int
+}
+
+input InventorySumOrderByAggregateInput {
+  quantity: SortOrder
+}
+
+input InventoryUpdateInput {
+  dateCreated: DateTime
+  dateUpdated: DateTime
+  id: String
+  product: ProductUpdateOneRequiredWithoutInventoryNestedInput
+  quantity: Int
+  size: String
+}
+
+input InventoryUpdateManyMutationInput {
+  dateCreated: DateTime
+  dateUpdated: DateTime
+  id: String
+  quantity: Int
+  size: String
+}
+
+input InventoryUpdateManyWithWhereWithoutProductInput {
+  data: InventoryUpdateManyMutationInput!
+  where: InventoryScalarWhereInput!
+}
+
+input InventoryUpdateManyWithoutProductNestedInput {
+  connect: [InventoryWhereUniqueInput!]
+  connectOrCreate: [InventoryCreateOrConnectWithoutProductInput!]
+  create: [InventoryCreateWithoutProductInput!]
+  delete: [InventoryWhereUniqueInput!]
+  deleteMany: [InventoryScalarWhereInput!]
+  disconnect: [InventoryWhereUniqueInput!]
+  set: [InventoryWhereUniqueInput!]
+  update: [InventoryUpdateWithWhereUniqueWithoutProductInput!]
+  updateMany: [InventoryUpdateManyWithWhereWithoutProductInput!]
+  upsert: [InventoryUpsertWithWhereUniqueWithoutProductInput!]
+}
+
+input InventoryUpdateWithWhereUniqueWithoutProductInput {
+  data: InventoryUpdateWithoutProductInput!
+  where: InventoryWhereUniqueInput!
+}
+
+input InventoryUpdateWithoutProductInput {
+  dateCreated: DateTime
+  dateUpdated: DateTime
+  id: String
+  quantity: Int
+  size: String
+}
+
+input InventoryUpsertWithWhereUniqueWithoutProductInput {
+  create: InventoryCreateWithoutProductInput!
+  update: InventoryUpdateWithoutProductInput!
+  where: InventoryWhereUniqueInput!
+}
+
+input InventoryWhereInput {
+  AND: [InventoryWhereInput!]
+  NOT: [InventoryWhereInput!]
+  OR: [InventoryWhereInput!]
+  dateCreated: DateTimeFilter
+  dateUpdated: DateTimeNullableFilter
+  id: StringFilter
+  product: ProductRelationFilter
+  productId: StringFilter
+  quantity: IntFilter
+  size: StringFilter
+}
+
+input InventoryWhereUniqueInput {
+  id: String
+}
+
 type Mutation {
   createOneCustomer(data: CustomerCreateInput!): Customer!
   createOneDepartment(data: DepartmentCreateInput!): Department!
   createOneEmployee(data: EmployeeCreateInput!): Employee!
+  createOneInventory(data: InventoryCreateInput!): Inventory!
+  createOneProduct(data: ProductCreateInput!): Product!
   createOneRole(data: RoleCreateInput!): Role!
   createOneUser(data: UserCreateInput!): User!
   deleteManyCustomer(where: CustomerWhereInput): AffectedRowsOutput!
   deleteManyDepartment(where: DepartmentWhereInput): AffectedRowsOutput!
   deleteManyEmployee(where: EmployeeWhereInput): AffectedRowsOutput!
+  deleteManyInventory(where: InventoryWhereInput): AffectedRowsOutput!
+  deleteManyProduct(where: ProductWhereInput): AffectedRowsOutput!
   deleteManyRole(where: RoleWhereInput): AffectedRowsOutput!
   deleteManyUser(where: UserWhereInput): AffectedRowsOutput!
   deleteOneCustomer(where: CustomerWhereUniqueInput!): Customer
   deleteOneDepartment(where: DepartmentWhereUniqueInput!): Department
   deleteOneEmployee(where: EmployeeWhereUniqueInput!): Employee
+  deleteOneInventory(where: InventoryWhereUniqueInput!): Inventory
+  deleteOneProduct(where: ProductWhereUniqueInput!): Product
   deleteOneRole(where: RoleWhereUniqueInput!): Role
   deleteOneUser(where: UserWhereUniqueInput!): User
   updateManyCustomer(data: CustomerUpdateManyMutationInput!, where: CustomerWhereInput): AffectedRowsOutput!
   updateManyDepartment(data: DepartmentUpdateManyMutationInput!, where: DepartmentWhereInput): AffectedRowsOutput!
   updateManyEmployee(data: EmployeeUpdateManyMutationInput!, where: EmployeeWhereInput): AffectedRowsOutput!
+  updateManyInventory(data: InventoryUpdateManyMutationInput!, where: InventoryWhereInput): AffectedRowsOutput!
+  updateManyProduct(data: ProductUpdateManyMutationInput!, where: ProductWhereInput): AffectedRowsOutput!
   updateManyRole(data: RoleUpdateManyMutationInput!, where: RoleWhereInput): AffectedRowsOutput!
   updateManyUser(data: UserUpdateManyMutationInput!, where: UserWhereInput): AffectedRowsOutput!
   updateOneCustomer(data: CustomerUpdateInput!, where: CustomerWhereUniqueInput!): Customer
   updateOneDepartment(data: DepartmentUpdateInput!, where: DepartmentWhereUniqueInput!): Department
   updateOneEmployee(data: EmployeeUpdateInput!, where: EmployeeWhereUniqueInput!): Employee
+  updateOneInventory(data: InventoryUpdateInput!, where: InventoryWhereUniqueInput!): Inventory
+  updateOneProduct(data: ProductUpdateInput!, where: ProductWhereUniqueInput!): Product
   updateOneRole(data: RoleUpdateInput!, where: RoleWhereUniqueInput!): Role
   updateOneUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
   upsertOneCustomer(create: CustomerCreateInput!, update: CustomerUpdateInput!, where: CustomerWhereUniqueInput!): Customer!
   upsertOneDepartment(create: DepartmentCreateInput!, update: DepartmentUpdateInput!, where: DepartmentWhereUniqueInput!): Department!
   upsertOneEmployee(create: EmployeeCreateInput!, update: EmployeeUpdateInput!, where: EmployeeWhereUniqueInput!): Employee!
+  upsertOneInventory(create: InventoryCreateInput!, update: InventoryUpdateInput!, where: InventoryWhereUniqueInput!): Inventory!
+  upsertOneProduct(create: ProductCreateInput!, update: ProductUpdateInput!, where: ProductWhereUniqueInput!): Product!
   upsertOneRole(create: RoleCreateInput!, update: RoleUpdateInput!, where: RoleWhereUniqueInput!): Role!
   upsertOneUser(create: UserCreateInput!, update: UserUpdateInput!, where: UserWhereUniqueInput!): User!
 }
@@ -994,6 +1308,17 @@ input NestedDateTimeWithAggregatesFilter {
   notIn: [DateTime!]
 }
 
+input NestedFloatFilter {
+  equals: Float
+  gt: Float
+  gte: Float
+  in: [Float!]
+  lt: Float
+  lte: Float
+  not: NestedFloatFilter
+  notIn: [Float!]
+}
+
 input NestedIntFilter {
   equals: Int
   gt: Int
@@ -1013,6 +1338,22 @@ input NestedIntNullableFilter {
   lt: Int
   lte: Int
   not: NestedIntNullableFilter
+  notIn: [Int!]
+}
+
+input NestedIntWithAggregatesFilter {
+  _avg: NestedFloatFilter
+  _count: NestedIntFilter
+  _max: NestedIntFilter
+  _min: NestedIntFilter
+  _sum: NestedIntFilter
+  equals: Int
+  gt: Int
+  gte: Int
+  in: [Int!]
+  lt: Int
+  lte: Int
+  not: NestedIntWithAggregatesFilter
   notIn: [Int!]
 }
 
@@ -1047,10 +1388,195 @@ input NestedStringWithAggregatesFilter {
   startsWith: String
 }
 
+type Product {
+  Inventory(cursor: InventoryWhereUniqueInput, distinct: [InventoryScalarFieldEnum!], orderBy: [InventoryOrderByWithRelationInput!], skip: Int, take: Int, where: InventoryWhereInput): [Inventory!]!
+  _count: ProductCount
+  dateCreated: DateTime!
+  dateUpdated: DateTime
+  id: String!
+  name: String!
+}
+
+type ProductCount {
+  Inventory: Int!
+}
+
+type ProductCountAggregate {
+  _all: Int!
+  dateCreated: Int!
+  dateUpdated: Int!
+  id: Int!
+  name: Int!
+}
+
+input ProductCountOrderByAggregateInput {
+  dateCreated: SortOrder
+  dateUpdated: SortOrder
+  id: SortOrder
+  name: SortOrder
+}
+
+input ProductCreateInput {
+  Inventory: InventoryCreateNestedManyWithoutProductInput
+  dateCreated: DateTime
+  dateUpdated: DateTime
+  id: String
+  name: String!
+}
+
+input ProductCreateNestedOneWithoutInventoryInput {
+  connect: ProductWhereUniqueInput
+  connectOrCreate: ProductCreateOrConnectWithoutInventoryInput
+  create: ProductCreateWithoutInventoryInput
+}
+
+input ProductCreateOrConnectWithoutInventoryInput {
+  create: ProductCreateWithoutInventoryInput!
+  where: ProductWhereUniqueInput!
+}
+
+input ProductCreateWithoutInventoryInput {
+  dateCreated: DateTime
+  dateUpdated: DateTime
+  id: String
+  name: String!
+}
+
+type ProductGroupBy {
+  _count: ProductCountAggregate
+  _max: ProductMaxAggregate
+  _min: ProductMinAggregate
+  dateCreated: DateTime!
+  dateUpdated: DateTime
+  id: String!
+  name: String!
+}
+
+type ProductMaxAggregate {
+  dateCreated: DateTime
+  dateUpdated: DateTime
+  id: String
+  name: String
+}
+
+input ProductMaxOrderByAggregateInput {
+  dateCreated: SortOrder
+  dateUpdated: SortOrder
+  id: SortOrder
+  name: SortOrder
+}
+
+type ProductMinAggregate {
+  dateCreated: DateTime
+  dateUpdated: DateTime
+  id: String
+  name: String
+}
+
+input ProductMinOrderByAggregateInput {
+  dateCreated: SortOrder
+  dateUpdated: SortOrder
+  id: SortOrder
+  name: SortOrder
+}
+
+input ProductOrderByWithAggregationInput {
+  _count: ProductCountOrderByAggregateInput
+  _max: ProductMaxOrderByAggregateInput
+  _min: ProductMinOrderByAggregateInput
+  dateCreated: SortOrder
+  dateUpdated: SortOrder
+  id: SortOrder
+  name: SortOrder
+}
+
+input ProductOrderByWithRelationInput {
+  Inventory: InventoryOrderByRelationAggregateInput
+  dateCreated: SortOrder
+  dateUpdated: SortOrder
+  id: SortOrder
+  name: SortOrder
+}
+
+input ProductRelationFilter {
+  is: ProductWhereInput
+  isNot: ProductWhereInput
+}
+
+enum ProductScalarFieldEnum {
+  dateCreated
+  dateUpdated
+  id
+  name
+}
+
+input ProductScalarWhereWithAggregatesInput {
+  AND: [ProductScalarWhereWithAggregatesInput!]
+  NOT: [ProductScalarWhereWithAggregatesInput!]
+  OR: [ProductScalarWhereWithAggregatesInput!]
+  dateCreated: DateTimeWithAggregatesFilter
+  dateUpdated: DateTimeNullableWithAggregatesFilter
+  id: StringWithAggregatesFilter
+  name: StringWithAggregatesFilter
+}
+
+input ProductUpdateInput {
+  Inventory: InventoryUpdateManyWithoutProductNestedInput
+  dateCreated: DateTime
+  dateUpdated: DateTime
+  id: String
+  name: String
+}
+
+input ProductUpdateManyMutationInput {
+  dateCreated: DateTime
+  dateUpdated: DateTime
+  id: String
+  name: String
+}
+
+input ProductUpdateOneRequiredWithoutInventoryNestedInput {
+  connect: ProductWhereUniqueInput
+  connectOrCreate: ProductCreateOrConnectWithoutInventoryInput
+  create: ProductCreateWithoutInventoryInput
+  update: ProductUpdateWithoutInventoryInput
+  upsert: ProductUpsertWithoutInventoryInput
+}
+
+input ProductUpdateWithoutInventoryInput {
+  dateCreated: DateTime
+  dateUpdated: DateTime
+  id: String
+  name: String
+}
+
+input ProductUpsertWithoutInventoryInput {
+  create: ProductCreateWithoutInventoryInput!
+  update: ProductUpdateWithoutInventoryInput!
+}
+
+input ProductWhereInput {
+  AND: [ProductWhereInput!]
+  Inventory: InventoryListRelationFilter
+  NOT: [ProductWhereInput!]
+  OR: [ProductWhereInput!]
+  dateCreated: DateTimeFilter
+  dateUpdated: DateTimeNullableFilter
+  id: StringFilter
+  name: StringFilter
+}
+
+input ProductWhereUniqueInput {
+  id: String
+  name: String
+}
+
 type Query {
   aggregateCustomer(cursor: CustomerWhereUniqueInput, orderBy: [CustomerOrderByWithRelationInput!], skip: Int, take: Int, where: CustomerWhereInput): AggregateCustomer!
   aggregateDepartment(cursor: DepartmentWhereUniqueInput, orderBy: [DepartmentOrderByWithRelationInput!], skip: Int, take: Int, where: DepartmentWhereInput): AggregateDepartment!
   aggregateEmployee(cursor: EmployeeWhereUniqueInput, orderBy: [EmployeeOrderByWithRelationInput!], skip: Int, take: Int, where: EmployeeWhereInput): AggregateEmployee!
+  aggregateInventory(cursor: InventoryWhereUniqueInput, orderBy: [InventoryOrderByWithRelationInput!], skip: Int, take: Int, where: InventoryWhereInput): AggregateInventory!
+  aggregateProduct(cursor: ProductWhereUniqueInput, orderBy: [ProductOrderByWithRelationInput!], skip: Int, take: Int, where: ProductWhereInput): AggregateProduct!
   aggregateRole(cursor: RoleWhereUniqueInput, orderBy: [RoleOrderByWithRelationInput!], skip: Int, take: Int, where: RoleWhereInput): AggregateRole!
   aggregateUser(cursor: UserWhereUniqueInput, orderBy: [UserOrderByWithRelationInput!], skip: Int, take: Int, where: UserWhereInput): AggregateUser!
   customer(where: CustomerWhereUniqueInput!): Customer
@@ -1065,6 +1591,10 @@ type Query {
   findFirstDepartmentOrThrow(cursor: DepartmentWhereUniqueInput, distinct: [DepartmentScalarFieldEnum!], orderBy: [DepartmentOrderByWithRelationInput!], skip: Int, take: Int, where: DepartmentWhereInput): Department
   findFirstEmployee(cursor: EmployeeWhereUniqueInput, distinct: [EmployeeScalarFieldEnum!], orderBy: [EmployeeOrderByWithRelationInput!], skip: Int, take: Int, where: EmployeeWhereInput): Employee
   findFirstEmployeeOrThrow(cursor: EmployeeWhereUniqueInput, distinct: [EmployeeScalarFieldEnum!], orderBy: [EmployeeOrderByWithRelationInput!], skip: Int, take: Int, where: EmployeeWhereInput): Employee
+  findFirstInventory(cursor: InventoryWhereUniqueInput, distinct: [InventoryScalarFieldEnum!], orderBy: [InventoryOrderByWithRelationInput!], skip: Int, take: Int, where: InventoryWhereInput): Inventory
+  findFirstInventoryOrThrow(cursor: InventoryWhereUniqueInput, distinct: [InventoryScalarFieldEnum!], orderBy: [InventoryOrderByWithRelationInput!], skip: Int, take: Int, where: InventoryWhereInput): Inventory
+  findFirstProduct(cursor: ProductWhereUniqueInput, distinct: [ProductScalarFieldEnum!], orderBy: [ProductOrderByWithRelationInput!], skip: Int, take: Int, where: ProductWhereInput): Product
+  findFirstProductOrThrow(cursor: ProductWhereUniqueInput, distinct: [ProductScalarFieldEnum!], orderBy: [ProductOrderByWithRelationInput!], skip: Int, take: Int, where: ProductWhereInput): Product
   findFirstRole(cursor: RoleWhereUniqueInput, distinct: [RoleScalarFieldEnum!], orderBy: [RoleOrderByWithRelationInput!], skip: Int, take: Int, where: RoleWhereInput): Role
   findFirstRoleOrThrow(cursor: RoleWhereUniqueInput, distinct: [RoleScalarFieldEnum!], orderBy: [RoleOrderByWithRelationInput!], skip: Int, take: Int, where: RoleWhereInput): Role
   findFirstUser(cursor: UserWhereUniqueInput, distinct: [UserScalarFieldEnum!], orderBy: [UserOrderByWithRelationInput!], skip: Int, take: Int, where: UserWhereInput): User
@@ -1072,14 +1602,22 @@ type Query {
   getCustomer(where: CustomerWhereUniqueInput!): Customer
   getDepartment(where: DepartmentWhereUniqueInput!): Department
   getEmployee(where: EmployeeWhereUniqueInput!): Employee
+  getInventory(where: InventoryWhereUniqueInput!): Inventory
+  getProduct(where: ProductWhereUniqueInput!): Product
   getRole(where: RoleWhereUniqueInput!): Role
   getUser(where: UserWhereUniqueInput!): User
   groupByCustomer(by: [CustomerScalarFieldEnum!]!, having: CustomerScalarWhereWithAggregatesInput, orderBy: [CustomerOrderByWithAggregationInput!], skip: Int, take: Int, where: CustomerWhereInput): [CustomerGroupBy!]!
   groupByDepartment(by: [DepartmentScalarFieldEnum!]!, having: DepartmentScalarWhereWithAggregatesInput, orderBy: [DepartmentOrderByWithAggregationInput!], skip: Int, take: Int, where: DepartmentWhereInput): [DepartmentGroupBy!]!
   groupByEmployee(by: [EmployeeScalarFieldEnum!]!, having: EmployeeScalarWhereWithAggregatesInput, orderBy: [EmployeeOrderByWithAggregationInput!], skip: Int, take: Int, where: EmployeeWhereInput): [EmployeeGroupBy!]!
+  groupByInventory(by: [InventoryScalarFieldEnum!]!, having: InventoryScalarWhereWithAggregatesInput, orderBy: [InventoryOrderByWithAggregationInput!], skip: Int, take: Int, where: InventoryWhereInput): [InventoryGroupBy!]!
+  groupByProduct(by: [ProductScalarFieldEnum!]!, having: ProductScalarWhereWithAggregatesInput, orderBy: [ProductOrderByWithAggregationInput!], skip: Int, take: Int, where: ProductWhereInput): [ProductGroupBy!]!
   groupByRole(by: [RoleScalarFieldEnum!]!, having: RoleScalarWhereWithAggregatesInput, orderBy: [RoleOrderByWithAggregationInput!], skip: Int, take: Int, where: RoleWhereInput): [RoleGroupBy!]!
   groupByUser(by: [UserScalarFieldEnum!]!, having: UserScalarWhereWithAggregatesInput, orderBy: [UserOrderByWithAggregationInput!], skip: Int, take: Int, where: UserWhereInput): [UserGroupBy!]!
+  inventories(cursor: InventoryWhereUniqueInput, distinct: [InventoryScalarFieldEnum!], orderBy: [InventoryOrderByWithRelationInput!], skip: Int, take: Int, where: InventoryWhereInput): [Inventory!]!
+  inventory(where: InventoryWhereUniqueInput!): Inventory
   login(password: String!, userName: String!): String
+  product(where: ProductWhereUniqueInput!): Product
+  products(cursor: ProductWhereUniqueInput, distinct: [ProductScalarFieldEnum!], orderBy: [ProductOrderByWithRelationInput!], skip: Int, take: Int, where: ProductWhereInput): [Product!]!
   role(where: RoleWhereUniqueInput!): Role
   roles(cursor: RoleWhereUniqueInput, distinct: [RoleScalarFieldEnum!], orderBy: [RoleOrderByWithRelationInput!], skip: Int, take: Int, where: RoleWhereInput): [Role!]!
   user(where: UserWhereUniqueInput!): User

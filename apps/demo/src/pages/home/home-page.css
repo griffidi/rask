@@ -11,14 +11,11 @@
 
 .container {
   display: grid;
-  place-content: center;
-  block-size: 100%;
+  grid-template-columns: 20% 20% 1fr;
+  column-gap: 1em;
 }
 
-span {
-  font-size: 5rem;
-  line-height: 5;
-  background-image: linear-gradient(to right, var(--md-sys-color-magenta), var(--md-sys-color-hot-pink));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+app-dashboard {
+  padding-inline: 10px;
+  padding-block: 10px;
 }

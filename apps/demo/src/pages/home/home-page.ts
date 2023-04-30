@@ -1,3 +1,4 @@
+import ':/components/dashboard/dashboard.js';
 import { LitElement, html, type TemplateResult } from 'lit';
 import css from './home-page.css' assert { type: 'css' };
 
@@ -7,7 +8,9 @@ export class HomePage extends LitElement {
   override render(): TemplateResult {
     return html`
       <div class="container">
-        <span>Home Page</span>
+        <app-dashboard>Top Saling Products</app-dashboard>
+        <app-dashboard>Top Saling Products</app-dashboard>
+        <app-dashboard>Top Saling Products</app-dashboard>
       </div>
     `;
   }

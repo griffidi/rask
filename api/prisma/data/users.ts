@@ -12,8 +12,8 @@ import { generateHash } from '../../src/crypto/hash.js';
 import { randChanceFn } from './generators/chance-fn.js';
 import { roles } from './roles.js';
 
-const adminRoleId = roles.find((role) => role.name === 'Administrator').id;
-const userRoleId = roles.find((role) => role.name === 'User').id;
+const adminRoleId = roles.find(role => role.name === 'Administrator').id;
+const userRoleId = roles.find(role => role.name === 'User').id;
 
 const adminUser = {
   id: nanoid(10),
@@ -41,4 +41,7 @@ const basicUsers = Array.from({ length: 50 }, () => {
   };
 });
 
-export const users = [adminUser, ...basicUsers];
+export const users = [
+  adminUser,
+  ...basicUsers,
+];
