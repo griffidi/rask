@@ -16,6 +16,10 @@
       "path": "packages/core"
     },
     {
+      "name": "chart",
+      "path": "packages/chart"
+    },
+    {
       "name": "graphql",
       "path": "packages/graphql"
     },

@@ -8,10 +8,9 @@ import toast from '@rask/web/notifications/toast.js';
 import '@rask/web/skeleton/skeleton.js';
 import '@rask/web/text-field/text-field.js';
 import { LitElement, html, type TemplateResult } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { property } from 'lit/decorators.js';
 import css from './customer-page.css' assert { type: 'css' };
 
-@customElement('app-customer-page')
 export class CustomerPage extends LitElement {
   static override styles = css;
 
@@ -103,6 +102,10 @@ export class CustomerPage extends LitElement {
       throw new Error();
     }
   }
+}
+
+if (!customElements.get('app-customer-page')) {
+  customElements.define('app-customer-page', CustomerPage);
 }
 
 declare global {

@@ -5,8 +5,8 @@
     { "path": "./api" },
     { "path": "./apps/demo" },
     { "path": "./packages/core" },
+    { "path": "./packages/chart" },
     { "path": "./packages/graphql" },
     { "path": "./packages/identity" },
-    { "path": "./packages/web" }
-  ]
+    { "path": "./packages/web" }]
 }

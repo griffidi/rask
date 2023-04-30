@@ -1,8 +1,6 @@
 import { LitElement, html, type TemplateResult } from 'lit';
-import { customElement } from 'lit/decorators.js';
 import css from './page-not-found.css' assert { type: 'css' };
 
-@customElement('app-page-not-found')
 export class PageNotFound extends LitElement {
   static override styles = css;
 
@@ -17,6 +15,10 @@ export class PageNotFound extends LitElement {
       </div>
     `;
   }
+}
+
+if (!customElements.get('app-page-not-found')) {
+  customElements.define('app-page-not-found', PageNotFound);
 }
 
 declare global {

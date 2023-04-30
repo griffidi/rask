@@ -1,7 +1,7 @@
 import { LitElement, html, type TemplateResult } from 'lit';
-import css from './breadcrumb.css' assert { type: 'css' };
+import css from './dashboard.css' assert { type: 'css' };
 
-export class Breadcrumb extends LitElement {
+export class Dashboard extends LitElement {
   static override styles = css;
 
   override render(): TemplateResult {
@@ -11,12 +11,12 @@ export class Breadcrumb extends LitElement {
   }
 }
 
-if (!customElements.get('rk-breadcrumb')) {
-  customElements.define('rk-breadcrumb', Breadcrumb);
+if (!customElements.get('app-dashboard')) {
+  customElements.define('app-dashboard', Dashboard);
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    'rk-breadcrumb': Breadcrumb;
+    'app-dashboard': Dashboard;
   }
 }

@@ -1,11 +1,25 @@
-import { customElement } from 'lit/decorators.js';
-import { PageHeader } from './lib/page-header.js';
+import { LitElement, html, type TemplateResult } from 'lit';
+import css from './page-header.css' assert { type: 'css' };
 
-@customElement('rk-page-header')
-export class RkPageHeader extends PageHeader {}
+export class PageHeader extends LitElement {
+  static override styles = css;
+
+  override render(): TemplateResult {
+    return html`
+      <header>
+        <slot name="headline"></slot>
+        <slot></slot>
+      </header>
+    `;
+  }
+}
+
+if (!customElements.get('rk-page-header')) {
+  customElements.define('rk-page-header', PageHeader);
+}
 
 declare global {
   interface HTMLElementTagNameMap {
-    'rk-page-header': RkPageHeader;
+    'rk-page-header': PageHeader;
   }
 }

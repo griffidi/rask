@@ -8,14 +8,13 @@ import '@rask/web/button/button.js';
 import toast from '@rask/web/notifications/toast.js';
 import '@rask/web/skeleton/skeleton.js';
 import { LitElement, html, type TemplateResult } from 'lit';
-import { customElement, property, state } from 'lit/decorators.js';
+import { property, state } from 'lit/decorators.js';
 import { map } from 'lit/directives/map.js';
 import { range } from 'lit/directives/range.js';
 import css from './users-page.css' assert { type: 'css' };
 
 const CARD_SELECTED_CLASS = 'selected';
 
-@customElement('app-users-page')
 export class UsersPage extends LitElement {
   static override styles = css;
 
@@ -161,6 +160,10 @@ export class UsersPage extends LitElement {
 
     cardEl.addEventListener('animationend', animationendHandle);
   }
+}
+
+if (!customElements.get('app-users-page')) {
+  customElements.define('app-users-page', UsersPage);
 }
 
 declare global {

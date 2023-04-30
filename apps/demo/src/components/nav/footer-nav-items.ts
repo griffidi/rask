@@ -1,4 +1,4 @@
-import type { NavItem } from '@rask/web/navigation-item/lib/types.js';
+import type { NavItem } from '@rask/web/navigation-item/types.js';
 
 export const footerNavItems: ReadonlyArray<Readonly<NavItem>> = [
   {

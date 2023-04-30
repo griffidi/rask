@@ -7,16 +7,15 @@ import { USER_NAME_CACHE_KEY } from '@rask/identity/constants/user-name-cache-ke
 import { AuthService } from '@rask/identity/services/auth-service.js';
 import '@rask/web/button/button.js';
 import '@rask/web/text-field/text-field.js';
-import type { RkTextField } from '@rask/web/text-field/text-field.js';
+import type { TextField } from '@rask/web/text-field/text-field.js';
 import { Router } from '@vaadin/router';
 import { LitElement, html, type TemplateResult } from 'lit';
-import { customElement, state } from 'lit/decorators.js';
+import { state } from 'lit/decorators.js';
 import { live } from 'lit/directives/live.js';
 import css from './login-page.css' assert { type: 'css' };
 
 const cache = useCache();
 
-@customElement('app-login-page')
 export class LoginPage extends LitElement {
   static override styles = css;
 
@@ -29,12 +28,14 @@ export class LoginPage extends LitElement {
     this.userName = cache.get<string>(USER_NAME_CACHE_KEY) ?? '';
 
     const selector = this.userName.length ? '#password' : '#userName';
-    this.shadowRoot.querySelector<RkTextField>(selector)?.focus();
+    this.shadowRoot.querySelector<TextField>(selector)?.focus();
   }
 
   override render(): TemplateResult {
     return html`
-      <form method="submit" @submit=${this.#login}>
+      <form
+        method="submit"
+        @submit=${this.#login}>
         <header>
           <h3>Welcome</h3>
         </header>
@@ -47,8 +48,7 @@ export class LoginPage extends LitElement {
             .value=${live(this.#getUserNameInputValue())}
             @change=${this.#handleInputChange}
             @input=${this.#handleUserNameInput}
-            @keydown=${this.#handleInputKeydown}
-          ></rk-text-field>
+            @keydown=${this.#handleInputKeydown}></rk-text-field>
           <rk-text-field
             id="password"
             required
@@ -58,8 +58,7 @@ export class LoginPage extends LitElement {
             .value=${live(this.#getPasswordInputValue())}
             @change=${this.#handleInputChange}
             @input=${this.#handlePasswordInput}
-            @keydown=${this.#handleInputKeydown}
-          ></rk-text-field>
+            @keydown=${this.#handleInputKeydown}></rk-text-field>
         </section>
         <footer>
           <button type="submit">Sign In</button>
@@ -108,6 +107,10 @@ export class LoginPage extends LitElement {
       this.#login(new Event('submit'));
     }
   }
+}
+
+if (!customElements.get('app-login-page')) {
+  customElements.define('app-login-page', LoginPage);
 }
 
 declare global {

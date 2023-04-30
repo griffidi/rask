@@ -19,6 +19,10 @@
     "./reactivity/*": "./src/reactivity/*",
     "./types/*": "./src/types/*",
     "./validation/*": "./src/validation/*",
+    "./client": {
+      "types": "./src/types/client.d.ts"
+    },
+    "./src/client/*": "./src/client/*",
     "./router": {
       "types": "./src/types/lit-element.d.ts"
     },
@@ -41,7 +45,7 @@
     "tslib": "^2.5.0"
   },
   "devDependencies": {
-    "@types/node": "^18.16.1",
+    "@types/node": "^18.16.3",
     "typescript": "5.1.0-beta"
   },
   "peerDependencies": {

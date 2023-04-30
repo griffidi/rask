@@ -10,19 +10,18 @@ import '@rask/web/button/button.js';
 import toast from '@rask/web/notifications/toast.js';
 import { scrollable } from '@rask/web/scrollable/scrollable.js';
 import '@rask/web/skeleton/skeleton-table.js';
-import type { TableRowEditEvent, TableRowSelectedEvent } from '@rask/web/table/lib/events.js';
+import type { TableRowEditEvent, TableRowSelectedEvent } from '@rask/web/table/events.js';
 import '@rask/web/table/table-cell.js';
 import '@rask/web/table/table-header-cell.js';
 import '@rask/web/table/table-row.js';
 import '@rask/web/table/table.js';
 import { Router } from '@vaadin/router';
 import { LitElement, html, type TemplateResult } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { property } from 'lit/decorators.js';
 import { keyed } from 'lit/directives/keyed.js';
 import { map } from 'lit/directives/map.js';
 import css from './employees-page.css' assert { type: 'css' };
 
-@customElement('app-employees-page')
 export class EmployeesPage extends LitElement {
   static override styles = css;
 
@@ -144,6 +143,10 @@ export class EmployeesPage extends LitElement {
     // this.currentEmployee = employee;
     Router.go(`/${id}`);
   }
+}
+
+if (!customElements.get('app-employees-page')) {
+  customElements.define('app-employees-page', EmployeesPage);
 }
 
 declare global {

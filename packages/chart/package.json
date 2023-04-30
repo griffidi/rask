@@ -1,5 +1,5 @@
 {
-  "name": "@rask/graphql",
+  "name": "@rask/chart",
   "private": true,
   "version": "0.0.1",
   "packageManager": "pnpm@8.2.0",
@@ -9,10 +9,7 @@
   },
   "type": "module",
   "exports": {
-    "./client/*": "./src/client/*",
-    "./constants/*": "./src/constants/*",
-    "./controllers/*": "./src/controllers/*",
-    "./decorators/*": "./src/decorators/*",
+    "./chart-element/*": "./src/chart-element/*",
     "./package.json": "./package.json"
   },
   "files": [
@@ -24,21 +21,20 @@
     "build": ""
   },
   "dependencies": {
-    "@apollo/client": "^3.7.13",
-    "@lit-labs/context": "0.3.2-pre.0",
-    "@lit/reactive-element": "2.0.0-pre.0",
     "@rask/core": "workspace:^",
-    "apollo3-cache-persist": "^0.14.1",
-    "graphql": "^16.6.0",
-    "graphql-http": "^1.18.0",
+    "chart.js": "^4.3.0",
     "lit": "3.0.0-pre.0",
     "tslib": "^2.5.0"
   },
   "devDependencies": {
+    "@types/chart.js": "^2.9.37",
     "@types/node": "^18.16.3",
     "typescript": "5.1.0-beta"
   },
   "peerDependencies": {
+    "@rask/core": "*",
+    "chart.js": "*",
+    "lit": "*",
     "typescript": "5.*"
   }
 }

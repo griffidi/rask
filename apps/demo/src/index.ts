@@ -10,25 +10,17 @@ import { GRAPHQL_URI_CACHE_KEY } from '@rask/graphql/constants/graphql-uri-cache
 import { isAuthenticatedContext } from '@rask/identity/authentication/is-authenticated-context.js';
 import { AuthService } from '@rask/identity/services/auth-service.js';
 import '@rask/web/navigation-drawer/navigation-drawer.js';
-import type { Router, RouterLocation } from '@vaadin/router';
 import { LitElement, html, type TemplateResult } from 'lit';
-import { customElement } from 'lit/decorators.js';
 import { createRef, ref, type Ref } from 'lit/directives/ref.js';
 import config from '../app.config.js';
 import css from './index.css' assert { type: 'css' };
 import { attachRouter } from './router/index.js';
-
-type RouterLocationChangedEvent = CustomEvent<{
-  router: Router;
-  location: RouterLocation;
-}>;
 
 const cache = useCache();
 const { uri: GRAPHQL_URI } = config.graphql;
 
 cache.set(GRAPHQL_URI_CACHE_KEY, GRAPHQL_URI);
 
-@customElement('app-index')
 export class Index extends LitElement {
   static override styles = css;
 
@@ -94,6 +86,10 @@ export class Index extends LitElement {
   #showDrawer(): void {
     this.#nav.value.show();
   }
+}
+
+if (!customElements.get('app-index')) {
+  customElements.define('app-index', Index);
 }
 
 declare global {
