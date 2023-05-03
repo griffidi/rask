@@ -1,5 +1,5 @@
-import type { ChartData, ChartOptions, ChartType } from 'chart.js';
-import { Chart } from 'chart.js';
+import type { ChartData, ChartOptions, ChartType } from 'chart.js/auto';
+import { Chart } from 'chart.js/auto';
 import { LitElement, html, type TemplateResult } from 'lit';
 import { property, query } from 'lit/decorators.js';
 import css from './chart-element.css' assert { type: 'css' };

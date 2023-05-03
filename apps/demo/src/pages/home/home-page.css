@@ -11,7 +11,7 @@
 
 .container {
   display: grid;
-  grid-template-columns: 20% 20% 1fr;
+  grid-template-columns: 40% 40%;
   column-gap: 1em;
 }
 

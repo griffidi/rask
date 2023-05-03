@@ -10,9 +10,9 @@ import { type ChartData } from 'chart.js/auto';
 import { html, type TemplateResult } from 'lit';
 import { state } from 'lit/decorators.js';
 import { Dashboard } from '../dashboard.js';
-import css from './top-product-sales.css' assert { type: 'css' };
+import css from './product-sales-quantity.css' assert { type: 'css' };
 
-export class TopProductSales extends Dashboard {
+export class ProductSalesQuantity extends Dashboard {
   static override styles = [
     ...super.styles,
     css,
@@ -94,12 +94,12 @@ export class TopProductSales extends Dashboard {
   }
 }
 
-if (!customElements.get('app-top-product-sales')) {
-  customElements.define('app-top-product-sales', TopProductSales);
+if (!customElements.get('app-product-sales-quantity')) {
+  customElements.define('app-product-sales-quantity', ProductSalesQuantity);
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    'app-top-product-sales': TopProductSales;
+    'app-product-sales-quantity': ProductSalesQuantity;
   }
 }

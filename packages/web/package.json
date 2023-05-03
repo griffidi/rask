@@ -11,6 +11,7 @@
   "exports": {
     "./accordion/*": "./src/accordion/*",
     "./button/*": "./src/button/*",
+    "./css/*": "./src/css/*",
     "./breadcrumb/*": "./src/breadcrumb/*",
     "./command-palette/*": "./src/command-palette/*",
     "./list/*": "./src/list/*",

@@ -3844,6 +3844,19 @@ export type GetProductByIdQuery = {
   product?: { __typename?: 'Product'; id: string; name: string } | undefined;
 };
 
+export type GetProductSalesQueryVariables = Exact<{ [key: string]: never }>;
+
+export type GetProductSalesQuery = {
+  __typename?: 'Query';
+  productSales: Array<{
+    __typename?: 'ProductSale';
+    id: string;
+    quantity: number;
+    product: { __typename?: 'Product'; id: string; name: string };
+    size: { __typename?: 'Size'; id: string; name: string };
+  }>;
+};
+
 export type GetTopProductSalesByProductIdQueryVariables = Exact<{
   productId: Scalars['String'];
 }>;
@@ -3855,7 +3868,7 @@ export type GetTopProductSalesByProductIdQuery = {
     id: string;
     quantity: number;
     product: { __typename?: 'Product'; id: string; name: string };
-    size: { __typename?: 'Size'; name: string };
+    size: { __typename?: 'Size'; id: string; name: string };
   }>;
 };
 
@@ -3923,6 +3936,14 @@ export type InventoryPartsFragment = {
 };
 
 export type ProductPartsFragment = { __typename?: 'Product'; id: string; name: string };
+
+export type ProductSalePartsFragment = {
+  __typename?: 'ProductSale';
+  id: string;
+  quantity: number;
+  product: { __typename?: 'Product'; id: string; name: string };
+  size: { __typename?: 'Size'; id: string; name: string };
+};
 
 export type UserPartsFragment = {
   __typename?: 'User';
@@ -4021,6 +4042,45 @@ export const ProductPartsFragmentDoc = {
     },
   ],
 } as unknown as DocumentNode<ProductPartsFragment, unknown>;
+export const ProductSalePartsFragmentDoc = {
+  kind: 'Document',
+  definitions: [
+    {
+      kind: 'FragmentDefinition',
+      name: { kind: 'Name', value: 'ProductSaleParts' },
+      typeCondition: { kind: 'NamedType', name: { kind: 'Name', value: 'ProductSale' } },
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+          {
+            kind: 'Field',
+            name: { kind: 'Name', value: 'product' },
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [
+                { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'name' } },
+              ],
+            },
+          },
+          {
+            kind: 'Field',
+            name: { kind: 'Name', value: 'size' },
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [
+                { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'name' } },
+              ],
+            },
+          },
+          { kind: 'Field', name: { kind: 'Name', value: 'quantity' } },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<ProductSalePartsFragment, unknown>;
 export const UserPartsFragmentDoc = {
   kind: 'Document',
   definitions: [
@@ -4538,6 +4598,79 @@ export const GetProductByIdDocument = {
     },
   ],
 } as unknown as DocumentNode<GetProductByIdQuery, GetProductByIdQueryVariables>;
+export const GetProductSalesDocument = {
+  kind: 'Document',
+  definitions: [
+    {
+      kind: 'OperationDefinition',
+      operation: 'query',
+      name: { kind: 'Name', value: 'GetProductSales' },
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          {
+            kind: 'Field',
+            name: { kind: 'Name', value: 'productSales' },
+            arguments: [
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'orderBy' },
+                value: {
+                  kind: 'ObjectValue',
+                  fields: [
+                    {
+                      kind: 'ObjectField',
+                      name: { kind: 'Name', value: 'quantity' },
+                      value: { kind: 'EnumValue', value: 'desc' },
+                    },
+                  ],
+                },
+              },
+            ],
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [{ kind: 'FragmentSpread', name: { kind: 'Name', value: 'ProductSaleParts' } }],
+            },
+          },
+        ],
+      },
+    },
+    {
+      kind: 'FragmentDefinition',
+      name: { kind: 'Name', value: 'ProductSaleParts' },
+      typeCondition: { kind: 'NamedType', name: { kind: 'Name', value: 'ProductSale' } },
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+          {
+            kind: 'Field',
+            name: { kind: 'Name', value: 'product' },
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [
+                { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'name' } },
+              ],
+            },
+          },
+          {
+            kind: 'Field',
+            name: { kind: 'Name', value: 'size' },
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [
+                { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'name' } },
+              ],
+            },
+          },
+          { kind: 'Field', name: { kind: 'Name', value: 'quantity' } },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<GetProductSalesQuery, GetProductSalesQueryVariables>;
 export const GetTopProductSalesByProductIdDocument = {
   kind: 'Document',
   definitions: [
@@ -4599,31 +4732,43 @@ export const GetTopProductSalesByProductIdDocument = {
             ],
             selectionSet: {
               kind: 'SelectionSet',
+              selections: [{ kind: 'FragmentSpread', name: { kind: 'Name', value: 'ProductSaleParts' } }],
+            },
+          },
+        ],
+      },
+    },
+    {
+      kind: 'FragmentDefinition',
+      name: { kind: 'Name', value: 'ProductSaleParts' },
+      typeCondition: { kind: 'NamedType', name: { kind: 'Name', value: 'ProductSale' } },
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+          {
+            kind: 'Field',
+            name: { kind: 'Name', value: 'product' },
+            selectionSet: {
+              kind: 'SelectionSet',
               selections: [
                 { kind: 'Field', name: { kind: 'Name', value: 'id' } },
-                {
-                  kind: 'Field',
-                  name: { kind: 'Name', value: 'product' },
-                  selectionSet: {
-                    kind: 'SelectionSet',
-                    selections: [
-                      { kind: 'Field', name: { kind: 'Name', value: 'id' } },
-                      { kind: 'Field', name: { kind: 'Name', value: 'name' } },
-                    ],
-                  },
-                },
-                {
-                  kind: 'Field',
-                  name: { kind: 'Name', value: 'size' },
-                  selectionSet: {
-                    kind: 'SelectionSet',
-                    selections: [{ kind: 'Field', name: { kind: 'Name', value: 'name' } }],
-                  },
-                },
-                { kind: 'Field', name: { kind: 'Name', value: 'quantity' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'name' } },
               ],
             },
           },
+          {
+            kind: 'Field',
+            name: { kind: 'Name', value: 'size' },
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [
+                { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'name' } },
+              ],
+            },
+          },
+          { kind: 'Field', name: { kind: 'Name', value: 'quantity' } },
         ],
       },
     },
