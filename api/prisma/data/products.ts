@@ -1,48 +1,41 @@
 import { randPastDate } from '@ngneat/falso';
-import { nanoid } from 'nanoid';
+import { ProductIds } from '../enums/product-ids.js';
 import { randChanceFn } from './generators/chance-fn.js';
-
-export const TSHIRT_NAME = 'T-Shirt';
-export const PANTS_NAME = 'Pants';
-export const SHORTS_NAME = 'Shorts';
-export const SWEATER_NAME = 'Sweater';
-export const HAT_NAME = 'Hat';
-export const HOODIE_NAME = 'Hoodie';
 
 export const products = [
   {
-    id: nanoid(10),
-    name: TSHIRT_NAME,
+    id: ProductIds.tshirt,
+    name: 'T-Shirt',
     dateCreated: randPastDate({ years: 10 }),
     dateUpdated: randChanceFn({ chanceTrue: 0.4 }, () => randPastDate({ years: 10 })),
   },
   {
-    id: nanoid(10),
-    name: PANTS_NAME,
+    id: ProductIds.pants,
+    name: 'Pants',
     dateCreated: randPastDate({ years: 10 }),
     dateUpdated: randChanceFn({ chanceTrue: 0.4 }, () => randPastDate({ years: 10 })),
   },
   {
-    id: nanoid(10),
-    name: SHORTS_NAME,
+    id: ProductIds.shorts,
+    name: 'Shorts',
     dateCreated: randPastDate({ years: 10 }),
     dateUpdated: randChanceFn({ chanceTrue: 0.4 }, () => randPastDate({ years: 10 })),
   },
   {
-    id: nanoid(10),
-    name: SWEATER_NAME,
+    id: ProductIds.sweater,
+    name: 'Sweater',
     dateCreated: randPastDate({ years: 10 }),
     dateUpdated: randChanceFn({ chanceTrue: 0.4 }, () => randPastDate({ years: 10 })),
   },
   {
-    id: nanoid(10),
-    name: HAT_NAME,
+    id: ProductIds.hat,
+    name: 'Hat',
     dateCreated: randPastDate({ years: 10 }),
     dateUpdated: randChanceFn({ chanceTrue: 0.4 }, () => randPastDate({ years: 10 })),
   },
   {
-    id: nanoid(10),
-    name: HOODIE_NAME,
+    id: ProductIds.hoodie,
+    name: 'Hoodie',
     dateCreated: randPastDate({ years: 10 }),
     dateUpdated: randChanceFn({ chanceTrue: 0.4 }, () => randPastDate({ years: 10 })),
   },

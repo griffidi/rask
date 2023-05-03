@@ -30,6 +30,7 @@
     "useDefineForClassFields": false,
     "paths": {
       ":/*": ["./src/*"],
+      "@rask/api/*": ["../../api/prisma/*"],
       "@rask/core/*": ["../../packages/core/src/*"],
       "@rask/chart/*": ["../../packages/chart/src/*"],
       "@rask/graphql/*": ["../../packages/graphql/src/*"],
@@ -50,6 +51,7 @@
     "node_modules"
   ],
   "references": [
+    { "path": "../../api" },
     { "path": "../../packages/core" },
     { "path": "../../packages/chart" },
     { "path": "../../packages/graphql" },

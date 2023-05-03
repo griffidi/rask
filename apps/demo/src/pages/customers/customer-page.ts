@@ -96,7 +96,8 @@ export class CustomerPage extends LitElement {
 
   async #loadCustomer(): Promise<Customer> {
     try {
-      return await this.#client.query({ query: GetCustomerByIdDocument });
+      const { customer } = await this.#client.query(GetCustomerByIdDocument);
+      return customer as Customer;
     } catch {
       toast.error({ title: 'Error', message: 'Failed to loaded customer.' });
       throw new Error();

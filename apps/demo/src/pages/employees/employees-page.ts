@@ -111,14 +111,14 @@ export class EmployeesPage extends LitElement {
     `;
   }
 
-  async #loadEmployees(): Promise<Employee[]> {
+  async #loadEmployees() {
     try {
       const timer = Timer.start();
-      const result = await this.#client.query<Employee[]>({ query: GetEmployeesDocument });
+      const { employees } = await this.#client.query(GetEmployeesDocument);
 
       await delay(2000 - timer.stop());
 
-      return result;
+      return employees as Employee[];
     } catch {
       toast.error({ title: 'Error', message: 'Failed to loaded employees.' });
       throw new Error();

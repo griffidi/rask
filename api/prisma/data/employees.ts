@@ -24,7 +24,7 @@ function randDepartmentIdCustom(): string {
 
 export const employees = Array.from({ length: 100 }, () => {
   return {
-    id: nanoid(10),
+    id: nanoid(),
     firstName: randFirstName(),
     lastName: randLastName(),
     email: randEmail(),

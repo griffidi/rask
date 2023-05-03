@@ -74,7 +74,9 @@ export class UserPage extends LitElement {
   async #loadUser(): Promise<User> {
     try {
       const { id } = this.location.params;
-      return await this.#client.query<User>({ query: GetUserByIdDocument, variables: { id } });
+      const { user } = await this.#client.query(GetUserByIdDocument, { variables: { id } });
+
+      return user as User;
     } catch (e) {
       toast.error({ title: 'Error', message: 'Failed to loaded user.' });
       throw new Error();

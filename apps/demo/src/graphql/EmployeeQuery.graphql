@@ -5,7 +5,7 @@ query GetEmployees {
 }
 
 query GetEmployeeById($id: String) {
-  employees(where: { id: { equals: $id } }) {
+  employee(where: { id: $id }) {
     ...EmployeeParts
   }
 }

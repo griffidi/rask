@@ -27,6 +27,7 @@ export const createApolloClient = (options?: ApolloClientOptions): ApolloClient<
   }
 
   const cache = new InMemoryCache({
+    // addTypename: false,
     typePolicies: typePolicies ?? {},
   });
 

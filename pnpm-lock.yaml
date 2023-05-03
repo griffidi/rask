@@ -157,6 +157,9 @@ importers:
       '@material/web':
         specifier: 1.0.0-pre.7
         version: 1.0.0-pre.7
+      '@rask/api':
+        specifier: workspace:^
+        version: link:../../api
       '@rask/chart':
         specifier: workspace:^
         version: link:../../packages/chart

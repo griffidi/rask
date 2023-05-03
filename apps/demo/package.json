@@ -27,6 +27,7 @@
     "@lit-labs/task": "2.1.1-pre.0",
     "@lit/reactive-element": "2.0.0-pre.0",
     "@material/web": "1.0.0-pre.7",
+    "@rask/api": "workspace:^",
     "@rask/chart": "workspace:^",
     "@rask/core": "workspace:^",
     "@rask/graphql": "workspace:^",

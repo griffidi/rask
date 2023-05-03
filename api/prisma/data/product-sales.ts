@@ -4,7 +4,7 @@ import { ProductIds } from '../enums/product-ids.js';
 import { randChanceFn } from './generators/chance-fn.js';
 import { SIZE_LARGE_ID, SIZE_MEDIUM_ID, SIZE_SMALL_ID } from './sizes.js';
 
-export const inventories = [
+export const productSales = [
   {
     id: nanoid(10),
     productId: ProductIds.tshirt,
@@ -37,7 +37,6 @@ export const inventories = [
     dateCreated: randPastDate({ years: 10 }),
     dateUpdated: randChanceFn({ chanceTrue: 0.4 }, () => randPastDate({ years: 10 })),
   },
-
   {
     id: nanoid(10),
     productId: ProductIds.pants,
@@ -46,7 +45,6 @@ export const inventories = [
     dateCreated: randPastDate({ years: 10 }),
     dateUpdated: randChanceFn({ chanceTrue: 0.4 }, () => randPastDate({ years: 10 })),
   },
-
   {
     id: nanoid(10),
     productId: ProductIds.pants,
@@ -95,7 +93,6 @@ export const inventories = [
     dateCreated: randPastDate({ years: 10 }),
     dateUpdated: randChanceFn({ chanceTrue: 0.4 }, () => randPastDate({ years: 10 })),
   },
-
   {
     id: nanoid(10),
     productId: ProductIds.sweater,
@@ -120,7 +117,6 @@ export const inventories = [
     dateCreated: randPastDate({ years: 10 }),
     dateUpdated: randChanceFn({ chanceTrue: 0.4 }, () => randPastDate({ years: 10 })),
   },
-
   {
     id: nanoid(10),
     productId: ProductIds.hat,

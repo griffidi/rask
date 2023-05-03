@@ -98,13 +98,13 @@ export class EmployeePage extends LitElement {
     `;
   }
 
-  async #loadEmployee(): Promise<Employee> {
+  async #loadEmployee() {
     try {
-      const employee = await this.#client.query<Employee>({
-        query: GetEmployeeByIdDocument,
+      const { employee } = await this.#client.query(GetEmployeeByIdDocument, {
         variables: { id: this.userId },
       });
-      return employee;
+
+      return employee as Employee;
     } catch (e) {
       toast.error({ title: 'Error', message: 'Failed to loaded employee.' });
       throw new Error();

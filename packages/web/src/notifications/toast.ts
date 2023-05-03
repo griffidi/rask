@@ -24,33 +24,37 @@ const createToastHtml = (
   id: string,
   type: ToastType,
   { title, message, hideCloseButton }: ToastOptions
-): TemplateResult => html`
-  <output
-    id=${id}
-    class="rk-toast"
-    role="status"
-    aria-live="polite">
-    <div class="rk-toast__inner-container">
-      <span class="rk-toast__icon material-symbols-sharp ${TOAST_ICON[type]}">check_circle</span>
-      <span class="rk-toast__text-container">
-        <span class="rk-toast__title-text">${title}</span>
-        <span class="rk-toast__text">${message}</span>
-      </span>
-      ${when(
-        !hideCloseButton,
-        () =>
-          html`
-            <span
-              class="rk-toast__close-button material-symbols-sharp"
-              aria-label="Close">
-              close
-            </span>
-          `
-      )}
-    </div>
-    <div class="rk-toast__border"></div>
-  </output>
-`;
+): TemplateResult => {
+  const icon = TOAST_ICON[type];
+
+  return html`
+    <output
+      id=${id}
+      class="rk-toast ${type}"
+      role="status"
+      aria-live="polite">
+      <div class="rk-toast__inner-container">
+        <span class="rk-toast__icon material-symbols-sharp ${icon}">${icon}</span>
+        <span class="rk-toast__text-container">
+          <span class="rk-toast__title-text">${title}</span>
+          <span class="rk-toast__text">${message}</span>
+        </span>
+        ${when(
+          !hideCloseButton,
+          () =>
+            html`
+              <span
+                class="rk-toast__close-button material-symbols-sharp"
+                aria-label="Close">
+                close
+              </span>
+            `
+        )}
+      </div>
+      <div class="rk-toast__border"></div>
+    </output>
+  `;
+};
 
 class Toast {
   #container: HTMLElement | undefined;

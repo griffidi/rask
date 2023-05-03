@@ -137,7 +137,8 @@ export class UsersPage extends LitElement {
 
   async #loadUsers(): Promise<User[]> {
     try {
-      return await this.#client.query({ query: GetUsersDocument });
+      const { users } = await this.#client.query(GetUsersDocument);
+      return users as User[];
     } catch (e) {
       toast.error({ title: 'Error', message: 'Failed to loaded users.' });
       throw new Error();

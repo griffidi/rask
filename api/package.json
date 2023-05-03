@@ -8,6 +8,10 @@
     "pnpm": ">=8.2.0"
   },
   "type": "module",
+  "exports": {
+    "./enums/*": "./prisma/enums/*",
+    "./package.json": "./package.json"
+  },
   "files": [
     "src/**/*.{map.js,js}",
     "README.md"

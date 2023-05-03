@@ -1,4 +1,5 @@
-import ':/components/dashboard/dashboard.js';
+import ':/components/dashboard/top-product-sales/top-product-sales.js';
+import { ProductIds } from '@rask/api/enums/product-ids.js';
 import { LitElement, html, type TemplateResult } from 'lit';
 import css from './home-page.css' assert { type: 'css' };
 
@@ -8,9 +9,7 @@ export class HomePage extends LitElement {
   override render(): TemplateResult {
     return html`
       <div class="container">
-        <app-dashboard>Top Saling Products</app-dashboard>
-        <app-dashboard>Top Saling Products</app-dashboard>
-        <app-dashboard>Top Saling Products</app-dashboard>
+        <app-top-product-sales .productId=${ProductIds.tshirt}></app-top-product-sales>
       </div>
     `;
   }
