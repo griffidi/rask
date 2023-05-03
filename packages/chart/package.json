@@ -1,0 +1,40 @@
+{
+  "name": "@rask/chart",
+  "private": true,
+  "version": "0.0.1",
+  "packageManager": "pnpm@8.2.0",
+  "engines": {
+    "node": ">=18.11.0 || >=19.2.0",
+    "pnpm": ">=8.2.0"
+  },
+  "type": "module",
+  "exports": {
+    "./chart-element/*": "./src/chart-element/*",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "src/**/*.{map.js,js,d.ts}",
+    "README.md"
+  ],
+  "scripts": {
+    "dev": "",
+    "build": ""
+  },
+  "dependencies": {
+    "@rask/core": "workspace:^",
+    "chart.js": "^4.3.0",
+    "lit": "3.0.0-pre.0",
+    "tslib": "^2.5.0"
+  },
+  "devDependencies": {
+    "@types/chart.js": "^2.9.37",
+    "@types/node": "^18.16.3",
+    "typescript": "5.1.0-beta"
+  },
+  "peerDependencies": {
+    "@rask/core": "*",
+    "chart.js": "*",
+    "lit": "*",
+    "typescript": "5.*"
+  }
+}

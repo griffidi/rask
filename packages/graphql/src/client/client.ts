@@ -1,17 +1,22 @@
 import {
   type ApolloClient,
+  type DocumentNode,
   type MutationOptions,
   type NormalizedCacheObject,
+  type OperationVariables,
   type QueryOptions,
+  type TypedDocumentNode,
 } from '@apollo/client/core';
 import { useCache } from '@rask/core/cache/index.js';
 import { injectable } from '@rask/core/di/injectable.js';
 import { GRAPHQL_URI_CACHE_KEY } from '../constants/graphql-uri-cache-key.js';
-import { unwrapMutateResult, unwrapQueryResult } from '../utils/operation-result-unwrapper.js';
+import { extractDataFromQueryResult, unwrapMutateResult } from '../utils/operation-result-unwrapper.js';
 import { createApolloClient } from './create-apollo-client.js';
 
 const cache = useCache();
 const GRAPHQL_URI = cache.get<string>(GRAPHQL_URI_CACHE_KEY);
+
+interface ClientQueryOptions extends Omit<QueryOptions, 'query'> {}
 
 @injectable()
 export class Client {
@@ -39,8 +44,15 @@ export class Client {
    * @returns {Promise<ApolloQueryResult<T>>} Unwrapped result from query operation.
    */
   // eslint-disable-next-line ts/no-explicit-any
-  async query<T>(options: QueryOptions): Promise<T> {
-    const result = await this.#apolloClient?.query(options);
-    return unwrapQueryResult(result);
+  async query<TData = any, TVariables = OperationVariables>(
+    query: DocumentNode | TypedDocumentNode<TData, TVariables>,
+    options: ClientQueryOptions = {}
+  ): Promise<TData> {
+    const result = await this.#apolloClient?.query({
+      ...options,
+      query,
+    } as QueryOptions);
+    // return unwrapQueryResult<TData>(result);
+    return extractDataFromQueryResult<TData>(result);
   }
 }

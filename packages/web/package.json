@@ -11,6 +11,7 @@
   "exports": {
     "./accordion/*": "./src/accordion/*",
     "./button/*": "./src/button/*",
+    "./css/*": "./src/css/*",
     "./breadcrumb/*": "./src/breadcrumb/*",
     "./command-palette/*": "./src/command-palette/*",
     "./list/*": "./src/list/*",
@@ -25,10 +26,6 @@
     "./skeleton/*": "./src/skeleton/*",
     "./table/*": "./src/table/*",
     "./text-field/*": "./src/text-field/*",
-    "./client": {
-      "types": "./src/types/client.d.ts"
-    },
-    "./src/client/*": "./src/client/*",
     "./package.json": "./package.json"
   },
   "files": [
@@ -46,7 +43,7 @@
     "tslib": "^2.5.0"
   },
   "devDependencies": {
-    "@types/node": "^18.16.1",
+    "@types/node": "^18.16.3",
     "typescript": "5.1.0-beta"
   },
   "peerDependencies": {

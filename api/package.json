@@ -8,6 +8,10 @@
     "pnpm": ">=8.2.0"
   },
   "type": "module",
+  "exports": {
+    "./enums/*": "./prisma/enums/*",
+    "./package.json": "./package.json"
+  },
   "files": [
     "src/**/*.{map.js,js}",
     "README.md"
@@ -49,11 +53,11 @@
   "devDependencies": {
     "@ngneat/falso": "^6.4.0",
     "@types/graphql-fields": "^1.3.5",
-    "@types/jsonwebtoken": "^9.0.1",
+    "@types/jsonwebtoken": "^9.0.2",
     "@types/koa": "^2.13.6",
     "@types/koa-bodyparser": "^4.3.10",
     "@types/koa__cors": "^4.0.0",
-    "@types/node": "^18.16.1",
+    "@types/node": "^18.16.3",
     "class-validator": "^0.14.0",
     "esbuild": "^0.17.18",
     "graphql-tag": "^2.12.6",

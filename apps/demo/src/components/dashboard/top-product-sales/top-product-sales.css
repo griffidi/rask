@@ -1,0 +1,27 @@
+:host {
+  display: block;
+  height: 100%;
+  width: 100%;
+  padding: 0 10px;
+  box-sizing: border-box;
+  padding-inline: 20px;
+  padding-block-start: 10px;
+  padding-block-end: 20px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.title {
+  font-size: 1.1rem;
+}
+
+rk-chart-element {
+  height: 100%;
+  width: 100%;
+}

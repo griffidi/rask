@@ -8,10 +8,9 @@ import toast from '@rask/web/notifications/toast.js';
 import '@rask/web/skeleton/skeleton.js';
 import '@rask/web/text-field/text-field.js';
 import { LitElement, html, type TemplateResult } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { property } from 'lit/decorators.js';
 import css from './employee-page.css' assert { type: 'css' };
 
-@customElement('app-employee-page')
 export class EmployeePage extends LitElement {
   static override styles = css;
 
@@ -99,18 +98,22 @@ export class EmployeePage extends LitElement {
     `;
   }
 
-  async #loadEmployee(): Promise<Employee> {
+  async #loadEmployee() {
     try {
-      const employee = await this.#client.query<Employee>({
-        query: GetEmployeeByIdDocument,
+      const { employee } = await this.#client.query(GetEmployeeByIdDocument, {
         variables: { id: this.userId },
       });
-      return employee;
+
+      return employee as Employee;
     } catch (e) {
       toast.error({ title: 'Error', message: 'Failed to loaded employee.' });
       throw new Error();
     }
   }
+}
+
+if (!customElements.get('app-employee-page')) {
+  customElements.define('app-employee-page', EmployeePage);
 }
 
 declare global {

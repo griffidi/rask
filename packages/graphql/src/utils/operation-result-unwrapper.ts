@@ -28,3 +28,14 @@ export const unwrapQueryResult = <T>(result: ApolloQueryResult<T>): T => {
   const { data } = result;
   return unwrapResult(data);
 };
+
+/**
+ * Extract the data result object from an ApolloClient query operation.
+ *
+ * @param {ApolloQueryResult<T>} result Query result object.
+ * @returns {T} Extracted data object.
+ */
+export const extractDataFromQueryResult = <T>(result: ApolloQueryResult<T>): T => {
+  const { data } = result;
+  return data;
+};

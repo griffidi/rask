@@ -5,7 +5,7 @@ query GetCustomers {
 }
 
 query GetCustomerById($id: String!) {
-  customers(where: { id: { equals: $id } }) {
+  customer(where: { id: $id }) {
     ...CustomerParts
   }
 }

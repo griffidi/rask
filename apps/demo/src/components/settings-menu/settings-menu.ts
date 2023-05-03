@@ -7,17 +7,16 @@ import type { TypeEvent } from '@rask/core/events/type-event.js';
 import { AuthService } from '@rask/identity/services/auth-service.js';
 import { UserService } from '@rask/identity/services/user-service.js';
 import '@rask/web/menu/menu.js';
-import type { RkMenu } from '@rask/web/menu/menu.js';
+import type { Menu } from '@rask/web/menu/menu.js';
 import { useTheme } from '@rask/web/theme/index.js';
 import { Router } from '@vaadin/router';
 import { LitElement, html, type TemplateResult } from 'lit';
-import { customElement, property, state } from 'lit/decorators.js';
+import { property, state } from 'lit/decorators.js';
 import { createRef, ref, type Ref } from 'lit/directives/ref.js';
 import css from './settings-menu.css' assert { type: 'css' };
 
 const theme = useTheme();
 
-@customElement('app-settings-menu')
 export class SettingsMenu extends LitElement {
   static override styles = css;
 
@@ -29,22 +28,27 @@ export class SettingsMenu extends LitElement {
 
   #authService = useInject(AuthService);
   #userService = useInject(UserService);
-  #menu: Ref<RkMenu> = createRef();
+  #menu: Ref<Menu> = createRef();
 
-  @property({ attribute: false }) sittingsMenu: Ref<RkMenu> = createRef();
+  @property({ attribute: false }) sittingsMenu: Ref<Menu> = createRef();
   @property({ type: Boolean }) themeDarkModeSelected = theme.isDark;
 
   @state() private initials = '';
 
   override render(): TemplateResult {
     return html`
-      <rk-menu ${ref(this.#menu)} icon="account_circle" .open>
+      <rk-menu
+        ${ref(this.#menu)}
+        icon="account_circle"
+        .open>
         ${this.#renderMenuTrigger()}
         <label>
           Dark Mode
-          <md-switch .selected="${this.themeDarkModeSelected}" @change="${this.#toggleTheme}"
-            ><md-icon>dark_mode</md-icon></md-switch
-          >
+          <md-switch
+            .selected="${this.themeDarkModeSelected}"
+            @change="${this.#toggleTheme}">
+            <md-icon>dark_mode</md-icon>
+          </md-switch>
         </label>
         <label>
           Notifications
@@ -58,9 +62,18 @@ export class SettingsMenu extends LitElement {
   }
 
   #renderMenuTrigger(): TemplateResult {
-    return html`${this.#getInitials.render({
-      complete: () => html` <span slot="trigger" class="avatar">${this.initials}</span> `,
-    })}`;
+    return html`
+      ${this.#getInitials.render({
+        complete: () =>
+          html`
+            <span
+              slot="trigger"
+              class="avatar">
+              ${this.initials}
+            </span>
+          `,
+      })}
+    `;
   }
 
   async #loadUser(): Promise<void> {
@@ -80,6 +93,10 @@ export class SettingsMenu extends LitElement {
     this.#authService.logout();
     Router.go(RouteTypes.login);
   }
+}
+
+if (!customElements.get('app-settings-menu')) {
+  customElements.define('app-settings-menu', SettingsMenu);
 }
 
 declare global {

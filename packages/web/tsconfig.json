@@ -7,7 +7,8 @@
     "rootDir": ".",
     "paths": {
       "@rask/core/*": ["../core/src/*"]
-    }
+    },
+    "types": ["@rask/core/client"]
   },
   "include": ["src/**/*.ts"],
   "exclude": [

@@ -30,27 +30,30 @@
     "useDefineForClassFields": false,
     "paths": {
       ":/*": ["./src/*"],
+      "@rask/api/*": ["../../api/prisma/*"],
       "@rask/core/*": ["../../packages/core/src/*"],
+      "@rask/chart/*": ["../../packages/chart/src/*"],
       "@rask/graphql/*": ["../../packages/graphql/src/*"],
       "@rask/identity/*": ["../../packages/identity/src/*"],
       "@rask/web/*": ["../../packages/web/src/*"]
     },
     "types": [
       "@rask/core/router",
-      "@rask/web/client"
+      "@rask/core/client"
     ]
   },
   "include": [
     "src/**/*.ts",
-    "app.config.js",
-    "../../packages/core/src/types/lit-element.d.ts"
+    "app.config.js"
   ],
   "exclude": [
     "dist",
     "node_modules"
   ],
   "references": [
+    { "path": "../../api" },
     { "path": "../../packages/core" },
+    { "path": "../../packages/chart" },
     { "path": "../../packages/graphql" },
     { "path": "../../packages/identity" },
     { "path": "../../packages/web" }]

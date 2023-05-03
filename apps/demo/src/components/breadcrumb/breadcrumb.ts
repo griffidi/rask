@@ -1,7 +1,7 @@
 import '@rask/web/breadcrumb/breadcrumb-item.js';
 import '@rask/web/breadcrumb/breadcrumb.js';
 import { LitElement, html, type TemplateResult } from 'lit';
-import { customElement, state } from 'lit/decorators.js';
+import { state } from 'lit/decorators.js';
 import { map } from 'lit/directives/map.js';
 import { when } from 'lit/directives/when.js';
 import { RouteTypes } from '../../router/route-types.js';
@@ -13,7 +13,6 @@ interface BreadcrumbPath {
   name: string;
 }
 
-@customElement('app-breadcrumb')
 export class Breadcrumb extends LitElement {
   static override styles = css;
 
@@ -65,6 +64,10 @@ export class Breadcrumb extends LitElement {
 
     this.items = items;
   }
+}
+
+if (!customElements.get('app-breadcrumb')) {
+  customElements.define('app-breadcrumb', Breadcrumb);
 }
 
 declare global {

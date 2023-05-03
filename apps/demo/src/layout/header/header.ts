@@ -4,10 +4,8 @@ import '@material/web/icon/icon.js';
 import '@material/web/iconbutton/standard-icon-button.js';
 import { isAuthenticatedContext } from '@rask/identity/authentication/is-authenticated-context.js';
 import { LitElement, html, type TemplateResult } from 'lit';
-import { customElement } from 'lit/decorators.js';
 import css from './header.css' assert { type: 'css' };
 
-@customElement('app-header')
 export class Header extends LitElement {
   static override styles = css;
 
@@ -58,6 +56,10 @@ export class Header extends LitElement {
       })
     );
   }
+}
+
+if (!customElements.get('app-header')) {
+  customElements.define('app-header', Header);
 }
 
 declare global {

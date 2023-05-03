@@ -1,32 +1,5 @@
 {
-  "Create App LitElement (SideEffect)": {
-    "scope": "typescript",
-    "prefix": "litelement",
-    "body": [
-      "import { LitElement, html, type TemplateResult } from 'lit';",
-      "import { customElement } from 'lit/decorators.js';",
-      "import css from './${TM_FILENAME_BASE}.css' assert { type: 'css' };",
-      "",
-      "@customElement('app-${TM_FILENAME_BASE}')",
-      "export class ${TM_FILENAME_BASE/([a-z]*)(-)?/${1:/capitalize}/g} extends LitElement {",
-      "\tstatic override styles = css;",
-      "",
-      "\toverride render(): TemplateResult {",
-      "\t\treturn html``;",
-      "\t}",
-      "\t${0}",
-      "}",
-      "",
-      "declare global {",
-      "\tinterface HTMLElementTagNameMap {",
-      "\t\t'app-${TM_FILENAME_BASE}': ${TM_FILENAME_BASE/([a-z]*)(-)?/${1:/capitalize}/g};",
-      "\t}",
-      "}",
-      ""
-    ],
-    "description": "New LitElement component that includes customElement.define"
-  },
-  "Create App LitElement (No SideEffect)": {
+  "Create LitElement": {
     "scope": "typescript",
     "prefix": "litelement",
     "body": [
@@ -39,82 +12,19 @@
       "\toverride render(): TemplateResult {",
       "\t\treturn html``;",
       "\t}",
-      "\t${0}",
       "}",
-      ""
-    ],
-    "description": "New LitElement component that does not include customElement.define"
-  },
-  "Create App customElement.define LitElement": {
-    "scope": "typescript",
-    "prefix": "litelement",
-    "body": [
-      "import { ${TM_FILENAME_BASE/([a-z]*)(-)?/${1:/capitalize}/g} } from './lib/${TM_FILENAME_BASE}.js';",
       "",
-      "customElements.define('app-${TM_FILENAME_BASE}', ${TM_FILENAME_BASE/([a-z]*)(-)?/${1:/capitalize}/g});",
+      "if (!customElements.get('${1|app,rk|}-${TM_FILENAME_BASE}')) {",
+      "\tcustomElements.define('${1|app,rk|}-${TM_FILENAME_BASE}', ${TM_FILENAME_BASE/([a-z]*)(-)?/${1:/capitalize}/g});",
+      "}",
       "",
       "declare global {",
       "\tinterface HTMLElementTagNameMap {",
-      "\t\t'app-${TM_FILENAME_BASE}': ${TM_FILENAME_BASE/([a-z]*)(-)?/${1:/capitalize}/g};",
+      "\t\t'${1|app,rk|}-${TM_FILENAME_BASE}': ${TM_FILENAME_BASE/([a-z]*)(-)?/${1:/capitalize}/g};",
       "\t}",
       "}",
       ""
     ],
-    "description": "New LitElement customElement.define"
-  },
-  "Create rask LitElement (SideEffect)": {
-    "scope": "typescript",
-    "prefix": "litelement",
-    "body": [
-      "import { customElement } from 'lit/decorators.js';",
-      "import { ${TM_FILENAME_BASE/([a-z]*)(-)?/${1:/capitalize}/g} } from './lib/${TM_FILENAME_BASE}.js';",
-      "",
-      "@customElement('rk-${TM_FILENAME_BASE}')",
-      "export class Rk${TM_FILENAME_BASE/([a-z]*)(-)?/${1:/capitalize}/g} extends ${TM_FILENAME_BASE/([a-z]*)(-)?/${1:/capitalize}/g} {}",
-      "",
-      "declare global {",
-      "\tinterface HTMLElementTagNameMap {",
-      "\t\t'rk-${TM_FILENAME_BASE}': Rk${TM_FILENAME_BASE/([a-z]*)(-)?/${1:/capitalize}/g};",
-      "\t}",
-      "}",
-      ""
-    ],
-    "description": "New LitElement component that includes customElement.define"
-  },
-  "Create rask LitElement (No SideEffect)": {
-    "scope": "typescript",
-    "prefix": "litelement",
-    "body": [
-      "import { LitElement, html, type TemplateResult } from 'lit';",
-      "import css from './${TM_FILENAME_BASE}.css' assert { type: 'css' };",
-      "",
-      "export class ${TM_FILENAME_BASE/([a-z]*)(-)?/${1:/capitalize}/g} extends LitElement {",
-      "\tstatic override styles = css;",
-      "",
-      "\toverride render(): TemplateResult {",
-      "\t\treturn html``;",
-      "\t}",
-      "\t${0}",
-      "}",
-      ""
-    ],
-    "description": "New LitElement component that does not include customElement.define"
-  },
-  "Create rask customElement.define LitElement": {
-    "scope": "typescript",
-    "prefix": "litelement",
-    "body": [
-      "import { ${TM_FILENAME_BASE/([a-z]*)(-)?/${1:/capitalize}/g} } from './lib/${TM_FILENAME_BASE}.js';",
-      "",
-      "customElements.define('rk-${TM_FILENAME_BASE}', ${TM_FILENAME_BASE/([a-z]*)(-)?/${1:/capitalize}/g});",
-      "",
-      "declare global {",
-      "\tinterface HTMLElementTagNameMap {",
-      "\t\t'rk-${TM_FILENAME_BASE}': ${TM_FILENAME_BASE/([a-z]*)(-)?/${1:/capitalize}/g};",
-      "\t}",
-      "}",
-      "${0}"
-    ],
-    "description": "New LitElement customElement.define"
+    "description": "New LitElement component"
   }
 }

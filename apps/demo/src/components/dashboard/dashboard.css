@@ -1,0 +1,11 @@
+* {
+  box-sizing: border-box;
+}
+
+:host {
+  --_border-color: var(--app-dashboard-border-color, var(--rk-border-color));
+
+  display: block;
+  border-radius: var(--md-sys-shape-large);
+  border: 1px solid var(--_border-color);
+}
