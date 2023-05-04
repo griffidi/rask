@@ -47,6 +47,14 @@
     "typescript.preferences.importModuleSpecifierEnding": "js",
     "typescript.preferences.useAliasesForRenames": false,
     "typescript.workspaceSymbols.scope": "allOpenProjects",
+    "typescript.implementationsCodeLens.enabled": true,
+    "typescript.preferences.includePackageJsonAutoImports": "auto",
+    "js/ts.implicitProjectConfig.strictNullChecks": true,
+    "js/ts.implicitProjectConfig.experimentalDecorators": true,
+    "js/ts.implicitProjectConfig.module": "ESNext",
+    "js/ts.implicitProjectConfig.strictFunctionTypes": true,
+    "js/ts.implicitProjectConfig.checkJs": true,
+    "js/ts.implicitProjectConfig.target": "ESNext",
     "typescript.unstable": {
       "organizeImportsIgnoreCase": "false",
       "organizeImportsCollation": "ordinal",
@@ -55,7 +63,7 @@
     "npm.autoDetect": "off",
     "typescript.tsc.autoDetect": "off",
     "typescript.tsserver.experimental.enableProjectDiagnostics": true,
-    "typescript.tsdk": "node_modules\\typescript\\lib",
+    "typescript.tsdk": ".root\\node_modules\\typescript\\lib",
     "typescript.preferences.quoteStyle": "single",
     "[typescript]": {
       "editor.defaultFormatter": "esbenp.prettier-vscode",
@@ -114,6 +122,7 @@
       "msedge",
       "ngneat",
       "opsz",
+      "postdb",
       "predev",
       "preprisma",
       "presetenv",
@@ -188,7 +197,12 @@
     // "vscode-edge-devtools.useHttps": true,
     // "vscode-edge-devtools.webRoot": "${workspaceFolder}/apps/demo/src",
     // "vscode-edge-devtools.webhint": false,
-    "editor.fontFamily": "Consolas, 'Courier New', monospacemo"
+    "editor.fontFamily": "Consolas, 'Courier New', monospacemo",
+
+    "editor.experimental.asyncTokenization": true,
+    "workbench.commandPalette.experimental.suggestCommands": true,
+    "editor.experimentalWhitespaceRendering": "svg",
+    "todo-tree.tree.showBadges": true
   },
   "extensions": {
     "recommendations": [

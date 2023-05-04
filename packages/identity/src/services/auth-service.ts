@@ -42,8 +42,7 @@ export class AuthService {
 
     let isAuthenticated = false;
 
-    const token = await this.#client.query<string>({
-      query: LoginDocument,
+    const token = await this.#client.query<string>(LoginDocument, {
       variables: { userName, password },
       /** you do not want ot cache the login */
       fetchPolicy: 'no-cache',
@@ -84,7 +83,7 @@ export class AuthService {
   }
 
   #dispatchSubscriptions(isAuthenticated: boolean): void {
-    this.#subscriptions.map((callback) => callback(isAuthenticated));
+    this.#subscriptions.map(callback => callback(isAuthenticated));
   }
 
   #setToken(userName: string, token: string): void {

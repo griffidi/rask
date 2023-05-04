@@ -22,6 +22,7 @@ export interface ApolloClientOptions {
 export const createApolloClient = (options?: ApolloClientOptions): ApolloClient<NormalizedCacheObject> => {
   const { uri, typePolicies } = options;
 
+  // BUG: with empty cache/cookies uri is undefined on first run
   if (!uri) {
     throw new Error('Apollo client requires a uri');
   }
