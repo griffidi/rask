@@ -15,6 +15,7 @@
   align-items: center;
   gap: 30px;
   padding-block-end: var(--_container-padding);
+  inline-size: 100%;
   block-size: 100%;
 }
 
