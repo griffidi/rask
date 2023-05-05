@@ -1,4 +1,6 @@
 :host {
+  --_drawer-color: var(--rk-navigation-drawer-color, var(--md-sys-color-background));
+
   display: block;
   inline-size: 100%;
   block-size: 100%;
@@ -17,7 +19,7 @@ aside {
   block-size: 100%;
   inset-block: 0;
   inset-inline-start: 0;
-  background: var(--md-sys-color-background);
+  background: var(--_drawer-color);
   box-shadow: var(--md-sys-elevation-level2);
   border-inline-end: 1px solid var(--rk-border-color);
   border-start-end-radius: var(--md-sys-shape-large);

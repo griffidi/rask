@@ -35,13 +35,13 @@
     "tslib": "^2.5.0"
   },
   "devDependencies": {
-    "@types/node": "^18.16.3",
+    "@types/node": "^20.0.0",
     "typescript": "5.1.0-beta"
   },
   "peerDependencies": {
     "@apollo/client": "*",
     "@lit-labs/context": "*",
-    "typescript": "5.*",
-    "lit": "*"
+    "lit": "*",
+    "typescript": "5.*"
   }
 }
