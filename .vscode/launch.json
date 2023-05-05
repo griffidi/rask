@@ -70,19 +70,19 @@
         "group": "demo",
         "order": 2
       }
-    },
-    {
-      "name": "Attach demo (edge-devtools)",
-      "type": "vscode-edge-devtools.debug",
-      "request": "attach",
-      "url": "http://localhost:8000",
-      "webRoot": "${workspaceFolder}/apps/demo/src",
-      "presentation": {
-        "hidden": false,
-        "group": "demo",
-        "order": 3
-      }
     }
+    // {
+    //   "name": "Attach demo (edge-devtools)",
+    //   "type": "vscode-edge-devtools.debug",
+    //   "request": "attach",
+    //   "url": "http://localhost:8000",
+    //   "webRoot": "${workspaceFolder}/apps/demo/src",
+    //   "presentation": {
+    //     "hidden": false,
+    //     "group": "demo",
+    //     "order": 3
+    //   }
+    // }
   ],
   "compounds": [
     {

@@ -30,7 +30,7 @@ export class TopProductSales extends Dashboard {
   override render(): TemplateResult {
     return html`
       <div class="container">
-        <span class="title">Product Sales by Quantity</span>
+        <span class="title">Product Sales</span>
         ${this.#task.render({
           pending: () => this.#renderSkeleton(),
           complete: (sales: ProductSale[]) => this.#renderChart(sales),
@@ -64,7 +64,7 @@ export class TopProductSales extends Dashboard {
 
     return html`
       <rk-chart-element
-        type="pie"
+        type="line"
         .data=${data}></rk-chart-element>
     `;
   }

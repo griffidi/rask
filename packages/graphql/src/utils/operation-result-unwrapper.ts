@@ -1,4 +1,4 @@
-import type { ApolloQueryResult, FetchResult } from '@apollo/client';
+import type { ApolloQueryResult, FetchResult } from '@apollo/client/core';
 
 function unwrapResult<T>(data: T): T {
   const keys = Object.keys(data);

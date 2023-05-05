@@ -8,6 +8,7 @@ import { type StorageType } from './types.js';
  * @returns
  */
 export const useCache = (type: StorageType = 'localStorage') => {
+  // TODO: change to use Signal
   const cache = new Cache(type);
   return cache;
 };

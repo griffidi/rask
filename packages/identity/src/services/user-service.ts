@@ -26,14 +26,13 @@ export class UserService {
 
     const cachedToken = cache.get<CachedToken>(TOKEN_CACHE_KEY);
     const { userName } = cachedToken;
-    const user = await this.#client.query<User>({
-      query: GetUserByUserNameDocument,
+    const { user } = await this.#client.query(GetUserByUserNameDocument, {
       variables: { userName },
     });
 
     if (user) {
       cache.set(USER_CACHE_KEY, user);
-      return user;
+      return user as User;
     }
 
     return null;

@@ -1,4 +1,5 @@
 import ':/components/dashboard/product-sales-quantity/product-sales-quantity.js';
+import ':/components/dashboard/top-product-sales/top-product-sales.js';
 import { LitElement, html, type TemplateResult } from 'lit';
 import css from './home-page.css' assert { type: 'css' };
 
@@ -9,6 +10,7 @@ export class HomePage extends LitElement {
     return html`
       <div class="container">
         <app-product-sales-quantity></app-product-sales-quantity>
+        <app-top-product-sales></app-top-product-sales>
       </div>
     `;
   }
