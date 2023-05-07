@@ -28,6 +28,10 @@
       "path": "packages/identity"
     },
     {
+      "name": "signals",
+      "path": "packages/signals"
+    },
+    {
       "name": "web",
       "path": "packages/web"
     }

@@ -31,7 +31,7 @@
     "predev": "pnpm build:dev --watch",
     "dev": "node --watch --inspect dist/index.js",
     "dev:tsnode": "ts-node-esm --ignoreDiagnostics 5104 --transpile-only src/index.ts",
-    "postinstall": "pnpm db:generate"
+    "//postinstall": "pnpm db:generate"
   },
   "dependencies": {
     "@apollo/server": "^4.7.1",
