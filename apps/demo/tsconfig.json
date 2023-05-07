@@ -35,6 +35,7 @@
       "@rask/chart/*": ["../../packages/chart/src/*"],
       "@rask/graphql/*": ["../../packages/graphql/src/*"],
       "@rask/identity/*": ["../../packages/identity/src/*"],
+      "@rask/signals": ["../../packages/signals/src/index.ts"],
       "@rask/web/*": ["../../packages/web/src/*"]
     },
     "types": [

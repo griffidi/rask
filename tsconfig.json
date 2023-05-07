@@ -8,5 +8,6 @@
     { "path": "./packages/chart" },
     { "path": "./packages/graphql" },
     { "path": "./packages/identity" },
+    { "path": "./packages/signals" },
     { "path": "./packages/web" }]
 }
