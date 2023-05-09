@@ -42,7 +42,9 @@ export class TopProductSales extends Dashboard {
 
   #renderChart(sales: ProductSale[]): TemplateResult {
     const labels = unique(sales.map(sale => sale.product.name));
-    const salesData = labels.map(label => sales.find(sale => sale.product.name === label)?.quantity ?? 0);
+    const salesData = labels.map(
+      label => sales.find(sale => sale.product.name === label)?.quantity ?? 0
+    );
     const data: ChartData = {
       labels,
       datasets: [
@@ -64,7 +66,7 @@ export class TopProductSales extends Dashboard {
 
     return html`
       <rk-chart-element
-        type="line"
+        type="bar"
         .data=${data}></rk-chart-element>
     `;
   }

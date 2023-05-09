@@ -2,7 +2,7 @@
   "name": "@rask/root",
   "description": "Rask Lit based Monorepo",
   "version": "0.0.1",
-  "private": true,
+  "private": false,
   "license": "MIT",
   "author": {
     "name": "Dustin Griffith",

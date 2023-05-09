@@ -1,13 +1,6 @@
-// /**
-//  * @license
-//  * Copyright 2023 Google LLC
-//  * SPDX-License-Identifier: BSD-3-Clause
-//  */
+// import type {ReactiveElement} from 'lit';
+// import { effect, type Effect } from './effect.js';
 
-// import { effect } from '@preact/signals-core';
-// import type { ReactiveElement } from 'lit';
-
-// // eslint-disable-next-line @typescript-eslint/no-explicit-any
 // type ReactiveElementConstructor = new (...args: any[]) => ReactiveElement;
 
 // /**
@@ -15,9 +8,11 @@
 //  * watch for access to Preact signals during the update lifecycle and
 //  * trigger a new update when signals values change.
 //  */
-// export function SignalWatcher<T extends ReactiveElementConstructor>(Base: T): T {
+// export function SignalWatcher<T extends ReactiveElementConstructor>(
+//   Base: T
+// ): T {
 //   return class SignalWatcher extends Base {
-//     private _disposeEffect?: () => void;
+//     private _disposeEffect?: effect;
 
 //     override performUpdate() {
 //       // ReactiveElement.performUpdate() also does this check, so we want to

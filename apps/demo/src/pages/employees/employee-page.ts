@@ -8,7 +8,6 @@ import toast from '@rask/web/notifications/toast.js';
 import '@rask/web/skeleton/skeleton.js';
 import '@rask/web/text-field/text-field.js';
 import { LitElement, html, type TemplateResult } from 'lit';
-import { property } from 'lit/decorators.js';
 import css from './employee-page.css' assert { type: 'css' };
 
 export class EmployeePage extends LitElement {
@@ -18,21 +17,22 @@ export class EmployeePage extends LitElement {
 
   #getEmployee = new Task(
     this,
-    async () => await this.#loadEmployee(),
+    async ([id]) => await this.#loadEmployee(id),
     () => {
-      // TODO: #41 this is firing multiple times
-      const userId = this.location.params['id'];
+      const userId = this.location.params['id'] as string;
       return [userId];
     }
   );
 
-  @property() userId: string | undefined;
-
   override render(): TemplateResult {
+    return this.#renderData();
+  }
+
+  #renderData(): TemplateResult {
     return html`
       ${this.#getEmployee.render({
-        pending: () => this.renderSkeleton(),
-        complete: e => this.renderEmployee(e),
+        pending: () => this.#renderSkeleton(),
+        complete: e => this.#renderEmployee(e),
         error: () =>
           html`
             <h1>No Data</h1>
@@ -41,7 +41,7 @@ export class EmployeePage extends LitElement {
     `;
   }
 
-  protected renderEmployee(e: Employee): TemplateResult {
+  #renderEmployee(e: Employee): TemplateResult {
     return html`
       <header>
         <h2>Edit Employee</h2>
@@ -89,7 +89,7 @@ export class EmployeePage extends LitElement {
     `;
   }
 
-  protected renderSkeleton(): TemplateResult {
+  #renderSkeleton(): TemplateResult {
     return html`
       <rk-skeleton
         label
@@ -98,10 +98,10 @@ export class EmployeePage extends LitElement {
     `;
   }
 
-  async #loadEmployee() {
+  async #loadEmployee(id: string) {
     try {
       const { employee } = await this.#client.query(GetEmployeeByIdDocument, {
-        variables: { id: this.userId },
+        variables: { id },
       });
 
       return employee as Employee;
