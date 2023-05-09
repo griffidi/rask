@@ -2,7 +2,7 @@ import { GetEmployeesDocument, type Employee } from ':/types/graphql.js';
 import { Task } from '@lit-labs/task';
 import '@material/web/icon/icon.js';
 import { DateTime } from '@rask/core/common/i18n/date-time.js';
-import { useInject } from '@rask/core/di/inject.js';
+import { inject } from '@rask/core/di/inject.js';
 import { delay } from '@rask/core/reactivity/timer/delay.js';
 import { Timer } from '@rask/core/reactivity/timer/timer.js';
 import { Client } from '@rask/graphql/client/client.js';
@@ -25,7 +25,7 @@ import css from './employees-page.css' assert { type: 'css' };
 export class EmployeesPage extends LitElement {
   static override styles = css;
 
-  #client = useInject(Client);
+  #client = inject(Client);
 
   #getEmployees = new Task(
     this,

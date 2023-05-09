@@ -1,7 +1,7 @@
 import '@material/web/button/text-button.js';
 import '@material/web/icon/icon.js';
 import { useCache } from '@rask/core/cache/index.js';
-import { useInject } from '@rask/core/di/inject.js';
+import { inject } from '@rask/core/di/inject.js';
 import type { TypeEvent } from '@rask/core/events/type-event.js';
 import { USER_NAME_CACHE_KEY } from '@rask/identity/constants/user-name-cache-key.js';
 import { AuthService } from '@rask/identity/services/auth-service.js';
@@ -19,7 +19,7 @@ const cache = useCache();
 export class LoginPage extends LitElement {
   static override styles = css;
 
-  #authService = useInject(AuthService);
+  #authService = inject(AuthService);
 
   @state() private userName: string = '';
   @state() private password: string = '';

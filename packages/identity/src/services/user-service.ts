@@ -1,5 +1,5 @@
 import { useCache } from '@rask/core/cache/index.js';
-import { useInject } from '@rask/core/di/inject.js';
+import { inject } from '@rask/core/di/inject.js';
 import { injectable } from '@rask/core/di/injectable.js';
 import { TOKEN_CACHE_KEY } from '@rask/core/identity/constants/token-cache-key.js';
 import type { CachedToken } from '@rask/core/identity/models/cached-token.js';
@@ -9,7 +9,7 @@ import { GetUserByUserNameDocument, type User } from '../types/graphql.js';
 
 @injectable()
 export class UserService {
-  #client = useInject(Client);
+  #client = inject(Client);
 
   /**
    * Get the current user.

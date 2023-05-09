@@ -2,7 +2,7 @@ import { RouteTypes } from ':/router/route-types.js';
 import { Task } from '@lit-labs/task';
 import '@material/web/switch/switch.js';
 import type { MdSwitch } from '@material/web/switch/switch.js';
-import { useInject } from '@rask/core/di/inject.js';
+import { inject } from '@rask/core/di/inject.js';
 import type { TypeEvent } from '@rask/core/events/type-event.js';
 import { AuthService } from '@rask/identity/services/auth-service.js';
 import { UserService } from '@rask/identity/services/user-service.js';
@@ -26,8 +26,8 @@ export class SettingsMenu extends LitElement {
     () => [null]
   );
 
-  #authService = useInject(AuthService);
-  #userService = useInject(UserService);
+  #authService = inject(AuthService);
+  #userService = inject(UserService);
   #menu: Ref<Menu> = createRef();
 
   @property({ attribute: false }) sittingsMenu: Ref<Menu> = createRef();

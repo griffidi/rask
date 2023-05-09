@@ -1,7 +1,7 @@
 import { GetEmployeeByIdDocument, type Employee } from ':/types/graphql.js';
 import { Task } from '@lit-labs/task';
 import '@material/web/textfield/outlined-text-field.js';
-import { useInject } from '@rask/core/di/inject.js';
+import { inject } from '@rask/core/di/inject.js';
 import { Client } from '@rask/graphql/client/client.js';
 import '@rask/web/button/button.js';
 import toast from '@rask/web/notifications/toast.js';
@@ -13,7 +13,7 @@ import css from './employee-page.css' assert { type: 'css' };
 export class EmployeePage extends LitElement {
   static override styles = css;
 
-  #client = useInject(Client);
+  #client = inject(Client);
 
   #getEmployee = new Task(
     this,
