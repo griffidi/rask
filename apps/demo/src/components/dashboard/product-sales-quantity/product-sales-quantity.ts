@@ -2,7 +2,7 @@ import { GetProductSalesDocument, type ProductSale } from ':/types/graphql.js';
 import { Task } from '@lit-labs/task';
 import '@rask/chart/chart-element/chart-element.js';
 import { unique } from '@rask/core/common/util/array.js';
-import { useInject } from '@rask/core/di/inject.js';
+import { inject } from '@rask/core/di/inject.js';
 import { Client } from '@rask/graphql/client/client.js';
 import { Colors } from '@rask/web/css/variables.custom.js';
 import toast from '@rask/web/notifications/toast.js';
@@ -18,7 +18,7 @@ export class ProductSalesQuantity extends Dashboard {
     css,
   ];
 
-  #client = useInject(Client);
+  #client = inject(Client);
   #task = new Task(
     this,
     async () => await this.#loadData(),
@@ -42,7 +42,9 @@ export class ProductSalesQuantity extends Dashboard {
 
   #renderChart(sales: ProductSale[]): TemplateResult {
     const labels = unique(sales.map(sale => sale.product.name));
-    const salesData = labels.map(label => sales.find(sale => sale.product.name === label)?.quantity ?? 0);
+    const salesData = labels.map(
+      label => sales.find(sale => sale.product.name === label)?.quantity ?? 0
+    );
     const data: ChartData = {
       labels,
       datasets: [

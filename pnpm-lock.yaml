@@ -157,6 +157,9 @@ importers:
       '@material/web':
         specifier: 1.0.0-pre.7
         version: 1.0.0-pre.7
+      '@preact/signals-core':
+        specifier: ^1.3.0
+        version: 1.3.0
       '@rask/api':
         specifier: workspace:^
         version: link:../../api
@@ -276,6 +279,9 @@ importers:
       '@lit/reactive-element':
         specifier: 2.0.0-pre.0
         version: 2.0.0-pre.0
+      '@preact/signals-core':
+        specifier: ^1.3.0
+        version: 1.3.0
       '@vaadin/router':
         specifier: ^1.7.5
         version: 1.7.5
@@ -347,6 +353,9 @@ importers:
       '@lit/reactive-element':
         specifier: 2.0.0-pre.0
         version: 2.0.0-pre.0
+      '@preact/signals-core':
+        specifier: ^1.3.0
+        version: 1.3.0
       '@rask/core':
         specifier: workspace:*
         version: link:../core
@@ -2615,6 +2624,10 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
+
+  /@preact/signals-core@1.3.0:
+    resolution: {integrity: sha512-M+M3ZOtd1dtV/uasyk4SZu1vbfEJ4NeENv0F7F12nijZYedB5wSgbtZcuACyssnTznhF4ctUyrR0dZHuHfyWKA==}
+    dev: false
 
   /@prisma/client@4.13.0(prisma@4.13.0):
     resolution: {integrity: sha512-YaiiICcRB2hatxsbnfB66uWXjcRw3jsZdlAVxmx0cFcTc/Ad/sKdHCcWSnqyDX47vAewkjRFwiLwrOUjswVvmA==}

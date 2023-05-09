@@ -5,7 +5,7 @@ import ':/layout/footer/footer.js';
 import ':/layout/header/header.js';
 import { provide } from '@lit-labs/context';
 import { useCache } from '@rask/core/cache/index.js';
-import { useInject } from '@rask/core/di/inject.js';
+import { inject } from '@rask/core/di/inject.js';
 import { GRAPHQL_URI_CACHE_KEY } from '@rask/graphql/constants/graphql-uri-cache-key.js';
 import { isAuthenticatedContext } from '@rask/identity/authentication/is-authenticated-context.js';
 import { AuthService } from '@rask/identity/services/auth-service.js';
@@ -24,7 +24,7 @@ cache.set(GRAPHQL_URI_CACHE_KEY, GRAPHQL_URI);
 export class Index extends LitElement {
   static override styles = css;
 
-  #authService = useInject(AuthService);
+  #authService = inject(AuthService);
   #nav: Ref<Nav> = createRef();
 
   @provide({ context: isAuthenticatedContext }) isAuthenticated: boolean = false;

@@ -1,7 +1,7 @@
 import { GetUsersDocument, type User } from ':/types/graphql.js';
 import { Task } from '@lit-labs/task';
 import '@material/web/icon/icon.js';
-import { useInject } from '@rask/core/di/inject.js';
+import { inject } from '@rask/core/di/inject.js';
 import type { TypeEvent } from '@rask/core/events/type-event.js';
 import { Client } from '@rask/graphql/client/client.js';
 import '@rask/web/button/button.js';
@@ -18,7 +18,7 @@ const CARD_SELECTED_CLASS = 'selected';
 export class UsersPage extends LitElement {
   static override styles = css;
 
-  #client = useInject(Client);
+  #client = inject(Client);
 
   #getUsers = new Task(
     this,
