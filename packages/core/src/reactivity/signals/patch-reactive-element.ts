@@ -1,12 +1,12 @@
 import { ReactiveElement } from '@lit/reactive-element';
-import { effect } from '@preact/signals-core';
+import { effect } from './effect';
 
-Reflect.defineProperty(ReactiveElement.prototype, 'disposeEffect', {
-  value: undefined,
-  writable: true,
-  enumerable: false,
-  configurable: true,
-});
+// Reflect.defineProperty(ReactiveElement.prototype, 'disposeEffect', {
+//   value: undefined,
+//   writable: true,
+//   enumerable: false,
+//   configurable: true,
+// });
 
 Reflect.defineProperty(ReactiveElement.prototype, 'originalPerformUpdate', {
   value: ReactiveElement.prototype['performUpdate'],
@@ -20,8 +20,12 @@ ReactiveElement.prototype['performUpdate'] = function () {
     return;
   }
 
-  // @ts-ignore
-  this['disposeEffect']?.();
+  try {
+    // @ts-ignore
+    this['disposeEffect']?.();
+  } catch (e) {
+    console.error(e);
+  }
 
   // @ts-ignore
   this['disposeEffect'] = effect(() => {

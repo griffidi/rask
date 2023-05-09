@@ -157,9 +157,6 @@ importers:
       '@material/web':
         specifier: 1.0.0-pre.7
         version: 1.0.0-pre.7
-      '@preact/signals-core':
-        specifier: ^1.3.0
-        version: 1.3.0
       '@rask/api':
         specifier: workspace:^
         version: link:../../api
@@ -175,9 +172,6 @@ importers:
       '@rask/identity':
         specifier: workspace:^
         version: link:../../packages/identity
-      '@rask/signals':
-        specifier: workspace:^
-        version: link:../../packages/signals
       '@rask/web':
         specifier: workspace:*
         version: link:../../packages/web
@@ -279,6 +273,9 @@ importers:
 
   packages/core:
     dependencies:
+      '@lit/reactive-element':
+        specifier: 2.0.0-pre.0
+        version: 2.0.0-pre.0
       '@vaadin/router':
         specifier: ^1.7.5
         version: 1.7.5
@@ -387,25 +384,6 @@ importers:
       graphql-tag:
         specifier: ^2.12.6
         version: 2.12.6(graphql@16.6.0)
-      typescript:
-        specifier: 5.1.0-beta
-        version: 5.1.0-beta
-
-  packages/signals:
-    dependencies:
-      '@lit/reactive-element':
-        specifier: 2.0.0-pre.0
-        version: 2.0.0-pre.0
-      '@preact/signals-core':
-        specifier: ^1.3.0
-        version: 1.3.0
-      tslib:
-        specifier: ^2.5.0
-        version: 2.5.0
-    devDependencies:
-      '@types/node':
-        specifier: ^20.0.0
-        version: 20.0.0
       typescript:
         specifier: 5.1.0-beta
         version: 5.1.0-beta
@@ -2637,10 +2615,6 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
-
-  /@preact/signals-core@1.3.0:
-    resolution: {integrity: sha512-M+M3ZOtd1dtV/uasyk4SZu1vbfEJ4NeENv0F7F12nijZYedB5wSgbtZcuACyssnTznhF4ctUyrR0dZHuHfyWKA==}
-    dev: false
 
   /@prisma/client@4.13.0(prisma@4.13.0):
     resolution: {integrity: sha512-YaiiICcRB2hatxsbnfB66uWXjcRw3jsZdlAVxmx0cFcTc/Ad/sKdHCcWSnqyDX47vAewkjRFwiLwrOUjswVvmA==}

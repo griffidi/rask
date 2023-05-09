@@ -19,7 +19,7 @@
 }
 
 .rk-toast {
-  --_duration: 300s;
+  --_duration: 3s;
   --_bg-lightness: 90%;
   --_travel-distance: 0;
   --_accent-color: var(--md-sys-color-green);
@@ -38,7 +38,8 @@
   flex-direction: column;
 
   will-change: transform;
-  animation: var(--md-sys-motion-standard-easing) 0.3s ease, slide-in 0.3s ease, fade-out 0.3s ease var(--_duration);
+  animation: var(--md-sys-motion-standard-easing) 0.3s ease, slide-in 0.3s ease,
+    fade-out 0.3s ease var(--_duration);
 
   @media (prefers-color-scheme: dark) {
     color: white;

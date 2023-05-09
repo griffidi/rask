@@ -43,8 +43,8 @@ const server = new ApolloServer<Context>({
     ApolloServerPluginUsageReportingDisabled(),
   ],
   formatError(formattedError, error) {
-    console.log((error as any).extensions.http.headers); // { status: 400, headers: HeaderMap(0) [Map] {} }
-    console.log(error);
+    console.error((error as any).extensions.http.headers); // { status: 400, headers: HeaderMap(0) [Map] {} }
+    console.error(error);
 
     return formattedError;
   },

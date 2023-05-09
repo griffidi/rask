@@ -1,6 +1,6 @@
 {
   "name": "@rask/chart",
-  "private": true,
+  "private": false,
   "version": "0.0.1",
   "packageManager": "pnpm@8.4.0",
   "engines": {

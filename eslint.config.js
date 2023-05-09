@@ -19,10 +19,10 @@ const sharedRules = {
   ...ts.rules['stylistic-type-checked'],
   ...ts.rules['strict-type-checked'],
   ...prettier.rules,
-  'array-element-newline': [
-    'error',
-    'always',
-  ],
+  // 'array-element-newline': [
+  //   'error',
+  //   'always',
+  // ],
   'arrow-parens': [
     'error',
     'as-needed',
