@@ -190,6 +190,9 @@ importers:
       lit:
         specifier: 3.0.0-pre.0
         version: 3.0.0-pre.0
+      redefine-custom-elements:
+        specifier: ^0.1.3
+        version: 0.1.3
       tslib:
         specifier: ^2.5.0
         version: 2.5.0
@@ -8245,6 +8248,11 @@ packages:
     dependencies:
       picomatch: 2.3.1
     dev: true
+
+  /redefine-custom-elements@0.1.3:
+    resolution: {integrity: sha512-q7fbuMOdGlC9bcfuL1NRtgUexBDEd7ERtSfgNgvJKeD95wd8ihORSniTOkWAo2QR3KNmAYbNbXhWA/pWxkvbBQ==}
+    engines: {node: '>=16'}
+    dev: false
 
   /reflect-metadata@0.1.13:
     resolution: {integrity: sha512-Ts1Y/anZELhSsjMcU605fU9RE4Oi3p5ORujwbIKXfWa+0Zxs510Qrmrce5/Jowq3cHSZSJqBjypxmHarc+vEWg==}

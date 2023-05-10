@@ -16,6 +16,7 @@
     "./di/*": "./src/di/*",
     "./events/*": "./src/events/*",
     "./fonts/*": "./src/fonts/*",
+    "./hmr/*": "./scripts/hmr/*",
     "./identity/*": "./src/identity/*",
     "./reactivity/*": "./src/reactivity/*",
     "./types/*": "./src/types/*",
@@ -24,6 +25,10 @@
       "types": "./src/types/client.d.ts"
     },
     "./src/client/*": "./src/client/*",
+    "./hmr": {
+      "types": "./src/types/import-meta.d.ts"
+    },
+    "./src/hmr/*": "./src/hmr/*",
     "./router": {
       "types": "./src/types/lit-element.d.ts"
     },

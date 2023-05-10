@@ -1,3 +1,11 @@
+/**
+ * this patches the custom element registry and needs
+ * to be the first import in the application.
+ */
+import 'redefine-custom-elements';
+
+// import '@rask/core/hmr/patch-custom-element.js';
+
 import ':/components/nav/nav.js';
 import type { Nav } from ':/components/nav/nav.js';
 import ':/components/search/search.js';

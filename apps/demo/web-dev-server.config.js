@@ -32,7 +32,7 @@ export default /** @type {import("@web/dev-server").DevServerConfig} */ ({
     ],
   },
   port: 8000,
-  http2: false,
+  // http2: true,
   // sslKey: './certs/.rask-self-signed-ssl.key',
   // sslCert: './certs/.rask-self-signed-ssl.cert',
   mimeTypes: {
