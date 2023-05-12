@@ -3,8 +3,8 @@
 }
 
 :host {
-  --_button-color: var(--rk-button-color, var(--md-sys-color-surface-5));
-  --_button-on-color: var(--rk-button-on-color, var(--md-sys-color-surface-5));
+  --_button-color: var(--rk-button-color, #ffffff);
+  --_button-on-color: var(--rk-button-on-color, #ffffff);
   /* --_button-shadow: var(--rk-button-shadow, #000000); */
   --_button-shadow: var(--rk-button-shadow, 0 0 0);
   --_button-padding-inline: var(--rk-button-padding-inline, 18px);
