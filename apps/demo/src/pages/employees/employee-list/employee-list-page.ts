@@ -20,7 +20,7 @@ import { LitElement, html, type TemplateResult } from 'lit';
 import { property } from 'lit/decorators.js';
 import { keyed } from 'lit/directives/keyed.js';
 import { map } from 'lit/directives/map.js';
-import { routerContext } from '../router-context.js';
+import { routerContext } from '../../../router/router-context.js';
 import css from './employee-list-page.css' assert { type: 'css' };
 
 export class EmployeeListPage extends LitElement {
@@ -127,6 +127,7 @@ export class EmployeeListPage extends LitElement {
   async #handleTableRowSelected({ detail: { row } }: TableRowSelectedEvent) {
     const { id } = row;
     await this.router.goto(`/employees/${id}`);
+    // location.assign(`/employees/${id}`);
   }
 
   #handleTableRowEdit({ detail: { row } }: TableRowEditEvent): void {

@@ -2,8 +2,8 @@ import { ContextProvider } from '@lit-labs/context';
 import { Routes } from '@lit-labs/router';
 import { scrollable } from '@rask/web/scrollable/scrollable.js';
 import { LitElement, html, type TemplateResult } from 'lit';
+import { routerContext } from '../../router/router-context.js';
 import css from './employees-page.css' assert { type: 'css' };
-import { routerContext } from './router-context.js';
 import routes from './routes.js';
 
 export class EmployeesPage extends LitElement {

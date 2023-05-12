@@ -12,7 +12,7 @@ export default [
     },
   },
   {
-    path: '/employees/:id',
+    path: '/employees/{:id}?',
     render: ({ id }) => {
       import('./employee/employee-page.js');
       return html`

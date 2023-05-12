@@ -1,8 +1,7 @@
-export const enum RouteTypes {
-  login = 'login',
-  home = 'home',
-  employees = 'employees',
-  employee = 'employees',
-  settings = 'settings',
+export const enum RoutePaths {
+  login = '/login',
+  home = '/',
+  employees = '/employees',
+  settings = '/settings',
   default = home,
 }

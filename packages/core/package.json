@@ -29,10 +29,6 @@
       "types": "./src/types/import-meta.d.ts"
     },
     "./src/hmr/*": "./src/hmr/*",
-    "./router": {
-      "types": "./src/types/lit-element.d.ts"
-    },
-    "./src/router/*": "./src/router/*",
     "./package.json": "./package.json"
   },
   "files": [
