@@ -43,44 +43,42 @@ export class EmployeePage extends LitElement {
 
   #renderEmployee(e: Employee): TemplateResult {
     return html`
-      <header>
-        <h2>Edit Employee</h2>
-      </header>
       <form>
         <div>
-          <rk-text-field
-            label="Full Name"
-            .value=${e.firstName}></rk-text-field>
-          <rk-text-field
-            label="Full Name"
-            .value=${e.lastName}></rk-text-field>
-          <rk-text-field
+          <md-outlined-text-field
+            label="First Name"
+            .value=${e.firstName}></md-outlined-text-field>
+          <md-outlined-text-field
+            label="Last Name"
+            .value=${e.lastName}></md-outlined-text-field>
+          <md-outlined-text-field
             label="Email"
-            .value=${e.email}></rk-text-field>
-          <rk-text-field
+            .value=${e.email}></md-outlined-text-field>
+          <md-outlined-text-field
             label="Phone"
-            .value=${e.phone}></rk-text-field>
+            .value=${e.phone}></md-outlined-text-field>
         </div>
         <div>
-          <rk-text-field
+          <md-outlined-text-field
             label="Street Address"
-            .value=${e.streetAddress}></rk-text-field>
+            .value=${e.streetAddress}></md-outlined-text-field>
           <div class="address">
-            <rk-text-field
+            <md-outlined-text-field
               label="City"
-              .value=${e.city}></rk-text-field>
-            <rk-text-field
+              .value=${e.city}></md-outlined-text-field>
+            <md-outlined-text-field
               label="State"
-              .value=${e.state}></rk-text-field>
-            <rk-text-field
+              .value=${e.state}></md-outlined-text-field>
+            <md-outlined-text-field
               label="Postal"
-              .value=${e.zipCode}></rk-text-field>
+              .value=${e.zipCode}></md-outlined-text-field>
           </div>
         </div>
       </form>
       <footer>
         <rk-button
           label="Save"
+          blue
           filled></rk-button>
         <rk-button
           label="Cancel"

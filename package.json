@@ -20,7 +20,7 @@
     "@material/web",
     "signals"
   ],
-  "packageManager": "pnpm@8.4.0",
+  "packageManager": "pnpm@8.5.0",
   "engines": {
     "node": ">=18.11.0 || >=19.2.0 || >= 20.1",
     "pnpm": ">=8.4.0"
@@ -34,12 +34,12 @@
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "6.0.0-alpha.136",
     "@typescript-eslint/parser": "6.0.0-alpha.136",
-    "eslint": "^8.39.0",
+    "eslint": "^8.40.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-lit": "^1.8.3",
     "eslint-plugin-prettier": "^4.2.1",
-    "pnpm": "^8.4.0",
+    "pnpm": "^8.5.0",
     "prettier": "^2.8.8",
     "prettier-plugin-multiline-arrays": "^1.1.3"
   },
