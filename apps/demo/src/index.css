@@ -16,7 +16,7 @@ app-header {
 article {
   grid-row: 2;
 }
-
+/*
 #route-outlet > .leaving {
   animation: 0.2s fadeOut ease-in;
 }
@@ -43,4 +43,4 @@ article {
   to {
     opacity: 1;
   }
-}
+} */

@@ -8,6 +8,7 @@ import toast from '@rask/web/notifications/toast.js';
 import '@rask/web/skeleton/skeleton.js';
 import '@rask/web/text-field/text-field.js';
 import { LitElement, html, type TemplateResult } from 'lit';
+import { property } from 'lit/decorators.js';
 import css from './employee-page.css' assert { type: 'css' };
 
 export class EmployeePage extends LitElement {
@@ -18,11 +19,10 @@ export class EmployeePage extends LitElement {
   #getEmployee = new Task(
     this,
     async ([id]) => await this.#loadEmployee(id),
-    () => {
-      const userId = this.location.params['id'] as string;
-      return [userId];
-    }
+    () => [this.employeeId]
   );
+
+  @property() employeeId: string | undefined;
 
   override render(): TemplateResult {
     return this.#renderData();

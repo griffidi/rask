@@ -4,8 +4,6 @@ import { LitElement, html, type TemplateResult } from 'lit';
 import { state } from 'lit/decorators.js';
 import { map } from 'lit/directives/map.js';
 import { when } from 'lit/directives/when.js';
-import { RouteTypes } from '../../router/route-types.js';
-import type { RouterLocationChangedEvent } from '../../router/types.js';
 import css from './breadcrumb.css' assert { type: 'css' };
 
 interface BreadcrumbPath {
@@ -21,17 +19,21 @@ export class Breadcrumb extends LitElement {
   override connectedCallback(): void {
     super.connectedCallback();
 
-    if (window.addEventListener) {
-      window.addEventListener('vaadin-router-location-changed', e => this.#handleRouterLocationChanged(e));
-    }
+    // if (window.addEventListener) {
+    //   window.addEventListener('vaadin-router-location-changed', e =>
+    //     this.#handleRouterLocationChanged(e)
+    //   );
+    // }
   }
 
   override disconnectedCallback(): void {
     super.disconnectedCallback();
 
-    if (window.removeEventListener) {
-      window.removeEventListener('vaadin-router-location-changed', e => this.#handleRouterLocationChanged(e));
-    }
+    // if (window.removeEventListener) {
+    //   window.removeEventListener('vaadin-router-location-changed', e =>
+    //     this.#handleRouterLocationChanged(e)
+    //   );
+    // }
   }
 
   override render(): TemplateResult {
@@ -50,20 +52,20 @@ export class Breadcrumb extends LitElement {
     `;
   }
 
-  #handleRouterLocationChanged({ detail }: RouterLocationChangedEvent) {
-    const { routes } = detail.location;
-    const items = routes
-      .filter(route => route.name)
-      .map(({ path, name }) => {
-        return { path, name };
-      });
+  // #handleRouterLocationChanged({ detail }: RouterLocationChangedEvent) {
+  //   const { routes } = detail.location;
+  //   const items = routes
+  //     .filter(route => route.name)
+  //     .map(({ path, name }) => {
+  //       return { path, name };
+  //     });
 
-    if (items[0].name !== RouteTypes.default) {
-      items.unshift({ path: '/', name: RouteTypes.default });
-    }
+  //   if (items[0].name !== RouteTypes.default) {
+  //     items.unshift({ path: '/', name: RouteTypes.default });
+  //   }
 
-    this.items = items;
-  }
+  //   this.items = items;
+  // }
 }
 
 if (!customElements.get('app-breadcrumb')) {

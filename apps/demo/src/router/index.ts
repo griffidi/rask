@@ -1,38 +1,23 @@
-import { authGuard } from '@rask/identity/guards/auth-guards.js';
-import { Router, type Params } from '@vaadin/router';
+import { ContextProvider } from '@lit-labs/context';
+import { Router } from '@lit-labs/router';
+import type { LitElement } from 'lit';
+import { routerContext } from './router-context.js';
 import routes from './routes.js';
 
-const router = new Router();
+/**
+ * Creates a router and provider for the router context.
+ *
+ * @param {LitElement} host Host element to create the router for.
+ *
+ * @returns { router: Router, provider: ContextProvider } The router
+ * and the provider for the router context.
+ */
+export function createRouter(host: LitElement) {
+  const router = new Router(host, routes);
+  const provider = new ContextProvider(host, {
+    context: routerContext,
+    initialValue: router,
+  });
 
-router.setRoutes([
-  {
-    path: '(.*)/',
-    action: async (context, commands) => {
-      const isAuthenticated = await authGuard();
-      const view = new URLSearchParams(context.search).get('view') ?? '';
-      const { pathname } = context;
-      const validPath = pathname === '/' ? pathname : pathname.replace(/\/$/, '');
-
-      if (!isAuthenticated && view !== 'login') {
-        return commands.redirect('/login');
-      }
-
-      if (pathname !== validPath) {
-        return commands.redirect(validPath);
-      }
-
-      return context.next();
-    },
-  },
-  ...routes,
-]);
-
-export { router };
-
-export const attachRouter = (outlet: HTMLElement) => {
-  router.setOutlet(outlet);
-};
-
-export const urlForName = (name: string, params?: Params) => {
-  return router.urlForName(name, params);
-};
+  return { router, provider };
+}

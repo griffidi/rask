@@ -1,6 +1,7 @@
-:host {
+/* :host {
+  white-space: nowrap;
   text-overflow: ellipsis;
-}
+} */
 
 :host([edit]) md-icon {
   --md-icon-size: 20px;

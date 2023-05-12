@@ -75,5 +75,6 @@
   --md-sys-shape-small: var(--md-sys-shape-corner-small-default-size);
   --md-sys-shape-medium: var(--md-sys-shape-corner-medium-default-size);
   --md-sys-shape-large: var(--md-sys-shape-corner-large-default-size);
+  --md-sys-shape-extra-large: var(--md-sys-shape-corner-extra-large-default-size);
   --md-sys-shape-rounded: 9999px;
 }

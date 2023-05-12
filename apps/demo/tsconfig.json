@@ -38,8 +38,8 @@
       "@rask/web/*": ["../../packages/web/src/*"]
     },
     "types": [
-      "@rask/core/router",
-      "@rask/core/client"
+      "@rask/core/client",
+      "@rask/core/hmr"
     ]
   },
   "include": [

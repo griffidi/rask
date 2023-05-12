@@ -1,9 +1,18 @@
+/**
+ * this patches the custom element registry and needs
+ * to be the first import in the application.
+ */
+import 'redefine-custom-elements';
+
+// import '@rask/core/hmr/patch-custom-element.js';
+
 import ':/components/nav/nav.js';
 import type { Nav } from ':/components/nav/nav.js';
 import ':/components/search/search.js';
 import ':/layout/footer/footer.js';
 import ':/layout/header/header.js';
-import { provide } from '@lit-labs/context';
+import { ContextProvider, provide } from '@lit-labs/context';
+import { Router } from '@lit-labs/router';
 import { useCache } from '@rask/core/cache/index.js';
 import { inject } from '@rask/core/di/inject.js';
 import { GRAPHQL_URI_CACHE_KEY } from '@rask/graphql/constants/graphql-uri-cache-key.js';
@@ -14,7 +23,8 @@ import { LitElement, html, type TemplateResult } from 'lit';
 import { createRef, ref, type Ref } from 'lit/directives/ref.js';
 import config from '../app.config.js';
 import css from './index.css' assert { type: 'css' };
-import { attachRouter } from './router/index.js';
+import { routerContext } from './router/router-context.js';
+import routes from './router/routes.js';
 
 const cache = useCache();
 const { uri: GRAPHQL_URI } = config.graphql;
@@ -22,19 +32,31 @@ const { uri: GRAPHQL_URI } = config.graphql;
 cache.set(GRAPHQL_URI_CACHE_KEY, GRAPHQL_URI);
 
 export class Index extends LitElement {
-  static override styles = css;
+  static override styles = [css];
 
   #authService = inject(AuthService);
   #nav: Ref<Nav> = createRef();
+
+  /**
+   * This is the router for the application.
+   */
+  readonly #router = new Router(this, routes);
+
+  /**
+   * This is the provider for the router context. It is not used
+   * in this component, but is subscribed to by other components
+   * and therefore needs to be provided at the root of the application.
+   */
+  // @ts-ignore
+  readonly #routerProvider = new ContextProvider(this, {
+    context: routerContext,
+    initialValue: this.#router,
+  });
 
   @provide({ context: isAuthenticatedContext }) isAuthenticated: boolean = false;
 
   override connectedCallback(): void {
     super.connectedCallback();
-
-    if (window.addEventListener) {
-      window.addEventListener('vaadin-router-error', this.#handleRouterError);
-    }
 
     /**
      * subscribe to changes in authentication state and
@@ -55,16 +77,9 @@ export class Index extends LitElement {
      * just for good practice. 😉
      */
     this.#authService.unsubscribe();
-
-    if (window.removeEventListener) {
-      window.removeEventListener('vaadin-router-error', this.#handleRouterError);
-    }
   }
 
   override async firstUpdated(): Promise<void> {
-    const output = this.shadowRoot.querySelector<HTMLElement>('output');
-    attachRouter(output);
-
     this.isAuthenticated = await this.#authService.isAuthenticated();
   }
 
@@ -72,15 +87,11 @@ export class Index extends LitElement {
     return html`
       <main role="main">
         <app-header @menu-clicked=${this.#showDrawer}></app-header>
-        <article><output id="route-outlet"></output></article>
+        <article>${this.#router.outlet()}</article>
       </main>
       <app-nav ${ref(this.#nav)}></app-nav>
       <app-search></app-search>
     `;
-  }
-
-  #handleRouterError(e: Event): void {
-    console.error('Router error', e);
   }
 
   #showDrawer(): void {
