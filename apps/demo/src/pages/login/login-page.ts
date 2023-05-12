@@ -8,7 +8,6 @@ import { AuthService } from '@rask/identity/services/auth-service.js';
 import '@rask/web/button/button.js';
 import '@rask/web/text-field/text-field.js';
 import type { TextField } from '@rask/web/text-field/text-field.js';
-import { Router } from '@vaadin/router';
 import { LitElement, html, type TemplateResult } from 'lit';
 import { state } from 'lit/decorators.js';
 import { live } from 'lit/directives/live.js';
@@ -78,7 +77,7 @@ export class LoginPage extends LitElement {
 
     if (success) {
       cache.set(USER_NAME_CACHE_KEY, userName);
-      Router.go('/');
+      // Router.go('/');
     }
   }
 

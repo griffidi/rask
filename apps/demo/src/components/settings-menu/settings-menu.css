@@ -1,8 +1,5 @@
 md-switch {
   transform: scale(0.8);
-  /* --md-switch-track-height: 24px;
-  --md-switch-state-layer-size: 28px;
-  block-size: 15px; */
 }
 
 rk-menu {
@@ -26,6 +23,8 @@ rk-menu {
 }
 
 .avatar {
+  --_avatar-color: #ffffff;
+
   position: relative;
   cursor: pointer;
   display: flex;
@@ -36,25 +35,20 @@ rk-menu {
   border-radius: 50%;
   border: none;
   background: transparent;
-  color: var(--md-sys-color-blue);
+  color: var(--_avatar-color);
   text-decoration: uppercase;
 
-  &::before,
-  &::after {
+  &::before {
     content: "";
     position: absolute;
     inset: 0;
     z-index: 1;
     border-radius: 50%;
-    border: 2px solid var(--md-sys-color-blue);
+    border: 1px solid var(--_avatar-color);
   }
 
-  &:hover::before {
-    box-shadow: rgba(90, 20, 255, 0.5) 0 0 6px 0;
-  }
-
-  &:hover::after {
-    box-shadow: rgba(90, 20, 255, 0.5) inset 0 0 6px;
+  &:hover {
+    --_avatar-color: var(--md-sys-color-blue);
   }
 }
 

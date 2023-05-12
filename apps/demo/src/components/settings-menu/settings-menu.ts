@@ -1,4 +1,3 @@
-import { RouteTypes } from ':/router/route-types.js';
 import { Task } from '@lit-labs/task';
 import '@material/web/switch/switch.js';
 import type { MdSwitch } from '@material/web/switch/switch.js';
@@ -9,7 +8,6 @@ import { UserService } from '@rask/identity/services/user-service.js';
 import '@rask/web/menu/menu.js';
 import type { Menu } from '@rask/web/menu/menu.js';
 import { useTheme } from '@rask/web/theme/index.js';
-import { Router } from '@vaadin/router';
 import { LitElement, html, type TemplateResult } from 'lit';
 import { property, state } from 'lit/decorators.js';
 import { createRef, ref, type Ref } from 'lit/directives/ref.js';
@@ -91,7 +89,7 @@ export class SettingsMenu extends LitElement {
   #logout(): void {
     this.#menu.value.close();
     this.#authService.logout();
-    Router.go(RouteTypes.login);
+    // Router.go(RouteTypes.login);
   }
 }
 

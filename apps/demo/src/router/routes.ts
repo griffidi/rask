@@ -1,113 +1,74 @@
-import { type Route } from '@vaadin/router';
+import { type RouteConfig } from '@lit-labs/router';
+import { html } from 'lit';
 
 export default [
+  // {
+  //   path: '(.*)/',
+  //   enter: params => {
+  //     return true;
+  //     // const isAuthenticated = authGuard();
+  //     // const view = new URLSearchParams(context.search).get('view') ?? '';
+  //     // const { pathname } = context;
+  //     // const validPath = pathname === '/' ? pathname : pathname.replace(/\/$/, '');
+
+  //     // if (!isAuthenticated && view !== 'login') {
+  //     //   return commands.redirect('/login');
+  //     // }
+
+  //     // if (pathname !== validPath) {
+  //     //   return commands.redirect(validPath);
+  //     // }
+
+  //     // return context.next();
+  //   },
+  // },
   {
-    path: '/',
     name: 'home',
-    animate: true,
-    component: 'app-home-page',
-    action: async () => {
-      await import('../pages/home/home-page.js');
+    path: '/',
+    render: () => {
+      import('../pages/home/home-page.js');
+      return html`
+        <app-home-page></app-home-page>
+      `;
     },
   },
   {
-    path: '/login',
     name: 'login',
-    animate: true,
-    component: 'app-login-page',
-    action: async () => {
-      await import('../pages/login/login-page.js');
+    path: '/login',
+    render: () => {
+      import('../pages/login/login-page.js');
+      return html`
+        <app-login-page></app-login-page>
+      `;
     },
   },
   {
-    path: '/documents',
-    name: 'documents',
-    animate: true,
-    component: 'app-documents-page',
-    action: async () => {
-      await import('../pages/documents/documents-page.js');
-    },
-  },
-  {
-    path: '/customers',
-    name: 'customers',
-    animate: true,
-    children: [
-      {
-        path: '/',
-        component: 'app-customers-page',
-        action: async () => {
-          await import('../pages/customers/customers-page.js');
-        },
-      },
-      {
-        path: '/:id',
-        component: 'app-customer-page',
-        action: async () => {
-          await import('../pages/customers/customer-page.js');
-        },
-      },
-    ],
-  },
-  {
+    name: 'employees',
     path: '/employees',
-    // name: 'employees',
-    animate: true,
-    children: [
-      {
-        path: '/',
-        name: 'employees',
-        component: 'app-employees-page',
-        action: async () => {
-          await import('../pages/employees/employees-page.js');
-        },
-      },
-      {
-        path: '/:id',
-        name: 'employee',
-        component: 'app-employee-page',
-        action: async () => {
-          await import('../pages/employees/employee-page.js');
-        },
-      },
-    ],
+    render: () => {
+      import('../pages/employees/employees-page.js');
+      return html`
+        <app-employees-page></app-employees-page>
+      `;
+    },
   },
   {
-    path: '/users',
-    name: 'users',
-    animate: true,
-    children: [
-      {
-        path: '/',
-        component: 'app-users-page',
-        action: async () => {
-          await import('../pages/users/users-page.js');
-        },
-      },
-      {
-        path: '/:id',
-        component: 'app-user-page',
-        action: async () => {
-          await import('../pages/users/user-page.js');
-        },
-      },
-    ],
-  },
-  {
-    path: '/settings',
     name: 'settings',
-    animate: true,
-    component: 'app-settings-page',
-    action: async () => {
-      await import('../pages/settings/settings-page.js');
+    path: '/settings',
+    render: () => {
+      import('../pages/settings/settings-page.js');
+      return html`
+        <app-settings-page></app-settings-page>
+      `;
     },
   },
   {
     path: '(.*)',
-    animate: true,
-    component: 'app-page-not-found',
-    action: async () => {
-      await import('../pages/page-not-found/page-not-found.js');
+    render: () => {
+      import('../pages/page-not-found/page-not-found.js');
+      return html`
+        <app-page-not-found></app-page-not-found>
+      `;
     },
   },
-] satisfies Route[];
+] satisfies RouteConfig[];
