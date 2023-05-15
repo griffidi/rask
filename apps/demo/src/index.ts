@@ -58,6 +58,13 @@ export class Index extends LitElement {
   override connectedCallback(): void {
     super.connectedCallback();
 
+    this.#router.routes.map(route => {
+      route.enter = (params: { [key: string]: string | undefined }): boolean => {
+        console.dir(params);
+        return true;
+      };
+    });
+
     /**
      * subscribe to changes in authentication state and
      * update the isAuthenticated property so that consumers

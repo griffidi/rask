@@ -1,4 +1,6 @@
 :root {
+  --md-outlined-text-field-input-text-font: var(--md-sys-typescale-body-large-font);
+
   --md-text-button-label-text-font: var(--md-sys-typescale-title-small-font);
   --md-text-button-label-text-size: var(--md-sys-typescale-title-small-size);
   --md-text-button-label-text-weight: var(--md-sys-typescale-title-small-weight);
@@ -26,6 +28,8 @@
   /* --md-switch-selected-track-outline-color: var(--rk-border-color); */
   /* --md-switch-selected-track-outline-color: red; */
   /* --md-switch-unselected-track-outline-color: var(--rk-border-color); */
+
+  --md-select-menu-container-color: var(--md-sys-color-background);
 }
 
 /* md-swtich {

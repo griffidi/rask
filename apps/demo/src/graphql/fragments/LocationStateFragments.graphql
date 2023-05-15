@@ -1,0 +1,5 @@
+fragment LocationStateParts on LocationState {
+  id
+  name
+  shortName
+}

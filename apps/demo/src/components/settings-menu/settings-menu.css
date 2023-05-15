@@ -30,13 +30,14 @@ rk-menu {
   display: flex;
   justify-content: center;
   align-items: center;
-  inline-size: 34px;
-  block-size: 34px;
+  inline-size: 30px;
+  block-size: 30px;
   border-radius: 50%;
   border: none;
   background: transparent;
   color: var(--_avatar-color);
   text-decoration: uppercase;
+  font-size: 0.9em;
 
   &::before {
     content: "";
@@ -44,7 +45,7 @@ rk-menu {
     inset: 0;
     z-index: 1;
     border-radius: 50%;
-    border: 1px solid var(--_avatar-color);
+    border: 2px solid var(--_avatar-color);
   }
 
   &:hover {

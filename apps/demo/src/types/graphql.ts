@@ -50,6 +50,13 @@ export interface AggregateInventory {
   _sum?: Maybe<InventorySumAggregate>;
 }
 
+export interface AggregateLocationState {
+  __typename?: 'AggregateLocationState';
+  _count?: Maybe<LocationStateCountAggregate>;
+  _max?: Maybe<LocationStateMaxAggregate>;
+  _min?: Maybe<LocationStateMinAggregate>;
+}
+
 export interface AggregateProduct {
   __typename?: 'AggregateProduct';
   _count?: Maybe<ProductCountAggregate>;
@@ -96,8 +103,9 @@ export interface Customer {
   firstName: Scalars['String'];
   id: Scalars['String'];
   lastName: Scalars['String'];
+  locationState: LocationState;
   phone: Scalars['String'];
-  state: Scalars['String'];
+  stateId: Scalars['String'];
   streetAddress: Scalars['String'];
   zipCode: Scalars['String'];
 }
@@ -113,7 +121,7 @@ export interface CustomerCountAggregate {
   id: Scalars['Int'];
   lastName: Scalars['Int'];
   phone: Scalars['Int'];
-  state: Scalars['Int'];
+  stateId: Scalars['Int'];
   streetAddress: Scalars['Int'];
   zipCode: Scalars['Int'];
 }
@@ -127,7 +135,7 @@ export interface CustomerCountOrderByAggregateInput {
   id?: InputMaybe<SortOrder>;
   lastName?: InputMaybe<SortOrder>;
   phone?: InputMaybe<SortOrder>;
-  state?: InputMaybe<SortOrder>;
+  stateId?: InputMaybe<SortOrder>;
   streetAddress?: InputMaybe<SortOrder>;
   zipCode?: InputMaybe<SortOrder>;
 }
@@ -140,8 +148,32 @@ export interface CustomerCreateInput {
   firstName: Scalars['String'];
   id?: InputMaybe<Scalars['String']>;
   lastName: Scalars['String'];
+  locationState: LocationStateCreateNestedOneWithoutCustomerInput;
   phone: Scalars['String'];
-  state: Scalars['String'];
+  streetAddress: Scalars['String'];
+  zipCode: Scalars['String'];
+}
+
+export interface CustomerCreateNestedManyWithoutLocationStateInput {
+  connect?: InputMaybe<Array<CustomerWhereUniqueInput>>;
+  connectOrCreate?: InputMaybe<Array<CustomerCreateOrConnectWithoutLocationStateInput>>;
+  create?: InputMaybe<Array<CustomerCreateWithoutLocationStateInput>>;
+}
+
+export interface CustomerCreateOrConnectWithoutLocationStateInput {
+  create: CustomerCreateWithoutLocationStateInput;
+  where: CustomerWhereUniqueInput;
+}
+
+export interface CustomerCreateWithoutLocationStateInput {
+  city: Scalars['String'];
+  dateCreated?: InputMaybe<Scalars['DateTime']>;
+  dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  email: Scalars['String'];
+  firstName: Scalars['String'];
+  id?: InputMaybe<Scalars['String']>;
+  lastName: Scalars['String'];
+  phone: Scalars['String'];
   streetAddress: Scalars['String'];
   zipCode: Scalars['String'];
 }
@@ -159,9 +191,15 @@ export interface CustomerGroupBy {
   id: Scalars['String'];
   lastName: Scalars['String'];
   phone: Scalars['String'];
-  state: Scalars['String'];
+  stateId: Scalars['String'];
   streetAddress: Scalars['String'];
   zipCode: Scalars['String'];
+}
+
+export interface CustomerListRelationFilter {
+  every?: InputMaybe<CustomerWhereInput>;
+  none?: InputMaybe<CustomerWhereInput>;
+  some?: InputMaybe<CustomerWhereInput>;
 }
 
 export interface CustomerMaxAggregate {
@@ -174,7 +212,7 @@ export interface CustomerMaxAggregate {
   id?: Maybe<Scalars['String']>;
   lastName?: Maybe<Scalars['String']>;
   phone?: Maybe<Scalars['String']>;
-  state?: Maybe<Scalars['String']>;
+  stateId?: Maybe<Scalars['String']>;
   streetAddress?: Maybe<Scalars['String']>;
   zipCode?: Maybe<Scalars['String']>;
 }
@@ -188,7 +226,7 @@ export interface CustomerMaxOrderByAggregateInput {
   id?: InputMaybe<SortOrder>;
   lastName?: InputMaybe<SortOrder>;
   phone?: InputMaybe<SortOrder>;
-  state?: InputMaybe<SortOrder>;
+  stateId?: InputMaybe<SortOrder>;
   streetAddress?: InputMaybe<SortOrder>;
   zipCode?: InputMaybe<SortOrder>;
 }
@@ -203,7 +241,7 @@ export interface CustomerMinAggregate {
   id?: Maybe<Scalars['String']>;
   lastName?: Maybe<Scalars['String']>;
   phone?: Maybe<Scalars['String']>;
-  state?: Maybe<Scalars['String']>;
+  stateId?: Maybe<Scalars['String']>;
   streetAddress?: Maybe<Scalars['String']>;
   zipCode?: Maybe<Scalars['String']>;
 }
@@ -217,9 +255,13 @@ export interface CustomerMinOrderByAggregateInput {
   id?: InputMaybe<SortOrder>;
   lastName?: InputMaybe<SortOrder>;
   phone?: InputMaybe<SortOrder>;
-  state?: InputMaybe<SortOrder>;
+  stateId?: InputMaybe<SortOrder>;
   streetAddress?: InputMaybe<SortOrder>;
   zipCode?: InputMaybe<SortOrder>;
+}
+
+export interface CustomerOrderByRelationAggregateInput {
+  _count?: InputMaybe<SortOrder>;
 }
 
 export interface CustomerOrderByWithAggregationInput {
@@ -234,7 +276,7 @@ export interface CustomerOrderByWithAggregationInput {
   id?: InputMaybe<SortOrder>;
   lastName?: InputMaybe<SortOrder>;
   phone?: InputMaybe<SortOrder>;
-  state?: InputMaybe<SortOrder>;
+  stateId?: InputMaybe<SortOrder>;
   streetAddress?: InputMaybe<SortOrder>;
   zipCode?: InputMaybe<SortOrder>;
 }
@@ -247,8 +289,9 @@ export interface CustomerOrderByWithRelationInput {
   firstName?: InputMaybe<SortOrder>;
   id?: InputMaybe<SortOrder>;
   lastName?: InputMaybe<SortOrder>;
+  locationState?: InputMaybe<LocationStateOrderByWithRelationInput>;
   phone?: InputMaybe<SortOrder>;
-  state?: InputMaybe<SortOrder>;
+  stateId?: InputMaybe<SortOrder>;
   streetAddress?: InputMaybe<SortOrder>;
   zipCode?: InputMaybe<SortOrder>;
 }
@@ -262,9 +305,26 @@ export enum CustomerScalarFieldEnum {
   Id = 5,
   LastName = 6,
   Phone = 7,
-  State = 8,
+  StateId = 8,
   StreetAddress = 9,
   ZipCode = 10,
+}
+
+export interface CustomerScalarWhereInput {
+  AND?: InputMaybe<Array<CustomerScalarWhereInput>>;
+  NOT?: InputMaybe<Array<CustomerScalarWhereInput>>;
+  OR?: InputMaybe<Array<CustomerScalarWhereInput>>;
+  city?: InputMaybe<StringFilter>;
+  dateCreated?: InputMaybe<DateTimeFilter>;
+  dateUpdated?: InputMaybe<DateTimeNullableFilter>;
+  email?: InputMaybe<StringFilter>;
+  firstName?: InputMaybe<StringFilter>;
+  id?: InputMaybe<StringFilter>;
+  lastName?: InputMaybe<StringFilter>;
+  phone?: InputMaybe<StringFilter>;
+  stateId?: InputMaybe<StringFilter>;
+  streetAddress?: InputMaybe<StringFilter>;
+  zipCode?: InputMaybe<StringFilter>;
 }
 
 export interface CustomerScalarWhereWithAggregatesInput {
@@ -279,7 +339,7 @@ export interface CustomerScalarWhereWithAggregatesInput {
   id?: InputMaybe<StringWithAggregatesFilter>;
   lastName?: InputMaybe<StringWithAggregatesFilter>;
   phone?: InputMaybe<StringWithAggregatesFilter>;
-  state?: InputMaybe<StringWithAggregatesFilter>;
+  stateId?: InputMaybe<StringWithAggregatesFilter>;
   streetAddress?: InputMaybe<StringWithAggregatesFilter>;
   zipCode?: InputMaybe<StringWithAggregatesFilter>;
 }
@@ -292,8 +352,8 @@ export interface CustomerUpdateInput {
   firstName?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['String']>;
   lastName?: InputMaybe<Scalars['String']>;
+  locationState?: InputMaybe<LocationStateUpdateOneRequiredWithoutCustomerNestedInput>;
   phone?: InputMaybe<Scalars['String']>;
-  state?: InputMaybe<Scalars['String']>;
   streetAddress?: InputMaybe<Scalars['String']>;
   zipCode?: InputMaybe<Scalars['String']>;
 }
@@ -307,9 +367,50 @@ export interface CustomerUpdateManyMutationInput {
   id?: InputMaybe<Scalars['String']>;
   lastName?: InputMaybe<Scalars['String']>;
   phone?: InputMaybe<Scalars['String']>;
-  state?: InputMaybe<Scalars['String']>;
   streetAddress?: InputMaybe<Scalars['String']>;
   zipCode?: InputMaybe<Scalars['String']>;
+}
+
+export interface CustomerUpdateManyWithWhereWithoutLocationStateInput {
+  data: CustomerUpdateManyMutationInput;
+  where: CustomerScalarWhereInput;
+}
+
+export interface CustomerUpdateManyWithoutLocationStateNestedInput {
+  connect?: InputMaybe<Array<CustomerWhereUniqueInput>>;
+  connectOrCreate?: InputMaybe<Array<CustomerCreateOrConnectWithoutLocationStateInput>>;
+  create?: InputMaybe<Array<CustomerCreateWithoutLocationStateInput>>;
+  delete?: InputMaybe<Array<CustomerWhereUniqueInput>>;
+  deleteMany?: InputMaybe<Array<CustomerScalarWhereInput>>;
+  disconnect?: InputMaybe<Array<CustomerWhereUniqueInput>>;
+  set?: InputMaybe<Array<CustomerWhereUniqueInput>>;
+  update?: InputMaybe<Array<CustomerUpdateWithWhereUniqueWithoutLocationStateInput>>;
+  updateMany?: InputMaybe<Array<CustomerUpdateManyWithWhereWithoutLocationStateInput>>;
+  upsert?: InputMaybe<Array<CustomerUpsertWithWhereUniqueWithoutLocationStateInput>>;
+}
+
+export interface CustomerUpdateWithWhereUniqueWithoutLocationStateInput {
+  data: CustomerUpdateWithoutLocationStateInput;
+  where: CustomerWhereUniqueInput;
+}
+
+export interface CustomerUpdateWithoutLocationStateInput {
+  city?: InputMaybe<Scalars['String']>;
+  dateCreated?: InputMaybe<Scalars['DateTime']>;
+  dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  email?: InputMaybe<Scalars['String']>;
+  firstName?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']>;
+  lastName?: InputMaybe<Scalars['String']>;
+  phone?: InputMaybe<Scalars['String']>;
+  streetAddress?: InputMaybe<Scalars['String']>;
+  zipCode?: InputMaybe<Scalars['String']>;
+}
+
+export interface CustomerUpsertWithWhereUniqueWithoutLocationStateInput {
+  create: CustomerCreateWithoutLocationStateInput;
+  update: CustomerUpdateWithoutLocationStateInput;
+  where: CustomerWhereUniqueInput;
 }
 
 export interface CustomerWhereInput {
@@ -323,8 +424,9 @@ export interface CustomerWhereInput {
   firstName?: InputMaybe<StringFilter>;
   id?: InputMaybe<StringFilter>;
   lastName?: InputMaybe<StringFilter>;
+  locationState?: InputMaybe<LocationStateRelationFilter>;
   phone?: InputMaybe<StringFilter>;
-  state?: InputMaybe<StringFilter>;
+  stateId?: InputMaybe<StringFilter>;
   streetAddress?: InputMaybe<StringFilter>;
   zipCode?: InputMaybe<StringFilter>;
 }
@@ -595,8 +697,9 @@ export interface Employee {
   id: Scalars['String'];
   jobTitle: Scalars['String'];
   lastName: Scalars['String'];
+  locationState: LocationState;
   phone: Scalars['String'];
-  state: Scalars['String'];
+  stateId: Scalars['String'];
   streetAddress: Scalars['String'];
   zipCode: Scalars['String'];
 }
@@ -615,7 +718,7 @@ export interface EmployeeCountAggregate {
   jobTitle: Scalars['Int'];
   lastName: Scalars['Int'];
   phone: Scalars['Int'];
-  state: Scalars['Int'];
+  stateId: Scalars['Int'];
   streetAddress: Scalars['Int'];
   zipCode: Scalars['Int'];
 }
@@ -632,7 +735,7 @@ export interface EmployeeCountOrderByAggregateInput {
   jobTitle?: InputMaybe<SortOrder>;
   lastName?: InputMaybe<SortOrder>;
   phone?: InputMaybe<SortOrder>;
-  state?: InputMaybe<SortOrder>;
+  stateId?: InputMaybe<SortOrder>;
   streetAddress?: InputMaybe<SortOrder>;
   zipCode?: InputMaybe<SortOrder>;
 }
@@ -648,8 +751,8 @@ export interface EmployeeCreateInput {
   id?: InputMaybe<Scalars['String']>;
   jobTitle: Scalars['String'];
   lastName: Scalars['String'];
+  locationState: LocationStateCreateNestedOneWithoutEmployeeInput;
   phone: Scalars['String'];
-  state: Scalars['String'];
   streetAddress: Scalars['String'];
   zipCode: Scalars['String'];
 }
@@ -660,8 +763,19 @@ export interface EmployeeCreateNestedManyWithoutDepartmentInput {
   create?: InputMaybe<Array<EmployeeCreateWithoutDepartmentInput>>;
 }
 
+export interface EmployeeCreateNestedManyWithoutLocationStateInput {
+  connect?: InputMaybe<Array<EmployeeWhereUniqueInput>>;
+  connectOrCreate?: InputMaybe<Array<EmployeeCreateOrConnectWithoutLocationStateInput>>;
+  create?: InputMaybe<Array<EmployeeCreateWithoutLocationStateInput>>;
+}
+
 export interface EmployeeCreateOrConnectWithoutDepartmentInput {
   create: EmployeeCreateWithoutDepartmentInput;
+  where: EmployeeWhereUniqueInput;
+}
+
+export interface EmployeeCreateOrConnectWithoutLocationStateInput {
+  create: EmployeeCreateWithoutLocationStateInput;
   where: EmployeeWhereUniqueInput;
 }
 
@@ -675,8 +789,24 @@ export interface EmployeeCreateWithoutDepartmentInput {
   id?: InputMaybe<Scalars['String']>;
   jobTitle: Scalars['String'];
   lastName: Scalars['String'];
+  locationState: LocationStateCreateNestedOneWithoutEmployeeInput;
   phone: Scalars['String'];
-  state: Scalars['String'];
+  streetAddress: Scalars['String'];
+  zipCode: Scalars['String'];
+}
+
+export interface EmployeeCreateWithoutLocationStateInput {
+  city: Scalars['String'];
+  dateStarted?: InputMaybe<Scalars['DateTime']>;
+  dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  department: DepartmentCreateNestedOneWithoutEmployeesInput;
+  email: Scalars['String'];
+  firstName: Scalars['String'];
+  gender: Scalars['String'];
+  id?: InputMaybe<Scalars['String']>;
+  jobTitle: Scalars['String'];
+  lastName: Scalars['String'];
+  phone: Scalars['String'];
   streetAddress: Scalars['String'];
   zipCode: Scalars['String'];
 }
@@ -697,7 +827,7 @@ export interface EmployeeGroupBy {
   jobTitle: Scalars['String'];
   lastName: Scalars['String'];
   phone: Scalars['String'];
-  state: Scalars['String'];
+  stateId: Scalars['String'];
   streetAddress: Scalars['String'];
   zipCode: Scalars['String'];
 }
@@ -721,7 +851,7 @@ export interface EmployeeMaxAggregate {
   jobTitle?: Maybe<Scalars['String']>;
   lastName?: Maybe<Scalars['String']>;
   phone?: Maybe<Scalars['String']>;
-  state?: Maybe<Scalars['String']>;
+  stateId?: Maybe<Scalars['String']>;
   streetAddress?: Maybe<Scalars['String']>;
   zipCode?: Maybe<Scalars['String']>;
 }
@@ -738,7 +868,7 @@ export interface EmployeeMaxOrderByAggregateInput {
   jobTitle?: InputMaybe<SortOrder>;
   lastName?: InputMaybe<SortOrder>;
   phone?: InputMaybe<SortOrder>;
-  state?: InputMaybe<SortOrder>;
+  stateId?: InputMaybe<SortOrder>;
   streetAddress?: InputMaybe<SortOrder>;
   zipCode?: InputMaybe<SortOrder>;
 }
@@ -756,7 +886,7 @@ export interface EmployeeMinAggregate {
   jobTitle?: Maybe<Scalars['String']>;
   lastName?: Maybe<Scalars['String']>;
   phone?: Maybe<Scalars['String']>;
-  state?: Maybe<Scalars['String']>;
+  stateId?: Maybe<Scalars['String']>;
   streetAddress?: Maybe<Scalars['String']>;
   zipCode?: Maybe<Scalars['String']>;
 }
@@ -773,7 +903,7 @@ export interface EmployeeMinOrderByAggregateInput {
   jobTitle?: InputMaybe<SortOrder>;
   lastName?: InputMaybe<SortOrder>;
   phone?: InputMaybe<SortOrder>;
-  state?: InputMaybe<SortOrder>;
+  stateId?: InputMaybe<SortOrder>;
   streetAddress?: InputMaybe<SortOrder>;
   zipCode?: InputMaybe<SortOrder>;
 }
@@ -797,7 +927,7 @@ export interface EmployeeOrderByWithAggregationInput {
   jobTitle?: InputMaybe<SortOrder>;
   lastName?: InputMaybe<SortOrder>;
   phone?: InputMaybe<SortOrder>;
-  state?: InputMaybe<SortOrder>;
+  stateId?: InputMaybe<SortOrder>;
   streetAddress?: InputMaybe<SortOrder>;
   zipCode?: InputMaybe<SortOrder>;
 }
@@ -814,8 +944,9 @@ export interface EmployeeOrderByWithRelationInput {
   id?: InputMaybe<SortOrder>;
   jobTitle?: InputMaybe<SortOrder>;
   lastName?: InputMaybe<SortOrder>;
+  locationState?: InputMaybe<LocationStateOrderByWithRelationInput>;
   phone?: InputMaybe<SortOrder>;
-  state?: InputMaybe<SortOrder>;
+  stateId?: InputMaybe<SortOrder>;
   streetAddress?: InputMaybe<SortOrder>;
   zipCode?: InputMaybe<SortOrder>;
 }
@@ -832,7 +963,7 @@ export enum EmployeeScalarFieldEnum {
   JobTitle = 8,
   LastName = 9,
   Phone = 10,
-  State = 11,
+  StateId = 11,
   StreetAddress = 12,
   ZipCode = 13,
 }
@@ -852,7 +983,7 @@ export interface EmployeeScalarWhereInput {
   jobTitle?: InputMaybe<StringFilter>;
   lastName?: InputMaybe<StringFilter>;
   phone?: InputMaybe<StringFilter>;
-  state?: InputMaybe<StringFilter>;
+  stateId?: InputMaybe<StringFilter>;
   streetAddress?: InputMaybe<StringFilter>;
   zipCode?: InputMaybe<StringFilter>;
 }
@@ -872,7 +1003,7 @@ export interface EmployeeScalarWhereWithAggregatesInput {
   jobTitle?: InputMaybe<StringWithAggregatesFilter>;
   lastName?: InputMaybe<StringWithAggregatesFilter>;
   phone?: InputMaybe<StringWithAggregatesFilter>;
-  state?: InputMaybe<StringWithAggregatesFilter>;
+  stateId?: InputMaybe<StringWithAggregatesFilter>;
   streetAddress?: InputMaybe<StringWithAggregatesFilter>;
   zipCode?: InputMaybe<StringWithAggregatesFilter>;
 }
@@ -888,8 +1019,8 @@ export interface EmployeeUpdateInput {
   id?: InputMaybe<Scalars['String']>;
   jobTitle?: InputMaybe<Scalars['String']>;
   lastName?: InputMaybe<Scalars['String']>;
+  locationState?: InputMaybe<LocationStateUpdateOneRequiredWithoutEmployeeNestedInput>;
   phone?: InputMaybe<Scalars['String']>;
-  state?: InputMaybe<Scalars['String']>;
   streetAddress?: InputMaybe<Scalars['String']>;
   zipCode?: InputMaybe<Scalars['String']>;
 }
@@ -905,12 +1036,16 @@ export interface EmployeeUpdateManyMutationInput {
   jobTitle?: InputMaybe<Scalars['String']>;
   lastName?: InputMaybe<Scalars['String']>;
   phone?: InputMaybe<Scalars['String']>;
-  state?: InputMaybe<Scalars['String']>;
   streetAddress?: InputMaybe<Scalars['String']>;
   zipCode?: InputMaybe<Scalars['String']>;
 }
 
 export interface EmployeeUpdateManyWithWhereWithoutDepartmentInput {
+  data: EmployeeUpdateManyMutationInput;
+  where: EmployeeScalarWhereInput;
+}
+
+export interface EmployeeUpdateManyWithWhereWithoutLocationStateInput {
   data: EmployeeUpdateManyMutationInput;
   where: EmployeeScalarWhereInput;
 }
@@ -928,8 +1063,26 @@ export interface EmployeeUpdateManyWithoutDepartmentNestedInput {
   upsert?: InputMaybe<Array<EmployeeUpsertWithWhereUniqueWithoutDepartmentInput>>;
 }
 
+export interface EmployeeUpdateManyWithoutLocationStateNestedInput {
+  connect?: InputMaybe<Array<EmployeeWhereUniqueInput>>;
+  connectOrCreate?: InputMaybe<Array<EmployeeCreateOrConnectWithoutLocationStateInput>>;
+  create?: InputMaybe<Array<EmployeeCreateWithoutLocationStateInput>>;
+  delete?: InputMaybe<Array<EmployeeWhereUniqueInput>>;
+  deleteMany?: InputMaybe<Array<EmployeeScalarWhereInput>>;
+  disconnect?: InputMaybe<Array<EmployeeWhereUniqueInput>>;
+  set?: InputMaybe<Array<EmployeeWhereUniqueInput>>;
+  update?: InputMaybe<Array<EmployeeUpdateWithWhereUniqueWithoutLocationStateInput>>;
+  updateMany?: InputMaybe<Array<EmployeeUpdateManyWithWhereWithoutLocationStateInput>>;
+  upsert?: InputMaybe<Array<EmployeeUpsertWithWhereUniqueWithoutLocationStateInput>>;
+}
+
 export interface EmployeeUpdateWithWhereUniqueWithoutDepartmentInput {
   data: EmployeeUpdateWithoutDepartmentInput;
+  where: EmployeeWhereUniqueInput;
+}
+
+export interface EmployeeUpdateWithWhereUniqueWithoutLocationStateInput {
+  data: EmployeeUpdateWithoutLocationStateInput;
   where: EmployeeWhereUniqueInput;
 }
 
@@ -943,8 +1096,24 @@ export interface EmployeeUpdateWithoutDepartmentInput {
   id?: InputMaybe<Scalars['String']>;
   jobTitle?: InputMaybe<Scalars['String']>;
   lastName?: InputMaybe<Scalars['String']>;
+  locationState?: InputMaybe<LocationStateUpdateOneRequiredWithoutEmployeeNestedInput>;
   phone?: InputMaybe<Scalars['String']>;
-  state?: InputMaybe<Scalars['String']>;
+  streetAddress?: InputMaybe<Scalars['String']>;
+  zipCode?: InputMaybe<Scalars['String']>;
+}
+
+export interface EmployeeUpdateWithoutLocationStateInput {
+  city?: InputMaybe<Scalars['String']>;
+  dateStarted?: InputMaybe<Scalars['DateTime']>;
+  dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  department?: InputMaybe<DepartmentUpdateOneRequiredWithoutEmployeesNestedInput>;
+  email?: InputMaybe<Scalars['String']>;
+  firstName?: InputMaybe<Scalars['String']>;
+  gender?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']>;
+  jobTitle?: InputMaybe<Scalars['String']>;
+  lastName?: InputMaybe<Scalars['String']>;
+  phone?: InputMaybe<Scalars['String']>;
   streetAddress?: InputMaybe<Scalars['String']>;
   zipCode?: InputMaybe<Scalars['String']>;
 }
@@ -952,6 +1121,12 @@ export interface EmployeeUpdateWithoutDepartmentInput {
 export interface EmployeeUpsertWithWhereUniqueWithoutDepartmentInput {
   create: EmployeeCreateWithoutDepartmentInput;
   update: EmployeeUpdateWithoutDepartmentInput;
+  where: EmployeeWhereUniqueInput;
+}
+
+export interface EmployeeUpsertWithWhereUniqueWithoutLocationStateInput {
+  create: EmployeeCreateWithoutLocationStateInput;
+  update: EmployeeUpdateWithoutLocationStateInput;
   where: EmployeeWhereUniqueInput;
 }
 
@@ -970,8 +1145,9 @@ export interface EmployeeWhereInput {
   id?: InputMaybe<StringFilter>;
   jobTitle?: InputMaybe<StringFilter>;
   lastName?: InputMaybe<StringFilter>;
+  locationState?: InputMaybe<LocationStateRelationFilter>;
   phone?: InputMaybe<StringFilter>;
-  state?: InputMaybe<StringFilter>;
+  stateId?: InputMaybe<StringFilter>;
   streetAddress?: InputMaybe<StringFilter>;
   zipCode?: InputMaybe<StringFilter>;
 }
@@ -1334,12 +1510,289 @@ export interface InventoryWhereUniqueInput {
   id?: InputMaybe<Scalars['String']>;
 }
 
+export interface LocationState {
+  __typename?: 'LocationState';
+  Customer: Array<Customer>;
+  Employee: Array<Employee>;
+  _count?: Maybe<LocationStateCount>;
+  dateCreated: Scalars['DateTime'];
+  dateUpdated?: Maybe<Scalars['DateTime']>;
+  id: Scalars['String'];
+  name: Scalars['String'];
+  shortName: Scalars['String'];
+}
+
+export interface LocationStateCustomerArgs {
+  cursor?: InputMaybe<CustomerWhereUniqueInput>;
+  distinct?: InputMaybe<Array<CustomerScalarFieldEnum>>;
+  orderBy?: InputMaybe<Array<CustomerOrderByWithRelationInput>>;
+  skip?: InputMaybe<Scalars['Int']>;
+  take?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<CustomerWhereInput>;
+}
+
+export interface LocationStateEmployeeArgs {
+  cursor?: InputMaybe<EmployeeWhereUniqueInput>;
+  distinct?: InputMaybe<Array<EmployeeScalarFieldEnum>>;
+  orderBy?: InputMaybe<Array<EmployeeOrderByWithRelationInput>>;
+  skip?: InputMaybe<Scalars['Int']>;
+  take?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<EmployeeWhereInput>;
+}
+
+export interface LocationStateCount {
+  __typename?: 'LocationStateCount';
+  Customer: Scalars['Int'];
+  Employee: Scalars['Int'];
+}
+
+export interface LocationStateCountAggregate {
+  __typename?: 'LocationStateCountAggregate';
+  _all: Scalars['Int'];
+  dateCreated: Scalars['Int'];
+  dateUpdated: Scalars['Int'];
+  id: Scalars['Int'];
+  name: Scalars['Int'];
+  shortName: Scalars['Int'];
+}
+
+export interface LocationStateCountOrderByAggregateInput {
+  dateCreated?: InputMaybe<SortOrder>;
+  dateUpdated?: InputMaybe<SortOrder>;
+  id?: InputMaybe<SortOrder>;
+  name?: InputMaybe<SortOrder>;
+  shortName?: InputMaybe<SortOrder>;
+}
+
+export interface LocationStateCreateInput {
+  Customer?: InputMaybe<CustomerCreateNestedManyWithoutLocationStateInput>;
+  Employee?: InputMaybe<EmployeeCreateNestedManyWithoutLocationStateInput>;
+  dateCreated?: InputMaybe<Scalars['DateTime']>;
+  dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  id?: InputMaybe<Scalars['String']>;
+  name: Scalars['String'];
+  shortName: Scalars['String'];
+}
+
+export interface LocationStateCreateNestedOneWithoutCustomerInput {
+  connect?: InputMaybe<LocationStateWhereUniqueInput>;
+  connectOrCreate?: InputMaybe<LocationStateCreateOrConnectWithoutCustomerInput>;
+  create?: InputMaybe<LocationStateCreateWithoutCustomerInput>;
+}
+
+export interface LocationStateCreateNestedOneWithoutEmployeeInput {
+  connect?: InputMaybe<LocationStateWhereUniqueInput>;
+  connectOrCreate?: InputMaybe<LocationStateCreateOrConnectWithoutEmployeeInput>;
+  create?: InputMaybe<LocationStateCreateWithoutEmployeeInput>;
+}
+
+export interface LocationStateCreateOrConnectWithoutCustomerInput {
+  create: LocationStateCreateWithoutCustomerInput;
+  where: LocationStateWhereUniqueInput;
+}
+
+export interface LocationStateCreateOrConnectWithoutEmployeeInput {
+  create: LocationStateCreateWithoutEmployeeInput;
+  where: LocationStateWhereUniqueInput;
+}
+
+export interface LocationStateCreateWithoutCustomerInput {
+  Employee?: InputMaybe<EmployeeCreateNestedManyWithoutLocationStateInput>;
+  dateCreated?: InputMaybe<Scalars['DateTime']>;
+  dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  id?: InputMaybe<Scalars['String']>;
+  name: Scalars['String'];
+  shortName: Scalars['String'];
+}
+
+export interface LocationStateCreateWithoutEmployeeInput {
+  Customer?: InputMaybe<CustomerCreateNestedManyWithoutLocationStateInput>;
+  dateCreated?: InputMaybe<Scalars['DateTime']>;
+  dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  id?: InputMaybe<Scalars['String']>;
+  name: Scalars['String'];
+  shortName: Scalars['String'];
+}
+
+export interface LocationStateGroupBy {
+  __typename?: 'LocationStateGroupBy';
+  _count?: Maybe<LocationStateCountAggregate>;
+  _max?: Maybe<LocationStateMaxAggregate>;
+  _min?: Maybe<LocationStateMinAggregate>;
+  dateCreated: Scalars['DateTime'];
+  dateUpdated?: Maybe<Scalars['DateTime']>;
+  id: Scalars['String'];
+  name: Scalars['String'];
+  shortName: Scalars['String'];
+}
+
+export interface LocationStateMaxAggregate {
+  __typename?: 'LocationStateMaxAggregate';
+  dateCreated?: Maybe<Scalars['DateTime']>;
+  dateUpdated?: Maybe<Scalars['DateTime']>;
+  id?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  shortName?: Maybe<Scalars['String']>;
+}
+
+export interface LocationStateMaxOrderByAggregateInput {
+  dateCreated?: InputMaybe<SortOrder>;
+  dateUpdated?: InputMaybe<SortOrder>;
+  id?: InputMaybe<SortOrder>;
+  name?: InputMaybe<SortOrder>;
+  shortName?: InputMaybe<SortOrder>;
+}
+
+export interface LocationStateMinAggregate {
+  __typename?: 'LocationStateMinAggregate';
+  dateCreated?: Maybe<Scalars['DateTime']>;
+  dateUpdated?: Maybe<Scalars['DateTime']>;
+  id?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  shortName?: Maybe<Scalars['String']>;
+}
+
+export interface LocationStateMinOrderByAggregateInput {
+  dateCreated?: InputMaybe<SortOrder>;
+  dateUpdated?: InputMaybe<SortOrder>;
+  id?: InputMaybe<SortOrder>;
+  name?: InputMaybe<SortOrder>;
+  shortName?: InputMaybe<SortOrder>;
+}
+
+export interface LocationStateOrderByWithAggregationInput {
+  _count?: InputMaybe<LocationStateCountOrderByAggregateInput>;
+  _max?: InputMaybe<LocationStateMaxOrderByAggregateInput>;
+  _min?: InputMaybe<LocationStateMinOrderByAggregateInput>;
+  dateCreated?: InputMaybe<SortOrder>;
+  dateUpdated?: InputMaybe<SortOrder>;
+  id?: InputMaybe<SortOrder>;
+  name?: InputMaybe<SortOrder>;
+  shortName?: InputMaybe<SortOrder>;
+}
+
+export interface LocationStateOrderByWithRelationInput {
+  Customer?: InputMaybe<CustomerOrderByRelationAggregateInput>;
+  Employee?: InputMaybe<EmployeeOrderByRelationAggregateInput>;
+  dateCreated?: InputMaybe<SortOrder>;
+  dateUpdated?: InputMaybe<SortOrder>;
+  id?: InputMaybe<SortOrder>;
+  name?: InputMaybe<SortOrder>;
+  shortName?: InputMaybe<SortOrder>;
+}
+
+export interface LocationStateRelationFilter {
+  is?: InputMaybe<LocationStateWhereInput>;
+  isNot?: InputMaybe<LocationStateWhereInput>;
+}
+
+export enum LocationStateScalarFieldEnum {
+  DateCreated = 0,
+  DateUpdated = 1,
+  Id = 2,
+  Name = 3,
+  ShortName = 4,
+}
+
+export interface LocationStateScalarWhereWithAggregatesInput {
+  AND?: InputMaybe<Array<LocationStateScalarWhereWithAggregatesInput>>;
+  NOT?: InputMaybe<Array<LocationStateScalarWhereWithAggregatesInput>>;
+  OR?: InputMaybe<Array<LocationStateScalarWhereWithAggregatesInput>>;
+  dateCreated?: InputMaybe<DateTimeWithAggregatesFilter>;
+  dateUpdated?: InputMaybe<DateTimeNullableWithAggregatesFilter>;
+  id?: InputMaybe<StringWithAggregatesFilter>;
+  name?: InputMaybe<StringWithAggregatesFilter>;
+  shortName?: InputMaybe<StringWithAggregatesFilter>;
+}
+
+export interface LocationStateUpdateInput {
+  Customer?: InputMaybe<CustomerUpdateManyWithoutLocationStateNestedInput>;
+  Employee?: InputMaybe<EmployeeUpdateManyWithoutLocationStateNestedInput>;
+  dateCreated?: InputMaybe<Scalars['DateTime']>;
+  dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  id?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  shortName?: InputMaybe<Scalars['String']>;
+}
+
+export interface LocationStateUpdateManyMutationInput {
+  dateCreated?: InputMaybe<Scalars['DateTime']>;
+  dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  id?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  shortName?: InputMaybe<Scalars['String']>;
+}
+
+export interface LocationStateUpdateOneRequiredWithoutCustomerNestedInput {
+  connect?: InputMaybe<LocationStateWhereUniqueInput>;
+  connectOrCreate?: InputMaybe<LocationStateCreateOrConnectWithoutCustomerInput>;
+  create?: InputMaybe<LocationStateCreateWithoutCustomerInput>;
+  update?: InputMaybe<LocationStateUpdateWithoutCustomerInput>;
+  upsert?: InputMaybe<LocationStateUpsertWithoutCustomerInput>;
+}
+
+export interface LocationStateUpdateOneRequiredWithoutEmployeeNestedInput {
+  connect?: InputMaybe<LocationStateWhereUniqueInput>;
+  connectOrCreate?: InputMaybe<LocationStateCreateOrConnectWithoutEmployeeInput>;
+  create?: InputMaybe<LocationStateCreateWithoutEmployeeInput>;
+  update?: InputMaybe<LocationStateUpdateWithoutEmployeeInput>;
+  upsert?: InputMaybe<LocationStateUpsertWithoutEmployeeInput>;
+}
+
+export interface LocationStateUpdateWithoutCustomerInput {
+  Employee?: InputMaybe<EmployeeUpdateManyWithoutLocationStateNestedInput>;
+  dateCreated?: InputMaybe<Scalars['DateTime']>;
+  dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  id?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  shortName?: InputMaybe<Scalars['String']>;
+}
+
+export interface LocationStateUpdateWithoutEmployeeInput {
+  Customer?: InputMaybe<CustomerUpdateManyWithoutLocationStateNestedInput>;
+  dateCreated?: InputMaybe<Scalars['DateTime']>;
+  dateUpdated?: InputMaybe<Scalars['DateTime']>;
+  id?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  shortName?: InputMaybe<Scalars['String']>;
+}
+
+export interface LocationStateUpsertWithoutCustomerInput {
+  create: LocationStateCreateWithoutCustomerInput;
+  update: LocationStateUpdateWithoutCustomerInput;
+}
+
+export interface LocationStateUpsertWithoutEmployeeInput {
+  create: LocationStateCreateWithoutEmployeeInput;
+  update: LocationStateUpdateWithoutEmployeeInput;
+}
+
+export interface LocationStateWhereInput {
+  AND?: InputMaybe<Array<LocationStateWhereInput>>;
+  Customer?: InputMaybe<CustomerListRelationFilter>;
+  Employee?: InputMaybe<EmployeeListRelationFilter>;
+  NOT?: InputMaybe<Array<LocationStateWhereInput>>;
+  OR?: InputMaybe<Array<LocationStateWhereInput>>;
+  dateCreated?: InputMaybe<DateTimeFilter>;
+  dateUpdated?: InputMaybe<DateTimeNullableFilter>;
+  id?: InputMaybe<StringFilter>;
+  name?: InputMaybe<StringFilter>;
+  shortName?: InputMaybe<StringFilter>;
+}
+
+export interface LocationStateWhereUniqueInput {
+  id?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  shortName?: InputMaybe<Scalars['String']>;
+}
+
 export interface Mutation {
   __typename?: 'Mutation';
   createOneCustomer: Customer;
   createOneDepartment: Department;
   createOneEmployee: Employee;
   createOneInventory: Inventory;
+  createOneLocationState: LocationState;
   createOneProduct: Product;
   createOneProductSale: ProductSale;
   createOneRole: Role;
@@ -1349,6 +1802,7 @@ export interface Mutation {
   deleteManyDepartment: AffectedRowsOutput;
   deleteManyEmployee: AffectedRowsOutput;
   deleteManyInventory: AffectedRowsOutput;
+  deleteManyLocationState: AffectedRowsOutput;
   deleteManyProduct: AffectedRowsOutput;
   deleteManyProductSale: AffectedRowsOutput;
   deleteManyRole: AffectedRowsOutput;
@@ -1358,6 +1812,7 @@ export interface Mutation {
   deleteOneDepartment?: Maybe<Department>;
   deleteOneEmployee?: Maybe<Employee>;
   deleteOneInventory?: Maybe<Inventory>;
+  deleteOneLocationState?: Maybe<LocationState>;
   deleteOneProduct?: Maybe<Product>;
   deleteOneProductSale?: Maybe<ProductSale>;
   deleteOneRole?: Maybe<Role>;
@@ -1367,6 +1822,7 @@ export interface Mutation {
   updateManyDepartment: AffectedRowsOutput;
   updateManyEmployee: AffectedRowsOutput;
   updateManyInventory: AffectedRowsOutput;
+  updateManyLocationState: AffectedRowsOutput;
   updateManyProduct: AffectedRowsOutput;
   updateManyProductSale: AffectedRowsOutput;
   updateManyRole: AffectedRowsOutput;
@@ -1376,6 +1832,7 @@ export interface Mutation {
   updateOneDepartment?: Maybe<Department>;
   updateOneEmployee?: Maybe<Employee>;
   updateOneInventory?: Maybe<Inventory>;
+  updateOneLocationState?: Maybe<LocationState>;
   updateOneProduct?: Maybe<Product>;
   updateOneProductSale?: Maybe<ProductSale>;
   updateOneRole?: Maybe<Role>;
@@ -1385,6 +1842,7 @@ export interface Mutation {
   upsertOneDepartment: Department;
   upsertOneEmployee: Employee;
   upsertOneInventory: Inventory;
+  upsertOneLocationState: LocationState;
   upsertOneProduct: Product;
   upsertOneProductSale: ProductSale;
   upsertOneRole: Role;
@@ -1406,6 +1864,10 @@ export interface MutationCreateOneEmployeeArgs {
 
 export interface MutationCreateOneInventoryArgs {
   data: InventoryCreateInput;
+}
+
+export interface MutationCreateOneLocationStateArgs {
+  data: LocationStateCreateInput;
 }
 
 export interface MutationCreateOneProductArgs {
@@ -1444,6 +1906,10 @@ export interface MutationDeleteManyInventoryArgs {
   where?: InputMaybe<InventoryWhereInput>;
 }
 
+export interface MutationDeleteManyLocationStateArgs {
+  where?: InputMaybe<LocationStateWhereInput>;
+}
+
 export interface MutationDeleteManyProductArgs {
   where?: InputMaybe<ProductWhereInput>;
 }
@@ -1478,6 +1944,10 @@ export interface MutationDeleteOneEmployeeArgs {
 
 export interface MutationDeleteOneInventoryArgs {
   where: InventoryWhereUniqueInput;
+}
+
+export interface MutationDeleteOneLocationStateArgs {
+  where: LocationStateWhereUniqueInput;
 }
 
 export interface MutationDeleteOneProductArgs {
@@ -1518,6 +1988,11 @@ export interface MutationUpdateManyEmployeeArgs {
 export interface MutationUpdateManyInventoryArgs {
   data: InventoryUpdateManyMutationInput;
   where?: InputMaybe<InventoryWhereInput>;
+}
+
+export interface MutationUpdateManyLocationStateArgs {
+  data: LocationStateUpdateManyMutationInput;
+  where?: InputMaybe<LocationStateWhereInput>;
 }
 
 export interface MutationUpdateManyProductArgs {
@@ -1563,6 +2038,11 @@ export interface MutationUpdateOneEmployeeArgs {
 export interface MutationUpdateOneInventoryArgs {
   data: InventoryUpdateInput;
   where: InventoryWhereUniqueInput;
+}
+
+export interface MutationUpdateOneLocationStateArgs {
+  data: LocationStateUpdateInput;
+  where: LocationStateWhereUniqueInput;
 }
 
 export interface MutationUpdateOneProductArgs {
@@ -1612,6 +2092,12 @@ export interface MutationUpsertOneInventoryArgs {
   create: InventoryCreateInput;
   update: InventoryUpdateInput;
   where: InventoryWhereUniqueInput;
+}
+
+export interface MutationUpsertOneLocationStateArgs {
+  create: LocationStateCreateInput;
+  update: LocationStateUpdateInput;
+  where: LocationStateWhereUniqueInput;
 }
 
 export interface MutationUpsertOneProductArgs {
@@ -2361,6 +2847,7 @@ export interface Query {
   aggregateDepartment: AggregateDepartment;
   aggregateEmployee: AggregateEmployee;
   aggregateInventory: AggregateInventory;
+  aggregateLocationState: AggregateLocationState;
   aggregateProduct: AggregateProduct;
   aggregateProductSale: AggregateProductSale;
   aggregateRole: AggregateRole;
@@ -2380,6 +2867,8 @@ export interface Query {
   findFirstEmployeeOrThrow?: Maybe<Employee>;
   findFirstInventory?: Maybe<Inventory>;
   findFirstInventoryOrThrow?: Maybe<Inventory>;
+  findFirstLocationState?: Maybe<LocationState>;
+  findFirstLocationStateOrThrow?: Maybe<LocationState>;
   findFirstProduct?: Maybe<Product>;
   findFirstProductOrThrow?: Maybe<Product>;
   findFirstProductSale?: Maybe<ProductSale>;
@@ -2394,6 +2883,7 @@ export interface Query {
   getDepartment?: Maybe<Department>;
   getEmployee?: Maybe<Employee>;
   getInventory?: Maybe<Inventory>;
+  getLocationState?: Maybe<LocationState>;
   getProduct?: Maybe<Product>;
   getProductSale?: Maybe<ProductSale>;
   getRole?: Maybe<Role>;
@@ -2403,6 +2893,7 @@ export interface Query {
   groupByDepartment: Array<DepartmentGroupBy>;
   groupByEmployee: Array<EmployeeGroupBy>;
   groupByInventory: Array<InventoryGroupBy>;
+  groupByLocationState: Array<LocationStateGroupBy>;
   groupByProduct: Array<ProductGroupBy>;
   groupByProductSale: Array<ProductSaleGroupBy>;
   groupByRole: Array<RoleGroupBy>;
@@ -2410,6 +2901,8 @@ export interface Query {
   groupByUser: Array<UserGroupBy>;
   inventories: Array<Inventory>;
   inventory?: Maybe<Inventory>;
+  locationState?: Maybe<LocationState>;
+  locationStates: Array<LocationState>;
   login?: Maybe<Scalars['String']>;
   product?: Maybe<Product>;
   productSale?: Maybe<ProductSale>;
@@ -2453,6 +2946,14 @@ export interface QueryAggregateInventoryArgs {
   skip?: InputMaybe<Scalars['Int']>;
   take?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<InventoryWhereInput>;
+}
+
+export interface QueryAggregateLocationStateArgs {
+  cursor?: InputMaybe<LocationStateWhereUniqueInput>;
+  orderBy?: InputMaybe<Array<LocationStateOrderByWithRelationInput>>;
+  skip?: InputMaybe<Scalars['Int']>;
+  take?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<LocationStateWhereInput>;
 }
 
 export interface QueryAggregateProductArgs {
@@ -2606,6 +3107,24 @@ export interface QueryFindFirstInventoryOrThrowArgs {
   where?: InputMaybe<InventoryWhereInput>;
 }
 
+export interface QueryFindFirstLocationStateArgs {
+  cursor?: InputMaybe<LocationStateWhereUniqueInput>;
+  distinct?: InputMaybe<Array<LocationStateScalarFieldEnum>>;
+  orderBy?: InputMaybe<Array<LocationStateOrderByWithRelationInput>>;
+  skip?: InputMaybe<Scalars['Int']>;
+  take?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<LocationStateWhereInput>;
+}
+
+export interface QueryFindFirstLocationStateOrThrowArgs {
+  cursor?: InputMaybe<LocationStateWhereUniqueInput>;
+  distinct?: InputMaybe<Array<LocationStateScalarFieldEnum>>;
+  orderBy?: InputMaybe<Array<LocationStateOrderByWithRelationInput>>;
+  skip?: InputMaybe<Scalars['Int']>;
+  take?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<LocationStateWhereInput>;
+}
+
 export interface QueryFindFirstProductArgs {
   cursor?: InputMaybe<ProductWhereUniqueInput>;
   distinct?: InputMaybe<Array<ProductScalarFieldEnum>>;
@@ -2712,6 +3231,10 @@ export interface QueryGetInventoryArgs {
   where: InventoryWhereUniqueInput;
 }
 
+export interface QueryGetLocationStateArgs {
+  where: LocationStateWhereUniqueInput;
+}
+
 export interface QueryGetProductArgs {
   where: ProductWhereUniqueInput;
 }
@@ -2766,6 +3289,15 @@ export interface QueryGroupByInventoryArgs {
   skip?: InputMaybe<Scalars['Int']>;
   take?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<InventoryWhereInput>;
+}
+
+export interface QueryGroupByLocationStateArgs {
+  by: Array<LocationStateScalarFieldEnum>;
+  having?: InputMaybe<LocationStateScalarWhereWithAggregatesInput>;
+  orderBy?: InputMaybe<Array<LocationStateOrderByWithAggregationInput>>;
+  skip?: InputMaybe<Scalars['Int']>;
+  take?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<LocationStateWhereInput>;
 }
 
 export interface QueryGroupByProductArgs {
@@ -2824,6 +3356,19 @@ export interface QueryInventoriesArgs {
 
 export interface QueryInventoryArgs {
   where: InventoryWhereUniqueInput;
+}
+
+export interface QueryLocationStateArgs {
+  where: LocationStateWhereUniqueInput;
+}
+
+export interface QueryLocationStatesArgs {
+  cursor?: InputMaybe<LocationStateWhereUniqueInput>;
+  distinct?: InputMaybe<Array<LocationStateScalarFieldEnum>>;
+  orderBy?: InputMaybe<Array<LocationStateOrderByWithRelationInput>>;
+  skip?: InputMaybe<Scalars['Int']>;
+  take?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<LocationStateWhereInput>;
 }
 
 export interface QueryLoginArgs {
@@ -3721,7 +4266,7 @@ export type GetCustomersQuery = {
     phone: string;
     streetAddress: string;
     city: string;
-    state: string;
+    stateId: string;
     zipCode: string;
   }>;
 };
@@ -3742,7 +4287,7 @@ export type GetCustomerByIdQuery = {
         phone: string;
         streetAddress: string;
         city: string;
-        state: string;
+        stateId: string;
         zipCode: string;
       }
     | undefined;
@@ -3762,7 +4307,7 @@ export type GetEmployeesQuery = {
     phone: string;
     streetAddress: string;
     city: string;
-    state: string;
+    stateId: string;
     zipCode: string;
     jobTitle: string;
     departmentId: string;
@@ -3787,11 +4332,12 @@ export type GetEmployeeByIdQuery = {
         phone: string;
         streetAddress: string;
         city: string;
-        state: string;
+        stateId: string;
         zipCode: string;
         jobTitle: string;
         departmentId: string;
         dateStarted: any;
+        locationState: { __typename?: 'LocationState'; id: string; name: string };
       }
     | undefined;
 };
@@ -3825,6 +4371,18 @@ export type GetInventoryBySizeQuery = {
     quantity: number;
     sizeId: string;
     product: { __typename?: 'Product'; id: string; name: string };
+  }>;
+};
+
+export type GetLocationStatesQueryVariables = Exact<{ [key: string]: never }>;
+
+export type GetLocationStatesQuery = {
+  __typename?: 'Query';
+  locationStates: Array<{
+    __typename?: 'LocationState';
+    id: string;
+    name: string;
+    shortName: string;
   }>;
 };
 
@@ -3893,7 +4451,14 @@ export type GetUserByIdQueryVariables = Exact<{
 export type GetUserByIdQuery = {
   __typename?: 'Query';
   user?:
-    | { __typename?: 'User'; id: string; userName: string; firstName: string; lastName: string; email: string }
+    | {
+        __typename?: 'User';
+        id: string;
+        userName: string;
+        firstName: string;
+        lastName: string;
+        email: string;
+      }
     | undefined;
 };
 
@@ -3906,7 +4471,7 @@ export type CustomerPartsFragment = {
   phone: string;
   streetAddress: string;
   city: string;
-  state: string;
+  stateId: string;
   zipCode: string;
 };
 
@@ -3920,7 +4485,7 @@ export type EmployeePartsFragment = {
   phone: string;
   streetAddress: string;
   city: string;
-  state: string;
+  stateId: string;
   zipCode: string;
   jobTitle: string;
   departmentId: string;
@@ -3933,6 +4498,13 @@ export type InventoryPartsFragment = {
   productId: string;
   quantity: number;
   sizeId: string;
+};
+
+export type LocationStatePartsFragment = {
+  __typename?: 'LocationState';
+  id: string;
+  name: string;
+  shortName: string;
 };
 
 export type ProductPartsFragment = { __typename?: 'Product'; id: string; name: string };
@@ -3971,7 +4543,7 @@ export const CustomerPartsFragmentDoc = {
           { kind: 'Field', name: { kind: 'Name', value: 'phone' } },
           { kind: 'Field', name: { kind: 'Name', value: 'streetAddress' } },
           { kind: 'Field', name: { kind: 'Name', value: 'city' } },
-          { kind: 'Field', name: { kind: 'Name', value: 'state' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'stateId' } },
           { kind: 'Field', name: { kind: 'Name', value: 'zipCode' } },
         ],
       },
@@ -3996,7 +4568,7 @@ export const EmployeePartsFragmentDoc = {
           { kind: 'Field', name: { kind: 'Name', value: 'phone' } },
           { kind: 'Field', name: { kind: 'Name', value: 'streetAddress' } },
           { kind: 'Field', name: { kind: 'Name', value: 'city' } },
-          { kind: 'Field', name: { kind: 'Name', value: 'state' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'stateId' } },
           { kind: 'Field', name: { kind: 'Name', value: 'zipCode' } },
           { kind: 'Field', name: { kind: 'Name', value: 'jobTitle' } },
           { kind: 'Field', name: { kind: 'Name', value: 'departmentId' } },
@@ -4025,6 +4597,24 @@ export const InventoryPartsFragmentDoc = {
     },
   ],
 } as unknown as DocumentNode<InventoryPartsFragment, unknown>;
+export const LocationStatePartsFragmentDoc = {
+  kind: 'Document',
+  definitions: [
+    {
+      kind: 'FragmentDefinition',
+      name: { kind: 'Name', value: 'LocationStateParts' },
+      typeCondition: { kind: 'NamedType', name: { kind: 'Name', value: 'LocationState' } },
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'name' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'shortName' } },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<LocationStatePartsFragment, unknown>;
 export const ProductPartsFragmentDoc = {
   kind: 'Document',
   definitions: [
@@ -4116,7 +4706,9 @@ export const GetCustomersDocument = {
             name: { kind: 'Name', value: 'customers' },
             selectionSet: {
               kind: 'SelectionSet',
-              selections: [{ kind: 'FragmentSpread', name: { kind: 'Name', value: 'CustomerParts' } }],
+              selections: [
+                { kind: 'FragmentSpread', name: { kind: 'Name', value: 'CustomerParts' } },
+              ],
             },
           },
         ],
@@ -4136,7 +4728,7 @@ export const GetCustomersDocument = {
           { kind: 'Field', name: { kind: 'Name', value: 'phone' } },
           { kind: 'Field', name: { kind: 'Name', value: 'streetAddress' } },
           { kind: 'Field', name: { kind: 'Name', value: 'city' } },
-          { kind: 'Field', name: { kind: 'Name', value: 'state' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'stateId' } },
           { kind: 'Field', name: { kind: 'Name', value: 'zipCode' } },
         ],
       },
@@ -4154,7 +4746,10 @@ export const GetCustomerByIdDocument = {
         {
           kind: 'VariableDefinition',
           variable: { kind: 'Variable', name: { kind: 'Name', value: 'id' } },
-          type: { kind: 'NonNullType', type: { kind: 'NamedType', name: { kind: 'Name', value: 'String' } } },
+          type: {
+            kind: 'NonNullType',
+            type: { kind: 'NamedType', name: { kind: 'Name', value: 'String' } },
+          },
         },
       ],
       selectionSet: {
@@ -4181,7 +4776,9 @@ export const GetCustomerByIdDocument = {
             ],
             selectionSet: {
               kind: 'SelectionSet',
-              selections: [{ kind: 'FragmentSpread', name: { kind: 'Name', value: 'CustomerParts' } }],
+              selections: [
+                { kind: 'FragmentSpread', name: { kind: 'Name', value: 'CustomerParts' } },
+              ],
             },
           },
         ],
@@ -4201,7 +4798,7 @@ export const GetCustomerByIdDocument = {
           { kind: 'Field', name: { kind: 'Name', value: 'phone' } },
           { kind: 'Field', name: { kind: 'Name', value: 'streetAddress' } },
           { kind: 'Field', name: { kind: 'Name', value: 'city' } },
-          { kind: 'Field', name: { kind: 'Name', value: 'state' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'stateId' } },
           { kind: 'Field', name: { kind: 'Name', value: 'zipCode' } },
         ],
       },
@@ -4223,7 +4820,9 @@ export const GetEmployeesDocument = {
             name: { kind: 'Name', value: 'employees' },
             selectionSet: {
               kind: 'SelectionSet',
-              selections: [{ kind: 'FragmentSpread', name: { kind: 'Name', value: 'EmployeeParts' } }],
+              selections: [
+                { kind: 'FragmentSpread', name: { kind: 'Name', value: 'EmployeeParts' } },
+              ],
             },
           },
         ],
@@ -4244,7 +4843,7 @@ export const GetEmployeesDocument = {
           { kind: 'Field', name: { kind: 'Name', value: 'phone' } },
           { kind: 'Field', name: { kind: 'Name', value: 'streetAddress' } },
           { kind: 'Field', name: { kind: 'Name', value: 'city' } },
-          { kind: 'Field', name: { kind: 'Name', value: 'state' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'stateId' } },
           { kind: 'Field', name: { kind: 'Name', value: 'zipCode' } },
           { kind: 'Field', name: { kind: 'Name', value: 'jobTitle' } },
           { kind: 'Field', name: { kind: 'Name', value: 'departmentId' } },
@@ -4292,7 +4891,20 @@ export const GetEmployeeByIdDocument = {
             ],
             selectionSet: {
               kind: 'SelectionSet',
-              selections: [{ kind: 'FragmentSpread', name: { kind: 'Name', value: 'EmployeeParts' } }],
+              selections: [
+                { kind: 'FragmentSpread', name: { kind: 'Name', value: 'EmployeeParts' } },
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'locationState' },
+                  selectionSet: {
+                    kind: 'SelectionSet',
+                    selections: [
+                      { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+                      { kind: 'Field', name: { kind: 'Name', value: 'name' } },
+                    ],
+                  },
+                },
+              ],
             },
           },
         ],
@@ -4313,7 +4925,7 @@ export const GetEmployeeByIdDocument = {
           { kind: 'Field', name: { kind: 'Name', value: 'phone' } },
           { kind: 'Field', name: { kind: 'Name', value: 'streetAddress' } },
           { kind: 'Field', name: { kind: 'Name', value: 'city' } },
-          { kind: 'Field', name: { kind: 'Name', value: 'state' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'stateId' } },
           { kind: 'Field', name: { kind: 'Name', value: 'zipCode' } },
           { kind: 'Field', name: { kind: 'Name', value: 'jobTitle' } },
           { kind: 'Field', name: { kind: 'Name', value: 'departmentId' } },
@@ -4334,7 +4946,10 @@ export const GetInventoryByProductIdDocument = {
         {
           kind: 'VariableDefinition',
           variable: { kind: 'Variable', name: { kind: 'Name', value: 'id' } },
-          type: { kind: 'NonNullType', type: { kind: 'NamedType', name: { kind: 'Name', value: 'String' } } },
+          type: {
+            kind: 'NonNullType',
+            type: { kind: 'NamedType', name: { kind: 'Name', value: 'String' } },
+          },
         },
       ],
       selectionSet: {
@@ -4377,7 +4992,9 @@ export const GetInventoryByProductIdDocument = {
                   name: { kind: 'Name', value: 'product' },
                   selectionSet: {
                     kind: 'SelectionSet',
-                    selections: [{ kind: 'FragmentSpread', name: { kind: 'Name', value: 'ProductParts' } }],
+                    selections: [
+                      { kind: 'FragmentSpread', name: { kind: 'Name', value: 'ProductParts' } },
+                    ],
                   },
                 },
               ],
@@ -4425,7 +5042,10 @@ export const GetInventoryBySizeDocument = {
         {
           kind: 'VariableDefinition',
           variable: { kind: 'Variable', name: { kind: 'Name', value: 'sizeId' } },
-          type: { kind: 'NonNullType', type: { kind: 'NamedType', name: { kind: 'Name', value: 'String' } } },
+          type: {
+            kind: 'NonNullType',
+            type: { kind: 'NamedType', name: { kind: 'Name', value: 'String' } },
+          },
         },
       ],
       selectionSet: {
@@ -4468,7 +5088,9 @@ export const GetInventoryBySizeDocument = {
                   name: { kind: 'Name', value: 'product' },
                   selectionSet: {
                     kind: 'SelectionSet',
-                    selections: [{ kind: 'FragmentSpread', name: { kind: 'Name', value: 'ProductParts' } }],
+                    selections: [
+                      { kind: 'FragmentSpread', name: { kind: 'Name', value: 'ProductParts' } },
+                    ],
                   },
                 },
               ],
@@ -4505,6 +5127,44 @@ export const GetInventoryBySizeDocument = {
     },
   ],
 } as unknown as DocumentNode<GetInventoryBySizeQuery, GetInventoryBySizeQueryVariables>;
+export const GetLocationStatesDocument = {
+  kind: 'Document',
+  definitions: [
+    {
+      kind: 'OperationDefinition',
+      operation: 'query',
+      name: { kind: 'Name', value: 'GetLocationStates' },
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          {
+            kind: 'Field',
+            name: { kind: 'Name', value: 'locationStates' },
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [
+                { kind: 'FragmentSpread', name: { kind: 'Name', value: 'LocationStateParts' } },
+              ],
+            },
+          },
+        ],
+      },
+    },
+    {
+      kind: 'FragmentDefinition',
+      name: { kind: 'Name', value: 'LocationStateParts' },
+      typeCondition: { kind: 'NamedType', name: { kind: 'Name', value: 'LocationState' } },
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'name' } },
+          { kind: 'Field', name: { kind: 'Name', value: 'shortName' } },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<GetLocationStatesQuery, GetLocationStatesQueryVariables>;
 export const GetProductsDocument = {
   kind: 'Document',
   definitions: [
@@ -4520,7 +5180,9 @@ export const GetProductsDocument = {
             name: { kind: 'Name', value: 'products' },
             selectionSet: {
               kind: 'SelectionSet',
-              selections: [{ kind: 'FragmentSpread', name: { kind: 'Name', value: 'ProductParts' } }],
+              selections: [
+                { kind: 'FragmentSpread', name: { kind: 'Name', value: 'ProductParts' } },
+              ],
             },
           },
         ],
@@ -4551,7 +5213,10 @@ export const GetProductByIdDocument = {
         {
           kind: 'VariableDefinition',
           variable: { kind: 'Variable', name: { kind: 'Name', value: 'id' } },
-          type: { kind: 'NonNullType', type: { kind: 'NamedType', name: { kind: 'Name', value: 'String' } } },
+          type: {
+            kind: 'NonNullType',
+            type: { kind: 'NamedType', name: { kind: 'Name', value: 'String' } },
+          },
         },
       ],
       selectionSet: {
@@ -4578,7 +5243,9 @@ export const GetProductByIdDocument = {
             ],
             selectionSet: {
               kind: 'SelectionSet',
-              selections: [{ kind: 'FragmentSpread', name: { kind: 'Name', value: 'ProductParts' } }],
+              selections: [
+                { kind: 'FragmentSpread', name: { kind: 'Name', value: 'ProductParts' } },
+              ],
             },
           },
         ],
@@ -4629,7 +5296,9 @@ export const GetProductSalesDocument = {
             ],
             selectionSet: {
               kind: 'SelectionSet',
-              selections: [{ kind: 'FragmentSpread', name: { kind: 'Name', value: 'ProductSaleParts' } }],
+              selections: [
+                { kind: 'FragmentSpread', name: { kind: 'Name', value: 'ProductSaleParts' } },
+              ],
             },
           },
         ],
@@ -4682,7 +5351,10 @@ export const GetTopProductSalesByProductIdDocument = {
         {
           kind: 'VariableDefinition',
           variable: { kind: 'Variable', name: { kind: 'Name', value: 'productId' } },
-          type: { kind: 'NonNullType', type: { kind: 'NamedType', name: { kind: 'Name', value: 'String' } } },
+          type: {
+            kind: 'NonNullType',
+            type: { kind: 'NamedType', name: { kind: 'Name', value: 'String' } },
+          },
         },
       ],
       selectionSet: {
@@ -4732,7 +5404,9 @@ export const GetTopProductSalesByProductIdDocument = {
             ],
             selectionSet: {
               kind: 'SelectionSet',
-              selections: [{ kind: 'FragmentSpread', name: { kind: 'Name', value: 'ProductSaleParts' } }],
+              selections: [
+                { kind: 'FragmentSpread', name: { kind: 'Name', value: 'ProductSaleParts' } },
+              ],
             },
           },
         ],
@@ -4773,7 +5447,10 @@ export const GetTopProductSalesByProductIdDocument = {
       },
     },
   ],
-} as unknown as DocumentNode<GetTopProductSalesByProductIdQuery, GetTopProductSalesByProductIdQueryVariables>;
+} as unknown as DocumentNode<
+  GetTopProductSalesByProductIdQuery,
+  GetTopProductSalesByProductIdQueryVariables
+>;
 export const GetUsersDocument = {
   kind: 'Document',
   definitions: [
@@ -4823,7 +5500,10 @@ export const GetUserByIdDocument = {
         {
           kind: 'VariableDefinition',
           variable: { kind: 'Variable', name: { kind: 'Name', value: 'id' } },
-          type: { kind: 'NonNullType', type: { kind: 'NamedType', name: { kind: 'Name', value: 'String' } } },
+          type: {
+            kind: 'NonNullType',
+            type: { kind: 'NamedType', name: { kind: 'Name', value: 'String' } },
+          },
         },
       ],
       selectionSet: {

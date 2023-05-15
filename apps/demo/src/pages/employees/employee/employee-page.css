@@ -3,14 +3,15 @@
 }
 
 :host {
-  /* --md-outlined-container-color: var(--md-ref-palette-neutral-variant-30); */
   --md-outlined-container-color: var(--md-sys-color-blue);
-  /* --md-outlined-container-color: var(--md-sys-color-surface-2); */
   --md-outlined-text-field-hover-outline-color: var(--md-sys-color-blue);
   --md-outlined-text-field-focus-outline-color: var(--md-sys-color-blue);
-  /* --md-outlined-text-field-container-color: var(--md-sys-color-green); */
   --md-outlined-text-field-container-shape: 8px;
-  --md-outlined-text-field-container-padding-vertical: 14px;
+  --md-outlined-text-field-container-padding-vertical: 10px;
+  --md-outlined-field-container-padding-vertical: 10px;
+  /* --md-outlined-select-text-field-outline-color: var(--md-sys-color-blue); */
+  --md-outlined-select-text-field-hover-outline-color: var(--md-sys-color-blue);
+  --md-outlined-select-text-field-focus-outline-color: var(--md-sys-color-blue);
   --_container-inline-size: 900px;
   --_container-padding: 40px;
 
@@ -19,7 +20,6 @@
   flex-direction: column;
   align-items: center;
   gap: 30px;
-  /* padding-inline: var(--_container-padding); */
   padding-block: var(--_container-padding);
   inline-size: 100%;
   block-size: calc(100vh - var(--rk-site-header-height) - calc(var(--_container-padding) * 2));
@@ -71,10 +71,16 @@ form {
   }
 }
 
-label {
+fieldset {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  border: none;
+  padding: 0;
+
+  & label {
+    font-size: 0.9em;
+  }
 }
 
 .address {
@@ -93,4 +99,17 @@ label {
 
 .postal {
   inline-size: 150px;
+}
+
+md-outlined-select {
+  --md-list-container-color: red;
+  --md-list-list-item-container-color: var(--md-sys-color-surface-1);
+  --md-menu-item-list-item-container-color: var(--md-sys-color-surface-1);
+  --md-sys-color-surface: red;
+}
+
+::slotted(md-list) {
+  background-color: red;
+  --md-list-container-color: red;
+  --md-sys-color-surface: red;
 }

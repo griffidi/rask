@@ -7,5 +7,9 @@ query GetEmployees {
 query GetEmployeeById($id: String) {
   employee(where: { id: $id }) {
     ...EmployeeParts
+    locationState {
+      id
+      name
+    }
   }
 }

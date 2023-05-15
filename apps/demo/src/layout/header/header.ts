@@ -2,6 +2,7 @@ import ':/components/settings-menu/settings-menu.js';
 import { consume } from '@lit-labs/context';
 import '@material/web/icon/icon.js';
 import '@material/web/iconbutton/standard-icon-button.js';
+// import '@material/web/linearprogress/linear-progress.js';
 import { isAuthenticatedContext } from '@rask/identity/authentication/is-authenticated-context.js';
 import { LitElement, html, type TemplateResult } from 'lit';
 import css from './header.css' assert { type: 'css' };
@@ -30,6 +31,7 @@ export class Header extends LitElement {
         </div>
         <div class="trailing-side">${trailingSide}</div>
       </header>
+      <!-- <md-linear-progress indeterminate></md-linear-progress> -->
     `;
   }
 

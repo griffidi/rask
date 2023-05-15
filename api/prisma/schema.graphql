@@ -33,6 +33,12 @@ type AggregateInventory {
   _sum: InventorySumAggregate
 }
 
+type AggregateLocationState {
+  _count: LocationStateCountAggregate
+  _max: LocationStateMaxAggregate
+  _min: LocationStateMinAggregate
+}
+
 type AggregateProduct {
   _count: ProductCountAggregate
   _max: ProductMaxAggregate
@@ -73,8 +79,9 @@ type Customer {
   firstName: String!
   id: String!
   lastName: String!
+  locationState: LocationState!
   phone: String!
-  state: String!
+  stateId: String!
   streetAddress: String!
   zipCode: String!
 }
@@ -89,7 +96,7 @@ type CustomerCountAggregate {
   id: Int!
   lastName: Int!
   phone: Int!
-  state: Int!
+  stateId: Int!
   streetAddress: Int!
   zipCode: Int!
 }
@@ -103,7 +110,7 @@ input CustomerCountOrderByAggregateInput {
   id: SortOrder
   lastName: SortOrder
   phone: SortOrder
-  state: SortOrder
+  stateId: SortOrder
   streetAddress: SortOrder
   zipCode: SortOrder
 }
@@ -116,8 +123,32 @@ input CustomerCreateInput {
   firstName: String!
   id: String
   lastName: String!
+  locationState: LocationStateCreateNestedOneWithoutCustomerInput!
   phone: String!
-  state: String!
+  streetAddress: String!
+  zipCode: String!
+}
+
+input CustomerCreateNestedManyWithoutLocationStateInput {
+  connect: [CustomerWhereUniqueInput!]
+  connectOrCreate: [CustomerCreateOrConnectWithoutLocationStateInput!]
+  create: [CustomerCreateWithoutLocationStateInput!]
+}
+
+input CustomerCreateOrConnectWithoutLocationStateInput {
+  create: CustomerCreateWithoutLocationStateInput!
+  where: CustomerWhereUniqueInput!
+}
+
+input CustomerCreateWithoutLocationStateInput {
+  city: String!
+  dateCreated: DateTime
+  dateUpdated: DateTime
+  email: String!
+  firstName: String!
+  id: String
+  lastName: String!
+  phone: String!
   streetAddress: String!
   zipCode: String!
 }
@@ -134,9 +165,15 @@ type CustomerGroupBy {
   id: String!
   lastName: String!
   phone: String!
-  state: String!
+  stateId: String!
   streetAddress: String!
   zipCode: String!
+}
+
+input CustomerListRelationFilter {
+  every: CustomerWhereInput
+  none: CustomerWhereInput
+  some: CustomerWhereInput
 }
 
 type CustomerMaxAggregate {
@@ -148,7 +185,7 @@ type CustomerMaxAggregate {
   id: String
   lastName: String
   phone: String
-  state: String
+  stateId: String
   streetAddress: String
   zipCode: String
 }
@@ -162,7 +199,7 @@ input CustomerMaxOrderByAggregateInput {
   id: SortOrder
   lastName: SortOrder
   phone: SortOrder
-  state: SortOrder
+  stateId: SortOrder
   streetAddress: SortOrder
   zipCode: SortOrder
 }
@@ -176,7 +213,7 @@ type CustomerMinAggregate {
   id: String
   lastName: String
   phone: String
-  state: String
+  stateId: String
   streetAddress: String
   zipCode: String
 }
@@ -190,9 +227,13 @@ input CustomerMinOrderByAggregateInput {
   id: SortOrder
   lastName: SortOrder
   phone: SortOrder
-  state: SortOrder
+  stateId: SortOrder
   streetAddress: SortOrder
   zipCode: SortOrder
+}
+
+input CustomerOrderByRelationAggregateInput {
+  _count: SortOrder
 }
 
 input CustomerOrderByWithAggregationInput {
@@ -207,7 +248,7 @@ input CustomerOrderByWithAggregationInput {
   id: SortOrder
   lastName: SortOrder
   phone: SortOrder
-  state: SortOrder
+  stateId: SortOrder
   streetAddress: SortOrder
   zipCode: SortOrder
 }
@@ -220,8 +261,9 @@ input CustomerOrderByWithRelationInput {
   firstName: SortOrder
   id: SortOrder
   lastName: SortOrder
+  locationState: LocationStateOrderByWithRelationInput
   phone: SortOrder
-  state: SortOrder
+  stateId: SortOrder
   streetAddress: SortOrder
   zipCode: SortOrder
 }
@@ -235,9 +277,26 @@ enum CustomerScalarFieldEnum {
   id
   lastName
   phone
-  state
+  stateId
   streetAddress
   zipCode
+}
+
+input CustomerScalarWhereInput {
+  AND: [CustomerScalarWhereInput!]
+  NOT: [CustomerScalarWhereInput!]
+  OR: [CustomerScalarWhereInput!]
+  city: StringFilter
+  dateCreated: DateTimeFilter
+  dateUpdated: DateTimeNullableFilter
+  email: StringFilter
+  firstName: StringFilter
+  id: StringFilter
+  lastName: StringFilter
+  phone: StringFilter
+  stateId: StringFilter
+  streetAddress: StringFilter
+  zipCode: StringFilter
 }
 
 input CustomerScalarWhereWithAggregatesInput {
@@ -252,7 +311,7 @@ input CustomerScalarWhereWithAggregatesInput {
   id: StringWithAggregatesFilter
   lastName: StringWithAggregatesFilter
   phone: StringWithAggregatesFilter
-  state: StringWithAggregatesFilter
+  stateId: StringWithAggregatesFilter
   streetAddress: StringWithAggregatesFilter
   zipCode: StringWithAggregatesFilter
 }
@@ -265,8 +324,8 @@ input CustomerUpdateInput {
   firstName: String
   id: String
   lastName: String
+  locationState: LocationStateUpdateOneRequiredWithoutCustomerNestedInput
   phone: String
-  state: String
   streetAddress: String
   zipCode: String
 }
@@ -280,9 +339,50 @@ input CustomerUpdateManyMutationInput {
   id: String
   lastName: String
   phone: String
-  state: String
   streetAddress: String
   zipCode: String
+}
+
+input CustomerUpdateManyWithWhereWithoutLocationStateInput {
+  data: CustomerUpdateManyMutationInput!
+  where: CustomerScalarWhereInput!
+}
+
+input CustomerUpdateManyWithoutLocationStateNestedInput {
+  connect: [CustomerWhereUniqueInput!]
+  connectOrCreate: [CustomerCreateOrConnectWithoutLocationStateInput!]
+  create: [CustomerCreateWithoutLocationStateInput!]
+  delete: [CustomerWhereUniqueInput!]
+  deleteMany: [CustomerScalarWhereInput!]
+  disconnect: [CustomerWhereUniqueInput!]
+  set: [CustomerWhereUniqueInput!]
+  update: [CustomerUpdateWithWhereUniqueWithoutLocationStateInput!]
+  updateMany: [CustomerUpdateManyWithWhereWithoutLocationStateInput!]
+  upsert: [CustomerUpsertWithWhereUniqueWithoutLocationStateInput!]
+}
+
+input CustomerUpdateWithWhereUniqueWithoutLocationStateInput {
+  data: CustomerUpdateWithoutLocationStateInput!
+  where: CustomerWhereUniqueInput!
+}
+
+input CustomerUpdateWithoutLocationStateInput {
+  city: String
+  dateCreated: DateTime
+  dateUpdated: DateTime
+  email: String
+  firstName: String
+  id: String
+  lastName: String
+  phone: String
+  streetAddress: String
+  zipCode: String
+}
+
+input CustomerUpsertWithWhereUniqueWithoutLocationStateInput {
+  create: CustomerCreateWithoutLocationStateInput!
+  update: CustomerUpdateWithoutLocationStateInput!
+  where: CustomerWhereUniqueInput!
 }
 
 input CustomerWhereInput {
@@ -296,8 +396,9 @@ input CustomerWhereInput {
   firstName: StringFilter
   id: StringFilter
   lastName: StringFilter
+  locationState: LocationStateRelationFilter
   phone: StringFilter
-  state: StringFilter
+  stateId: StringFilter
   streetAddress: StringFilter
   zipCode: StringFilter
 }
@@ -557,8 +658,9 @@ type Employee {
   id: String!
   jobTitle: String!
   lastName: String!
+  locationState: LocationState!
   phone: String!
-  state: String!
+  stateId: String!
   streetAddress: String!
   zipCode: String!
 }
@@ -576,7 +678,7 @@ type EmployeeCountAggregate {
   jobTitle: Int!
   lastName: Int!
   phone: Int!
-  state: Int!
+  stateId: Int!
   streetAddress: Int!
   zipCode: Int!
 }
@@ -593,7 +695,7 @@ input EmployeeCountOrderByAggregateInput {
   jobTitle: SortOrder
   lastName: SortOrder
   phone: SortOrder
-  state: SortOrder
+  stateId: SortOrder
   streetAddress: SortOrder
   zipCode: SortOrder
 }
@@ -609,8 +711,8 @@ input EmployeeCreateInput {
   id: String
   jobTitle: String!
   lastName: String!
+  locationState: LocationStateCreateNestedOneWithoutEmployeeInput!
   phone: String!
-  state: String!
   streetAddress: String!
   zipCode: String!
 }
@@ -621,8 +723,19 @@ input EmployeeCreateNestedManyWithoutDepartmentInput {
   create: [EmployeeCreateWithoutDepartmentInput!]
 }
 
+input EmployeeCreateNestedManyWithoutLocationStateInput {
+  connect: [EmployeeWhereUniqueInput!]
+  connectOrCreate: [EmployeeCreateOrConnectWithoutLocationStateInput!]
+  create: [EmployeeCreateWithoutLocationStateInput!]
+}
+
 input EmployeeCreateOrConnectWithoutDepartmentInput {
   create: EmployeeCreateWithoutDepartmentInput!
+  where: EmployeeWhereUniqueInput!
+}
+
+input EmployeeCreateOrConnectWithoutLocationStateInput {
+  create: EmployeeCreateWithoutLocationStateInput!
   where: EmployeeWhereUniqueInput!
 }
 
@@ -636,8 +749,24 @@ input EmployeeCreateWithoutDepartmentInput {
   id: String
   jobTitle: String!
   lastName: String!
+  locationState: LocationStateCreateNestedOneWithoutEmployeeInput!
   phone: String!
-  state: String!
+  streetAddress: String!
+  zipCode: String!
+}
+
+input EmployeeCreateWithoutLocationStateInput {
+  city: String!
+  dateStarted: DateTime
+  dateUpdated: DateTime
+  department: DepartmentCreateNestedOneWithoutEmployeesInput!
+  email: String!
+  firstName: String!
+  gender: String!
+  id: String
+  jobTitle: String!
+  lastName: String!
+  phone: String!
   streetAddress: String!
   zipCode: String!
 }
@@ -657,7 +786,7 @@ type EmployeeGroupBy {
   jobTitle: String!
   lastName: String!
   phone: String!
-  state: String!
+  stateId: String!
   streetAddress: String!
   zipCode: String!
 }
@@ -680,7 +809,7 @@ type EmployeeMaxAggregate {
   jobTitle: String
   lastName: String
   phone: String
-  state: String
+  stateId: String
   streetAddress: String
   zipCode: String
 }
@@ -697,7 +826,7 @@ input EmployeeMaxOrderByAggregateInput {
   jobTitle: SortOrder
   lastName: SortOrder
   phone: SortOrder
-  state: SortOrder
+  stateId: SortOrder
   streetAddress: SortOrder
   zipCode: SortOrder
 }
@@ -714,7 +843,7 @@ type EmployeeMinAggregate {
   jobTitle: String
   lastName: String
   phone: String
-  state: String
+  stateId: String
   streetAddress: String
   zipCode: String
 }
@@ -731,7 +860,7 @@ input EmployeeMinOrderByAggregateInput {
   jobTitle: SortOrder
   lastName: SortOrder
   phone: SortOrder
-  state: SortOrder
+  stateId: SortOrder
   streetAddress: SortOrder
   zipCode: SortOrder
 }
@@ -755,7 +884,7 @@ input EmployeeOrderByWithAggregationInput {
   jobTitle: SortOrder
   lastName: SortOrder
   phone: SortOrder
-  state: SortOrder
+  stateId: SortOrder
   streetAddress: SortOrder
   zipCode: SortOrder
 }
@@ -772,8 +901,9 @@ input EmployeeOrderByWithRelationInput {
   id: SortOrder
   jobTitle: SortOrder
   lastName: SortOrder
+  locationState: LocationStateOrderByWithRelationInput
   phone: SortOrder
-  state: SortOrder
+  stateId: SortOrder
   streetAddress: SortOrder
   zipCode: SortOrder
 }
@@ -790,7 +920,7 @@ enum EmployeeScalarFieldEnum {
   jobTitle
   lastName
   phone
-  state
+  stateId
   streetAddress
   zipCode
 }
@@ -810,7 +940,7 @@ input EmployeeScalarWhereInput {
   jobTitle: StringFilter
   lastName: StringFilter
   phone: StringFilter
-  state: StringFilter
+  stateId: StringFilter
   streetAddress: StringFilter
   zipCode: StringFilter
 }
@@ -830,7 +960,7 @@ input EmployeeScalarWhereWithAggregatesInput {
   jobTitle: StringWithAggregatesFilter
   lastName: StringWithAggregatesFilter
   phone: StringWithAggregatesFilter
-  state: StringWithAggregatesFilter
+  stateId: StringWithAggregatesFilter
   streetAddress: StringWithAggregatesFilter
   zipCode: StringWithAggregatesFilter
 }
@@ -846,8 +976,8 @@ input EmployeeUpdateInput {
   id: String
   jobTitle: String
   lastName: String
+  locationState: LocationStateUpdateOneRequiredWithoutEmployeeNestedInput
   phone: String
-  state: String
   streetAddress: String
   zipCode: String
 }
@@ -863,12 +993,16 @@ input EmployeeUpdateManyMutationInput {
   jobTitle: String
   lastName: String
   phone: String
-  state: String
   streetAddress: String
   zipCode: String
 }
 
 input EmployeeUpdateManyWithWhereWithoutDepartmentInput {
+  data: EmployeeUpdateManyMutationInput!
+  where: EmployeeScalarWhereInput!
+}
+
+input EmployeeUpdateManyWithWhereWithoutLocationStateInput {
   data: EmployeeUpdateManyMutationInput!
   where: EmployeeScalarWhereInput!
 }
@@ -886,8 +1020,26 @@ input EmployeeUpdateManyWithoutDepartmentNestedInput {
   upsert: [EmployeeUpsertWithWhereUniqueWithoutDepartmentInput!]
 }
 
+input EmployeeUpdateManyWithoutLocationStateNestedInput {
+  connect: [EmployeeWhereUniqueInput!]
+  connectOrCreate: [EmployeeCreateOrConnectWithoutLocationStateInput!]
+  create: [EmployeeCreateWithoutLocationStateInput!]
+  delete: [EmployeeWhereUniqueInput!]
+  deleteMany: [EmployeeScalarWhereInput!]
+  disconnect: [EmployeeWhereUniqueInput!]
+  set: [EmployeeWhereUniqueInput!]
+  update: [EmployeeUpdateWithWhereUniqueWithoutLocationStateInput!]
+  updateMany: [EmployeeUpdateManyWithWhereWithoutLocationStateInput!]
+  upsert: [EmployeeUpsertWithWhereUniqueWithoutLocationStateInput!]
+}
+
 input EmployeeUpdateWithWhereUniqueWithoutDepartmentInput {
   data: EmployeeUpdateWithoutDepartmentInput!
+  where: EmployeeWhereUniqueInput!
+}
+
+input EmployeeUpdateWithWhereUniqueWithoutLocationStateInput {
+  data: EmployeeUpdateWithoutLocationStateInput!
   where: EmployeeWhereUniqueInput!
 }
 
@@ -901,8 +1053,24 @@ input EmployeeUpdateWithoutDepartmentInput {
   id: String
   jobTitle: String
   lastName: String
+  locationState: LocationStateUpdateOneRequiredWithoutEmployeeNestedInput
   phone: String
-  state: String
+  streetAddress: String
+  zipCode: String
+}
+
+input EmployeeUpdateWithoutLocationStateInput {
+  city: String
+  dateStarted: DateTime
+  dateUpdated: DateTime
+  department: DepartmentUpdateOneRequiredWithoutEmployeesNestedInput
+  email: String
+  firstName: String
+  gender: String
+  id: String
+  jobTitle: String
+  lastName: String
+  phone: String
   streetAddress: String
   zipCode: String
 }
@@ -910,6 +1078,12 @@ input EmployeeUpdateWithoutDepartmentInput {
 input EmployeeUpsertWithWhereUniqueWithoutDepartmentInput {
   create: EmployeeCreateWithoutDepartmentInput!
   update: EmployeeUpdateWithoutDepartmentInput!
+  where: EmployeeWhereUniqueInput!
+}
+
+input EmployeeUpsertWithWhereUniqueWithoutLocationStateInput {
+  create: EmployeeCreateWithoutLocationStateInput!
+  update: EmployeeUpdateWithoutLocationStateInput!
   where: EmployeeWhereUniqueInput!
 }
 
@@ -928,8 +1102,9 @@ input EmployeeWhereInput {
   id: StringFilter
   jobTitle: StringFilter
   lastName: StringFilter
+  locationState: LocationStateRelationFilter
   phone: StringFilter
-  state: StringFilter
+  stateId: StringFilter
   streetAddress: StringFilter
   zipCode: StringFilter
 }
@@ -1285,11 +1460,264 @@ input InventoryWhereUniqueInput {
   id: String
 }
 
+type LocationState {
+  Customer(cursor: CustomerWhereUniqueInput, distinct: [CustomerScalarFieldEnum!], orderBy: [CustomerOrderByWithRelationInput!], skip: Int, take: Int, where: CustomerWhereInput): [Customer!]!
+  Employee(cursor: EmployeeWhereUniqueInput, distinct: [EmployeeScalarFieldEnum!], orderBy: [EmployeeOrderByWithRelationInput!], skip: Int, take: Int, where: EmployeeWhereInput): [Employee!]!
+  _count: LocationStateCount
+  dateCreated: DateTime!
+  dateUpdated: DateTime
+  id: String!
+  name: String!
+  shortName: String!
+}
+
+type LocationStateCount {
+  Customer: Int!
+  Employee: Int!
+}
+
+type LocationStateCountAggregate {
+  _all: Int!
+  dateCreated: Int!
+  dateUpdated: Int!
+  id: Int!
+  name: Int!
+  shortName: Int!
+}
+
+input LocationStateCountOrderByAggregateInput {
+  dateCreated: SortOrder
+  dateUpdated: SortOrder
+  id: SortOrder
+  name: SortOrder
+  shortName: SortOrder
+}
+
+input LocationStateCreateInput {
+  Customer: CustomerCreateNestedManyWithoutLocationStateInput
+  Employee: EmployeeCreateNestedManyWithoutLocationStateInput
+  dateCreated: DateTime
+  dateUpdated: DateTime
+  id: String
+  name: String!
+  shortName: String!
+}
+
+input LocationStateCreateNestedOneWithoutCustomerInput {
+  connect: LocationStateWhereUniqueInput
+  connectOrCreate: LocationStateCreateOrConnectWithoutCustomerInput
+  create: LocationStateCreateWithoutCustomerInput
+}
+
+input LocationStateCreateNestedOneWithoutEmployeeInput {
+  connect: LocationStateWhereUniqueInput
+  connectOrCreate: LocationStateCreateOrConnectWithoutEmployeeInput
+  create: LocationStateCreateWithoutEmployeeInput
+}
+
+input LocationStateCreateOrConnectWithoutCustomerInput {
+  create: LocationStateCreateWithoutCustomerInput!
+  where: LocationStateWhereUniqueInput!
+}
+
+input LocationStateCreateOrConnectWithoutEmployeeInput {
+  create: LocationStateCreateWithoutEmployeeInput!
+  where: LocationStateWhereUniqueInput!
+}
+
+input LocationStateCreateWithoutCustomerInput {
+  Employee: EmployeeCreateNestedManyWithoutLocationStateInput
+  dateCreated: DateTime
+  dateUpdated: DateTime
+  id: String
+  name: String!
+  shortName: String!
+}
+
+input LocationStateCreateWithoutEmployeeInput {
+  Customer: CustomerCreateNestedManyWithoutLocationStateInput
+  dateCreated: DateTime
+  dateUpdated: DateTime
+  id: String
+  name: String!
+  shortName: String!
+}
+
+type LocationStateGroupBy {
+  _count: LocationStateCountAggregate
+  _max: LocationStateMaxAggregate
+  _min: LocationStateMinAggregate
+  dateCreated: DateTime!
+  dateUpdated: DateTime
+  id: String!
+  name: String!
+  shortName: String!
+}
+
+type LocationStateMaxAggregate {
+  dateCreated: DateTime
+  dateUpdated: DateTime
+  id: String
+  name: String
+  shortName: String
+}
+
+input LocationStateMaxOrderByAggregateInput {
+  dateCreated: SortOrder
+  dateUpdated: SortOrder
+  id: SortOrder
+  name: SortOrder
+  shortName: SortOrder
+}
+
+type LocationStateMinAggregate {
+  dateCreated: DateTime
+  dateUpdated: DateTime
+  id: String
+  name: String
+  shortName: String
+}
+
+input LocationStateMinOrderByAggregateInput {
+  dateCreated: SortOrder
+  dateUpdated: SortOrder
+  id: SortOrder
+  name: SortOrder
+  shortName: SortOrder
+}
+
+input LocationStateOrderByWithAggregationInput {
+  _count: LocationStateCountOrderByAggregateInput
+  _max: LocationStateMaxOrderByAggregateInput
+  _min: LocationStateMinOrderByAggregateInput
+  dateCreated: SortOrder
+  dateUpdated: SortOrder
+  id: SortOrder
+  name: SortOrder
+  shortName: SortOrder
+}
+
+input LocationStateOrderByWithRelationInput {
+  Customer: CustomerOrderByRelationAggregateInput
+  Employee: EmployeeOrderByRelationAggregateInput
+  dateCreated: SortOrder
+  dateUpdated: SortOrder
+  id: SortOrder
+  name: SortOrder
+  shortName: SortOrder
+}
+
+input LocationStateRelationFilter {
+  is: LocationStateWhereInput
+  isNot: LocationStateWhereInput
+}
+
+enum LocationStateScalarFieldEnum {
+  dateCreated
+  dateUpdated
+  id
+  name
+  shortName
+}
+
+input LocationStateScalarWhereWithAggregatesInput {
+  AND: [LocationStateScalarWhereWithAggregatesInput!]
+  NOT: [LocationStateScalarWhereWithAggregatesInput!]
+  OR: [LocationStateScalarWhereWithAggregatesInput!]
+  dateCreated: DateTimeWithAggregatesFilter
+  dateUpdated: DateTimeNullableWithAggregatesFilter
+  id: StringWithAggregatesFilter
+  name: StringWithAggregatesFilter
+  shortName: StringWithAggregatesFilter
+}
+
+input LocationStateUpdateInput {
+  Customer: CustomerUpdateManyWithoutLocationStateNestedInput
+  Employee: EmployeeUpdateManyWithoutLocationStateNestedInput
+  dateCreated: DateTime
+  dateUpdated: DateTime
+  id: String
+  name: String
+  shortName: String
+}
+
+input LocationStateUpdateManyMutationInput {
+  dateCreated: DateTime
+  dateUpdated: DateTime
+  id: String
+  name: String
+  shortName: String
+}
+
+input LocationStateUpdateOneRequiredWithoutCustomerNestedInput {
+  connect: LocationStateWhereUniqueInput
+  connectOrCreate: LocationStateCreateOrConnectWithoutCustomerInput
+  create: LocationStateCreateWithoutCustomerInput
+  update: LocationStateUpdateWithoutCustomerInput
+  upsert: LocationStateUpsertWithoutCustomerInput
+}
+
+input LocationStateUpdateOneRequiredWithoutEmployeeNestedInput {
+  connect: LocationStateWhereUniqueInput
+  connectOrCreate: LocationStateCreateOrConnectWithoutEmployeeInput
+  create: LocationStateCreateWithoutEmployeeInput
+  update: LocationStateUpdateWithoutEmployeeInput
+  upsert: LocationStateUpsertWithoutEmployeeInput
+}
+
+input LocationStateUpdateWithoutCustomerInput {
+  Employee: EmployeeUpdateManyWithoutLocationStateNestedInput
+  dateCreated: DateTime
+  dateUpdated: DateTime
+  id: String
+  name: String
+  shortName: String
+}
+
+input LocationStateUpdateWithoutEmployeeInput {
+  Customer: CustomerUpdateManyWithoutLocationStateNestedInput
+  dateCreated: DateTime
+  dateUpdated: DateTime
+  id: String
+  name: String
+  shortName: String
+}
+
+input LocationStateUpsertWithoutCustomerInput {
+  create: LocationStateCreateWithoutCustomerInput!
+  update: LocationStateUpdateWithoutCustomerInput!
+}
+
+input LocationStateUpsertWithoutEmployeeInput {
+  create: LocationStateCreateWithoutEmployeeInput!
+  update: LocationStateUpdateWithoutEmployeeInput!
+}
+
+input LocationStateWhereInput {
+  AND: [LocationStateWhereInput!]
+  Customer: CustomerListRelationFilter
+  Employee: EmployeeListRelationFilter
+  NOT: [LocationStateWhereInput!]
+  OR: [LocationStateWhereInput!]
+  dateCreated: DateTimeFilter
+  dateUpdated: DateTimeNullableFilter
+  id: StringFilter
+  name: StringFilter
+  shortName: StringFilter
+}
+
+input LocationStateWhereUniqueInput {
+  id: String
+  name: String
+  shortName: String
+}
+
 type Mutation {
   createOneCustomer(data: CustomerCreateInput!): Customer!
   createOneDepartment(data: DepartmentCreateInput!): Department!
   createOneEmployee(data: EmployeeCreateInput!): Employee!
   createOneInventory(data: InventoryCreateInput!): Inventory!
+  createOneLocationState(data: LocationStateCreateInput!): LocationState!
   createOneProduct(data: ProductCreateInput!): Product!
   createOneProductSale(data: ProductSaleCreateInput!): ProductSale!
   createOneRole(data: RoleCreateInput!): Role!
@@ -1299,6 +1727,7 @@ type Mutation {
   deleteManyDepartment(where: DepartmentWhereInput): AffectedRowsOutput!
   deleteManyEmployee(where: EmployeeWhereInput): AffectedRowsOutput!
   deleteManyInventory(where: InventoryWhereInput): AffectedRowsOutput!
+  deleteManyLocationState(where: LocationStateWhereInput): AffectedRowsOutput!
   deleteManyProduct(where: ProductWhereInput): AffectedRowsOutput!
   deleteManyProductSale(where: ProductSaleWhereInput): AffectedRowsOutput!
   deleteManyRole(where: RoleWhereInput): AffectedRowsOutput!
@@ -1308,6 +1737,7 @@ type Mutation {
   deleteOneDepartment(where: DepartmentWhereUniqueInput!): Department
   deleteOneEmployee(where: EmployeeWhereUniqueInput!): Employee
   deleteOneInventory(where: InventoryWhereUniqueInput!): Inventory
+  deleteOneLocationState(where: LocationStateWhereUniqueInput!): LocationState
   deleteOneProduct(where: ProductWhereUniqueInput!): Product
   deleteOneProductSale(where: ProductSaleWhereUniqueInput!): ProductSale
   deleteOneRole(where: RoleWhereUniqueInput!): Role
@@ -1317,6 +1747,7 @@ type Mutation {
   updateManyDepartment(data: DepartmentUpdateManyMutationInput!, where: DepartmentWhereInput): AffectedRowsOutput!
   updateManyEmployee(data: EmployeeUpdateManyMutationInput!, where: EmployeeWhereInput): AffectedRowsOutput!
   updateManyInventory(data: InventoryUpdateManyMutationInput!, where: InventoryWhereInput): AffectedRowsOutput!
+  updateManyLocationState(data: LocationStateUpdateManyMutationInput!, where: LocationStateWhereInput): AffectedRowsOutput!
   updateManyProduct(data: ProductUpdateManyMutationInput!, where: ProductWhereInput): AffectedRowsOutput!
   updateManyProductSale(data: ProductSaleUpdateManyMutationInput!, where: ProductSaleWhereInput): AffectedRowsOutput!
   updateManyRole(data: RoleUpdateManyMutationInput!, where: RoleWhereInput): AffectedRowsOutput!
@@ -1326,6 +1757,7 @@ type Mutation {
   updateOneDepartment(data: DepartmentUpdateInput!, where: DepartmentWhereUniqueInput!): Department
   updateOneEmployee(data: EmployeeUpdateInput!, where: EmployeeWhereUniqueInput!): Employee
   updateOneInventory(data: InventoryUpdateInput!, where: InventoryWhereUniqueInput!): Inventory
+  updateOneLocationState(data: LocationStateUpdateInput!, where: LocationStateWhereUniqueInput!): LocationState
   updateOneProduct(data: ProductUpdateInput!, where: ProductWhereUniqueInput!): Product
   updateOneProductSale(data: ProductSaleUpdateInput!, where: ProductSaleWhereUniqueInput!): ProductSale
   updateOneRole(data: RoleUpdateInput!, where: RoleWhereUniqueInput!): Role
@@ -1335,6 +1767,7 @@ type Mutation {
   upsertOneDepartment(create: DepartmentCreateInput!, update: DepartmentUpdateInput!, where: DepartmentWhereUniqueInput!): Department!
   upsertOneEmployee(create: EmployeeCreateInput!, update: EmployeeUpdateInput!, where: EmployeeWhereUniqueInput!): Employee!
   upsertOneInventory(create: InventoryCreateInput!, update: InventoryUpdateInput!, where: InventoryWhereUniqueInput!): Inventory!
+  upsertOneLocationState(create: LocationStateCreateInput!, update: LocationStateUpdateInput!, where: LocationStateWhereUniqueInput!): LocationState!
   upsertOneProduct(create: ProductCreateInput!, update: ProductUpdateInput!, where: ProductWhereUniqueInput!): Product!
   upsertOneProductSale(create: ProductSaleCreateInput!, update: ProductSaleUpdateInput!, where: ProductSaleWhereUniqueInput!): ProductSale!
   upsertOneRole(create: RoleCreateInput!, update: RoleUpdateInput!, where: RoleWhereUniqueInput!): Role!
@@ -2027,6 +2460,7 @@ type Query {
   aggregateDepartment(cursor: DepartmentWhereUniqueInput, orderBy: [DepartmentOrderByWithRelationInput!], skip: Int, take: Int, where: DepartmentWhereInput): AggregateDepartment!
   aggregateEmployee(cursor: EmployeeWhereUniqueInput, orderBy: [EmployeeOrderByWithRelationInput!], skip: Int, take: Int, where: EmployeeWhereInput): AggregateEmployee!
   aggregateInventory(cursor: InventoryWhereUniqueInput, orderBy: [InventoryOrderByWithRelationInput!], skip: Int, take: Int, where: InventoryWhereInput): AggregateInventory!
+  aggregateLocationState(cursor: LocationStateWhereUniqueInput, orderBy: [LocationStateOrderByWithRelationInput!], skip: Int, take: Int, where: LocationStateWhereInput): AggregateLocationState!
   aggregateProduct(cursor: ProductWhereUniqueInput, orderBy: [ProductOrderByWithRelationInput!], skip: Int, take: Int, where: ProductWhereInput): AggregateProduct!
   aggregateProductSale(cursor: ProductSaleWhereUniqueInput, orderBy: [ProductSaleOrderByWithRelationInput!], skip: Int, take: Int, where: ProductSaleWhereInput): AggregateProductSale!
   aggregateRole(cursor: RoleWhereUniqueInput, orderBy: [RoleOrderByWithRelationInput!], skip: Int, take: Int, where: RoleWhereInput): AggregateRole!
@@ -2046,6 +2480,8 @@ type Query {
   findFirstEmployeeOrThrow(cursor: EmployeeWhereUniqueInput, distinct: [EmployeeScalarFieldEnum!], orderBy: [EmployeeOrderByWithRelationInput!], skip: Int, take: Int, where: EmployeeWhereInput): Employee
   findFirstInventory(cursor: InventoryWhereUniqueInput, distinct: [InventoryScalarFieldEnum!], orderBy: [InventoryOrderByWithRelationInput!], skip: Int, take: Int, where: InventoryWhereInput): Inventory
   findFirstInventoryOrThrow(cursor: InventoryWhereUniqueInput, distinct: [InventoryScalarFieldEnum!], orderBy: [InventoryOrderByWithRelationInput!], skip: Int, take: Int, where: InventoryWhereInput): Inventory
+  findFirstLocationState(cursor: LocationStateWhereUniqueInput, distinct: [LocationStateScalarFieldEnum!], orderBy: [LocationStateOrderByWithRelationInput!], skip: Int, take: Int, where: LocationStateWhereInput): LocationState
+  findFirstLocationStateOrThrow(cursor: LocationStateWhereUniqueInput, distinct: [LocationStateScalarFieldEnum!], orderBy: [LocationStateOrderByWithRelationInput!], skip: Int, take: Int, where: LocationStateWhereInput): LocationState
   findFirstProduct(cursor: ProductWhereUniqueInput, distinct: [ProductScalarFieldEnum!], orderBy: [ProductOrderByWithRelationInput!], skip: Int, take: Int, where: ProductWhereInput): Product
   findFirstProductOrThrow(cursor: ProductWhereUniqueInput, distinct: [ProductScalarFieldEnum!], orderBy: [ProductOrderByWithRelationInput!], skip: Int, take: Int, where: ProductWhereInput): Product
   findFirstProductSale(cursor: ProductSaleWhereUniqueInput, distinct: [ProductSaleScalarFieldEnum!], orderBy: [ProductSaleOrderByWithRelationInput!], skip: Int, take: Int, where: ProductSaleWhereInput): ProductSale
@@ -2060,6 +2496,7 @@ type Query {
   getDepartment(where: DepartmentWhereUniqueInput!): Department
   getEmployee(where: EmployeeWhereUniqueInput!): Employee
   getInventory(where: InventoryWhereUniqueInput!): Inventory
+  getLocationState(where: LocationStateWhereUniqueInput!): LocationState
   getProduct(where: ProductWhereUniqueInput!): Product
   getProductSale(where: ProductSaleWhereUniqueInput!): ProductSale
   getRole(where: RoleWhereUniqueInput!): Role
@@ -2069,6 +2506,7 @@ type Query {
   groupByDepartment(by: [DepartmentScalarFieldEnum!]!, having: DepartmentScalarWhereWithAggregatesInput, orderBy: [DepartmentOrderByWithAggregationInput!], skip: Int, take: Int, where: DepartmentWhereInput): [DepartmentGroupBy!]!
   groupByEmployee(by: [EmployeeScalarFieldEnum!]!, having: EmployeeScalarWhereWithAggregatesInput, orderBy: [EmployeeOrderByWithAggregationInput!], skip: Int, take: Int, where: EmployeeWhereInput): [EmployeeGroupBy!]!
   groupByInventory(by: [InventoryScalarFieldEnum!]!, having: InventoryScalarWhereWithAggregatesInput, orderBy: [InventoryOrderByWithAggregationInput!], skip: Int, take: Int, where: InventoryWhereInput): [InventoryGroupBy!]!
+  groupByLocationState(by: [LocationStateScalarFieldEnum!]!, having: LocationStateScalarWhereWithAggregatesInput, orderBy: [LocationStateOrderByWithAggregationInput!], skip: Int, take: Int, where: LocationStateWhereInput): [LocationStateGroupBy!]!
   groupByProduct(by: [ProductScalarFieldEnum!]!, having: ProductScalarWhereWithAggregatesInput, orderBy: [ProductOrderByWithAggregationInput!], skip: Int, take: Int, where: ProductWhereInput): [ProductGroupBy!]!
   groupByProductSale(by: [ProductSaleScalarFieldEnum!]!, having: ProductSaleScalarWhereWithAggregatesInput, orderBy: [ProductSaleOrderByWithAggregationInput!], skip: Int, take: Int, where: ProductSaleWhereInput): [ProductSaleGroupBy!]!
   groupByRole(by: [RoleScalarFieldEnum!]!, having: RoleScalarWhereWithAggregatesInput, orderBy: [RoleOrderByWithAggregationInput!], skip: Int, take: Int, where: RoleWhereInput): [RoleGroupBy!]!
@@ -2076,6 +2514,8 @@ type Query {
   groupByUser(by: [UserScalarFieldEnum!]!, having: UserScalarWhereWithAggregatesInput, orderBy: [UserOrderByWithAggregationInput!], skip: Int, take: Int, where: UserWhereInput): [UserGroupBy!]!
   inventories(cursor: InventoryWhereUniqueInput, distinct: [InventoryScalarFieldEnum!], orderBy: [InventoryOrderByWithRelationInput!], skip: Int, take: Int, where: InventoryWhereInput): [Inventory!]!
   inventory(where: InventoryWhereUniqueInput!): Inventory
+  locationState(where: LocationStateWhereUniqueInput!): LocationState
+  locationStates(cursor: LocationStateWhereUniqueInput, distinct: [LocationStateScalarFieldEnum!], orderBy: [LocationStateOrderByWithRelationInput!], skip: Int, take: Int, where: LocationStateWhereInput): [LocationState!]!
   login(password: String!, userName: String!): String
   product(where: ProductWhereUniqueInput!): Product
   productSale(where: ProductSaleWhereUniqueInput!): ProductSale

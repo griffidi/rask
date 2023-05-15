@@ -3,6 +3,9 @@
 }
 
 :host {
+  /* --md-linear-progress-track-height: 4px;
+  --md-linear-progress-track-color: var(--md-sys-color-background);
+  --md-linear-progress-active-indicator-color: var(--md-sys-color-blue); */
   --_color: var(--md-ref-palette-neutral-variant-90);
   --_logo-filter: drop-shadow(0 0 10px var(--md-sys-color-blue-alpha));
   --_logo-duration: 200ms;
@@ -21,6 +24,7 @@ header {
   padding-inline: 20px;
   border-block-end: 1px solid var(--rk-border-color);
   inline-size: auto;
+  /* block-size: calc(100% - var(--md-linear-progress-track-height)); */
   block-size: 100%;
 }
 
@@ -99,23 +103,6 @@ a {
     transition: all var(--_logo-duration) var(--md-sys-motion-standard-easing)-out;
   }
 }
-
-/* a:hover {
-  & .logo {
-    filter: var(--_logo-filter);
-    /* transition: filter 0s 0s;
-  }
-
-  & h2 {
-    background-position: 0;
-    filter: var(--_logo-filter);
-    transition: all var(--_logo-duration) var(--md-sys-motion-standard-easing)-out;
-  }
-
-  & h2::before {
-    width: 100%;
-  }
-} */
 
 .search-instructions {
   --md-icon-size: 18px;

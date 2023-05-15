@@ -20,7 +20,9 @@ import { LitElement, html, type TemplateResult } from 'lit';
 import { property } from 'lit/decorators.js';
 import { keyed } from 'lit/directives/keyed.js';
 import { map } from 'lit/directives/map.js';
-import { routerContext } from '../../../router/router-context.js';
+// TODO: find way to use app router
+// import { routerContext } from '../../../router/router-context.js';
+import { routerContext } from '../router-context.js';
 import css from './employee-list-page.css' assert { type: 'css' };
 
 export class EmployeeListPage extends LitElement {

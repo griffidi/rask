@@ -10,7 +10,10 @@ import {
 import { useCache } from '@rask/core/cache/index.js';
 import { injectable } from '@rask/core/di/injectable.js';
 import { GRAPHQL_URI_CACHE_KEY } from '../constants/graphql-uri-cache-key.js';
-import { extractDataFromQueryResult, unwrapMutateResult } from '../utils/operation-result-unwrapper.js';
+import {
+  extractDataFromQueryResult,
+  unwrapMutateResult,
+} from '../utils/operation-result-unwrapper.js';
 import { createApolloClient } from './create-apollo-client.js';
 
 const cache = useCache();
@@ -52,7 +55,6 @@ export class Client {
       ...options,
       query,
     } as QueryOptions);
-    // return unwrapQueryResult<TData>(result);
     return extractDataFromQueryResult<TData>(result);
   }
 }
