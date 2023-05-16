@@ -38,13 +38,13 @@
     "build": ""
   },
   "dependencies": {
-    "@material/web": "1.0.0-pre.8",
+    "@material/web": "^1.0.0-pre.8",
     "@rask/core": "workspace:^",
-    "lit": "3.0.0-pre.0",
+    "lit": "^3.0.0-pre.0",
     "tslib": "^2.5.0"
   },
   "devDependencies": {
-    "@types/node": "^20.1.3",
+    "@types/node": "^20.1.5",
     "typescript": "5.1.0-beta"
   },
   "peerDependencies": {
