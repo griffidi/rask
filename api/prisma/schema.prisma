@@ -23,23 +23,23 @@ model LocationState {
   shortName   String     @unique
   dateCreated DateTime   @default(now())
   dateUpdated DateTime?  @updatedAt
-  Customer    Customer[]
-  Employee    Employee[]
+  customers   Customer[]
+  employees   Employee[]
 }
 
 model Customer {
-  id            String        @id @default(nanoid(10))
+  id            String         @id @default(nanoid(10))
   firstName     String
   lastName      String
-  email         String        @unique
+  email         String         @unique
   phone         String
   streetAddress String
   city          String
   stateId       String
   zipCode       String
-  dateCreated   DateTime      @default(now())
-  dateUpdated   DateTime?     @updatedAt
-  locationState LocationState @relation(fields: [stateId], references: [id])
+  dateCreated   DateTime       @default(now())
+  dateUpdated   DateTime?      @updatedAt
+  locationState LocationState? @relation(fields: [stateId], references: [id])
 }
 
 model Department {
@@ -51,21 +51,24 @@ model Department {
 }
 
 model Size {
-  id          String        @id @default(nanoid(10))
-  name        String        @unique
-  dateCreated DateTime      @default(now())
-  dateUpdated DateTime?     @updatedAt
-  inventory   Inventory[]
-  productSale ProductSale[]
+  id                  String               @id @default(nanoid(10))
+  name                String               @unique
+  dateCreated         DateTime             @default(now())
+  dateUpdated         DateTime?            @updatedAt
+  inventory           Inventory[]
+  productSales        ProductSale[]
+  productTransactions ProductTransaction[]
 }
 
 model Product {
-  id          String        @id @default(nanoid(10))
-  name        String        @unique
-  dateCreated DateTime      @default(now())
-  dateUpdated DateTime?     @updatedAt
-  inventory   Inventory[]
-  productSale ProductSale[]
+  id                  String               @id @default(nanoid(10))
+  name                String               @unique
+  cost                Float
+  dateCreated         DateTime             @default(now())
+  dateUpdated         DateTime?            @updatedAt
+  inventory           Inventory[]
+  productSales        ProductSale[]
+  productTransactions ProductTransaction[]
 }
 
 model Inventory {
@@ -77,6 +80,17 @@ model Inventory {
   dateUpdated DateTime? @updatedAt
   product     Product   @relation(fields: [productId], references: [id])
   size        Size      @relation(fields: [sizeId], references: [id])
+}
+
+model ProductTransaction {
+  id          String   @id @default(nanoid(10))
+  productId   String
+  quantity    Int
+  sizeId      String
+  price       Float
+  dateCreated DateTime @default(now())
+  product     Product  @relation(fields: [productId], references: [id])
+  size        Size     @relation(fields: [sizeId], references: [id])
 }
 
 model ProductSale {

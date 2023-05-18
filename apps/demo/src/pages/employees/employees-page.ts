@@ -1,5 +1,6 @@
+import type { RouteEnterParams } from ':/router/index.js';
 import { ContextProvider } from '@lit-labs/context';
-import { Routes } from '@lit-labs/router';
+import { Routes, type RouteConfig } from '@lit-labs/router';
 import { scrollable } from '@rask/web/scrollable/scrollable.js';
 import { LitElement, html, type TemplateResult } from 'lit';
 import css from './employees-page.css' assert { type: 'css' };
@@ -25,6 +26,14 @@ export class EmployeesPage extends LitElement {
     initialValue: this.#router,
   });
 
+  constructor() {
+    super();
+
+    this.#router.routes.map(
+      route => (route.enter = params => this.#handleRouterEnter(params, route))
+    );
+  }
+
   override connectedCallback(): void {
     /**
      * this is a workaround for a bug in @lit-labs/router where
@@ -42,15 +51,21 @@ export class EmployeesPage extends LitElement {
       <div ${scrollable()}>
         <header>
           <span class="title">Employees</span>
-          <rk-button
+          <!-- <rk-button
             filled
             blue>
             Add Employee
-          </rk-button>
+          </rk-button> -->
         </header>
         <output>${this.#router.outlet()}</output>
       </div>
     `;
+  }
+
+  async #handleRouterEnter(params: RouteEnterParams, route: RouteConfig) {
+    console.log('entering route', params, route);
+
+    return true;
   }
 }
 

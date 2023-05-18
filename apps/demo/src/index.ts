@@ -12,7 +12,7 @@ import ':/components/search/search.js';
 import ':/layout/footer/footer.js';
 import ':/layout/header/header.js';
 import { ContextProvider, provide } from '@lit-labs/context';
-import { Router } from '@lit-labs/router';
+import { Router, type RouteConfig } from '@lit-labs/router';
 import { useCache } from '@rask/core/cache/index.js';
 import { inject } from '@rask/core/di/inject.js';
 import { GRAPHQL_URI_CACHE_KEY } from '@rask/graphql/constants/graphql-uri-cache-key.js';
@@ -26,9 +26,8 @@ import css from './index.css' assert { type: 'css' };
 import { routerContext } from './router/router-context.js';
 import routes from './router/routes.js';
 
-const cache = useCache();
 const { uri: GRAPHQL_URI } = config.graphql;
-
+const cache = useCache();
 cache.set(GRAPHQL_URI_CACHE_KEY, GRAPHQL_URI);
 
 export class Index extends LitElement {
@@ -55,15 +54,14 @@ export class Index extends LitElement {
 
   @provide({ context: isAuthenticatedContext }) isAuthenticated: boolean = false;
 
+  constructor() {
+    super();
+
+    this.#router.routes.map(route => (route.enter = () => this.#handleRouteEnter(route)));
+  }
+
   override connectedCallback(): void {
     super.connectedCallback();
-
-    this.#router.routes.map(route => {
-      route.enter = (params: { [key: string]: string | undefined }): boolean => {
-        console.dir(params);
-        return true;
-      };
-    });
 
     /**
      * subscribe to changes in authentication state and
@@ -99,6 +97,26 @@ export class Index extends LitElement {
       <app-nav ${ref(this.#nav)}></app-nav>
       <app-search></app-search>
     `;
+  }
+
+  /**
+   * This event is used to determine if the route should be entered. If the
+   * user is not authenticated and the route is not the login route, then
+   * the user is redirected to the login route.
+   *
+   * @param {RouteConfig} route Current route.
+   * @returns {Promise<boolean>} Whether or not the route should be entered.
+   */
+  async #handleRouteEnter(route: RouteConfig): Promise<boolean> {
+    const isAuthenticated = await this.#authService.isAuthenticated();
+    const { name } = route;
+
+    if (!isAuthenticated && name !== 'login') {
+      this.#router.goto('/login');
+      return false;
+    }
+
+    return true;
   }
 
   #showDrawer(): void {

@@ -18,11 +18,12 @@
   position: relative;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
-  gap: 30px;
-  padding-block: var(--_container-padding);
+  /* gap: 30px; */
+  /* padding-block: var(--_container-padding); */
   inline-size: 100%;
-  block-size: calc(100vh - var(--rk-site-header-height) - calc(var(--_container-padding) * 2));
+  block-size: calc(100% - var(--rk-site-header-height) - calc(var(--_container-padding) * 2));
 }
 
 .container {
@@ -58,7 +59,7 @@ form {
   & > div {
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 20px;
     inline-size: 400px;
   }
 

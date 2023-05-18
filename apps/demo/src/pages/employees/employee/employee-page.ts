@@ -4,7 +4,10 @@ import {
   type Employee,
   type LocationState,
 } from ':/types/graphql.js';
+import { consume } from '@lit-labs/context';
+import type { Router } from '@lit-labs/router';
 import { Task } from '@lit-labs/task';
+import '@material/web/icon/icon.js';
 import '@material/web/select/outlined-select.js';
 import '@material/web/select/select-option.js';
 import '@material/web/textfield/outlined-text-field.js';
@@ -17,6 +20,7 @@ import '@rask/web/text-field/text-field.js';
 import { LitElement, html, type TemplateResult } from 'lit';
 import { property, state } from 'lit/decorators.js';
 import { map } from 'lit/directives/map.js';
+import { routerContext } from '../router-context.js';
 import css from './employee-page.css' assert { type: 'css' };
 
 export class EmployeePage extends LitElement {
@@ -29,6 +33,8 @@ export class EmployeePage extends LitElement {
     async ([id]) => await this.#loadEmployee(id),
     () => [this.employeeId]
   );
+
+  @consume({ context: routerContext }) router: Router;
 
   @property() employeeId: string | undefined;
 
@@ -108,6 +114,7 @@ export class EmployeePage extends LitElement {
             <fieldset>
               <label>State</label>
               <md-outlined-select menuFixed="true">
+                <md-icon slot="trailingIcon"><span>arrow</span></md-icon>
                 <md-select-option headline=""></md-select-option>
                 ${map(this.locationStates, state => {
                   return html`

@@ -1,4 +1,4 @@
-import { RoutePaths } from ':/router/route-types.js';
+import { RoutePaths } from ':/router/route-paths.js';
 import type { NavItem } from '@rask/web/navigation-item/types.js';
 
 export default [

@@ -62,13 +62,13 @@ export default [
       `;
     },
   },
-  {
-    path: '(.*)',
-    render: () => {
-      import('../pages/page-not-found/page-not-found.js');
-      return html`
-        <app-page-not-found></app-page-not-found>
-      `;
-    },
-  },
-] satisfies RouteConfig[];
+  // {
+  //   path: '(.*)',
+  //   render: () => {
+  //     import('../pages/page-not-found/page-not-found.js');
+  //     return html`
+  //       <app-page-not-found></app-page-not-found>
+  //     `;
+  //   },
+  // },
+] as RouteConfig[];

@@ -4,6 +4,10 @@ import type { LitElement } from 'lit';
 import { routerContext } from './router-context.js';
 import routes from './routes.js';
 
+export interface RouteEnterParams {
+  [key: string]: string | undefined;
+}
+
 /**
  * Creates a router and provider for the router context.
  *
