@@ -3,11 +3,11 @@ import { ContextProvider } from '@lit-labs/context';
 import { Routes, type RouteConfig } from '@lit-labs/router';
 import { scrollable } from '@rask/web/scrollable/scrollable.js';
 import { LitElement, html, type TemplateResult } from 'lit';
-import css from './employees-page.css' assert { type: 'css' };
+import css from './products-page.css' assert { type: 'css' };
 import { routerContext } from './router-context.js';
 import routes from './routes.js';
 
-export class EmployeesPage extends LitElement {
+export class ProductsPage extends LitElement {
   static override styles = [css];
 
   /**
@@ -50,7 +50,7 @@ export class EmployeesPage extends LitElement {
     return html`
       <div ${scrollable()}>
         <header>
-          <span class="title">Employees</span>
+          <span class="title">Products</span>
           <!-- <rk-button
             filled
             blue>
@@ -69,12 +69,12 @@ export class EmployeesPage extends LitElement {
   }
 }
 
-if (!customElements.get('app-employees-page')) {
-  customElements.define('app-employees-page', EmployeesPage);
+if (!customElements.get('app-products-page')) {
+  customElements.define('app-products-page', ProductsPage);
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    'app-employees-page': EmployeesPage;
+    'app-products-page': ProductsPage;
   }
 }

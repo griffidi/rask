@@ -15,6 +15,12 @@ export default [
     cssColorVar: '--md-sys-color-pink',
   },
   {
+    path: RoutePaths.products,
+    icon: 'widgets',
+    label: 'Products',
+    cssColorVar: '--md-sys-color-purple',
+  },
+  {
     path: RoutePaths.settings,
     icon: 'settings',
     label: 'Settings',

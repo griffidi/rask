@@ -142,7 +142,8 @@ export class EmployeePage extends LitElement {
           filled></rk-button>
         <rk-button
           label="Cancel"
-          outlined></rk-button>
+          outlined
+          @click=${this.#handleCancel}></rk-button>
       </footer>
     `;
   }
@@ -172,6 +173,10 @@ export class EmployeePage extends LitElement {
   async #loadLocationStates() {
     const { locationStates } = await this.#client.query(GetLocationStatesDocument);
     this.locationStates = locationStates as LocationState[];
+  }
+
+  #handleCancel() {
+    this.router.goto('/employees');
   }
 }
 

@@ -53,6 +53,16 @@ export default [
     },
   },
   {
+    name: 'products',
+    path: '/products',
+    render: () => {
+      import('../pages/products/products-page.js');
+      return html`
+        <app-products-page></app-products-page>
+      `;
+    },
+  },
+  {
     name: 'settings',
     path: '/settings',
     render: () => {

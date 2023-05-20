@@ -6,6 +6,11 @@
   --_border-color: var(--app-dashboard-border-color, var(--rk-border-color));
 
   display: block;
+  block-size: 100%;
+  inline-size: 100%;
+  padding-inline: 20px;
+  padding-block-start: 10px;
+  padding-block-end: 20px;
   border-radius: var(--md-sys-shape-large);
   border: 1px solid var(--_border-color);
 }
