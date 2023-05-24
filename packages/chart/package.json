@@ -25,11 +25,11 @@
     "@rask/core": "workspace:^",
     "chart.js": "^4.3.0",
     "lit": "^3.0.0-pre.0",
-    "tslib": "^2.5.0"
+    "tslib": "^2.5.2"
   },
   "devDependencies": {
     "@types/chart.js": "^2.9.37",
-    "@types/node": "^20.1.7",
+    "@types/node": "^20.2.1",
     "typescript": "5.1.0-beta"
   },
   "peerDependencies": {

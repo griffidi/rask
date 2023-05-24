@@ -13,11 +13,12 @@ export class TableHeaderCell extends LitElement {
   @property({ type: Object }) align: 'center' | 'left' | 'right' = 'left';
   @property({ type: Boolean, reflect: true }) add = false;
   @property() addIcon = 'add';
-  @property({ type: Boolean, reflect: true }) edit = false;
   @property({ type: Number }) minWidth: number | undefined;
-  @property({ type: Number }) width = 100;
+  @property({ type: Boolean, reflect: true }) edit = false;
+  @property({ reflect: true }) scope: 'col' | 'row' = 'col';
   @property({ reflect: true }) type = 'columnheader';
-
+  @property({ type: Number }) width = 100;
+  
   override render(): TemplateResult {
     return html`
       ${when(

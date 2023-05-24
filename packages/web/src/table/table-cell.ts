@@ -14,7 +14,6 @@ export class TableCell extends LitElement {
 
   @property({ type: Boolean, reflect: true }) edit = false;
   @property() editIcon = 'edit';
-
   @property({ reflect: true }) type = 'cell';
 
   override render(): TemplateResult {

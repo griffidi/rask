@@ -16,6 +16,7 @@ img {
 
 .card {
   --_card-border-color: transparent;
+  --_card-transform-scale: 1;
 
   display: flex;
   flex-direction: column;
@@ -25,7 +26,8 @@ img {
   transition: transform 100ms ease-in-out, border-color 100ms ease-in-out;
 
   &:hover {
-    --_card-border-color: var(--md-sys-color-blue);
+    /* --_card-border-color: var(--md-sys-color-blue); */
+
     transform: scale(1.02);
   }
 
@@ -47,5 +49,5 @@ img {
   inline-size: 100%;
   block-size: 75%;
   object-fit: cover;
-  filter: grayscale(1);
+  /* filter: grayscale(1); */
 }
