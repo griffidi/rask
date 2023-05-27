@@ -45,15 +45,10 @@ export class ProductListPage extends LitElement {
     return html`
       <div class="container">
         ${map(products, product => {
-          const name = product.name.toLowerCase();
           return html`
             <div
               class="card"
               @click=${() => this.#handleCardClick(product.id)}>
-              <img
-                loading="lazy"
-                src="src/assets/images/${name}/${name}.jpg"
-                alt="${name}" />
               <div class="content">
                 <span class="title">${product.name}</span>
               </div>
