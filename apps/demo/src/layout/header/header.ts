@@ -37,7 +37,9 @@ export class Header extends LitElement {
 
   #renderLeadingSide(): TemplateResult {
     return html`
-      <md-standard-icon-button @click=${this.#handleMenuClick}>menu</md-standard-icon-button>
+      <md-standard-icon-button @click=${this.#handleMenuClick}>
+        <md-icon>menu</md-icon>
+      </md-standard-icon-button>
     `;
   }
 
