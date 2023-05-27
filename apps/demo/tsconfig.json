@@ -39,7 +39,9 @@
     },
     "types": [
       "@rask/core/client",
-      "@rask/core/hmr"
+      "@rask/core/hmr",
+      "lit",
+      "dom-navigation"
     ]
   },
   "include": [

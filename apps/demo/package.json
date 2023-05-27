@@ -50,6 +50,7 @@
     "@graphql-typed-document-node/core": "^3.2.0",
     "@rollup/plugin-graphql": "^2.0.3",
     "@types/chart.js": "^2.9.37",
+    "@types/dom-navigation": "^1.0.0",
     "@types/node": "^20.2.3",
     "@web/dev-server": "^0.2.1",
     "@web/dev-server-esbuild": "^0.4.1",
@@ -60,6 +61,6 @@
     "postcss-preset-env": "^8.4.1",
     "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-typescript-paths": "^1.4.0",
-    "typescript": "5.1.0-beta"
+    "typescript": "5.1.1-rc"
   }
 }

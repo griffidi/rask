@@ -63,6 +63,22 @@ export class Index extends LitElement {
   override connectedCallback(): void {
     super.connectedCallback();
 
+    // if (window?.navigation) {
+    //   window.navigation.addEventListener('navigate', (event: NavigateEvent) => {
+    //     console.dir(event);
+    //   });
+    //   window.navigation.addEventListener(
+    //     'currententrychange',
+    //     (event: NavigationCurrentEntryChangeEvent) => {
+    //       console.dir(event);
+    //     }
+    //   );
+
+    //   window.navigation.addEventListener('navigatesuccess', (event: Event) => {
+    //     console.dir(event);
+    //   });
+    // }
+
     /**
      * subscribe to changes in authentication state and
      * update the isAuthenticated property so that consumers

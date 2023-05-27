@@ -32,11 +32,14 @@ export class LoginPage extends LitElement {
 
   override render(): TemplateResult {
     return html`
+      <!-- <div class="summary">
+        <span class="description">Lit, Material, GraphQL, Prisma, TypeScript and esbuild</span>
+      </div> -->
       <form
         method="submit"
         @submit=${this.#login}>
         <header>
-          <h3>Welcome</h3>
+          <h3>Sign In</h3>
         </header>
         <section>
           <rk-text-field

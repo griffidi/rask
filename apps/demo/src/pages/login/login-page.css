@@ -10,22 +10,40 @@
   --rk-button-padding-inline: 40px;
   --rk-button-padding-block: 12px;
   --rk-button-font-size: 16px;
+  --_form-inline-size: 400px;
 
   display: flex;
   justify-content: center;
   align-items: center;
   inline-size: 100%;
   block-size: 100%;
+  gap: 20px;
 }
+
+/* .summary {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-image: linear-gradient(to right, var(--md-sys-color-purple), var(--md-sys-color-blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  inline-size: 50%;
+
+  .description {
+    font-size: 2.2em;
+    line-height: 1.5;
+    inline-size: 90%;
+  }
+} */
 
 form {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 30px;
   box-sizing: border-box;
   color: var(--md-sys-color-on-gradient);
   background: var(--md-sys-color-surface-1);
-  inline-size: 400px;
+  inline-size: var(--_form-inline-size);
   border-radius: var(--md-sys-shape-extra-large);
   padding-inline: 40px;
   padding-block: 40px;
