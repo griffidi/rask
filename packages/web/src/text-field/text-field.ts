@@ -1,7 +1,6 @@
 import { redispatchEvent } from '@material/web/controller/events.js';
 import { FormController, getFormValue } from '@material/web/controller/form-controller.js';
 import { stringConverter } from '@material/web/controller/string-converter.js';
-import { type ARIAAutoComplete, type ARIAExpanded, type ARIARole } from '@material/web/types/aria.js';
 import { LitElement, html, nothing, type PropertyValues } from 'lit';
 import { property, query, state } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
@@ -18,12 +17,27 @@ export type TextFieldType = 'email' | 'number' | 'password' | 'search' | 'tel' |
 /**
  * Input types that are not fully supported for the text field.
  */
-export type UnsupportedTextFieldType = 'color' | 'date' | 'datetime-local' | 'file' | 'month' | 'time' | 'week';
+export type UnsupportedTextFieldType =
+  | 'color'
+  | 'date'
+  | 'datetime-local'
+  | 'file'
+  | 'month'
+  | 'time'
+  | 'week';
 
 /**
  * Input types that are incompatible with the text field.
  */
-export type InvalidTextFieldType = 'button' | 'checkbox' | 'hidden' | 'image' | 'radio' | 'range' | 'reset' | 'submit';
+export type InvalidTextFieldType =
+  | 'button'
+  | 'checkbox'
+  | 'hidden'
+  | 'image'
+  | 'radio'
+  | 'range'
+  | 'reset'
+  | 'submit';
 
 /**
  * A text field component.
@@ -39,12 +53,12 @@ export class TextField extends LitElement {
   @property() value = '';
   @property() defaultValue = '';
   @property() textDirection = '';
-  @property() override ariaAutoComplete: ARIAAutoComplete | null = null;
+  @property() override ariaAutoComplete: 'off' | 'on' | 'auto' = null;
   @property() ariaControls: string | null = null;
   @property() ariaActiveDescendant: string | null = null;
-  @property() override ariaExpanded: ARIAExpanded | null = null;
+  @property() override ariaExpanded = 'false';
   @property() override ariaLabel!: string;
-  @property() typeRole: ARIARole | null = null;
+  @property() typeRole: string | null = null;
   @property({ reflect: true, converter: stringConverter }) name = '';
   @property() max = '';
   @property({ type: Number }) maxLength = -1;
@@ -305,7 +319,12 @@ export class TextField extends LitElement {
    * https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/setRangeText
    */
   setRangeText(replacement: string): void;
-  setRangeText(replacement: string, start: number, end: number, selectionMode?: SelectionMode): void;
+  setRangeText(
+    replacement: string,
+    start: number,
+    end: number,
+    selectionMode?: SelectionMode
+  ): void;
   setRangeText(...args: unknown[]) {
     // Calling setRangeText with 1 vs 3-4 arguments has different behavior.
     // Use spread syntax and type casting to ensure correct usage.
@@ -322,7 +341,11 @@ export class TextField extends LitElement {
    * @param end The offset into the text field for the end of the selection.
    * @param direction The direction in which the selection is performed.
    */
-  setSelectionRange(start: number | null, end: number | null, direction?: 'backward' | 'forward' | 'none') {
+  setSelectionRange(
+    start: number | null,
+    end: number | null,
+    direction?: 'backward' | 'forward' | 'none'
+  ) {
     this.#getInput().setSelectionRange(start, end, direction);
   }
 
@@ -369,7 +392,8 @@ export class TextField extends LitElement {
   protected override update(changedProperties: PropertyValues) {
     // Consider a value change anything that is not the initial empty string
     // value.
-    const valueHasChanged = changedProperties.has('value') && changedProperties.get('value') !== undefined;
+    const valueHasChanged =
+      changedProperties.has('value') && changedProperties.get('value') !== undefined;
     if (valueHasChanged && !this.ignoreNextValueChange) {
       this.valueHasChanged = true;
     }

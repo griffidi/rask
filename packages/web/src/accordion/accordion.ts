@@ -1,5 +1,4 @@
 import '@material/web/icon/icon.js';
-import type { ARIAExpanded } from '@material/web/types/aria.js';
 import type { TypeEvent } from '@rask/core/types/type-event.js';
 import { LitElement, html, type TemplateResult } from 'lit';
 import { property, query } from 'lit/decorators.js';
@@ -12,7 +11,7 @@ export class Accordion extends LitElement {
   #isClosing = false;
   #isExpanding = false;
 
-  @property() expanded: ARIAExpanded = 'false';
+  @property() expanded = 'false';
 
   @query('.content') private _content!: HTMLElement;
   @query('details') private _details!: HTMLDetailsElement;

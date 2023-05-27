@@ -92,6 +92,7 @@ export class Skeleton extends LitElement {
   /**
    * Dynamically render custom properties used in CSS calculations.
    */
+  // @ts-ignore
   #renderCustomProperties(): TemplateResult {
     const width = this.width?.length ? `--rk-skeleton-width: ${this.width}` : '';
     const height = this.width?.length ? `--rk-skeleton-height: ${this.height}` : '';

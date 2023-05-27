@@ -1,4 +1,3 @@
-import { type ARIARole } from '@material/web/types/aria.js';
 import { LitElement, html, type TemplateResult } from 'lit';
 import { property, query, queryAssignedElements } from 'lit/decorators.js';
 import { classMap, type ClassInfo } from 'lit/directives/class-map.js';
@@ -13,7 +12,7 @@ export class List extends LitElement {
 
   @property() override ariaLabel!: string;
   @property({ type: Number }) listTabIndex = 0;
-  @property() type: ARIARole = 'list';
+  @property() type = 'list';
 
   @queryAssignedElements({ flatten: true, selector: '[rk-list-item]' }) items!: ListItem[];
 

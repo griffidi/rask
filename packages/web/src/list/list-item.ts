@@ -1,4 +1,3 @@
-import { type ARIARole } from '@material/web/types/aria.js';
 import { LitElement, html, nothing, type PropertyValues, type TemplateResult } from 'lit';
 import { property, query } from 'lit/decorators.js';
 import { classMap, type ClassInfo } from 'lit/directives/class-map.js';
@@ -27,7 +26,7 @@ export class ListItemEl extends LitElement implements ListItem {
   @property({ type: Number }) itemTabIndex = -1;
   @property({ type: Boolean, attribute: 'rk-list-item', reflect: true }) isListItem = true;
   @property() supportingText = '';
-  @property() type: ARIARole = 'listitem';
+  @property() type = 'listitem';
 
   /**
    * Only meant to be overridden by subclassing and not by the user. This is
