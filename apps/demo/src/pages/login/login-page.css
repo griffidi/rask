@@ -11,6 +11,11 @@
   --rk-button-padding-block: 12px;
   --rk-button-font-size: 16px;
   --_form-inline-size: 400px;
+  /* --md-outlined-text-field-outline-width: 0px;
+  --md-filled-text-field-container-color: transparent;
+  --md-filled-text-field-hover-state-layer-color: transparent;
+  --md-filled-text-field-hover-container-color: red;
+  --md-filled-field-container-padding-horizontal: 0; */
 
   display: flex;
   justify-content: center;
