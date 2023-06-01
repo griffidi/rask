@@ -13,10 +13,7 @@ interface RandChangeBooleanOptions extends FakeOptions {
  * @param {(options: unknown) => T} func Function to call if the random boolean is true.
  * @returns {T | null} The result of the function call or null if the random boolean is false.
  */
-export function randChanceFn<T>(
-  options: RandChangeBooleanOptions,
-  func: (options: unknown) => T
-): T | null {
+export function randChanceFn<T>(options: RandChangeBooleanOptions, func: (options: unknown) => T): T | null {
   const isNotNull = randChanceBoolean(options);
 
   return isNotNull ? func(options) : null;
