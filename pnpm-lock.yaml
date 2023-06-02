@@ -7,7 +7,8 @@ settings:
 overrides:
   '@rask/core': workspace:*
   '@rask/web': workspace:*
-  typescript: 5.1.0-beta
+  graphql-config: ^5.0.2
+  typescript: 5.1.3
 
 importers:
 
@@ -35,14 +36,14 @@ importers:
         specifier: ^4.2.1
         version: 4.2.1(eslint-config-prettier@8.8.0)(eslint@8.41.0)(prettier@2.8.8)
       pnpm:
-        specifier: ^8.4.0
-        version: 8.4.0
+        specifier: ^8.6.0
+        version: 8.6.0
       prettier:
         specifier: ^2.8.8
         version: 2.8.8
       prettier-plugin-multiline-arrays:
-        specifier: ^1.1.3
-        version: 1.1.3
+        specifier: ^1.1.4
+        version: 1.1.4
 
   api:
     dependencies:
@@ -59,11 +60,11 @@ importers:
         specifier: ^4.0.0
         version: 4.0.0
       '@prisma/client':
-        specifier: ^4.14.1
-        version: 4.14.1(prisma@4.14.1)
+        specifier: ^4.15.0
+        version: 4.15.0(prisma@4.15.0)
       dotenv:
-        specifier: ^16.0.3
-        version: 16.0.3
+        specifier: ^16.1.3
+        version: 16.1.3
       graphql:
         specifier: ^16.6.0
         version: 16.6.0
@@ -129,26 +130,26 @@ importers:
         specifier: ^4.0.2
         version: 4.0.2
       prisma:
-        specifier: ^4.14.1
-        version: 4.14.1
+        specifier: ^4.15.0
+        version: 4.15.0
       rimraf:
         specifier: ^5.0.1
         version: 5.0.1
       ts-node:
         specifier: ^10.9.1
-        version: 10.9.1(@types/node@20.2.5)(typescript@5.1.0-beta)
+        version: 10.9.1(@types/node@20.2.5)(typescript@5.1.3)
       typegraphql-prisma:
-        specifier: 0.25.1
-        version: 0.25.1(@prisma/client@4.14.1)(@types/graphql-fields@1.3.5)(@types/node@20.2.5)(graphql-fields@2.0.3)(graphql-scalars@1.22.1)(prisma@4.14.1)(tslib@2.5.2)(type-graphql@2.0.0-beta.2)
+        specifier: ^0.25.1
+        version: 0.25.1(@prisma/client@4.15.0)(@types/graphql-fields@1.3.5)(@types/node@20.2.5)(graphql-fields@2.0.3)(graphql-scalars@1.22.1)(prisma@4.15.0)(tslib@2.5.2)(type-graphql@2.0.0-beta.2)
       typescript:
-        specifier: 5.1.0-beta
-        version: 5.1.0-beta
+        specifier: 5.1.3
+        version: 5.1.3
 
   apps/demo:
     dependencies:
       '@apollo/client':
-        specifier: ^3.7.14
-        version: 3.7.14(graphql@16.6.0)
+        specifier: ^3.7.15
+        version: 3.7.15(graphql@16.6.0)
       '@lit-labs/context':
         specifier: ^0.3.2-pre.0
         version: 0.3.2-pre.0
@@ -202,8 +203,8 @@ importers:
         version: 2.5.2
     devDependencies:
       '@graphql-codegen/cli':
-        specifier: ^4.0.0
-        version: 4.0.0(@babel/core@7.22.1)(@types/node@20.2.5)(graphql@16.6.0)
+        specifier: ^4.0.1
+        version: 4.0.1(@babel/core@7.22.1)(@types/node@20.2.5)(graphql@16.6.0)
       '@graphql-codegen/typed-document-node':
         specifier: ^5.0.0
         version: 5.0.0(graphql@16.6.0)
@@ -247,17 +248,17 @@ importers:
         specifier: ^2.12.6
         version: 2.12.6(graphql@16.6.0)
       postcss-preset-env:
-        specifier: ^8.4.1
-        version: 8.4.1(postcss@8.4.24)
+        specifier: ^8.4.2
+        version: 8.4.2(postcss@8.4.24)
       rollup-plugin-postcss:
         specifier: ^4.0.2
         version: 4.0.2(postcss@8.4.24)
       rollup-plugin-typescript-paths:
         specifier: ^1.4.0
-        version: 1.4.0(typescript@5.1.0-beta)
+        version: 1.4.0(typescript@5.1.3)
       typescript:
-        specifier: 5.1.0-beta
-        version: 5.1.0-beta
+        specifier: 5.1.3
+        version: 5.1.3
 
   packages/chart:
     dependencies:
@@ -281,8 +282,8 @@ importers:
         specifier: ^20.2.5
         version: 20.2.5
       typescript:
-        specifier: 5.1.0-beta
-        version: 5.1.0-beta
+        specifier: 5.1.3
+        version: 5.1.3
 
   packages/core:
     dependencies:
@@ -312,14 +313,14 @@ importers:
         specifier: ^20.2.5
         version: 20.2.5
       typescript:
-        specifier: 5.1.0-beta
-        version: 5.1.0-beta
+        specifier: 5.1.3
+        version: 5.1.3
 
   packages/graphql:
     dependencies:
       '@apollo/client':
-        specifier: ^3.7.14
-        version: 3.7.14(graphql@16.6.0)
+        specifier: ^3.7.15
+        version: 3.7.15(graphql@16.6.0)
       '@lit-labs/context':
         specifier: ^0.3.2-pre.0
         version: 0.3.2-pre.0
@@ -331,7 +332,7 @@ importers:
         version: link:../core
       apollo3-cache-persist:
         specifier: ^0.14.1
-        version: 0.14.1(@apollo/client@3.7.14)
+        version: 0.14.1(@apollo/client@3.7.15)
       graphql:
         specifier: ^16.6.0
         version: 16.6.0
@@ -349,8 +350,8 @@ importers:
         specifier: ^20.2.5
         version: 20.2.5
       typescript:
-        specifier: 5.1.0-beta
-        version: 5.1.0-beta
+        specifier: 5.1.3
+        version: 5.1.3
 
   packages/identity:
     dependencies:
@@ -383,8 +384,8 @@ importers:
         version: 2.5.2
     devDependencies:
       '@graphql-codegen/cli':
-        specifier: ^4.0.0
-        version: 4.0.0(@babel/core@7.22.1)(@types/node@20.2.5)(graphql@16.6.0)
+        specifier: ^4.0.1
+        version: 4.0.1(@babel/core@7.22.1)(@types/node@20.2.5)(graphql@16.6.0)
       '@graphql-codegen/typed-document-node':
         specifier: ^5.0.0
         version: 5.0.0(graphql@16.6.0)
@@ -404,8 +405,8 @@ importers:
         specifier: ^2.12.6
         version: 2.12.6(graphql@16.6.0)
       typescript:
-        specifier: 5.1.0-beta
-        version: 5.1.0-beta
+        specifier: 5.1.3
+        version: 5.1.3
 
   packages/web:
     dependencies:
@@ -426,8 +427,8 @@ importers:
         specifier: ^20.2.5
         version: 20.2.5
       typescript:
-        specifier: 5.1.0-beta
-        version: 5.1.0-beta
+        specifier: 5.1.3
+        version: 5.1.3
 
 packages:
 
@@ -455,8 +456,8 @@ packages:
       graphql: 16.6.0
     dev: false
 
-  /@apollo/client@3.7.14(graphql@16.6.0):
-    resolution: {integrity: sha512-BRvdkwq5PAXBkjXjboO12uksDm3nrZEqDi4xF97Fk3Mnaa0zDOEfJa7hoKTY9b9KA1EkeWv9BL3i7hSd4SfGBg==}
+  /@apollo/client@3.7.15(graphql@16.6.0):
+    resolution: {integrity: sha512-pLScjo4GAQRWKWyEg2J3FlQr9fbUAuADT0EI2+JlLf2BjaU9I7WUaZVD9w+0qNPE8BZqs53MRQq0OCm1QCW+eg==}
     peerDependencies:
       graphql: ^14.0.0 || ^15.0.0 || ^16.0.0
       graphql-ws: ^5.5.5
@@ -476,7 +477,7 @@ packages:
       '@graphql-typed-document-node/core': 3.2.0(graphql@16.6.0)
       '@wry/context': 0.7.3
       '@wry/equality': 0.5.6
-      '@wry/trie': 0.3.2
+      '@wry/trie': 0.4.3
       graphql: 16.6.0
       graphql-tag: 2.12.6(graphql@16.6.0)
       hoist-non-react-statics: 3.3.2
@@ -723,8 +724,8 @@ packages:
       koa: 2.14.2
     dev: false
 
-  /@augment-vir/common@8.1.0:
-    resolution: {integrity: sha512-mVE9upO/BIHdRIH/HoJAHDaHk57AxtQ3BvmI0B2o2xMvripDxuPf7jhxL793uyJtprLF2X6yE0BhG/rgLeHLbw==}
+  /@augment-vir/common@14.2.2:
+    resolution: {integrity: sha512-eY0YCaE0/3aaA7khqWc4V6DQpfzrRg6FshXATisdQ4nU1ig7QHknIwrDExbhliW37bn6Do1ZwVN+Rxng7nXwMA==}
     dependencies:
       type-fest: 3.11.1
     dev: true
@@ -1873,8 +1874,8 @@ packages:
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
 
-  /@graphql-codegen/cli@4.0.0(@babel/core@7.22.1)(@types/node@20.2.5)(graphql@16.6.0):
-    resolution: {integrity: sha512-wmJXs48Apu+dXQ7utHa3cY1ulFJuflrqpbkhLwxfIAHjSfQouWCn2k7Udq+5PqbCLTDdbUQvw6vGZ5hgud0XuQ==}
+  /@graphql-codegen/cli@4.0.1(@babel/core@7.22.1)(@types/node@20.2.5)(graphql@16.6.0):
+    resolution: {integrity: sha512-/H4imnGOl3hoPXLKmIiGUnXpmBmeIClSZie/YHDzD5N59cZlGGJlIOOrUlOTDpJx5JNU1MTQcRjyTToOYM5IfA==}
     hasBin: true
     peerDependencies:
       graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
@@ -2315,7 +2316,7 @@ packages:
       '@whatwg-node/fetch': 0.9.1
       chalk: 4.1.2
       debug: 4.3.4
-      dotenv: 16.0.3
+      dotenv: 16.1.3
       graphql: 16.6.0
       graphql-request: 6.1.0(graphql@16.6.0)
       http-proxy-agent: 7.0.0
@@ -2676,8 +2677,8 @@ packages:
     resolution: {integrity: sha512-M+M3ZOtd1dtV/uasyk4SZu1vbfEJ4NeENv0F7F12nijZYedB5wSgbtZcuACyssnTznhF4ctUyrR0dZHuHfyWKA==}
     dev: false
 
-  /@prisma/client@4.14.1(prisma@4.14.1):
-    resolution: {integrity: sha512-TZIswkeX1ccsHG/eN2kICzg/csXll0osK3EHu1QKd8VJ3XLcXozbNELKkCNfsCUvKJAwPdDtFCzF+O+raIVldw==}
+  /@prisma/client@4.15.0(prisma@4.15.0):
+    resolution: {integrity: sha512-xnROvyABcGiwqRNdrObHVZkD9EjkJYHOmVdlKy1yGgI+XOzvMzJ4tRg3dz1pUlsyhKxXGCnjIQjWW+2ur+YXuw==}
     engines: {node: '>=14.17'}
     requiresBuild: true
     peerDependencies:
@@ -2686,8 +2687,8 @@ packages:
       prisma:
         optional: true
     dependencies:
-      '@prisma/engines-version': 4.14.0-67.d9a4c5988f480fa576d43970d5a23641aa77bc9c
-      prisma: 4.14.1
+      '@prisma/engines-version': 4.15.0-28.8fbc245156db7124f997f4cecdd8d1219e360944
+      prisma: 4.15.0
 
   /@prisma/debug@4.15.0:
     resolution: {integrity: sha512-dkbPz+gOVlWDBAaOEseSpAUz9NppT38UlwdryPyrwct6OClLirNC7wH+TpAQk5OZp9x59hNnfDz+T7XvL1v0/Q==}
@@ -2699,17 +2700,12 @@ packages:
       - supports-color
     dev: true
 
-  /@prisma/engines-version@4.14.0-67.d9a4c5988f480fa576d43970d5a23641aa77bc9c:
-    resolution: {integrity: sha512-3jum8/YSudeSN0zGW5qkpz+wAN2V/NYCQ+BPjvHYDfWatLWlQkqy99toX0GysDeaUoBIJg1vaz2yKqiA3CFcQw==}
-
-  /@prisma/engines@4.14.1:
-    resolution: {integrity: sha512-APqFddPVHYmWNKqc+5J5SqrLFfOghKOLZxobmguDUacxOwdEutLsbXPVhNnpFDmuQWQFbXmrTTPoRrrF6B1MWA==}
-    requiresBuild: true
+  /@prisma/engines-version@4.15.0-28.8fbc245156db7124f997f4cecdd8d1219e360944:
+    resolution: {integrity: sha512-sVOig4tjGxxlYaFcXgE71f/rtFhzyYrfyfNFUsxCIEJyVKU9rdOWIlIwQ2NQ7PntvGnn+x0XuFo4OC1jvPJKzg==}
 
   /@prisma/engines@4.15.0:
     resolution: {integrity: sha512-FTaOCGs0LL0OW68juZlGxFtYviZa4xdQj/rQEdat2txw0s3Vu/saAPKjNVXfIgUsGXmQ72HPgNr6935/P8FNAA==}
     requiresBuild: true
-    dev: true
 
   /@prisma/fetch-engine@4.15.0:
     resolution: {integrity: sha512-J5HVpRpLxsw9iDLcwwwxL09DXhERnutMiSwyfgHwCQhTHcETc5++XGZlHZtG4toykO3tploCDynXhJc6Fe/u2A==}
@@ -3525,6 +3521,13 @@ packages:
       tslib: 2.5.2
     dev: false
 
+  /@wry/trie@0.4.3:
+    resolution: {integrity: sha512-I6bHwH0fSf6RqQcnnXLJKhkSXG45MFral3GxPaY4uAl0LYDZM+YDVDAiU9bYwjTuysy1S0IeecWtmq1SZA3M1w==}
+    engines: {node: '>=8'}
+    dependencies:
+      tslib: 2.5.2
+    dev: false
+
   /abortcontroller-polyfill@1.7.5:
     resolution: {integrity: sha512-JMJ5soJWP18htbbxJjG7bG6yuI6pRhgJ0scHHTfkUjf6wjP912xZWvM+A4sJK3gqd9E8fcPbDnOefbA9Th/FIQ==}
     dev: true
@@ -3633,12 +3636,12 @@ packages:
       picomatch: 2.3.1
     dev: true
 
-  /apollo3-cache-persist@0.14.1(@apollo/client@3.7.14):
+  /apollo3-cache-persist@0.14.1(@apollo/client@3.7.15):
     resolution: {integrity: sha512-p/jNzN/MmSd0TmY7/ts0B3qi0SdQ3w9yNLQdKqB3GGb9xATUlAum2v4hSrTeWd/DZKK2Z7Xg5kFXTH6nNVnKSQ==}
     peerDependencies:
       '@apollo/client': ^3.2.5
     dependencies:
-      '@apollo/client': 3.7.14(graphql@16.6.0)
+      '@apollo/client': 3.7.15(graphql@16.6.0)
     dev: false
 
   /archiver-utils@2.1.0:
@@ -4747,6 +4750,11 @@ packages:
 
   /dotenv@16.0.3:
     resolution: {integrity: sha512-7GO6HghkA5fYG9TYnNxi14/7K9f5occMlp3zXAuSxn7CKCxt9xbNWG7yF8hTCSUchlfWSe3uLmlPfigevRItzQ==}
+    engines: {node: '>=12'}
+    dev: true
+
+  /dotenv@16.1.3:
+    resolution: {integrity: sha512-FYssxsmCTtKL72fGBSvb1K9dRz0/VZeWqFme/vSb7r7323x4CRaHu4LvQ5JG3+s6yt2YPbBrkpiEODktfyjI9A==}
     engines: {node: '>=12'}
 
   /dset@3.1.2:
@@ -7366,8 +7374,8 @@ packages:
     engines: {node: '>=4'}
     dev: true
 
-  /pnpm@8.4.0:
-    resolution: {integrity: sha512-oW5jpFgCmXHIVOU5HZLBWGBtCH7K4JSRdpk7/f+Dtp+KhUsX5NQaWzzYyU9TX7eAsfYMko179133gbUS+JTrMw==}
+  /pnpm@8.6.0:
+    resolution: {integrity: sha512-uMaWGXlvG+m5NIJaR4JEEenChbg+1AP4zVpqs4PEcZg4uH+lXMTd/X/lirKZA+TC0w0d+++y3btINcwyKsuwAA==}
     engines: {node: '>=16.14'}
     hasBin: true
     dev: true
@@ -7934,8 +7942,8 @@ packages:
       postcss-value-parser: 4.2.0
     dev: true
 
-  /postcss-preset-env@8.4.1(postcss@8.4.24):
-    resolution: {integrity: sha512-IlcUT8ZSuQFWXJ/F+KvqmkzT85u33rlvd36IzM6qhdnccO7Rs3uBrHY802BFjNcPRawqSCDmPv7KKyCzNxx5Fw==}
+  /postcss-preset-env@8.4.2(postcss@8.4.24):
+    resolution: {integrity: sha512-Bihxo+FsyVNjsRADiYYnj9Ez0WBSWSSHAe8WvxoMlqrw8H8m6gK9E0MkDd7P6ForoikRIF3I8grGg/pFM6ECRQ==}
     engines: {node: ^14 || ^16 || >=18}
     peerDependencies:
       postcss: ^8.4
@@ -8102,10 +8110,10 @@ packages:
       fast-diff: 1.3.0
     dev: true
 
-  /prettier-plugin-multiline-arrays@1.1.3:
-    resolution: {integrity: sha512-8I4FWatPhZXAsPMKM5E6h92ZRLAniJDdl9Uyy5aBvz9jJxc27CYQJIKBXdRW1SHrgKjEeWchmsAkLVyORIEOqw==}
+  /prettier-plugin-multiline-arrays@1.1.4:
+    resolution: {integrity: sha512-c47t/UxtQQ0sHps5gvBj7HAY4S1h867ziL2UxQN+aqcZH+S7daZMj0FcEHD8PYyJn8M3916cGkJuJdc6X6YlJA==}
     dependencies:
-      '@augment-vir/common': 8.1.0
+      '@augment-vir/common': 14.2.2
     dev: true
 
   /prettier@2.8.8:
@@ -8114,13 +8122,13 @@ packages:
     hasBin: true
     dev: true
 
-  /prisma@4.14.1:
-    resolution: {integrity: sha512-z6hxzTMYqT9SIKlzD08dhzsLUpxjFKKsLpp5/kBDnSqiOjtUyyl/dC5tzxLcOa3jkEHQ8+RpB/fE3w8bgNP51g==}
+  /prisma@4.15.0:
+    resolution: {integrity: sha512-iKZZpobPl48gTcSZVawLMQ3lEy6BnXwtoMj7hluoGFYu2kQ6F9LBuBrUyF95zRVnNo8/3KzLXJXJ5TEnLSJFiA==}
     engines: {node: '>=14.17'}
     hasBin: true
     requiresBuild: true
     dependencies:
-      '@prisma/engines': 4.14.1
+      '@prisma/engines': 4.15.0
 
   /process-nextick-args@2.0.1:
     resolution: {integrity: sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag==}
@@ -8445,7 +8453,7 @@ packages:
       - ts-node
     dev: true
 
-  /rollup-plugin-typescript-paths@1.4.0(typescript@5.1.0-beta):
+  /rollup-plugin-typescript-paths@1.4.0(typescript@5.1.3):
     resolution: {integrity: sha512-6EgeLRjTVmymftEyCuYu91XzY5XMB5lR0YrJkeT0D7OG2RGSdbNL+C/hfPIdc/sjMa9Sl5NLsxIr6C/+/5EUpA==}
     peerDependencies:
       typescript: '>=3.4'
@@ -8453,7 +8461,7 @@ packages:
       typescript:
         optional: true
     dependencies:
-      typescript: 5.1.0-beta
+      typescript: 5.1.3
     dev: true
 
   /rollup-pluginutils@2.8.2:
@@ -9073,7 +9081,7 @@ packages:
       code-block-writer: 12.0.0
     dev: true
 
-  /ts-node@10.9.1(@types/node@20.2.5)(typescript@5.1.0-beta):
+  /ts-node@10.9.1(@types/node@20.2.5)(typescript@5.1.3):
     resolution: {integrity: sha512-NtVysVPkxxrwFGUUxGYhfux8k78pQB3JqYBXlLRZgdGUqTO5wU/UyHop5p70iEbGhB7q5KmiZiU0Y3KlJrScEw==}
     hasBin: true
     peerDependencies:
@@ -9101,7 +9109,7 @@ packages:
       create-require: 1.1.1
       diff: 4.0.2
       make-error: 1.3.6
-      typescript: 5.1.0-beta
+      typescript: 5.1.3
       v8-compile-cache-lib: 3.0.1
       yn: 3.1.1
     dev: true
@@ -9202,7 +9210,7 @@ packages:
       is-typed-array: 1.1.10
     dev: true
 
-  /typegraphql-prisma@0.25.1(@prisma/client@4.14.1)(@types/graphql-fields@1.3.5)(@types/node@20.2.5)(graphql-fields@2.0.3)(graphql-scalars@1.22.1)(prisma@4.14.1)(tslib@2.5.2)(type-graphql@2.0.0-beta.2):
+  /typegraphql-prisma@0.25.1(@prisma/client@4.15.0)(@types/graphql-fields@1.3.5)(@types/node@20.2.5)(graphql-fields@2.0.3)(graphql-scalars@1.22.1)(prisma@4.15.0)(tslib@2.5.2)(type-graphql@2.0.0-beta.2):
     resolution: {integrity: sha512-9NxRpbVM6CcLl4ZznKTsxZJwGVrE6UmeZsFPQY4eifFcEnUzVFzcaJioMaFdalrXQGmRXk0O6unSCHAzx1jeuw==}
     engines: {node: '>=12.4'}
     hasBin: true
@@ -9216,7 +9224,7 @@ packages:
       tslib: ^2.5.0
       type-graphql: ^1.1.1 || 2.0.0-beta.1
     dependencies:
-      '@prisma/client': 4.14.1(prisma@4.14.1)
+      '@prisma/client': 4.15.0(prisma@4.15.0)
       '@prisma/generator-helper': 4.15.0
       '@prisma/internals': 4.15.0
       '@types/graphql-fields': 1.3.5
@@ -9224,7 +9232,7 @@ packages:
       graphql-fields: 2.0.3
       graphql-scalars: 1.22.1(graphql@16.6.0)
       pluralize: 8.0.0
-      prisma: 4.14.1
+      prisma: 4.15.0
       semver: 7.5.1
       ts-morph: 18.0.0
       tslib: 2.5.2
@@ -9234,8 +9242,8 @@ packages:
       - supports-color
     dev: true
 
-  /typescript@5.1.0-beta:
-    resolution: {integrity: sha512-NT+wDYZu95yUj1K9fbHz6v2gl3m56MNZs6tbKdMJq7pN0l+oQn0g6Z0IV3fHcEQDA9LxZgs3BrWMdMsvJZixdg==}
+  /typescript@5.1.3:
+    resolution: {integrity: sha512-XH627E9vkeqhlZFQuL+UsyAXEnibT0kWR2FWONlr4sTjvxyJYnyefgrkyECLzM5NenmKzRAy2rR/OlYLA1HkZw==}
     engines: {node: '>=14.17'}
     hasBin: true
     dev: true

@@ -41,16 +41,16 @@
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-lit": "^1.8.3",
     "eslint-plugin-prettier": "^4.2.1",
-    "pnpm": "^8.4.0",
+    "pnpm": "^8.6.0",
     "prettier": "^2.8.8",
-    "prettier-plugin-multiline-arrays": "^1.1.3"
+    "prettier-plugin-multiline-arrays": "^1.1.4"
   },
   "pnpm": {
     "overrides": {
       "@rask/core": "workspace:*",
       "@rask/web": "workspace:*",
       "graphql-config": "^5.0.2",
-      "typescript": "5.1.0-beta"
+      "typescript": "5.1.3"
     },
     "peerDependencyRules": {
       "allowAny": [

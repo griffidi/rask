@@ -22,7 +22,7 @@
     "dev": "wds"
   },
   "dependencies": {
-    "@apollo/client": "^3.7.14",
+    "@apollo/client": "^3.7.15",
     "@lit-labs/context": "^0.3.2-pre.0",
     "@lit-labs/router": "^0.1.1",
     "@lit-labs/task": "^2.1.1",
@@ -42,7 +42,7 @@
     "tslib": "^2.5.2"
   },
   "devDependencies": {
-    "@graphql-codegen/cli": "^4.0.0",
+    "@graphql-codegen/cli": "^4.0.1",
     "@graphql-codegen/typed-document-node": "^5.0.0",
     "@graphql-codegen/typescript": "^4.0.0",
     "@graphql-codegen/typescript-operations": "^4.0.0",
@@ -57,9 +57,9 @@
     "@web/dev-server-rollup": "^0.5.0",
     "@web/polyfills-loader": "^2.1.0",
     "graphql-tag": "^2.12.6",
-    "postcss-preset-env": "^8.4.1",
+    "postcss-preset-env": "^8.4.2",
     "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-typescript-paths": "^1.4.0",
-    "typescript": "5.1.1-rc"
+    "typescript": "5.1.3"
   }
 }
