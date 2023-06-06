@@ -151,8 +151,8 @@ importers:
         specifier: ^3.7.15
         version: 3.7.15(graphql@16.6.0)
       '@lit-labs/context':
-        specifier: ^0.3.2-pre.0
-        version: 0.3.2-pre.0
+        specifier: ^0.3.2
+        version: 0.3.2
       '@lit-labs/router':
         specifier: ^0.1.1
         version: 0.1.1
@@ -322,8 +322,8 @@ importers:
         specifier: ^3.7.15
         version: 3.7.15(graphql@16.6.0)
       '@lit-labs/context':
-        specifier: ^0.3.2-pre.0
-        version: 0.3.2-pre.0
+        specifier: ^0.3.2
+        version: 0.3.2
       '@lit/reactive-element':
         specifier: ^2.0.0-pre.0
         version: 2.0.0-pre.0
@@ -356,8 +356,8 @@ importers:
   packages/identity:
     dependencies:
       '@lit-labs/context':
-        specifier: ^0.3.2-pre.0
-        version: 0.3.2-pre.0
+        specifier: ^0.3.2
+        version: 0.3.2
       '@lit-labs/task':
         specifier: ^2.1.1
         version: 2.1.1
@@ -2545,11 +2545,11 @@ packages:
     resolution: {integrity: sha512-fuscdXJ9G1qb7W8VdHi+IwRqij3lBkosAm4ydQtEmbY58OzHXqQhvlxqEkoz0yssNVn38bcpRWgA9PP+OGoisw==}
     dev: false
 
-  /@lit-labs/context@0.3.2-pre.0:
-    resolution: {integrity: sha512-gKIXnxZP8s5ILn2nWNe+Db7b1Wy18I9L1T+5kDfWq6X6PqOgKHAPctyigubB1T811wO+SfvGlBtkZLvfhDrCJw==}
+  /@lit-labs/context@0.3.2:
+    resolution: {integrity: sha512-JwdfPLH+DwTuXWDDHy6ANRlx2TDSYH7itgwShAXtTgvBtFnbvKWZyL5WgidJRgWrX/gD5ZhOrKdF0/wcRJvIpA==}
     dependencies:
-      '@lit/reactive-element': 2.0.0-pre.0
-      lit: 3.0.0-pre.0
+      '@lit/reactive-element': 1.6.2
+      lit: 2.7.5
     dev: false
 
   /@lit-labs/router@0.1.1:
@@ -2574,6 +2574,12 @@ packages:
 
   /@lit/reactive-element@1.6.1:
     resolution: {integrity: sha512-va15kYZr7KZNNPZdxONGQzpUr+4sxVu7V/VG7a8mRfPPXUyhEYj5RzXCQmGrlP3tAh0L3HHm5AjBMFYRqlM9SA==}
+    dependencies:
+      '@lit-labs/ssr-dom-shim': 1.1.1
+    dev: false
+
+  /@lit/reactive-element@1.6.2:
+    resolution: {integrity: sha512-rDfl+QnCYjuIGf5xI2sVJWdYIi56CTCwWa+nidKYX6oIuBYwUbT/vX4qbUDlHiZKJ/3FRNQ/tWJui44p6/stSA==}
     dependencies:
       '@lit-labs/ssr-dom-shim': 1.1.1
     dev: false
@@ -6533,7 +6539,7 @@ packages:
     resolution: {integrity: sha512-xXAeVWKGr4/njq0rGC9dethMnYCq5hpKYrgQZYTzawt9YQhMiXfD+T1RgrdY3NamOxwq2aXlb0vOI6e29CKgVQ==}
     dependencies:
       '@lit-labs/ssr-dom-shim': 1.1.1
-      '@lit/reactive-element': 1.6.1
+      '@lit/reactive-element': 1.6.2
       lit-html: 2.7.4
     dev: false
 
@@ -6559,7 +6565,15 @@ packages:
   /lit@2.7.4:
     resolution: {integrity: sha512-cgD7xrZoYr21mbrkZIuIrj98YTMw/snJPg52deWVV4A8icLyNHI3bF70xsJeAgwTuiq5Kkd+ZR8gybSJDCPB7g==}
     dependencies:
-      '@lit/reactive-element': 1.6.1
+      '@lit/reactive-element': 1.6.2
+      lit-element: 3.3.2
+      lit-html: 2.7.4
+    dev: false
+
+  /lit@2.7.5:
+    resolution: {integrity: sha512-i/cH7Ye6nBDUASMnfwcictBnsTN91+aBjXoTHF2xARghXScKxpD4F4WYI+VLXg9lqbMinDfvoI7VnZXjyHgdfQ==}
+    dependencies:
+      '@lit/reactive-element': 1.6.2
       lit-element: 3.3.2
       lit-html: 2.7.4
     dev: false
