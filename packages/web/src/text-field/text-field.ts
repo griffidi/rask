@@ -1,6 +1,5 @@
 import { redispatchEvent } from '@material/web/controller/events.js';
 import { FormController, getFormValue } from '@material/web/controller/form-controller.js';
-import { stringConverter } from '@material/web/controller/string-converter.js';
 import { LitElement, html, nothing, type PropertyValues } from 'lit';
 import { property, query, state } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';

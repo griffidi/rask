@@ -37,10 +37,10 @@
     "build": ""
   },
   "dependencies": {
-    "@material/web": "1.0.0-pre.9",
+    "@material/web": "1.0.0-pre.10",
     "@rask/core": "workspace:^",
     "lit": "^3.0.0-pre.0",
-    "tslib": "^2.5.2"
+    "tslib": "^2.5.3"
   },
   "devDependencies": {
     "@types/node": "^20.2.5",

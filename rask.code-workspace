@@ -49,6 +49,8 @@
     "typescript.workspaceSymbols.scope": "allOpenProjects",
     "typescript.implementationsCodeLens.enabled": true,
     "typescript.preferences.includePackageJsonAutoImports": "auto",
+    "typescript.tsserver.web.projectWideIntellisense.enabled": true,
+    // "typescript.tsserver.web.projectWideIntellisense.suppressSemanticErrors": true,
     "js/ts.implicitProjectConfig.strictNullChecks": true,
     "js/ts.implicitProjectConfig.experimentalDecorators": true,
     "js/ts.implicitProjectConfig.module": "ESNext",

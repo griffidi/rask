@@ -34,7 +34,7 @@
     "@rask/graphql": "workspace:^",
     "graphql": "^16.6.0",
     "lit": "^3.0.0-pre.0",
-    "tslib": "^2.5.2"
+    "tslib": "^2.5.3"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "^4.0.1",

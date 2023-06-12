@@ -30,9 +30,9 @@
     "@rask/core": "workspace:^",
     "apollo3-cache-persist": "^0.14.1",
     "graphql": "^16.6.0",
-    "graphql-http": "^1.18.0",
+    "graphql-http": "^1.19.0",
     "lit": "^3.0.0-pre.0",
-    "tslib": "^2.5.2"
+    "tslib": "^2.5.3"
   },
   "devDependencies": {
     "@types/node": "^20.2.5",

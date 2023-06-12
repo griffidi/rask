@@ -24,7 +24,7 @@
     "@rask/core": "workspace:^",
     "chart.js": "^4.3.0",
     "lit": "^3.0.0-pre.0",
-    "tslib": "^2.5.2"
+    "tslib": "^2.5.3"
   },
   "devDependencies": {
     "@types/chart.js": "^2.9.37",
