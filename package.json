@@ -20,10 +20,10 @@
     "@material/web",
     "signals"
   ],
-  "packageManager": "pnpm@8.5.0",
+  "packageManager": "pnpm@8.6.0",
   "engines": {
-    "node": ">=18.11.0 || >=19.2.0 || >= 20.1",
-    "pnpm": ">=8.4.0"
+    "node": ">=18.11",
+    "pnpm": ">=8.6.0"
   },
   "type": "module",
   "workspaces": [
@@ -47,7 +47,7 @@
     "overrides": {
       "@rask/core": "workspace:*",
       "@rask/web": "workspace:*",
-      "typescript": "5.1.0-beta"
+      "typescript": "5.2.0-beta"
     },
     "peerDependencyRules": {
       "allowAny": [
