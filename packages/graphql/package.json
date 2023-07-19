@@ -25,18 +25,18 @@
     "build": ""
   },
   "dependencies": {
-    "@apollo/client": "^3.7.14",
-    "@lit-labs/context": "^0.3.2-pre.0",
+    "@apollo/client": "^3.7.17",
+    "@lit-labs/context": "^0.3.3",
     "@lit/reactive-element": "^2.0.0-pre.0",
     "@rask/core": "workspace:^",
     "apollo3-cache-persist": "^0.14.1",
-    "graphql": "^16.6.0",
-    "graphql-http": "^1.18.0",
+    "graphql": "^16.7.1",
+    "graphql-http": "^1.20.0",
     "lit": "^3.0.0-pre.0",
-    "tslib": "^2.5.2"
+    "tslib": "^2.6.0"
   },
   "devDependencies": {
-    "@types/node": "^20.2.5",
+    "@types/node": "^20.4.2",
     "typescript": "5.2.0-beta"
   },
   "peerDependencies": {

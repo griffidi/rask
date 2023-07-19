@@ -16,7 +16,7 @@
     // "inlineSources": true,
     "lib": ["ESNext"],
     "module": "ESNext",
-    "moduleResolution": "node16",
+    "moduleResolution": "NodeNext",
     "noEmitOnError": true,
     "noFallthroughCasesInSwitch": true,
     "noImplicitAny": true,

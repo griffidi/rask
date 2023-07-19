@@ -35,6 +35,23 @@
       }
     },
     {
+      "name": "Debug graphql (chrome)",
+      "type": "chrome",
+      "request": "launch",
+      "runtimeExecutable": "dev",
+      "runtimeArgs": ["dev"],
+      "sourceMaps": false,
+      "url": "http://localhost:8008/graphql",
+      "userDataDir": "${workspaceFolder}/.out/edge/graphql",
+      "internalConsoleOptions": "neverOpen",
+      "smartStep": true,
+      "presentation": {
+        "hidden": false,
+        "group": "api",
+        "order": 2
+      }
+    },
+    {
       "name": "Debug demo (server)",
       "cwd": "${workspaceFolder}/apps/demo",
       "request": "launch",
@@ -57,6 +74,23 @@
       "webRoot": "${workspaceFolder}/apps/demo/src",
       "skipFiles": ["<node_internals>/**"],
       "userDataDir": "${workspaceFolder}/.out/edge/apps/demo",
+      "internalConsoleOptions": "neverOpen",
+      "smartStep": true,
+      "sourceMaps": true,
+      "presentation": {
+        "hidden": false,
+        "group": "demo",
+        "order": 2
+      }
+    },
+    {
+      "name": "Debug demo (chrome)",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:8000",
+      "webRoot": "${workspaceFolder}/apps/demo/src",
+      "skipFiles": ["<node_internals>/**"],
+      // "userDataDir": "${workspaceFolder}/.out/edge/apps/demo",
       "internalConsoleOptions": "neverOpen",
       "smartStep": true,
       "sourceMaps": true,
@@ -89,10 +123,26 @@
       "stopAll": true
     },
     {
+      "name": "Launch api (chrome)",
+      "configurations": [
+        "Debug api",
+        "Debug graphql (chrome)"
+      ],
+      "stopAll": true
+    },
+    {
       "name": "Launch demo",
       "configurations": [
         "Debug demo (server)",
         "Debug demo (edge)"
+      ],
+      "stopAll": true
+    },
+    {
+      "name": "Launch demo (chrome)",
+      "configurations": [
+        "Debug demo (server)",
+        "Debug demo (chrome)"
       ],
       "stopAll": true
     },
@@ -102,6 +152,15 @@
         "Debug api",
         "Debug demo (server)",
         "Debug demo (edge)"
+      ],
+      "stopAll": true
+    },
+    {
+      "name": "Launch demo/api (chrome)",
+      "configurations": [
+        "Debug api",
+        "Debug demo (server)",
+        "Debug demo (chrome)"
       ],
       "stopAll": true
     }
