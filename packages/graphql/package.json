@@ -33,10 +33,10 @@
     "graphql": "^16.7.1",
     "graphql-http": "^1.21.0",
     "lit": "^3.0.0-pre.0",
-    "tslib": "^2.6.0"
+    "tslib": "^2.6.1"
   },
   "devDependencies": {
-    "@types/node": "^20.4.4",
+    "@types/node": "^20.4.5",
     "typescript": "5.2.0-beta"
   },
   "peerDependencies": {

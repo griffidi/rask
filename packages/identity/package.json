@@ -35,15 +35,15 @@
     "@rask/graphql": "workspace:^",
     "graphql": "^16.7.1",
     "lit": "^3.0.0-pre.0",
-    "tslib": "^2.6.0"
+    "tslib": "^2.6.1"
   },
   "devDependencies": {
-    "@graphql-codegen/cli": "^4.0.1",
+    "@graphql-codegen/cli": "^5.0.0",
     "@graphql-codegen/typed-document-node": "^5.0.1",
     "@graphql-codegen/typescript": "^4.0.1",
     "@graphql-codegen/typescript-operations": "^4.0.1",
     "@graphql-typed-document-node/core": "^3.2.0",
-    "@types/node": "^20.4.4",
+    "@types/node": "^20.4.5",
     "graphql-tag": "^2.12.6",
     "typescript": "5.2.0-beta"
   },
