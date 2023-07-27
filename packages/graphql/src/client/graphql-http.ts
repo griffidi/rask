@@ -12,7 +12,7 @@ class HTTPLink extends ApolloLink {
   }
 
   override request(operation: Operation): Observable<FetchResult> {
-    return new Observable((sink) => {
+    return new Observable(sink => {
       return this.#client.subscribe<FetchResult>(
         { ...operation, query: print(operation.query) },
         {

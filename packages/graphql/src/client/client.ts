@@ -22,11 +22,15 @@ const GRAPHQL_URI = cache.get<string>(GRAPHQL_URI_CACHE_KEY);
 interface ClientQueryOptions extends Omit<QueryOptions, 'query'> {}
 
 @injectable()
-export class Client {
+export class Client implements Disposable {
   #apolloClient: ApolloClient<NormalizedCacheObject> | undefined;
 
   constructor() {
     this.#apolloClient = createApolloClient({ uri: GRAPHQL_URI });
+  }
+
+  [Symbol.dispose]() {
+    this.#apolloClient = null;
   }
 
   /**

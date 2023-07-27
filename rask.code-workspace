@@ -31,8 +31,7 @@
       "name": "web",
       "path": "packages/web"
     }
-  ],
-  "settings": {
+  ],  "settings": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "javascript.format.enable": false,
     "javascript.preferences.importModuleSpecifier": "project-relative",
@@ -155,7 +154,6 @@
     "eslint.workingDirectories": [{ "mode": "auto" }],
     "eslint.codeActionsOnSave.mode": "problems",
     "eslint.experimental.useFlatConfig": true,
-    "eslint.packageManager": "pnpm",
     "eslint.validate": [
       "json",
       "javascript",
