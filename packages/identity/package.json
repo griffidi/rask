@@ -45,7 +45,7 @@
     "@graphql-typed-document-node/core": "^3.2.0",
     "@types/node": "^20.4.5",
     "graphql-tag": "^2.12.6",
-    "typescript": "5.2.0-dev.20230727"
+    "typescript": "5.2.1-rc"
   },
   "peerDependencies": {
     "@lit-labs/context": "*",

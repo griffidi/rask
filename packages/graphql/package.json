@@ -37,7 +37,7 @@
   },
   "devDependencies": {
     "@types/node": "^20.4.5",
-    "typescript": "5.2.0-dev.20230727"
+    "typescript": "5.2.1-rc"
   },
   "peerDependencies": {
     "@apollo/client": "*",

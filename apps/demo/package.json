@@ -61,6 +61,6 @@
     "postcss-preset-env": "^9.1.0",
     "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-typescript-paths": "^1.4.0",
-    "typescript": "5.2.0-dev.20230727"
+    "typescript": "5.2.1-rc"
   }
 }

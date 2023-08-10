@@ -67,7 +67,7 @@
     "rimraf": "^5.0.1",
     "ts-node": "^10.9.1",
     "typegraphql-prisma": "0.27.0",
-    "typescript": "5.2.0-dev.20230727"
+    "typescript": "5.2.1-rc"
   },
   "peerDependencies": {
     "typescript": "5.*"

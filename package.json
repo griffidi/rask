@@ -47,7 +47,7 @@
     "overrides": {
       "@rask/core": "workspace:*",
       "@rask/web": "workspace:*",
-      "typescript": "5.2.0-dev.20230727"
+      "typescript": "5.2.1-rc"
     },
     "peerDependencyRules": {
       "allowAny": [
