@@ -25,7 +25,7 @@
     "build": ""
   },
   "dependencies": {
-    "@apollo/client": "^3.7.17",
+    "@apollo/client": "^3.8.0",
     "@lit-labs/context": "^0.3.3",
     "@lit/reactive-element": "^2.0.0-pre.0",
     "@rask/core": "workspace:^",
@@ -36,7 +36,7 @@
     "tslib": "^2.6.1"
   },
   "devDependencies": {
-    "@types/node": "^20.4.5",
+    "@types/node": "^20.4.9",
     "typescript": "5.2.1-rc"
   },
   "peerDependencies": {
