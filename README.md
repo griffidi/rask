@@ -14,7 +14,7 @@ This is a [Lit](http://lit.dev) based Monorepo that contains a web component lib
 
 ### Requirements
 
-- [Node.js](https://nodejs.dev/en/download/) version `>= 18.11` or `>= 19.2`
+- [Node.js](https://nodejs.dev/en/download/) version `>= 18.17` or `>= 19.2`
 - Browser
   - [Chrome >= 112](1)
   - [Edge >= 111](2)
