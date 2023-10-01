@@ -24,7 +24,7 @@ export class ApolloClientProvider implements ReactiveController {
     }
 
     const client = createApolloClient(options);
-    this.#provider = new ContextProvider(host, apolloClientContext, client);
+    this.#provider = new ContextProvider(host as any, { context: apolloClientContext,initialValue: client} );
 
     this.host = host;
     host.addController(this);

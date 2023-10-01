@@ -1,6 +1,9 @@
 {
   "extends": "./tsconfig.base.json",
   "files": [],
+  "compilerOptions": {
+    "module": "NodeNext"
+  },
   "references": [
     { "path": "./api" },
     { "path": "./apps/demo" },

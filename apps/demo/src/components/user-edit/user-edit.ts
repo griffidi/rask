@@ -52,7 +52,7 @@ export class UserEdit extends LitElement {
               <input
                 placeholder="Role"
                 required
-                .value=${this.user.role} />
+                .value=${this.user.role.name} />
             </label>
           </div>
           <label>

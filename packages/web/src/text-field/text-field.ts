@@ -1,6 +1,6 @@
-import { redispatchEvent } from '@material/web/controller/events.js';
-import { FormController, getFormValue } from '@material/web/controller/form-controller.js';
-import { stringConverter } from '@material/web/controller/string-converter.js';
+import { redispatchEvent } from '@material/web/internal/controller/events.js';
+// import { FormController, getFormValue } from '@material/web/internal/controller/form-controller.js';
+import { stringConverter } from '@material/web/internal/controller/string-converter.js';
 import { LitElement, html, nothing, type PropertyValues } from 'lit';
 import { property, query, state } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
@@ -72,9 +72,9 @@ export class TextField extends LitElement {
     return this.closest('form');
   }
 
-  [getFormValue]() {
-    return this.value;
-  }
+  // [getFormValue]() {
+  //   return this.value;
+  // }
 
   /**
    * Indicates whether or not a user should be able to edit the text field's
@@ -221,7 +221,7 @@ export class TextField extends LitElement {
 
   constructor() {
     super();
-    this.addController(new FormController(this));
+    // this.addController(new FormController(this));
     this.addEventListener('click', this.focus);
     this.addEventListener('focusin', this.#handleFocusin);
     this.addEventListener('focusout', this.#handleFocusout);
@@ -456,18 +456,12 @@ export class TextField extends LitElement {
         tabindex=${this.disabled ? '-1' : this.tabIndex}
         style=${styleMap(style)}
         aria-activedescendant=${this.ariaActiveDescendant || nothing}
-        aria-autocomplete=${this.ariaAutoComplete || nothing}
         aria-controls=${this.ariaControls || nothing}
-        aria-expanded=${this.ariaExpanded || nothing}
         aria-invalid=${this.#hasError}
         aria-label=${this.ariaLabel || this.label || nothing}
         ?disabled=${this.disabled}
         max=${(this.max || nothing) as unknown as number}
-        maxlength=${this.maxLength > -1 ? this.maxLength : nothing}
         min=${(this.min || nothing) as unknown as number}
-        minlength=${this.minLength > -1 ? this.minLength : nothing}
-        pattern=${this.pattern || nothing}
-        role=${this.typeRole || nothing}
         ?readonly=${this.readOnly}
         ?required=${this.required}
         step=${(this.step || nothing) as unknown as number}

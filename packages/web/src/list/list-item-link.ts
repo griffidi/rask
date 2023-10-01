@@ -17,9 +17,8 @@ export class ListItemLink extends ListItemEl {
     return html`
       <a
         tabindex=${this.disabled ? -1 : this.itemTabIndex}
-        role=${this.type}
-        aria-selected=${this.ariaSelected || nothing}
-        aria-checked=${this.ariaChecked || nothing}
+        aria-selected=${this.selected}
+        aria-checked=${this.checked}
         class="list-item ${classMap(this.getRenderListItemClasses())}"
         href=${this.href}
         target=${(this.target as LinkTarget) || nothing}

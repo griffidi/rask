@@ -18,7 +18,7 @@ export interface RouteEnterParams {
  */
 export function createRouter(host: LitElement) {
   const router = new Router(host, routes);
-  const provider = new ContextProvider(host, {
+  const provider = new ContextProvider(host as any, {
     context: routerContext,
     initialValue: router,
   });

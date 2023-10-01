@@ -27,7 +27,6 @@ export class List extends LitElement {
       <ul
         ariaLabel=${this.ariaLabel}
         class="rk-list ${classMap(this.getRenderListClasses())}"
-        role=${this.type}
         tabindex=${this.listTabIndex}
         @keydown=${this.#handleKeydown}>
         ${this.renderContent()}

@@ -11,7 +11,7 @@ export class Accordion extends LitElement {
   #isClosing = false;
   #isExpanding = false;
 
-  @property() expanded = 'false';
+  @property({type: Boolean}) expanded = false;
 
   @query('.content') private _content!: HTMLElement;
   @query('details') private _details!: HTMLDetailsElement;
@@ -47,7 +47,7 @@ export class Accordion extends LitElement {
       this.#close();
     }
 
-    this.expanded = this.expanded === 'true' ? 'false' : 'true';
+    this.expanded = !this.expanded;
     // TODO: this is not working
     // details.focus();
   }

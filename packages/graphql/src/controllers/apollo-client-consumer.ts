@@ -6,7 +6,7 @@ import { ApolloClientConsumerConnectedEvent, ApolloClientConsumerDisconnectedEve
 
 export class ApolloClientConsumer implements ReactiveController {
   #emitter: EventTarget;
-  #consumer: ContextConsumer<typeof apolloClientContext, ReactiveElement>;
+  #consumer: ContextConsumer<typeof apolloClientContext, any>;
 
   protected host: ReactiveControllerHost;
 
@@ -21,7 +21,10 @@ export class ApolloClientConsumer implements ReactiveController {
       this.#emitter = new EventTarget();
     }
 
-    this.#consumer = new ContextConsumer(host, apolloClientContext, this.clientChanged);
+    this.#consumer = new ContextConsumer(host as any, {
+      context: apolloClientContext,
+      callback: this.clientChanged,
+    });
 
     this.host = host;
     host.addController(this);

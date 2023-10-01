@@ -37,7 +37,7 @@ export class LoginPage extends LitElement {
         <span class="description">Lit, Material, GraphQL, Prisma, TypeScript and esbuild</span>
       </div> -->
       <form
-        method="submit"
+        method="post"
         @submit=${this.#login}>
         <header>
           <h3>Sign In</h3>
@@ -66,7 +66,7 @@ export class LoginPage extends LitElement {
             required
             tabindex="0"
             label="Password"
-            type="Password"
+            type="password"
             .value=${live(this.#getPasswordInputValue())}
             @change=${this.#handleInputChange}
             @input=${this.#handlePasswordInput}

@@ -1,4 +1,4 @@
-import { LitElement, html, nothing, type PropertyValues, type TemplateResult } from 'lit';
+import { LitElement, html, type PropertyValues, type TemplateResult } from 'lit';
 import { property, query } from 'lit/decorators.js';
 import { classMap, type ClassInfo } from 'lit/directives/class-map.js';
 import { when } from 'lit/directives/when.js';
@@ -18,8 +18,8 @@ export class ListItemEl extends LitElement implements ListItem {
 
   #isFirstUpdate = true;
 
-  @property() override ariaSelected!: 'false' | 'true';
-  @property() override ariaChecked!: 'false' | 'true';
+  @property({type: Boolean}) selected = false;
+  @property({type: Boolean}) checked = false;
   @property({ type: Boolean, reflect: true }) active = false;
   @property({ type: Boolean, reflect: true }) disabled = false;
   @property() headline = '';
@@ -81,10 +81,10 @@ export class ListItemEl extends LitElement implements ListItem {
   protected renderListItem(content: unknown): TemplateResult {
     return html`
       <li
-        aria-selected=${this.ariaSelected || nothing}
-        aria-checked=${this.ariaChecked || nothing}
+        aria-selected=${this.selected}
+        aria-checked=${this.checked}
         class="list-item ${classMap(this.getRenderListItemClasses())}"
-        role=${this.type}
+        role="listbox"
         tabindex=${this.disabled ? -1 : this.itemTabIndex}
         @pointerdown=${this.onPointerdown}
         @focus=${this.onFocus}

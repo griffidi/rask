@@ -14,7 +14,7 @@
     "importHelpers": true,
     "incremental": true,
     // "inlineSources": true,
-    "lib": ["ESNext"],
+    "lib": ["ESNext", "ESNext.Disposable"],
     "module": "ESNext",
     "moduleResolution": "NodeNext",
     "noEmitOnError": true,

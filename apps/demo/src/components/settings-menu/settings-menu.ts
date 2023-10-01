@@ -37,8 +37,7 @@ export class SettingsMenu extends LitElement {
     return html`
       <rk-menu
         ${ref(this.#menu)}
-        icon="account_circle"
-        .open>
+        icon="account_circle">
         ${this.#renderMenuTrigger()}
         <label>
           Dark Mode
