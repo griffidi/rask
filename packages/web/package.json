@@ -38,14 +38,14 @@
     "build": ""
   },
   "dependencies": {
-    "@material/web": "1.0.0-pre.14",
+    "@material/web": "1.0.0",
     "@rask/core": "workspace:^",
     "lit": "^3.0.0-pre.0",
     "tslib": "^2.6.1"
   },
   "devDependencies": {
     "@types/node": "^20.4.9",
-    "typescript": "5.2.1-rc"
+    "typescript": "5.3.0-beta"
   },
   "peerDependencies": {
     "@material/web": "*",

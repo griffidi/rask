@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "@apollo/client": "^3.8.0",
-    "@lit-labs/context": "^0.3.3",
+    "@lit-labs/context": "^0.4.1",
     "@lit/reactive-element": "^2.0.0-pre.0",
     "@rask/core": "workspace:^",
     "apollo3-cache-persist": "^0.14.1",
@@ -37,7 +37,7 @@
   },
   "devDependencies": {
     "@types/node": "^20.4.9",
-    "typescript": "5.2.1-rc"
+    "typescript": "5.3.0-beta"
   },
   "peerDependencies": {
     "@apollo/client": "*",

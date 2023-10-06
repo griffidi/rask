@@ -32,8 +32,8 @@
     "packages/*"
   ],
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "6.3.0",
-    "@typescript-eslint/parser": "6.3.0",
+    "@typescript-eslint/eslint-plugin": "6.7.4",
+    "@typescript-eslint/parser": "6.7.4",
     "eslint": "^8.46.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-import": "^2.28.0",
@@ -47,7 +47,7 @@
     "overrides": {
       "@rask/core": "workspace:*",
       "@rask/web": "workspace:*",
-      "typescript": "5.2.1-rc"
+      "typescript": "5.3.0-beta"
     },
     "peerDependencyRules": {
       "allowAny": [
