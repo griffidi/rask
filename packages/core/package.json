@@ -40,16 +40,16 @@
     "build": ""
   },
   "dependencies": {
-    "@lit-labs/router": "^0.1.1",
-    "@lit/reactive-element": "^2.0.0-pre.0",
+    "@lit-labs/router": "^0.1.2",
+    "@lit/reactive-element": "^2.0.0",
     "@preact/signals-core": "^1.4.0",
-    "lit": "^3.0.0-pre.0",
+    "lit": "^3.0.0",
     "nanoid": "^5.0.1",
     "reflect-metadata": "^0.1.13",
     "tslib": "^2.6.1"
   },
   "devDependencies": {
-    "@types/node": "^20.4.9",
+    "@types/node": "^20.8.4",
     "typescript": "5.3.0-beta"
   },
   "peerDependencies": {

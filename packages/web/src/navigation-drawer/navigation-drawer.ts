@@ -1,5 +1,5 @@
 import '@material/web/icon/icon.js';
-import '@material/web/iconbutton/standard-icon-button.js';
+import '@material/web/iconbutton/icon-button.js';
 import { isEmpty } from '@rask/core/validation/assert.js';
 import { LitElement, html, type TemplateResult } from 'lit';
 import { property } from 'lit/decorators.js';
@@ -73,11 +73,11 @@ export class NavigationDrawer extends LitElement {
       <nav>
         <h4>
           ${this.headline}
-          <md-standard-icon-button
+          <md-icon-button
             tabindex="0"
             @click=${this.#closeDrawer}>
             <md-icon>menu_open</md-icon>
-          </md-standard-icon-button>
+          </md-icon-button>
         </h4>
         ${map(this.items, item => {
           return html`

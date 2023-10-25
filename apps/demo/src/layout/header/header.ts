@@ -1,7 +1,7 @@
 import ':/components/settings-menu/settings-menu.js';
 import { consume } from '@lit-labs/context';
 import '@material/web/icon/icon.js';
-import '@material/web/iconbutton/standard-icon-button.js';
+import '@material/web/iconbutton/icon-button.js';
 // import '@material/web/linearprogress/linear-progress.js';
 import { isAuthenticatedContext } from '@rask/identity/authentication/is-authenticated-context.js';
 import { LitElement, html, type TemplateResult } from 'lit';
@@ -37,9 +37,9 @@ export class Header extends LitElement {
 
   #renderLeadingSide(): TemplateResult {
     return html`
-      <md-standard-icon-button @click=${this.#handleMenuClick}>
+      <md-icon-button @click=${this.#handleMenuClick}>
         <md-icon>menu</md-icon>
-      </md-standard-icon-button>
+      </md-icon-button>
     `;
   }
 

@@ -27,14 +27,14 @@
     "dev": ""
   },
   "dependencies": {
-    "@lit-labs/context": "^0.4.1",
-    "@lit-labs/task": "^3.0.0",
-    "@lit/reactive-element": "^2.0.0-pre.0",
+    "@lit-labs/context": "^0.5.0",
+    "@lit-labs/task": "^3.1.0",
+    "@lit/reactive-element": "^2.0.0",
     "@preact/signals-core": "^1.4.0",
     "@rask/core": "workspace:^",
     "@rask/graphql": "workspace:^",
     "graphql": "^16.7.1",
-    "lit": "^3.0.0-pre.0",
+    "lit": "^3.0.0",
     "tslib": "^2.6.1"
   },
   "devDependencies": {
@@ -43,7 +43,7 @@
     "@graphql-codegen/typescript": "^4.0.1",
     "@graphql-codegen/typescript-operations": "^4.0.1",
     "@graphql-typed-document-node/core": "^3.2.0",
-    "@types/node": "^20.4.9",
+    "@types/node": "^20.8.4",
     "graphql-tag": "^2.12.6",
     "typescript": "5.3.0-beta"
   },

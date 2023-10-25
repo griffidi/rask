@@ -52,7 +52,7 @@ export class Index extends LitElement {
     initialValue: this.#router,
   });
 
-  @provide({ context: isAuthenticatedContext }) isAuthenticated: boolean = false;
+  @provide({ context: isAuthenticatedContext }) isAuthenticated = false;
 
   constructor() {
     super();
