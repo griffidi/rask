@@ -43,7 +43,7 @@
     "@graphql-codegen/typescript": "^4.0.1",
     "@graphql-codegen/typescript-operations": "^4.0.1",
     "@graphql-typed-document-node/core": "^3.2.0",
-    "@types/node": "^20.8.8",
+    "@types/node": "^20.8.9",
     "graphql-tag": "^2.12.6",
     "typescript": "5.3.0-beta"
   },
